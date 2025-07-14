@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { getPost, getSortedPosts } from '@/lib/posts';
 import Calendar from '@/app/components/Calendar';
@@ -6,6 +7,20 @@ import Calendar from '@/app/components/Calendar';
 export async function generateStaticParams() {
   const posts = getSortedPosts();
   return posts.map(post => ({ slug: post.slug }));
+}
+
+export async function generateMetadata(
+  { params }: { params: { slug: string } }
+): Promise<Metadata> {
+  try {
+    const post = getPost(params.slug);
+    return {
+      title: post.title,
+      other: { date: post.date }
+    };
+  } catch {
+    return { title: 'Not Found' };
+  }
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
