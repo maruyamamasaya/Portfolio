@@ -18,3 +18,8 @@ npm run dev
 ## デプロイ
 
 `npm run build` でビルドし、`npm start` でサーバーを起動します。EC2 などの Node.js が動作する環境で実行してください。
+
+## Basic 認証
+
+`/developers_blog` 配下は Basic 認証で保護されています。デフォルトではユーザー名 `user`、パスワード `0000` を使用してください。
+
