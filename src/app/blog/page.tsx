@@ -8,7 +8,7 @@ export default function BlogIndex() {
     <div>
       <h1 className="text-2xl font-bold mb-4">Blog</h1>
       <div className="md:flex">
-        <div className="md:w-3/4">
+        <div className="md:w-3/4 main-content">
           <ul className="space-y-4">
             {posts.map(post => (
               <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
@@ -26,7 +26,7 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0">
+        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 widget">
           <Calendar />
         </aside>
       </div>

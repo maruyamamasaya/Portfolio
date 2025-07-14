@@ -29,7 +29,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     const html = await markdownToHtml(post.content);
     return (
       <div className="md:flex">
-        <article className="prose md:w-3/4 md:pr-4">
+        <article className="prose md:w-3/4 md:pr-4 main-content">
           {post.image && (
             <img src={post.image} alt="eyecatch" className="mb-4" />
           )}
@@ -37,7 +37,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <p className="text-sm text-gray-500">{post.date}</p>
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
-        <aside className="md:w-1/4 mt-4 md:mt-0">
+        <aside className="md:w-1/4 mt-4 md:mt-0 widget">
           <Calendar />
         </aside>
       </div>

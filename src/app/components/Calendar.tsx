@@ -18,7 +18,7 @@ export default function Calendar() {
   const days = getDays(year, month);
 
   return (
-    <div className="text-sm">
+    <div className="calendar-widget text-sm">
       <div className="font-bold mb-2 text-center">
         {year} / {month + 1}
       </div>
