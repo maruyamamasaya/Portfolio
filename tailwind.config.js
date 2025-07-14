@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        xp: ['Tahoma', 'Verdana', 'sans-serif']
+      }
+    }
   },
   plugins: [require('@tailwindcss/typography')]
 };

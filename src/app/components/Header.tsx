@@ -20,7 +20,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow">
+    <header className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 text-white shadow border-b-4 border-yellow-300">
       <div className="container mx-auto p-4 flex items-center justify-between">
         <h1 className="text-2xl font-bold flex items-center">
           <img
@@ -41,7 +41,7 @@ export default function Header() {
         </nav>
       </div>
       {pathname === '/' && (
-        <div className="bg-gradient-to-r from-blue-700 to-purple-700">
+        <div className="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-800">
           <div className="container mx-auto py-2">
             <ul className="flex space-x-4 text-sm justify-center">
               {categories.map((cat) => (

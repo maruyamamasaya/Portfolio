@@ -13,12 +13,8 @@ export default async function HomePage() {
 
   return (
     <div>
-      <img
-        src="/images/hero_image.png"
-        alt="Hero"
-        className="w-full h-64 object-cover mb-6"
-      />
-      <div className="mb-8">
+      <div className="xp-titlebar">トップページ</div>
+      <div className="mb-8 xp-content">
         <h2 className="text-xl font-semibold mb-4">カテゴリー</h2>
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {categories.map((cat) => (
@@ -33,6 +29,7 @@ export default async function HomePage() {
           ))}
         </ul>
       </div>
+      <div className="xp-content">
       <h2 className="text-xl font-semibold mb-4">Blog</h2>
       <ul className="space-y-4">
         {posts.map(post => (
@@ -50,6 +47,7 @@ export default async function HomePage() {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 }
