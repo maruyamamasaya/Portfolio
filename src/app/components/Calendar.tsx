@@ -26,11 +26,18 @@ export default function Calendar() {
         {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => (
           <div key={d} className="text-center font-semibold">{d}</div>
         ))}
-        {days.map(d => (
-          <div key={d.toISOString()} className="text-center">
-            {d.getDate()}
-          </div>
-        ))}
+        {days.map(d => {
+          const isToday = d.toDateString() === today.toDateString();
+          return (
+            <div key={d.toISOString()} className="text-center">
+              <span
+                className={`calendar-day${isToday ? ' calendar-day-today' : ''}`}
+              >
+                {d.getDate()}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
