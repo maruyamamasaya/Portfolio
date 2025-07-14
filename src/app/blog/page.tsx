@@ -29,8 +29,16 @@ export default function BlogIndex() {
                     {post.updated && ` (更新: ${post.updated})`}
                   </span>
                   {post.tags && (
-                    <span className="block text-xs text-gray-600">
-                      {post.tags.join(', ')}
+                    <span className="block text-xs text-gray-600 space-x-1">
+                      {post.tags.map(tag => (
+                        <Link
+                          key={tag}
+                          href={`/tags/${encodeURIComponent(tag)}`}
+                          className="hover:underline"
+                        >
+                          #{tag}
+                        </Link>
+                      ))}
                     </span>
                   )}
                 </div>

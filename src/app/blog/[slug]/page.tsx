@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import Link from 'next/link';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { getPost, getSortedPosts } from '@/lib/posts';
 import Calendar from '@/app/components/Calendar';
@@ -46,7 +47,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             <ul className="flex space-x-2 text-xs mb-2">
               {post.tags.map(tag => (
                 <li key={tag} className="bg-gray-200 px-2 py-1 rounded">
-                  {tag}
+                  <Link href={`/tags/${encodeURIComponent(tag)}`}>{tag}</Link>
                 </li>
               ))}
             </ul>

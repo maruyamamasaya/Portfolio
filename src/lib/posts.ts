@@ -51,3 +51,16 @@ export function getPost(slug: string): Post {
     content
   };
 }
+
+export function getAllTags(): string[] {
+  const posts = getSortedPosts();
+  const tagSet = new Set<string>();
+  posts.forEach(post => {
+    post.tags?.forEach(tag => tagSet.add(tag));
+  });
+  return Array.from(tagSet);
+}
+
+export function getPostsByTag(tag: string): Post[] {
+  return getSortedPosts().filter(post => post.tags?.includes(tag));
+}
