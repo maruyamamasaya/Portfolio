@@ -41,7 +41,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <p className="text-sm text-gray-500">{post.date}</p>
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
-        <aside className="md:w-1/4 mt-4 md:mt-0 space-y-4">
+        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 space-y-4">
           <div className="widget">
             <Profile />
           </div>
