@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { getSortedPosts } from '@/lib/posts';
 import Calendar from '@/app/components/Calendar';
+import Profile from '@/app/components/Profile';
+import CategoryList from '@/app/components/CategoryList';
+import RecentPosts from '@/app/components/RecentPosts';
+import TodayMessage from '@/app/components/TodayMessage';
 
 export default function BlogIndex() {
   const posts = getSortedPosts();
@@ -26,8 +30,22 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 widget">
-          <Calendar />
+        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 space-y-4">
+          <div className="widget">
+            <Profile />
+          </div>
+          <div className="widget">
+            <CategoryList />
+          </div>
+          <div className="widget">
+            <RecentPosts posts={posts} />
+          </div>
+          <div className="widget">
+            <TodayMessage />
+          </div>
+          <div className="widget">
+            <Calendar />
+          </div>
         </aside>
       </div>
     </div>
