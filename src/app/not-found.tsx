@@ -1,0 +1,13 @@
+import Link from 'next/link';
+
+export default function NotFound() {
+  return (
+    <div className="text-center py-16">
+      <h1 className="text-2xl font-bold mb-4">ページが見つかりません</h1>
+      <p className="mb-4">お探しのページは存在しないか、移動しました。</p>
+      <Link href="/" className="text-blue-600 hover:underline">
+        ホームに戻る
+      </Link>
+    </div>
+  );
+}
