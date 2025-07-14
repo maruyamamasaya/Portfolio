@@ -6,7 +6,7 @@ export default function Law() {
       <dl className="space-y-4">
         <div>
           <dt className="font-bold">販売事業者名</dt>
-          <dd>（個人の場合）マルヤマ マサヤ</dd>
+          <dd>（個人の場合）非公開</dd>
         </div>
         <div>
           <dt className="font-bold">運営責任者</dt>
