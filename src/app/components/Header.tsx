@@ -10,6 +10,7 @@ export default function Header() {
     { href: '/about', label: 'プロフィール' },
     { href: '/works', label: '実績' },
     { href: '/blog', label: 'ブログ' },
+    { href: '/tags', label: 'タグ検索' },
   ];
 
 
