@@ -7,6 +7,8 @@ export interface DevPost {
   title: string;
   date: string;
   image?: string;
+  tags?: string[];
+  updated?: string;
   content: string;
 }
 
@@ -25,6 +27,8 @@ export function getSortedDevPosts(): DevPost[] {
       title: data.title as string,
       date: data.date as string,
       image: data.image as string | undefined,
+      tags: data.tags as string[] | undefined,
+      updated: data.updated as string | undefined,
       content
     };
   });
@@ -42,6 +46,8 @@ export function getDevPost(slug: string): DevPost {
     title: data.title as string,
     date: data.date as string,
     image: data.image as string | undefined,
+    tags: data.tags as string[] | undefined,
+    updated: data.updated as string | undefined,
     content
   };
 }

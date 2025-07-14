@@ -20,7 +20,15 @@ export default function BlogIndex() {
                     className="text-blue-600 hover:underline">
                     {post.title}
                   </Link>
-                  <span className="block text-sm text-gray-500">{post.date}</span>
+                  <span className="block text-sm text-gray-500">
+                    {post.date}
+                    {post.updated && ` (更新: ${post.updated})`}
+                  </span>
+                  {post.tags && (
+                    <span className="block text-xs text-gray-600">
+                      {post.tags.join(', ')}
+                    </span>
+                  )}
                 </div>
               </li>
             ))}
