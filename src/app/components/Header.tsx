@@ -7,11 +7,9 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/works', label: 'Works' },
-    { href: '/blog', label: 'Journal' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/about', label: 'プロフィール' },
+    { href: '/works', label: '実績' },
+    { href: '/blog', label: 'ブログ' },
   ];
 
   const categories = [
