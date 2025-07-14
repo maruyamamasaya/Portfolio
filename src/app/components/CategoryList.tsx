@@ -1,13 +1,8 @@
 import Link from 'next/link';
+import { getCategories } from '@/lib/categories';
 
 export default function CategoryList() {
-  const categories = [
-    { name: 'おすすめ記事', href: '/recommend' },
-    { name: 'NEWS', href: '/news' },
-    { name: 'PHOTO', href: '/photo' },
-    { name: 'PROFILE', href: '/profile' },
-    { name: 'STORE', href: '/store' },
-  ];
+  const categories = getCategories();
 
   return (
     <div>
