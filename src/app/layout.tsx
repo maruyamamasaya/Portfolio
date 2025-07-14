@@ -23,6 +23,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <li>
                   <Link href="/blog">Blog</Link>
                 </li>
+                <li>
+                  <Link href="/developers_blog">Dev Blog</Link>
+                </li>
               </ul>
             </nav>
           </div>
