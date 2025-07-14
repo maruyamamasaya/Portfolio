@@ -1,4 +1,5 @@
 import './globals.css';
+import './mobile.css';
 import { ReactNode } from 'react';
 
 export const metadata = {

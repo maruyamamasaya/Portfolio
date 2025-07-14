@@ -1,6 +1,7 @@
 ---
 title: "最初の投稿"
 date: "2025-07-14"
+image: "/images/first.png"
 ---
 
 これは最初のブログ投稿です。Next.js ベースのポートフォリオへようこそ。

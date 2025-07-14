@@ -6,6 +6,7 @@ export interface Post {
   slug: string;
   title: string;
   date: string;
+  image?: string;
   content: string;
 }
 
@@ -23,6 +24,7 @@ export function getSortedPosts(): Post[] {
       slug,
       title: data.title as string,
       date: data.date as string,
+      image: data.image as string | undefined,
       content
     };
   });
@@ -39,6 +41,7 @@ export function getPost(slug: string): Post {
     slug,
     title: data.title as string,
     date: data.date as string,
+    image: data.image as string | undefined,
     content
   };
 }
