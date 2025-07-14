@@ -15,7 +15,9 @@ export interface DevPost {
 const devPostsDirectory = path.join(process.cwd(), 'developers_blog');
 
 export function getSortedDevPosts(): DevPost[] {
-  const fileNames = fs.readdirSync(devPostsDirectory);
+  const fileNames = fs
+    .readdirSync(devPostsDirectory)
+    .filter(file => file.endsWith('.md'));
   const posts = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.md$/, '');
     const fullPath = path.join(devPostsDirectory, fileName);
