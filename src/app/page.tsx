@@ -6,8 +6,15 @@ export default async function HomePage() {
 
   return (
     <div>
-      <div className="xp-titlebar">トップページ</div>
-      <div className="xp-content">
+      <div className="win98-titlebar">
+        <span>トップページ</span>
+        <div className="window-controls">
+          <button className="win98-btn minimize" aria-label="Minimize" />
+          <button className="win98-btn close" aria-label="Close" />
+        </div>
+      </div>
+      <div className="win98-content">
+      <div className="win98-folder mb-4" />
       <h2 className="text-xl font-semibold mb-4">Blog</h2>
       <ul className="space-y-4">
         {posts.map(post => (

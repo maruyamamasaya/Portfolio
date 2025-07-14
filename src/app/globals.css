@@ -27,21 +27,93 @@
   @apply text-gray-800;
 }
 
-/* Windows XP inspired styling */
-body {
+/* Windows 98 inspired styling */
+body.win98-body {
   font-family: 'Share Tech Mono', monospace;
-  background-image: linear-gradient(to bottom, #3a6ea5, #1c5db6);
+  background: #000080;
   color: #000;
 }
 
-.xp-window {
-  @apply bg-white border-2 border-blue-700 rounded shadow-lg;
+.win98-window {
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  box-shadow: 4px 4px 0 #000;
 }
 
-.xp-titlebar {
-  @apply bg-blue-700 text-white px-2 py-1 font-bold;
+.win98-titlebar {
+  background: #000080;
+  color: #fff;
+  padding: 2px 4px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.xp-content {
-  @apply p-4;
+.window-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.window-controls .win98-btn {
+  width: 14px;
+  height: 14px;
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  position: relative;
+}
+
+.window-controls .win98-btn.minimize::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  height: 2px;
+  background: #000;
+}
+
+.window-controls .win98-btn.close::before {
+  content: '×';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.win98-content {
+  padding: 1rem;
+}
+
+.win98-folder {
+  width: 40px;
+  height: 30px;
+  background: #ffcc00;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  position: relative;
+  box-shadow: inset -1px -1px 0 #808080;
+}
+
+.win98-folder::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 6px;
+  width: 16px;
+  height: 8px;
+  background: #ffcc00;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
 }
