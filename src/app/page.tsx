@@ -13,6 +13,11 @@ export default async function HomePage() {
 
   return (
     <div>
+      <img
+        src="/images/hero_image.png"
+        alt="Hero"
+        className="w-full h-64 object-cover mb-6"
+      />
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-4">カテゴリー</h2>
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
