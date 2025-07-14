@@ -1,15 +1,15 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
   const navItems = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/works', label: 'Works' },
-    { href: '/blog', label: 'Journal' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/about', label: 'プロフィール' },
+    { href: '/works', label: '実績' },
+    { href: '/blog', label: 'ブログ' },
   ];
 
 
@@ -24,7 +24,16 @@ export default function Header() {
           />
           <Link href="/">My Portfolio</Link>
         </h1>
-        <nav>
+        <button
+          className="sm:hidden flex flex-col items-center justify-center w-8 h-8"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+        >
+          <span className="block w-6 h-0.5 bg-white mb-1" />
+          <span className="block w-6 h-0.5 bg-white mb-1" />
+          <span className="block w-6 h-0.5 bg-white" />
+        </button>
+        <nav className="hidden sm:block">
           <ul className="flex space-x-4 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
