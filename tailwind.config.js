@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        xp: ['Tahoma', 'Verdana', 'sans-serif']
+        xp: ['Tahoma', 'Verdana', 'sans-serif'],
+        digital: ['"Share Tech Mono"', 'monospace']
       }
     }
   },
