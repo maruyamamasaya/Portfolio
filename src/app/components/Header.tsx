@@ -12,13 +12,6 @@ export default function Header() {
     { href: '/blog', label: 'ブログ' },
   ];
 
-  const categories = [
-    { href: '/recommend', label: 'おすすめ記事' },
-    { href: '/news', label: 'NEWS' },
-    { href: '/photo', label: 'PHOTO' },
-    { href: '/profile', label: 'PROFILE' },
-    { href: '/store', label: 'STORE' },
-  ];
 
   return (
     <header className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 text-white shadow border-b-4 border-yellow-300">
@@ -50,40 +43,7 @@ export default function Header() {
           </ul>
         </nav>
       </div>
-      {pathname === '/' && (
-        <div className="hidden sm:block bg-gradient-to-r from-blue-800 via-blue-600 to-blue-800">
-          <div className="container mx-auto py-2">
-            <ul className="flex space-x-4 text-sm justify-center">
-              {categories.map((cat) => (
-                <li key={cat.href}>
-                  <Link href={cat.href}>{cat.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      )}
-      {open && (
-        <nav className="sm:hidden bg-gradient-to-r from-blue-800 via-blue-600 to-blue-800">
-          <ul className="flex flex-col space-y-2 p-4 text-sm">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} onClick={() => setOpen(false)}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            {pathname === '/' &&
-              categories.map((cat) => (
-                <li key={cat.href}>
-                  <Link href={cat.href} onClick={() => setOpen(false)}>
-                    {cat.label}
-                  </Link>
-                </li>
-              ))}
-          </ul>
-        </nav>
-      )}
+      {/* Category links removed */}
     </header>
   );
 }
