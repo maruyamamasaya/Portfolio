@@ -37,7 +37,14 @@ export default function Footer() {
           <Link href="/contact" className="hover:underline">お問い合わせフォーム</Link>
         </div>
       </div>
-      <div className="bg-gray-900 text-center py-4 text-xs">&copy; 2025 マイポートフォリオ</div>
+      <div className="bg-gray-900 text-center py-4 text-xs flex items-center justify-center space-x-2">
+        <img
+          src="/images/footer_icon.png"
+          alt="Footer Icon"
+          className="w-6 h-6"
+        />
+        <span>&copy; 2025 マイポートフォリオ</span>
+      </div>
     </footer>
   );
 }
