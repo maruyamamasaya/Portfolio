@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* layout helpers for blog pages */
+.main-content {
+  @apply bg-white p-4 rounded shadow-sm mb-4;
+}
+
+.widget {
+  @apply bg-white p-4 rounded shadow;
+}
+
+.calendar-widget {
+  @apply bg-white p-2 rounded shadow;
+}
