@@ -20,7 +20,7 @@ export async function generateMetadata(
     const post = getPost(params.slug);
     return {
       title: post.title,
-      other: { date: post.date }
+      other: { date: post.date, updated: post.updated, tags: post.tags }
     };
   } catch {
     return { title: 'Not Found' };
@@ -38,7 +38,19 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             <img src={post.image} alt="eyecatch" className="mb-4" />
           )}
           <h1>{post.title}</h1>
-          <p className="text-sm text-gray-500">{post.date}</p>
+          <p className="text-sm text-gray-500">
+            {post.date}
+            {post.updated && ` (更新: ${post.updated})`}
+          </p>
+          {post.tags && (
+            <ul className="flex space-x-2 text-xs mb-2">
+              {post.tags.map(tag => (
+                <li key={tag} className="bg-gray-200 px-2 py-1 rounded">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
         <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 space-y-4">

@@ -4,7 +4,7 @@
 
 ## Markdown ファイル構成
 
-ブログ記事の Markdown ファイルのフォーマットは `docs/markdown-structure.md` にまとめています。
+ブログ記事の Markdown ファイルのフォーマットは `docs/markdown-structure.md` にまとめています。`tags` や `updated` などのメタ情報もここで確認できます。
 
 ## セットアップ
 
