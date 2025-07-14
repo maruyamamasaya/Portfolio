@@ -22,7 +22,12 @@ export default function Header() {
   return (
     <header className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 text-white shadow border-b-4 border-yellow-300">
       <div className="container mx-auto p-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold flex items-center">
+          <img
+            src="/images/header_icon.png"
+            alt="Header Icon"
+            className="w-8 h-8 mr-2"
+          />
           <Link href="/">My Portfolio</Link>
         </h1>
         <nav>
