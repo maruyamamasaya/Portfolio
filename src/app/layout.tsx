@@ -6,7 +6,13 @@ import Footer from './components/Footer';
 
 export const metadata = {
   title: '電脳幻境プロジェクト',
-  description: 'Next.js Portfolio with Markdown Blog'
+  description: 'Next.js Portfolio with Markdown Blog',
+  icons: {
+    icon: '/images/first.png',
+  },
+  openGraph: {
+    images: '/images/second.png',
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
