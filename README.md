@@ -50,3 +50,7 @@ npm run dev
 | ヘッダーアイコン | `header_icon.png` | 1:1 | 64×64 |
 | ヒーロー背景 | `hero_bg.png` | 16:9 | 1920×1080 |
 | フッターアイコン | `footer_icon.png` | 1:1 | 48×48 |
+| ファビコン | `favicon.png` | 1:1 | 32×32 |
+| OGP 画像 | `eye-catch.png` | 16:9 | 1200×630 |
+
+`favicon.png` と `eye-catch.png` は `public/images` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
