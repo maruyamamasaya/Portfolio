@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import markdownToHtml from '@/lib/markdownToHtml';
-import { getPost, getSortedPosts } from '@/lib/posts';
+import { getPost, getSortedPosts, getBacklinks } from '@/lib/posts';
 import LeftSidebar from '@/app/components/LeftSidebar';
 import RightSidebar from '@/app/components/RightSidebar';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
@@ -29,6 +29,7 @@ export async function generateMetadata(
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   try {
     const post = getPost(params.slug);
+    const backlinks = getBacklinks(params.slug);
     const { html, headings } = await markdownToHtml(post.content);
     return (
       <div className="blog-container">
@@ -56,6 +57,18 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             </ul>
           )}
           <div dangerouslySetInnerHTML={{ __html: html }} />
+          {backlinks.length > 0 && (
+            <div className="mt-8">
+              <h2 className="text-lg font-bold mb-2">被リンク</h2>
+              <ul className="list-disc pl-5">
+                {backlinks.map(link => (
+                  <li key={link.slug}>
+                    <Link href={`/blog/${link.slug}`}>{link.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </article>
           <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0">
             <RightSidebar posts={getSortedPosts()} headings={headings} />
