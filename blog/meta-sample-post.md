@@ -1,9 +1,8 @@
 ---
 title: "メタタグサンプル"
 date: "2025-07-30"
-image: "/images/second.png"
+image: "/images/sample.png"
 tags:
-  - "サンプル"
   - "メタタグ"
 updated: "2025-08-01"
 ---
