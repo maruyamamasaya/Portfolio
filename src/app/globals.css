@@ -17,7 +17,7 @@
 }
 
 .blog-container {
-  @apply max-w-5xl mx-auto;
+  @apply container mx-auto;
 }
 
 /* Calendar day styles inspired by WordPress widget */

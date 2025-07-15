@@ -61,12 +61,18 @@ function convertMarkdownTables(content: string): string {
   return result.join('\n');
 }
 
+function formatBold(content: string): string {
+  return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+}
+
 export default async function markdownToHtml(
   markdown: string
 ): Promise<{ html: string; headings: Heading[] }> {
   const headings: Heading[] = [];
 
   const processed = convertMarkdownTables(replaceInternalLinks(markdown));
+  const processed = formatBold(replaceInternalLinks(markdown));
+
 
   const result = await remark()
     .use(() => tree => {
