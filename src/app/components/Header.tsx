@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <header className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 text-white shadow border-b-4 border-yellow-300">
-      <div className="container mx-auto p-4 flex items-center justify-between">
+      <div className="container mx-auto p-4 flex items-center justify-between relative">
         <h1 className="text-2xl font-bold flex items-center">
           <img
             src="/images/header_icon.png"
@@ -39,6 +39,15 @@ export default function Header() {
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <nav className={`${open ? 'block' : 'hidden'} sm:hidden absolute top-full left-0 w-full bg-blue-700 text-white`}> 
+          <ul className="flex flex-col p-4 space-y-2 text-sm">
+            {navItems.map(item => (
+              <li key={item.href}>
+                <Link href={item.href} onClick={() => setOpen(false)}>{item.label}</Link>
               </li>
             ))}
           </ul>
