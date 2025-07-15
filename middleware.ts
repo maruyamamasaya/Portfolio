@@ -3,11 +3,7 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  if (
-    pathname.startsWith('/developers_blog') ||
-    pathname.startsWith('/developer_edit') ||
-    pathname.startsWith('/api/dev-posts')
-  ) {
+  if (pathname.includes('developer') || pathname.startsWith('/api/dev-posts')) {
     const basicAuth = req.headers.get('authorization');
     if (basicAuth) {
       const authValue = basicAuth.split(' ')[1];
@@ -27,9 +23,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    '/developers_blog/:path*',
-    '/developer_edit/:path*',
-    '/api/dev-posts/:path*'
-  ]
+  matcher: '/:path*'
 };
