@@ -4,6 +4,7 @@ import Link from 'next/link';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { getDevPost, getSortedDevPosts } from '@/lib/devPosts';
 import Calendar from '@/app/components/Calendar';
+import TableOfContents from '@/app/components/TableOfContents';
 
 export async function generateStaticParams() {
   const posts = getSortedDevPosts();
@@ -27,7 +28,7 @@ export async function generateMetadata(
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   try {
     const post = getDevPost(params.slug);
-    const html = await markdownToHtml(post.content);
+    const { html, headings } = await markdownToHtml(post.content);
     return (
       <div className="blog-container md:flex">
         <article className="prose md:w-3/4 md:pr-4 main-content">
@@ -50,8 +51,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           )}
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
-        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 widget">
-          <Calendar />
+        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 space-y-4">
+          <div className="widget">
+            <TableOfContents headings={headings} />
+          </div>
+          <div className="widget">
+            <Calendar />
+          </div>
         </aside>
       </div>
     );
