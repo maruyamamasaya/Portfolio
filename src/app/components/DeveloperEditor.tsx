@@ -69,6 +69,18 @@ export default function DeveloperEditor() {
     }
   };
 
+  const revalidate = async () => {
+    if (!selected) return;
+    const slug = selected.replace(/\.md$/, '');
+    const basePath = target === 'dev' ? '/developers_blog' : '/blog';
+    await fetch('/api/revalidate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ paths: [basePath, `${basePath}/${slug}`] })
+    });
+    setStatus('更新しました');
+  };
+
   return (
     <div className="md:flex">
       <div className="md:w-1/4 p-4 space-y-4 border-r">
@@ -141,6 +153,12 @@ export default function DeveloperEditor() {
             onClick={saveFile}
           >
             保存
+          </button>
+          <button
+            className="px-4 py-2 bg-green-600 text-white ml-2"
+            onClick={revalidate}
+          >
+            更新
           </button>
         </div>
         {status && <p className="mt-2 text-sm">{status}</p>}
