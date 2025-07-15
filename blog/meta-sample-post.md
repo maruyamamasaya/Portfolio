@@ -1,6 +1,6 @@
 ---
 title: "メタタグサンプル"
-date: "2025-07-30"
+date: "2025-06-30"
 image: "/images/sample.png"
 tags:
   - "メタタグ"
