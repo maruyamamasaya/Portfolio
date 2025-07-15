@@ -5,7 +5,7 @@ import Calendar from '@/app/components/Calendar';
 export default function BlogIndex() {
   const posts = getSortedDevPosts();
   return (
-    <div>
+    <div className="blog-container">
       <h1 className="text-2xl font-bold mb-4">Developers Blog</h1>
       <div className="md:flex">
         <div className="md:w-3/4 main-content">

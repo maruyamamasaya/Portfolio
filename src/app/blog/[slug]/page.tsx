@@ -31,7 +31,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     const post = getPost(params.slug);
     const html = await markdownToHtml(post.content);
     return (
-      <div>
+      <div className="blog-container">
         <BlogNavButtons />
         <div className="md:flex">
           <aside className="md:w-1/4 md:pr-4 mb-4 md:mb-0">

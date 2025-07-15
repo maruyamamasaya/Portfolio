@@ -29,7 +29,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     const post = getDevPost(params.slug);
     const html = await markdownToHtml(post.content);
     return (
-      <div className="md:flex">
+      <div className="blog-container md:flex">
         <article className="prose md:w-3/4 md:pr-4 main-content">
           {post.image && (
             <img src={post.image} alt="eyecatch" className="mb-4" />
