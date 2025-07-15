@@ -25,15 +25,6 @@ npm run dev
 ユーザー名 `DENNOGENKYO`、パスワード `CYBERDREAM` を使用してください。
 実際の管理画面は [https://freehackapp.com/developer_edit](https://freehackapp.com/developer_edit) からアクセスできます。
 
-## その他のディレクトリ
-
-| ディレクトリ名 | 用途例 |
-| -------------- | ------- |
-| `uploads/`     | 画像アップロード先 |
-| `logs/`        | ログファイル保存先 |
-| `tmp/`         | 一時ファイル保存先 |
-
-将来的に使用する可能性があるため、あらかじめ作成してあります。
 
 ## 画像ファイルについて
 
