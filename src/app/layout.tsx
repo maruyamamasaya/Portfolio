@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     icon: '/images/favicon.png',
   },
   openGraph: {
-    images: '/images/second.png',
+    images: '/images/eye-catch.png',
   }
 };
 
