@@ -1,6 +1,11 @@
 "use client";
 import { useEffect, useState } from 'react';
 
+function metaTemplate() {
+  const date = new Date().toISOString().slice(0, 10);
+  return `---\ntitle: ""\ndate: "${date}"\nimage: "/images/example.png"\ntags:\n  - ""\nupdated: "${date}"\n---\n\n`;
+}
+
 export default function DeveloperEditor() {
   const [target, setTarget] = useState<'blog' | 'dev'>('dev');
   const [files, setFiles] = useState<string[]>([]);
@@ -8,6 +13,7 @@ export default function DeveloperEditor() {
   const [content, setContent] = useState('');
   const [status, setStatus] = useState('');
   const [upload, setUpload] = useState<File | null>(null);
+  const [isNew, setIsNew] = useState(false);
 
   useEffect(() => {
     const base = target === 'dev' ? 'dev-posts' : 'posts';
@@ -26,18 +32,41 @@ export default function DeveloperEditor() {
     if (res.ok) {
       const data = await res.json();
       setContent(data.content);
+      setIsNew(false);
     }
+  };
+
+  const newFile = (name: string) => {
+    const safe = name.endsWith('.md') ? name : `${name}.md`;
+    setSelected(safe);
+    setContent(metaTemplate());
+    setIsNew(true);
   };
 
   const saveFile = async () => {
     if (!selected) return;
     const base = target === 'dev' ? 'dev-posts' : 'posts';
-    const res = await fetch(`/api/${base}/${encodeURIComponent(selected)}`, {
-      method: 'PUT',
+    const url = isNew
+      ? `/api/${base}`
+      : `/api/${base}/${encodeURIComponent(selected)}`;
+    const method = isNew ? 'POST' : 'PUT';
+    const body = isNew
+      ? JSON.stringify({ filename: selected, content })
+      : JSON.stringify({ content });
+    const res = await fetch(url, {
+      method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ content })
+      body
     });
-    setStatus(res.ok ? '保存しました' : '保存に失敗しました');
+    if (res.ok) {
+      setStatus('保存しました');
+      if (isNew) {
+        setFiles(prev => [...prev, selected]);
+        setIsNew(false);
+      }
+    } else {
+      setStatus('保存に失敗しました');
+    }
   };
 
   return (
@@ -66,6 +95,15 @@ export default function DeveloperEditor() {
             </li>
           ))}
         </ul>
+        <button
+          className="px-2 py-1 bg-gray-200"
+          onClick={() => {
+            const name = prompt('新しいファイル名を入力');
+            if (name) newFile(name);
+          }}
+        >
+          新規記事
+        </button>
         <div className="mt-4">
           <label className="block mb-1 font-bold">画像アップロード</label>
           <input
