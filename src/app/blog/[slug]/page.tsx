@@ -38,7 +38,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <aside className="md:w-1/4 md:pr-4 mb-4 md:mb-0">
             <LeftSidebar />
           </aside>
-          <article className="prose md:w-3/5 md:pr-4 main-content">
+          <article className="prose md:flex-1 md:pr-4 main-content">
             {post.image && (
               <img src={post.image} alt="eyecatch" className="mb-4" />
             )}

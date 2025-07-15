@@ -8,7 +8,7 @@ export default function BlogIndex() {
     <div className="blog-container">
       <h1 className="text-2xl font-bold mb-4">Developers Blog</h1>
       <div className="md:flex">
-        <div className="md:w-3/4 main-content">
+        <div className="md:flex-1 main-content">
           <ul className="space-y-4">
             {posts.map(post => (
               <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
