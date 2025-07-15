@@ -29,7 +29,7 @@ export async function generateMetadata(
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   try {
     const post = getPost(params.slug);
-    const html = await markdownToHtml(post.content);
+    const { html, headings } = await markdownToHtml(post.content);
     return (
       <div className="blog-container">
         <BlogNavButtons />
@@ -58,7 +58,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
           <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0">
-            <RightSidebar posts={getSortedPosts()} />
+            <RightSidebar posts={getSortedPosts()} headings={headings} />
           </aside>
         </div>
       </div>
