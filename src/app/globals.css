@@ -117,3 +117,21 @@ body.win98-body {
   border-right: 2px solid #404040;
   border-bottom: 2px solid #404040;
 }
+
+.win98-button {
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  padding: 2px 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.win98-button:active {
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
