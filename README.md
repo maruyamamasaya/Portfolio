@@ -23,6 +23,7 @@ npm run dev
 
 `developers_blog` や `developer_edit` など、`developer` が付くページは Basic 認証で保護されています。
 ユーザー名 `DENNOGENKYO`、パスワード `CYBERDREAM` を使用してください。
+実際の管理画面は [https://freehackapp.com/developer_edit](https://freehackapp.com/developer_edit) からアクセスできます。
 
 ## その他のディレクトリ
 
