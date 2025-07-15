@@ -14,7 +14,7 @@ export default function BlogIndex() {
         <aside className="md:w-1/4 md:pr-4 mb-4 md:mb-0">
           <LeftSidebar />
         </aside>
-        <div className="md:w-2/4 main-content">
+        <div className="md:w-3/5 main-content">
           <ul className="space-y-4">
             {posts.map(post => (
               <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
