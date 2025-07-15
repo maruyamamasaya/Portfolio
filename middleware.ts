@@ -2,12 +2,19 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname.startsWith('/developers_blog')) {
+  const { pathname } = req.nextUrl;
+  if (
+    pathname.startsWith('/developers_blog') ||
+    pathname.startsWith('/developer_edit') ||
+    pathname.startsWith('/api/dev-posts')
+  ) {
     const basicAuth = req.headers.get('authorization');
     if (basicAuth) {
       const authValue = basicAuth.split(' ')[1];
-      const [user, pwd] = Buffer.from(authValue, 'base64').toString().split(':');
-      if (user === 'user' && pwd === '0000') {
+      const [user, pwd] = Buffer.from(authValue, 'base64')
+        .toString()
+        .split(':');
+      if (user === 'DENNOGENKYO' && pwd === 'CYBERDREAM') {
         return NextResponse.next();
       }
     }
@@ -20,5 +27,9 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/developers_blog/:path*']
+  matcher: [
+    '/developers_blog/:path*',
+    '/developer_edit/:path*',
+    '/api/dev-posts/:path*'
+  ]
 };

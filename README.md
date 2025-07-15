@@ -21,7 +21,8 @@ npm run dev
 
 ## Basic 認証
 
-`/developers_blog` 配下は Basic 認証で保護されています。デフォルトではユーザー名 `user`、パスワード `0000` を使用してください。
+`developers_blog` や `developer_edit` など、`developer` が付くページは Basic 認証で保護されています。
+ユーザー名 `DENNOGENKYO`、パスワード `CYBERDREAM` を使用してください。
 
 ## その他のディレクトリ
 
