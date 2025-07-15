@@ -1,10 +1,11 @@
 import './globals.css';
 import './mobile.css';
 import { ReactNode } from 'react';
+import type { Metadata } from 'next';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: '電脳幻境プロジェクト',
   description: 'Next.js Portfolio with Markdown Blog',
   icons: {
