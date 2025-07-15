@@ -1,0 +1,37 @@
+import Link from 'next/link';
+import Profile from './Profile';
+import CategoryList from './CategoryList';
+
+export default function LeftSidebar() {
+  const navItems = [
+    { href: '/', label: 'ホーム' },
+    { href: '/about', label: 'プロフィール' },
+    { href: '/works', label: '実績' },
+    { href: '/blog', label: 'ブログ' },
+    { href: '/tags', label: 'タグ検索' },
+    { href: '/contact', label: 'お問い合わせ' },
+  ];
+
+  return (
+    <div className="space-y-4">
+      <nav>
+        <h3 className="font-bold mb-2">メニュー</h3>
+        <ul className="space-y-1 text-sm">
+          {navItems.map(item => (
+            <li key={item.href}>
+              <Link href={item.href} className="text-blue-600 hover:underline">
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div className="widget">
+        <Profile />
+      </div>
+      <div className="widget">
+        <CategoryList />
+      </div>
+    </div>
+  );
+}

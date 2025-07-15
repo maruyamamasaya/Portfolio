@@ -1,18 +1,20 @@
 import Link from 'next/link';
 import { getSortedPosts } from '@/lib/posts';
-import Calendar from '@/app/components/Calendar';
-import Profile from '@/app/components/Profile';
-import CategoryList from '@/app/components/CategoryList';
-import RecentPosts from '@/app/components/RecentPosts';
-import TodayMessage from '@/app/components/TodayMessage';
+import LeftSidebar from '@/app/components/LeftSidebar';
+import RightSidebar from '@/app/components/RightSidebar';
+import BlogNavButtons from '@/app/components/BlogNavButtons';
 
 export default function BlogIndex() {
   const posts = getSortedPosts();
   return (
     <div>
+      <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Blog</h1>
       <div className="md:flex">
-        <div className="md:w-3/4 main-content">
+        <aside className="md:w-1/4 md:pr-4 mb-4 md:mb-0">
+          <LeftSidebar />
+        </aside>
+        <div className="md:w-2/4 main-content">
           <ul className="space-y-4">
             {posts.map(post => (
               <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
@@ -46,22 +48,8 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 space-y-4">
-          <div className="widget">
-            <Profile />
-          </div>
-          <div className="widget">
-            <CategoryList />
-          </div>
-          <div className="widget">
-            <RecentPosts posts={posts} />
-          </div>
-          <div className="widget">
-            <TodayMessage />
-          </div>
-          <div className="widget">
-            <Calendar />
-          </div>
+        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0">
+          <RightSidebar posts={posts} />
         </aside>
       </div>
     </div>
