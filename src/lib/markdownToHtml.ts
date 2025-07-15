@@ -21,6 +21,46 @@ function replaceInternalLinks(content: string): string {
   );
 }
 
+function convertMarkdownTables(content: string): string {
+  const lines = content.split('\n');
+  const result: string[] = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const next = lines[i + 1];
+    const isHeader = /^\|.*\|$/.test(line.trim());
+    const isDelimiter = next && /^\|?\s*[:-]+\s*(\|\s*[:-]+\s*)+\|?$/.test(next.trim());
+
+    if (isHeader && isDelimiter) {
+      const headers = line.trim().slice(1, -1).split('|').map(h => h.trim());
+      const rows: string[][] = [];
+      i += 2;
+      while (i < lines.length && /^\|.*\|$/.test(lines[i].trim())) {
+        const cells = lines[i].trim().slice(1, -1).split('|').map(c => c.trim());
+        rows.push(cells);
+        i++;
+      }
+      i--; // adjust for outer loop
+      let html = '<table><thead><tr>';
+      html += headers.map(h => `<th>${h}</th>`).join('');
+      html += '</tr></thead>';
+      if (rows.length) {
+        html += '<tbody>';
+        rows.forEach(r => {
+          html += '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>';
+        });
+        html += '</tbody>';
+      }
+      html += '</table>';
+      result.push(html);
+    } else {
+      result.push(line);
+    }
+  }
+
+  return result.join('\n');
+}
+
 function formatBold(content: string): string {
   return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 }
@@ -30,7 +70,9 @@ export default async function markdownToHtml(
 ): Promise<{ html: string; headings: Heading[] }> {
   const headings: Heading[] = [];
 
+  const processed = convertMarkdownTables(replaceInternalLinks(markdown));
   const processed = formatBold(replaceInternalLinks(markdown));
+
 
   const result = await remark()
     .use(() => tree => {
