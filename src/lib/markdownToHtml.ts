@@ -70,8 +70,9 @@ export default async function markdownToHtml(
 ): Promise<{ html: string; headings: Heading[] }> {
   const headings: Heading[] = [];
 
-  const processed = convertMarkdownTables(replaceInternalLinks(markdown));
-  const processed = formatBold(replaceInternalLinks(markdown));
+  const processed = formatBold(
+    convertMarkdownTables(replaceInternalLinks(markdown))
+  );
 
 
   const result = await remark()
