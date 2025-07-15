@@ -11,12 +11,25 @@ export default function HomeWindow({ posts }: Props) {
   const [closing, setClosing] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [minimized, setMinimized] = useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   const handleClose = () => {
     setClosing(true);
-    setTimeout(() => setHidden(true), 500);
+    setTimeout(() => {
+      setHidden(true);
+      setShowImage(true);
+    }, 500);
   };
 
+  const handleMinimize = () => {
+    setMinimized(true);
+    setTimeout(() => {
+      setHidden(true);
+      setShowImage(true);
+    }, 500);
+  };
+
+  if (showImage) return <img src="/images/fairy.gif" alt="closed" className="closed-image" />;
   if (hidden) return null;
 
   return (
@@ -27,7 +40,7 @@ export default function HomeWindow({ posts }: Props) {
           <button
             className="win98-btn minimize"
             aria-label="Minimize"
-            onClick={() => setMinimized(!minimized)}
+            onClick={handleMinimize}
           />
           <button
             className="win98-btn close"
@@ -38,7 +51,7 @@ export default function HomeWindow({ posts }: Props) {
       </div>
       {!minimized && (
         <div className="win98-content">
-          <div className="win98-folder mb-4" />
+          <div className="win98-file mb-4" />
           <h2 className="text-xl font-semibold mb-4">Blog</h2>
           <ul className="space-y-4">
             {posts.map(post => (
