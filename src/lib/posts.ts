@@ -66,3 +66,8 @@ export function getAllTags(): string[] {
 export function getPostsByTag(tag: string): Post[] {
   return getSortedPosts().filter(post => post.tags?.includes(tag));
 }
+
+export function getBacklinks(slug: string): Post[] {
+  const posts = getSortedPosts();
+  return posts.filter(post => post.content.includes(`${slug}.md`));
+}

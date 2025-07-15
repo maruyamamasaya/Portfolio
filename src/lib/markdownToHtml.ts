@@ -15,10 +15,18 @@ function slugify(text: string): string {
     .replace(/\s+/g, '-');
 }
 
+function replaceInternalLinks(content: string): string {
+  return content.replace(/\b([A-Za-z0-9_-]+)\.md\b/g, (_, slug) =>
+    `[ここに記入すると](/blog/${slug})`
+  );
+}
+
 export default async function markdownToHtml(
   markdown: string
 ): Promise<{ html: string; headings: Heading[] }> {
   const headings: Heading[] = [];
+
+  const processed = replaceInternalLinks(markdown);
 
   const result = await remark()
     .use(() => tree => {
@@ -41,7 +49,7 @@ export default async function markdownToHtml(
       visit(tree);
     })
     .use(html)
-    .process(markdown);
+    .process(processed);
 
   return { html: result.toString(), headings };
 }
