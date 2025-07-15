@@ -160,3 +160,29 @@ body.win98-body {
   transform: scale(0);
   transition: transform 0.5s;
 }
+
+/* Windows98 style headings with left bar */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  position: relative;
+  padding-left: 0.75rem;
+  margin-top: 1.25rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.prose h1::before,
+.prose h2::before,
+.prose h3::before,
+.prose h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 80%;
+  background: #000080;
+}
