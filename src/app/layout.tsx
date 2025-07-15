@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 export const metadata = {
-  title: 'Portfolio Blog',
+  title: '電脳幻境プロジェクト',
   description: 'Next.js Portfolio with Markdown Blog'
 };
 
