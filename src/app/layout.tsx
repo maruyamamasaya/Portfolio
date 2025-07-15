@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: '電脳幻境プロジェクト',
   description: 'Next.js Portfolio with Markdown Blog',
   icons: {
-    icon: '/images/first.png',
+    icon: '/images/favicon.png',
   },
   openGraph: {
     images: '/images/second.png',
