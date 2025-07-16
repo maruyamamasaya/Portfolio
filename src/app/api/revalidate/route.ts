@@ -13,14 +13,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
   }
 
-  const { slug } = await req.json();
-  if (!slug || typeof slug !== 'string') {
-    return NextResponse.json({ message: 'Missing slug' }, { status: 400 });
+  const { paths } = await req.json();
+  if (!Array.isArray(paths) || paths.some(p => typeof p !== 'string')) {
+    return NextResponse.json({ message: 'Missing paths' }, { status: 400 });
   }
 
   try {
-    revalidatePath(`/blog/${slug}`);
-    return NextResponse.json({ revalidated: true, slug });
+    paths.forEach(p => revalidatePath(p));
+    return NextResponse.json({ revalidated: true, paths });
   } catch (err) {
     return NextResponse.json(
       { message: 'Error revalidating', error: err },

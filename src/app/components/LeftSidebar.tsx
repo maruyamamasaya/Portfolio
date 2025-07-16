@@ -8,6 +8,9 @@ export default function LeftSidebar() {
     { href: '/about', label: 'プロフィール' },
     { href: '/works', label: '実績' },
     { href: '/blog', label: 'ブログ' },
+    { href: '/art_blog', label: 'Art Blog' },
+    { href: '/artworks_blog', label: 'Artworks Blog' },
+    { href: '/tech_blog', label: 'Tech Blog' },
     { href: '/tags', label: 'タグ検索' },
     { href: '/contact', label: 'お問い合わせ' },
   ];
