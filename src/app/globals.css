@@ -78,6 +78,14 @@ body.win98-body {
   gap: 2px;
 }
 
+.resize-handle {
+  background: #c0c0c0;
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
 .window-controls .win98-btn {
   width: 20px;
   height: 20px;
