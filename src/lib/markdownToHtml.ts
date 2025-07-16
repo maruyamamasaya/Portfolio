@@ -10,7 +10,7 @@ export interface Heading {
 function slugify(text: string): string {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/[^\p{Letter}\p{Number}\s-]/gu, '')
     .trim()
     .replace(/\s+/g, '-');
 }
