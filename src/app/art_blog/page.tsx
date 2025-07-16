@@ -3,18 +3,19 @@ import { getSortedPosts } from '@/lib/artPosts';
 import LeftSidebar from '@/app/components/LeftSidebar';
 import RightSidebar from '@/app/components/RightSidebar';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
+import './styles/win7.css';
 
 export default function BlogIndex() {
   const posts = getSortedPosts();
   return (
-    <div className="blog-container">
+    <div className="blog-container win7-container">
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Art Blog</h1>
       <div className="md:flex">
-        <aside className="md:w-1/4 md:pr-4 mb-4 md:mb-0">
+        <aside className="md:w-1/4 md:pr-4 mb-4 md:mb-0 win7-sidebar">
           <LeftSidebar />
         </aside>
-        <div className="md:flex-1 main-content">
+        <div className="md:flex-1 win7-main">
           <ul className="space-y-4">
             {posts.map(post => (
               <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
@@ -48,7 +49,7 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0">
+        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 win7-sidebar">
           <RightSidebar posts={posts} />
         </aside>
       </div>
