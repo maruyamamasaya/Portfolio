@@ -31,9 +31,7 @@ export default function RightSidebar({ posts, headings }: Props) {
       <div className="widget">
         <SocialLinks />
       </div>
-      <div className="widget">
-        <TodayMessage />
-      </div>
+      <TodayMessage />
       <div className="widget">
         <Calendar />
       </div>
