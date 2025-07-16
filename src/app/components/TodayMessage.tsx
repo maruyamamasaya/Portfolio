@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const messages = [
   '世界は観測によって形を持ち、意識はその干渉項である。',
@@ -17,15 +17,45 @@ const messages = [
 
 export default function TodayMessage() {
   const [message, setMessage] = useState('');
+  const [position, setPosition] = useState({ x: 20, y: 20 });
+  const [dragging, setDragging] = useState(false);
+  const offsetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * messages.length);
     setMessage(messages[randomIndex]);
   }, []);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!dragging) return;
+      setPosition({
+        x: e.clientX - offsetRef.current.x,
+        y: e.clientY - offsetRef.current.y,
+      });
+    };
+    const handleMouseUp = () => setDragging(false);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [dragging]);
+
+  const startDrag = (e: React.MouseEvent) => {
+    setDragging(true);
+    offsetRef.current = { x: e.clientX - position.x, y: e.clientY - position.y };
+  };
+
   return (
-    <div className="win98-window max-w-sm mx-auto mt-6">
-      <div className="win98-titlebar">Quantum Thought of the Day</div>
+    <div
+      className="win98-window max-w-sm"
+      style={{ position: 'fixed', left: position.x, top: position.y, zIndex: 50 }}
+    >
+      <div className="win98-titlebar cursor-move" onMouseDown={startDrag}>
+        Quantum Thought of the Day
+      </div>
       <div className="win98-content">
         <p className="text-sm">{message}</p>
       </div>
