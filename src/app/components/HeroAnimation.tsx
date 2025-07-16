@@ -13,7 +13,7 @@ export default function HeroAnimation() {
   }, []);
 
   return (
-    <div className="relative w-full h-[50vh] overflow-hidden">
+    <div className="relative w-full h-[50vh] md:h-[80vh] overflow-hidden">
       {images.map((src, i) => (
         <img
           key={src}
