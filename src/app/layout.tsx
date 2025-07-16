@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Taskbar from './components/Taskbar';
 
 export const metadata: Metadata = {
   title: '電脳幻境プロジェクト',
@@ -19,12 +20,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className="min-h-screen font-digital text-black win98-body">
+      <body className="min-h-screen font-digital text-black win98-body win98-desktop">
         <div className="win98-window m-4">
           <Header />
           <main className="win98-content">{children}</main>
           <Footer />
         </div>
+        <Taskbar />
       </body>
     </html>
   );
