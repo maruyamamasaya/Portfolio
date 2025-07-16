@@ -15,8 +15,8 @@ export default function Header() {
 
 
   return (
-    <header className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 text-white shadow border-b-4 border-yellow-300">
-      <div className="container mx-auto p-4 flex items-center justify-between relative">
+    <header className="win98-titlebar font-xp">
+      <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-bold flex items-center">
           <img
             src="/images/header_icon.png"
