@@ -242,3 +242,14 @@ body.win98-body {
 /* Fairy animation */
 .fairy { position: fixed; width: 250px; height: 250px; z-index: 50; animation: fly 20s linear infinite; }
 @keyframes fly { 0%{ transform: translate(0,0);} 25%{ transform: translate(calc(100vw - 250px),0);} 50%{ transform: translate(calc(100vw - 250px),calc(100vh - 250px));} 75%{ transform: translate(0,calc(100vh - 250px));} 100%{ transform: translate(0,0);} }
+
+/* RecentPosts を電脳的でスタイリッシュなカード風デザイン */
+.text-neon {
+  color: #00ffe0;
+}
+.border-neon {
+  border-color: #00ffe0;
+}
+.hover\:bg-neon:hover {
+  background-color: #00ffe0;
+}
