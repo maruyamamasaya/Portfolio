@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="min-h-screen font-digital text-black win98-body win98-desktop">
         <div className="win98-window m-4">
           <Header />
-          <main className="win98-content">{children}</main>
+          <main className="win98-content relative">{children}</main>
           <Footer />
         </div>
         <Taskbar />
