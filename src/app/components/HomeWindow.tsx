@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import { useState } from 'react';
+import BlogNavButtons from '../components/BlogNavButtons';
 
 interface Props {
   posts: Post[];
@@ -51,6 +52,7 @@ export default function HomeWindow({ posts }: Props) {
       </div>
       {!minimized && (
         <div className="win98-content">
+          <BlogNavButtons />
           <div className="win98-file mb-4" />
           <h2 className="text-xl font-semibold mb-4">Blog</h2>
           <ul className="space-y-4">

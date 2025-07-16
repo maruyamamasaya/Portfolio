@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getAllTags, getPostsByTag } from '@/lib/posts';
+import BlogNavButtons from '../../components/BlogNavButtons';
 
 export async function generateStaticParams() {
   return getAllTags().map(tag => ({ tag }));
@@ -20,6 +21,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
   }
   return (
     <div>
+      <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Tag: {decodedTag}</h1>
       <ul className="space-y-4">
         {posts.map(post => (

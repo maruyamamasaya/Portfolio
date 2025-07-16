@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { getAllTags } from '@/lib/posts';
+import BlogNavButtons from '../../components/BlogNavButtons';
 
 export default function MoreTagsPage() {
   const tags = getAllTags();
   return (
     <div>
+      <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">All Tags</h1>
       <ul className="flex flex-wrap gap-2">
         {tags.map(tag => (

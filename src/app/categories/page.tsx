@@ -1,4 +1,5 @@
 import { getCategoryTree, CategoryNode } from '@/lib/categoryTree';
+import BlogNavButtons from '../components/BlogNavButtons';
 
 function renderNode(node: CategoryNode) {
   return (
@@ -24,6 +25,7 @@ export default function CategoriesPage() {
   const tree = getCategoryTree();
   return (
     <div className="prose relative">
+      <BlogNavButtons />
       <h1>Categories</h1>
       <ul className="pl-0">{renderNode(tree)}</ul>
       <img

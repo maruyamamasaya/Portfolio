@@ -9,7 +9,7 @@ export default function Footer() {
           <ul className="space-y-1">
             <li><Link href="/">ホーム</Link></li>
             <li><Link href="/about">プロフィール</Link></li>
-            <li><Link href="/works">Works</Link></li>
+            <li><Link href="/works">Work</Link></li>
             <li><Link href="/blog">ブログ</Link></li>
             <li><Link href="/contact">お問い合わせ</Link></li>
           </ul>

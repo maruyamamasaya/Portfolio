@@ -6,7 +6,7 @@ export default function LeftSidebar() {
   const navItems = [
     { href: '/', label: 'ホーム' },
     { href: '/about', label: 'プロフィール' },
-    { href: '/works', label: '実績' },
+    { href: '/works', label: 'Work' },
     { href: '/blog', label: 'ブログ' },
     { href: '/art_blog', label: 'Art Blog' },
     { href: '/artworks_blog', label: 'Artworks Blog' },
