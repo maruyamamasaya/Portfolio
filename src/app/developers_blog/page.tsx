@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import { getSortedDevPosts } from '@/lib/devPosts';
 import Calendar from '@/app/components/Calendar';
+import BlogNavButtons from '../components/BlogNavButtons';
 
 export default function BlogIndex() {
   const posts = getSortedDevPosts();
   return (
     <div className="blog-container">
+      <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Developers Blog</h1>
       <div className="md:flex">
         <div className="md:flex-1 main-content">

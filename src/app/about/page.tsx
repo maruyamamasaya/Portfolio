@@ -1,6 +1,9 @@
+import BlogNavButtons from '../components/BlogNavButtons';
+
 export default function About() {
   return (
     <div className="max-w-2xl mx-auto px-4">
+      <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">独立系エンジニア × クリエイター</h1>
 
       <p className="mb-4 text-lg">

@@ -5,6 +5,7 @@ import markdownToHtml from '@/lib/markdownToHtml';
 import { getDevPost, getSortedDevPosts } from '@/lib/devPosts';
 import Calendar from '@/app/components/Calendar';
 import TableOfContents from '@/app/components/TableOfContents';
+import BlogNavButtons from '@/app/components/BlogNavButtons';
 
 export async function generateStaticParams() {
   const posts = getSortedDevPosts();
@@ -30,7 +31,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     const post = getDevPost(params.slug);
     const { html, headings } = await markdownToHtml(post.content);
     return (
-      <div className="blog-container md:flex">
+      <div className="blog-container">
+        <BlogNavButtons />
+        <div className="md:flex">
         <article className="prose md:flex-1 md:pr-4 main-content">
           {post.image && (
             <img src={post.image} alt="eyecatch" className="mb-4" />
@@ -59,6 +62,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             <Calendar />
           </div>
         </aside>
+        </div>
       </div>
     );
   } catch {

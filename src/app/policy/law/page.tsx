@@ -1,6 +1,9 @@
+import BlogNavButtons from '../../components/BlogNavButtons';
+
 export default function Law() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">特定商取引法に基づく表記</h1>
 
       <dl className="space-y-4">

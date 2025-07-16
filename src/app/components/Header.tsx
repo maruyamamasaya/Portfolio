@@ -8,7 +8,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const navItems = [
     { href: '/about', label: 'プロフィール' },
-    { href: '/works', label: '実績' },
+    { href: '/works', label: 'Work' },
     { href: '/blog', label: 'ブログ' },
     { href: '/tags', label: 'タグ検索' },
   ];

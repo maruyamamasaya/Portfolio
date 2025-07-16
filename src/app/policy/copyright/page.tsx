@@ -1,6 +1,9 @@
+import BlogNavButtons from '../../components/BlogNavButtons';
+
 export default function CopyrightPolicy() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
+      <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">著作権について</h1>
 
       <p className="mb-4">
