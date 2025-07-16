@@ -24,9 +24,11 @@ export default function TodayMessage() {
   }, []);
 
   return (
-    <div className="max-w-md mx-auto bg-black bg-opacity-70 text-neon p-6 rounded-xl border border-neon mt-10 shadow-xl">
-      <h3 className="text-lg font-semibold mb-2 tracking-widest text-white">⌬ Quantum Thought of the Day</h3>
-      <p className="text-base italic font-light">{message}</p>
+    <div className="win98-window max-w-sm mx-auto mt-6">
+      <div className="win98-titlebar">Quantum Thought of the Day</div>
+      <div className="win98-content">
+        <p className="text-sm">{message}</p>
+      </div>
     </div>
   );
 }

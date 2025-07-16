@@ -301,3 +301,69 @@ body.win98-desktop {
   margin-left: auto;
   padding: 0 6px;
 }
+
+/* === AIログ風 & 90s サイバースタイル === */
+
+:root {
+  --neon-green: #00ff99;
+  --neon-cyan: #00ffe0;
+  --bg-grid: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+}
+
+.ai-log-frame {
+  background-color: #0a0a0a;
+  background-image: var(--bg-grid);
+  border: 1px solid var(--neon-cyan);
+  padding: 1.5rem;
+  border-radius: 12px;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan);
+  max-width: 480px;
+  margin: 2rem auto;
+}
+
+.ai-log-title {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 1px;
+  color: var(--neon-green);
+  text-shadow: 0 0 6px var(--neon-green);
+}
+
+.ai-log-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ai-log-item {
+  display: flex;
+  align-items: center;
+}
+
+.ai-log-index {
+  margin-right: 0.5rem;
+  color: var(--neon-green);
+  text-shadow: 0 0 4px var(--neon-green);
+}
+
+.ai-log-link {
+  text-decoration: none;
+  color: var(--neon-cyan);
+  transition: all 0.2s ease;
+}
+
+.ai-log-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 4px white;
+}
