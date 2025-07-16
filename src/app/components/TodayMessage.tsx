@@ -19,12 +19,15 @@ export default function TodayMessage() {
   const [message, setMessage] = useState('');
   const [position, setPosition] = useState({ x: 20, y: 20 });
   const [dragging, setDragging] = useState(false);
+  const [closed, setClosed] = useState(false);
   const offsetRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * messages.length);
     setMessage(messages[randomIndex]);
   }, []);
+
+  const handleClose = () => setClosed(true);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -48,13 +51,22 @@ export default function TodayMessage() {
     offsetRef.current = { x: e.clientX - position.x, y: e.clientY - position.y };
   };
 
+  if (closed) return null;
+
   return (
     <div
       className="win98-window max-w-sm"
       style={{ position: 'fixed', left: position.x, top: position.y, zIndex: 50 }}
     >
       <div className="win98-titlebar cursor-move" onMouseDown={startDrag}>
-        Quantum Thought of the Day
+        <span>Quantum Thought of the Day</span>
+        <div className="window-controls">
+          <button
+            className="win98-btn close"
+            aria-label="Close"
+            onClick={handleClose}
+          />
+        </div>
       </div>
       <div className="win98-content">
         <p className="text-sm">{message}</p>
