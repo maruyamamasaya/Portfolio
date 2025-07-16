@@ -7,7 +7,7 @@ function metaTemplate() {
 }
 
 export default function DeveloperEditor() {
-  const [target, setTarget] = useState<'blog' | 'dev'>('dev');
+  const [target, setTarget] = useState<'blog' | 'dev' | 'art' | 'artworks' | 'tech'>('dev');
   const [files, setFiles] = useState<string[]>([]);
   const [selected, setSelected] = useState('');
   const [content, setContent] = useState('');
@@ -15,8 +15,23 @@ export default function DeveloperEditor() {
   const [upload, setUpload] = useState<File | null>(null);
   const [isNew, setIsNew] = useState(false);
 
+  const baseMap = {
+    blog: 'posts',
+    dev: 'dev-posts',
+    art: 'art-posts',
+    artworks: 'artworks-posts',
+    tech: 'tech-posts'
+  } as const;
+  const pathMap = {
+    blog: '/blog',
+    dev: '/developers_blog',
+    art: '/art_blog',
+    artworks: '/artworks_blog',
+    tech: '/tech_blog'
+  } as const;
+
   useEffect(() => {
-    const base = target === 'dev' ? 'dev-posts' : 'posts';
+    const base = baseMap[target];
     fetch(`/api/${base}`)
       .then(res => res.json())
       .then((data: string[]) => setFiles(data))
@@ -27,7 +42,7 @@ export default function DeveloperEditor() {
 
   const openFile = async (name: string) => {
     setSelected(name);
-    const base = target === 'dev' ? 'dev-posts' : 'posts';
+    const base = baseMap[target];
     const res = await fetch(`/api/${base}/${encodeURIComponent(name)}`);
     if (res.ok) {
       const data = await res.json();
@@ -45,7 +60,7 @@ export default function DeveloperEditor() {
 
   const saveFile = async () => {
     if (!selected) return;
-    const base = target === 'dev' ? 'dev-posts' : 'posts';
+    const base = baseMap[target];
     const url = isNew
       ? `/api/${base}`
       : `/api/${base}/${encodeURIComponent(selected)}`;
@@ -72,7 +87,7 @@ export default function DeveloperEditor() {
   const revalidate = async () => {
     if (!selected) return;
     const slug = selected.replace(/\.md$/, '');
-    const basePath = target === 'dev' ? '/developers_blog' : '/blog';
+    const basePath = pathMap[target];
     await fetch('/api/revalidate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -89,10 +104,17 @@ export default function DeveloperEditor() {
           <select
             className="border p-1 w-full"
             value={target}
-            onChange={e => setTarget(e.target.value as 'blog' | 'dev')}
+            onChange={e =>
+              setTarget(
+                e.target.value as 'blog' | 'dev' | 'art' | 'artworks' | 'tech'
+              )
+            }
           >
             <option value="blog">blog</option>
             <option value="dev">developers_blog</option>
+            <option value="art">art_blog</option>
+            <option value="artworks">artworks_blog</option>
+            <option value="tech">tech_blog</option>
           </select>
         </div>
         <ul className="space-y-2">
