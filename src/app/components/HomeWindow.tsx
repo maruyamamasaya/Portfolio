@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import { useState } from 'react';
 import BlogNavButtons from '../components/BlogNavButtons';
+import HeroAnimation from './HeroAnimation';
 
 interface Props {
   posts: Post[];
