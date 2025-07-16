@@ -7,16 +7,16 @@ interface Props {
 
 export default function RecentPosts({ posts }: Props) {
   return (
-    <div>
-      <h3 className="font-bold mb-2">新着記事</h3>
-      <ul className="space-y-1 text-sm">
+    <div className="bg-black bg-opacity-50 p-5 rounded-xl shadow-lg backdrop-blur border border-neon max-w-md">
+      <h3 className="text-neon text-base font-semibold mb-4 tracking-wider">⌬ 新着記事</h3>
+      <ul className="space-y-3">
         {posts.slice(0, 5).map(post => (
           <li key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="text-blue-600 hover:underline"
+              className="block px-3 py-2 rounded-md bg-gray-900 hover:bg-neon hover:text-black transition-all duration-300 shadow-sm"
             >
-              {post.title}
+              <span className="text-sm font-medium">{post.title}</span>
             </Link>
           </li>
         ))}
