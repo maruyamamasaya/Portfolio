@@ -2,15 +2,15 @@
 import { useEffect, useState } from "react";
 
 export default function HeroAnimation() {
-  const [index, setIndex] = useState(0);
+  const images = ["/images/main-hero01.png", "/images/main-hero02.png"];
+  const [index, setIndex] = useState(() => Math.floor(Math.random() * images.length));
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex(i => (i + 1) % 2);
+      setIndex(i => (i + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  const images = ["/images/main-hero01.png", "/images/main-hero02.png"];
 
   return (
     <div className="relative w-full h-[50vh] overflow-hidden">
