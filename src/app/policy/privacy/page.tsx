@@ -80,7 +80,12 @@ export default function Privacy() {
       <p className="mb-4">
         本ポリシーに関するお問い合わせは、以下のフォームまたはメールアドレスよりご連絡ください：
         <br />
-        📩 example@example.com
+        <a
+          href="mailto:contact@freehackapp.com"
+          className="text-blue-600 hover:underline"
+        >
+          contact@freehackapp.com
+        </a>
       </p>
 
       <p className="text-sm text-gray-500 mt-6">制定日：2025年7月15日</p>

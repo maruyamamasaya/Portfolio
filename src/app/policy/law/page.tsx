@@ -21,7 +21,14 @@ export default function Law() {
         </div>
         <div>
           <dt className="font-bold">メールアドレス</dt>
-          <dd>example@example.com</dd>
+          <dd>
+            <a
+              href="mailto:contact@freehackapp.com"
+              className="text-blue-600 hover:underline"
+            >
+              contact@freehackapp.com
+            </a>
+          </dd>
         </div>
         <div>
           <dt className="font-bold">販売価格</dt>
