@@ -1,13 +1,10 @@
 # 電脳幻境プロジェクト
 
-この README は日本語で記述されています。Next.js を用いたポートフォリオ兼ブログサイトです。`blog/` ディレクトリに Markdown 形式の記事を置くことで投稿できます。開発者向けの記事は `developers_blog/` ディレクトリに配置してください。
-
 ## 目次
 
 - [Markdown ファイル構成](#markdown-ファイル構成)
 - [セットアップ](#セットアップ)
 - [デプロイ](#デプロイ)
-- [Basic 認証](#basic-認証)
 - [画像ファイルについて](#画像ファイルについて)
   - [画像の配置先と推奨サイズ](#画像の配置先と推奨サイズ)
 - [revalidate エンドポイントのセキュリティ](#revalidate-エンドポイントのセキュリティ)
@@ -31,13 +28,6 @@ npm run dev
 ## デプロイ
 
 `npm run build` でビルドし、`npm start` でサーバーを起動します。EC2 などの Node.js が動作する環境で実行してください。
-
-## Basic 認証
-
-`developers_blog` や `developer_edit` など、`developer` が付くページは Basic 認証で保護されています。
-ユーザー名 `DENNOGENKYO`、パスワード `CYBERDREAM` を使用してください。
-実際の管理画面は [https://freehackapp.com/developer_edit](https://freehackapp.com/developer_edit) からアクセスできます。
-
 
 ## 画像ファイルについて
 
