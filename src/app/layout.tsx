@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 export const metadata: Metadata = {
   title: '電脳幻境プロジェクト',
-  description: 'Next.js Portfolio with Markdown Blog',
+  description: '「現実」と「仮想」の境界をゆらがせる幻想的な情報空間へようこそ。最新のデジタルツール解説やレトロコンピューティングの探求、仮想空間を舞台にしたアートワークまで、電脳世界の魅力を多角的に発信。',
   icons: {
     icon: '/images/favicon.png',
   },
