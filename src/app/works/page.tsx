@@ -8,9 +8,11 @@ export default function Works() {
       <p>制作実績を紹介します。</p>
       <p className="mt-4">
         ご依頼はこちらまで。WEB制作やデザイン作成など、お気軽にご相談ください：
-        <a href="mailto:contact@freehackapp.com" className="text-blue-600 hover:underline">
-          contact@freehackapp.com
-        </a>
+        contact＊freehackapp.com
+        <br />
+        <span className="text-sm text-gray-500">
+          ※メール送信の際は＊を@に置き換えてください
+        </span>
       </p>
     </div>
   );

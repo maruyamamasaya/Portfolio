@@ -22,12 +22,11 @@ export default function Law() {
         <div>
           <dt className="font-bold">メールアドレス</dt>
           <dd>
-            <a
-              href="mailto:contact@freehackapp.com"
-              className="text-blue-600 hover:underline"
-            >
-              contact@freehackapp.com
-            </a>
+            contact＊freehackapp.com
+            <br />
+            <span className="text-sm text-gray-500">
+              ※メール送信の際は＊を@に置き換えてください
+            </span>
           </dd>
         </div>
         <div>

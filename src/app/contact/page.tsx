@@ -7,9 +7,11 @@ export default function Contact() {
       <h1 className="text-2xl font-bold mb-4">Contact</h1>
       <p>お問い合わせはメールでお願いします。</p>
       <p>
-        <a href="mailto:contact@freehackapp.com" className="text-blue-600 hover:underline">
-          contact@freehackapp.com
-        </a>
+        contact＊freehackapp.com
+        <br />
+        <span className="text-sm text-gray-500">
+          ※メール送信の際は＊を@に置き換えてください
+        </span>
       </p>
     </div>
   );
