@@ -15,7 +15,9 @@ export default function HomeWindow({ posts }: Props) {
   const [minimized, setMinimized] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const [position, setPosition] = useState({ x: 50, y: 50 });
-  const [size, setSize] = useState({ width: 500, height: 400 });
+  // Set the default window size a bit larger so the content is easier to read
+  // when the page first loads. Users can still resize the window freely.
+  const [size, setSize] = useState({ width: 800, height: 600 });
   const [dragging, setDragging] = useState(false);
   const [resizing, setResizing] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
