@@ -1,15 +1,13 @@
 import Link from 'next/link';
 import { getAllTags } from '@/lib/posts';
 
-export default function TagsPage() {
+export default function MoreTagsPage() {
   const tags = getAllTags();
-  const displayTags = tags.slice(0, 30);
-  const hasMore = tags.length > 30;
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Tags</h1>
+      <h1 className="text-2xl font-bold mb-4">All Tags</h1>
       <ul className="flex flex-wrap gap-2">
-        {displayTags.map(tag => (
+        {tags.map(tag => (
           <li key={tag} className="bg-blue-200 px-2 py-1 rounded-full text-sm shadow">
             <Link href={`/tags/${encodeURIComponent(tag)}`} className="hover:underline">
               {tag}
@@ -17,13 +15,6 @@ export default function TagsPage() {
           </li>
         ))}
       </ul>
-      {hasMore && (
-        <div className="mt-4">
-          <Link href="/tags/more" className="text-blue-600 hover:underline">
-            もっと見る
-          </Link>
-        </div>
-      )}
     </div>
   );
 }
