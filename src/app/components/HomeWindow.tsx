@@ -30,7 +30,7 @@ export default function HomeWindow({ posts }: Props) {
     }, 500);
   };
 
-  if (showImage) return <img src="/images/fairy.gif" alt="closed" className="closed-image" />;
+  if (showImage) return <HeroAnimation />;
   if (hidden) return null;
 
   return (

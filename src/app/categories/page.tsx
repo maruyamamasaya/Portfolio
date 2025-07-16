@@ -28,13 +28,6 @@ export default function CategoriesPage() {
       <BlogNavButtons />
       <h1>Categories</h1>
       <ul className="pl-0">{renderNode(tree)}</ul>
-      <img
-        src="/images/fairy.gif"
-        alt="Fairy"
-        className="fairy pointer-events-none"
-        width={250}
-        height={250}
-      />
     </div>
   );
 }
