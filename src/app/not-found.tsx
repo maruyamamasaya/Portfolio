@@ -2,11 +2,22 @@ import Link from 'next/link';
 
 export default function NotFound() {
   return (
-    <div className="text-center py-16">
-      <h1 className="text-2xl font-bold mb-4">ページが見つかりません</h1>
-      <p className="mb-4">お探しのページは存在しないか、移動しました。</p>
-      <Link href="/" className="text-blue-600 hover:underline">
-        ホームに戻る
+    <div className="min-h-screen bg-black text-white flex flex-col justify-center items-center px-6">
+      <div className="mb-8 animate-pulse text-center">
+        <h1 className="text-5xl font-extrabold tracking-widest text-neon mb-4">
+          404: SYSTEM LOST
+        </h1>
+        <p className="text-lg text-gray-400">
+          ❖ 仮想空間内に 該当ノードが見つかりませんでした。
+        </p>
+        <p className="text-sm text-gray-500 mt-2">[ CODE: ∅404∅ · LOCATION: UNKNOWN ]</p>
+      </div>
+
+      <Link
+        href="/"
+        className="mt-6 px-6 py-3 border border-neon rounded-xl hover:bg-neon hover:text-black transition-colors duration-300"
+      >
+        ⟵ メインフレームへ帰還
       </Link>
     </div>
   );
