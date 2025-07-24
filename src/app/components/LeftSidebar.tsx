@@ -8,7 +8,7 @@ export default function LeftSidebar() {
     { href: '/about', label: 'プロフィール' },
     { href: '/works', label: 'Work' },
     { href: '/blog', label: 'ブログ' },
-    { href: '/developers_blog', label: 'Dev Blog (開発日誌)' },
+    { href: '/developers_blog', label: 'Dev Blog (開発日誌)', noLink: true },
     { href: '/art_blog', label: 'Art Blog' },
     { href: '/artworks_blog', label: 'Artworks Blog' },
     { href: '/tech_blog', label: 'Tech Blog' },
@@ -24,9 +24,13 @@ export default function LeftSidebar() {
         <ul className="space-y-1 text-sm">
           {navItems.map(item => (
             <li key={item.href}>
-              <Link href={item.href} className="text-blue-600 hover:underline">
-                {item.label}
-              </Link>
+              {item.noLink ? (
+                <span className="text-gray-600">{item.href}</span>
+              ) : (
+                <Link href={item.href} className="text-blue-600 hover:underline">
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
