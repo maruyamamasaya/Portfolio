@@ -35,7 +35,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       <div className="blog-container">
         <BlogNavButtons />
         <div className="md:flex">
-          <aside className="md:w-1/4 md:pr-4 mb-4 md:mb-0">
+          <aside className="md:w-1/5 md:pr-4 mb-4 md:mb-0">
             <LeftSidebar />
           </aside>
           <article className="prose md:flex-1 md:pr-4 main-content">
@@ -70,7 +70,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             </div>
           )}
         </article>
-          <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0">
+          <aside className="md:w-1/5 md:pl-4 mt-4 md:mt-0">
             <RightSidebar posts={getSortedPosts()} headings={headings} />
           </aside>
         </div>
