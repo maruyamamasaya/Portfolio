@@ -16,7 +16,7 @@ export default function Header() {
 
 
   return (
-    <header className="win98-titlebar">
+    <header className="bg-blue-700 text-white">
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-bold flex items-center">
           <img
