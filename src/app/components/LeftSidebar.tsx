@@ -13,6 +13,7 @@ export default function LeftSidebar() {
     { href: '/artworks_blog', label: 'Artworks Blog' },
     { href: '/tech_blog', label: 'Tech Blog' },
     { href: '/repair_blog', label: 'Rescue Log' },
+    { href: '/developer_edit', label: 'Dev Editor' },
     { href: '/tags', label: 'タグ検索' },
     { href: '/contact', label: 'お問い合わせ' },
   ];
