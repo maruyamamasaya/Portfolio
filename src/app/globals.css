@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+/* reset custom font */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,8 +19,8 @@
 
 /* Modern card style */
 body.win98-body {
-  font-family: 'Share Tech Mono', monospace;
-  background: #000;
+  font-family: sans-serif;
+  background: #f8f9fa;
   color: #111;
 }
 
@@ -135,21 +135,11 @@ body.win98-body {
 }
 
 .win98-button {
-  background: #c0c0c0;
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #404040;
-  border-bottom: 2px solid #404040;
-  padding: 2px 8px;
-  font-size: 0.875rem;
-  cursor: pointer;
+  @apply bg-blue-600 text-white rounded-md px-4 py-1 text-sm shadow hover:bg-blue-700 transition-colors;
 }
 
 .win98-button:active {
-  border-top: 2px solid #404040;
-  border-left: 2px solid #404040;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
+  @apply bg-blue-800;
 }
 
 .fade-out {
@@ -247,21 +237,11 @@ body.win98-desktop {
 }
 
 .win98-start-button {
-  background: #c0c0c0;
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #404040;
-  border-bottom: 2px solid #404040;
-  padding: 2px 6px;
-  font-weight: bold;
-  cursor: pointer;
+  @apply bg-blue-700 text-white font-semibold rounded-md px-3 py-1 shadow hover:bg-blue-800 transition-colors;
 }
 
 .win98-start-button:active {
-  border-top: 2px solid #404040;
-  border-left: 2px solid #404040;
-  border-right: 2px solid #fff;
-  border-bottom: 2px solid #fff;
+  @apply bg-blue-900;
 }
 
 .taskbar-clock {
