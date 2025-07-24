@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import { useState, useEffect } from 'react';
 import BlogNavButtons from '../components/BlogNavButtons';
+import HeroAnimation from './HeroAnimation';
 
 interface Props {
   posts: Post[];
@@ -12,6 +13,7 @@ export default function HomeWindow({ posts }: Props) {
   const [closing, setClosing] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [minimized, setMinimized] = useState(false);
+  const [showImage, setShowImage] = useState(false);
   const [position, setPosition] = useState({ x: 50, y: 50 });
   // Set the default window size a bit larger so the content is easier to read
   // when the page first loads. Users can still resize the window freely.
@@ -24,6 +26,7 @@ export default function HomeWindow({ posts }: Props) {
     setClosing(true);
     setTimeout(() => {
       setHidden(true);
+      setShowImage(true);
     }, 500);
   };
 
@@ -31,6 +34,7 @@ export default function HomeWindow({ posts }: Props) {
     setMinimized(true);
     setTimeout(() => {
       setHidden(true);
+      setShowImage(true);
     }, 500);
   };
 
@@ -70,6 +74,7 @@ export default function HomeWindow({ posts }: Props) {
     };
   }, [dragging, resizing, offset, position]);
 
+  if (showImage) return <HeroAnimation />;
   if (hidden) return null;
 
   return (
