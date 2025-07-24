@@ -14,7 +14,7 @@ export default function TagsPage() {
         {displayTags.map(tag => (
           <li
             key={tag}
-            className="bg-blue-200 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow"
+            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow"
           >
             <Link href={`/tags/${encodeURIComponent(tag)}`} className="hover:underline">
               {tag}
@@ -24,7 +24,7 @@ export default function TagsPage() {
       </ul>
       {hasMore && (
         <div className="mt-4">
-          <Link href="/tags/more" className="text-blue-600 hover:underline">
+          <Link href="/tags/more" className="text-primary hover:underline">
             もっと見る
           </Link>
         </div>

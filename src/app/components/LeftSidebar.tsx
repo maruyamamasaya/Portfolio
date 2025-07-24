@@ -28,7 +28,7 @@ export default function LeftSidebar() {
               {item.noLink ? (
                 <span className="text-gray-600">{item.href}</span>
               ) : (
-                <Link href={item.href} className="text-blue-600 hover:underline">
+                <Link href={item.href} className="text-primary hover:underline">
                   {item.label}
                 </Link>
               )}

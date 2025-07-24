@@ -30,7 +30,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
               <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
             )}
             <div>
-              <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:underline">
+              <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
                 {post.title}
               </Link>
               <span className="block text-sm text-gray-500">

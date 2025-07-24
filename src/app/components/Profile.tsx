@@ -5,7 +5,7 @@ export default function Profile() {
     <div>
       <h3 className="font-bold mb-2">プロフィール</h3>
       <p className="text-sm mb-2">独立系エンジニア兼クリエイター。</p>
-      <Link href="/about" className="text-blue-600 hover:underline text-sm">
+      <Link href="/about" className="text-primary hover:underline text-sm">
         詳しく見る
       </Link>
       <ul className="mt-4 space-y-1 text-sm">
@@ -14,25 +14,25 @@ export default function Profile() {
           : 制作過程や開発メモをまとめます。
         </li>
         <li>
-          <Link href="/art_blog" className="text-blue-600 hover:underline">
+          <Link href="/art_blog" className="text-primary hover:underline">
             Art Blog
           </Link>
           : 個人アーティストとしての活動記録。
         </li>
         <li>
-          <Link href="/artworks_blog" className="text-blue-600 hover:underline">
+          <Link href="/artworks_blog" className="text-primary hover:underline">
             Artworks
           </Link>
           : 作品展示ギャラリー。
         </li>
         <li>
-          <Link href="/tech_blog" className="text-blue-600 hover:underline">
+          <Link href="/tech_blog" className="text-primary hover:underline">
             Tech Blog
           </Link>
           : 最近のテック事情を解説。
         </li>
         <li>
-          <Link href="/repair_blog" className="text-blue-600 hover:underline">
+          <Link href="/repair_blog" className="text-primary hover:underline">
             Rescue Log
           </Link>
           : パソコンやゲーム機の修理記録。
