@@ -16,7 +16,7 @@ export default function Header() {
 
 
   return (
-    <header className="bg-gradient-to-r from-indigo-800 via-purple-700 to-fuchsia-600 text-white">
+    <header className="bg-gradient-to-r from-primary via-primary to-secondary text-white">
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-digital font-bold flex items-center">
           <img
@@ -44,7 +44,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <nav className={`${open ? 'block' : 'hidden'} sm:hidden absolute top-full left-0 w-full bg-gradient-to-b from-indigo-800 via-purple-700 to-fuchsia-600 text-white`}>
+        <nav className={`${open ? 'block' : 'hidden'} sm:hidden absolute top-full left-0 w-full bg-gradient-to-b from-primary via-primary to-secondary text-white`}>
           <ul className="flex flex-col p-4 space-y-2 text-sm">
             {navItems.map(item => (
               <li key={item.href}>

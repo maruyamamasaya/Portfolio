@@ -23,7 +23,7 @@ export default function BlogIndex() {
                 )}
                 <div>
                   <Link href={`/tech_blog/${post.slug}`}
-                    className="text-blue-600 hover:underline">
+                    className="text-primary hover:underline">
                     {post.title}
                   </Link>
                   <span className="block text-sm text-gray-500">

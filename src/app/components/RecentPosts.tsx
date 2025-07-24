@@ -12,7 +12,7 @@ export default function RecentPosts({ posts }: Props) {
       <ul className="space-y-1 text-sm">
         {posts.slice(0, 5).map(post => (
           <li key={post.slug}>
-            <Link href={`/blog/${post.slug}`} className="text-blue-600 hover:underline">
+            <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
               {post.title}
             </Link>
           </li>
