@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Breadcrumbs from './components/Breadcrumbs';
 
 export const metadata: Metadata = {
   title: 'でじサポ｜パソコン相談室',
@@ -22,7 +23,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ja">
       <body className="min-h-screen bg-gray-100 text-[#222426] font-sans font-medium antialiased">
         <Header />
-        <main className="max-w-[1011px] w-full mx-auto p-4">{children}</main>
+        <main className="container mx-auto p-4">
+          <Breadcrumbs />
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
