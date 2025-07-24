@@ -1,7 +1,11 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { getSortedDevPosts } from '@/lib/devPosts';
-import Calendar from '@/app/components/Calendar';
 import BlogNavButtons from '../components/BlogNavButtons';
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false }
+};
 
 export default function BlogIndex() {
   const posts = getSortedDevPosts();
@@ -18,10 +22,9 @@ export default function BlogIndex() {
                   <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
                 )}
                 <div>
-                  <Link href={`/developers_blog/${post.slug}`}
-                    className="text-blue-600 hover:underline">
-                    {post.title}
-                  </Link>
+                  <span className="text-gray-800">
+                    /developers_blog/{post.slug}
+                  </span>
                   <span className="block text-sm text-gray-500">
                     {post.date}
                     {post.updated && ` (更新: ${post.updated})`}
@@ -44,9 +47,6 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/5 md:pl-4 mt-4 md:mt-0 widget">
-          <Calendar />
-        </aside>
       </div>
     </div>
   );

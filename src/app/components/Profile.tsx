@@ -10,9 +10,7 @@ export default function Profile() {
       </Link>
       <ul className="mt-4 space-y-1 text-sm">
         <li>
-          <Link href="/developers_blog" className="text-blue-600 hover:underline">
-            Dev Blog (開発日誌)
-          </Link>
+          <span className="text-gray-600">/developers_blog</span>
           : 制作過程や開発メモをまとめます。
         </li>
         <li>

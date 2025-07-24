@@ -12,40 +12,9 @@
   @apply bg-white p-4 rounded shadow;
 }
 
-/* Updated calendar widget style */
-.calendar-widget {
-  @apply bg-gray-50 p-4 rounded-lg shadow-lg;
-}
 
 .blog-container {
   @apply container mx-auto;
-}
-
-/* Calendar day styles inspired by WordPress widget */
-.calendar-day {
-  @apply inline-flex items-center justify-center w-8 h-8 rounded-md border border-gray-300 bg-white text-gray-700 m-px leading-8;
-}
-.calendar-day:hover {
-  @apply bg-blue-200 text-black scale-110 duration-300;
-}
-.calendar-day-has-posts {
-  @apply bg-blue-600 text-white;
-}
-.fade-in {
-  animation: fadeIn 0.5s forwards;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.calendar-day-today {
-  @apply ring-2 ring-blue-500;
 }
 
 /* Modern card style */

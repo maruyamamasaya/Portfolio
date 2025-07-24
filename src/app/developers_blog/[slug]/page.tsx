@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { getDevPost, getSortedDevPosts } from '@/lib/devPosts';
-import Calendar from '@/app/components/Calendar';
 import TableOfContents from '@/app/components/TableOfContents';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
 
@@ -19,10 +18,11 @@ export async function generateMetadata(
     const post = getDevPost(params.slug);
     return {
       title: post.title,
-      other: { date: post.date, updated: post.updated, tags: post.tags }
+      other: { date: post.date, updated: post.updated, tags: post.tags },
+      robots: { index: false, follow: false }
     };
   } catch {
-    return { title: 'Not Found' };
+    return { title: 'Not Found', robots: { index: false, follow: false } };
   }
 }
 
@@ -57,9 +57,6 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <aside className="md:w-1/5 md:pl-4 mt-4 md:mt-0 space-y-4">
           <div className="widget">
             <TableOfContents headings={headings} />
-          </div>
-          <div className="widget">
-            <Calendar />
           </div>
         </aside>
         </div>
