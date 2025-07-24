@@ -15,24 +15,28 @@ export default function Profile() {
         </li>
         <li>
           <Link href="/art_blog" className="underline">
+
             Art Blog
           </Link>
           : 個人アーティストとしての活動記録。
         </li>
         <li>
           <Link href="/artworks_blog" className="underline">
+
             Artworks
           </Link>
           : 作品展示ギャラリー。
         </li>
         <li>
           <Link href="/tech_blog" className="underline">
+
             Tech Blog
           </Link>
           : 最近のテック事情を解説。
         </li>
         <li>
           <Link href="/repair_blog" className="underline">
+
             Rescue Log
           </Link>
           : パソコンやゲーム機の修理記録。

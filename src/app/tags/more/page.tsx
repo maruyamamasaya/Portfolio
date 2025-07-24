@@ -12,7 +12,7 @@ export default function MoreTagsPage() {
         {tags.map(tag => (
           <li
             key={tag}
-            className="bg-blue-200 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow"
+            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow"
           >
             <Link href={`/tags/${encodeURIComponent(tag)}`} className="hover:underline">
               {tag}

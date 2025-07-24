@@ -15,7 +15,7 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
       <ul className="text-sm space-y-1">
         {headings.map(h => (
           <li key={h.id} className={indent[h.level - 1] || indent[indent.length - 1]}>
-            <Link href={`#${h.id}`} className="text-blue-600 hover:underline">
+            <Link href={`#${h.id}`} className="text-primary hover:underline">
               {h.text}
             </Link>
           </li>

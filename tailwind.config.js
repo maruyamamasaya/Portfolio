@@ -27,7 +27,12 @@ module.exports = {
           'sans-serif'
         ],
         xp: ['Tahoma', 'Verdana', 'sans-serif'],
-        digital: ['"Share Tech Mono"', 'monospace']
+        digital: ['"Share Tech Mono"', 'monospace'],
+        sans: ['"Noto Sans JP"', 'ui-sans-serif', 'system-ui']
+      },
+      colors: {
+        primary: '#e60012',
+        secondary: '#005bac'
       }
     }
   },

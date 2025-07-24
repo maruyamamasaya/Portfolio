@@ -121,7 +121,7 @@ export default function DeveloperEditor() {
           {files.map(name => (
             <li key={name}>
               <button
-                className="text-blue-600 underline"
+                className="text-primary underline"
                 onClick={() => openFile(name)}
               >
                 {name}
@@ -171,7 +171,7 @@ export default function DeveloperEditor() {
         />
         <div className="mt-2">
           <button
-            className="px-4 py-2 bg-blue-500 text-white"
+            className="px-4 py-2 bg-primary text-white"
             onClick={saveFile}
           >
             保存
