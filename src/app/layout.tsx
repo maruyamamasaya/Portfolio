@@ -20,17 +20,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+      <body className="min-h-screen bg-gray-100 text-[#222426] font-sans font-medium antialiased">
         <Header />
-        <main className="container mx-auto p-4">{children}</main>
+        <main className="max-w-[1011px] w-full mx-auto p-4">{children}</main>
         <Footer />
       </body>
     </html>
