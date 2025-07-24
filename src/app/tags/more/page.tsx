@@ -10,7 +10,10 @@ export default function MoreTagsPage() {
       <h1 className="text-2xl font-bold mb-4">All Tags</h1>
       <ul className="flex flex-wrap gap-2">
         {tags.map(tag => (
-          <li key={tag} className="bg-blue-200 px-2 py-1 rounded-full text-sm shadow">
+          <li
+            key={tag}
+            className="bg-blue-200 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow"
+          >
             <Link href={`/tags/${encodeURIComponent(tag)}`} className="hover:underline">
               {tag}
             </Link>
