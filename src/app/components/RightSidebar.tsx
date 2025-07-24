@@ -1,7 +1,6 @@
 import RecentPosts from './RecentPosts';
 import TagList from './TagList';
 import SocialLinks from './SocialLinks';
-import TodayMessage from './TodayMessage';
 import Calendar from './Calendar';
 import TableOfContents, { Heading } from './TableOfContents';
 import { Post } from '@/lib/posts';
@@ -31,7 +30,6 @@ export default function RightSidebar({ posts, headings }: Props) {
       <div className="widget">
         <SocialLinks />
       </div>
-      <TodayMessage />
       <div className="widget">
         <Calendar />
       </div>

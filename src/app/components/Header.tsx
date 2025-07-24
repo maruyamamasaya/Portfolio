@@ -23,7 +23,7 @@ export default function Header() {
             alt="Header Icon"
             className="w-8 h-8 mr-2"
           />
-          <Link href="/">電脳幻境プロジェクト</Link>
+          <Link href="/">パソコンレスキュー公式サイト</Link>
         </h1>
         <button
           className="sm:hidden flex flex-col items-center justify-center w-8 h-8"

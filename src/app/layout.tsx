@@ -7,8 +7,9 @@ import Footer from './components/Footer';
 import Taskbar from './components/Taskbar';
 
 export const metadata: Metadata = {
-  title: '電脳幻境プロジェクト',
-  description: '「現実」と「仮想」の境界をゆらがせる幻想的な情報空間へようこそ。最新のデジタルツール解説やレトロコンピューティングの探求、仮想空間を舞台にしたアートワークまで、電脳世界の魅力を多角的に発信。',
+  title: 'パソコンレスキュー公式サイト',
+  description:
+    '法人・個人向けにOA機器の整備や設定、ソフトウェアのお困りごとをサポートするポートフォリオサイト。修理記録や最新テック情報、開発日誌などを掲載。',
   icons: {
     icon: '/images/favicon.png',
   },

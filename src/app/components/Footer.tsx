@@ -43,7 +43,7 @@ export default function Footer() {
           alt="Footer Icon"
           className="w-6 h-6"
         />
-        <span>&copy; 2025 電脳幻境プロジェクト</span>
+        <span>&copy; 2025 パソコンレスキュー公式サイト</span>
       </div>
     </footer>
   );
