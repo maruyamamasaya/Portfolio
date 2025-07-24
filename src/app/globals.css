@@ -50,21 +50,18 @@
 /* Windows 98 inspired styling */
 body.win98-body {
   font-family: 'Share Tech Mono', monospace;
-  background: #000080;
-  color: #000;
+  background: #1e1e1e;
+  color: #ddd;
 }
 
 .win98-window {
-  background: #c0c0c0;
-  border-top: 2px solid #fff;
-  border-left: 2px solid #fff;
-  border-right: 2px solid #404040;
-  border-bottom: 2px solid #404040;
-  box-shadow: 4px 4px 0 #000;
+  background: #2b2b2b;
+  border: 1px solid #555;
+  box-shadow: 2px 2px 4px #000;
 }
 
 .win98-titlebar {
-  background: #000080;
+  background: #333;
   color: #fff;
   padding: 2px 4px;
   font-weight: bold;
