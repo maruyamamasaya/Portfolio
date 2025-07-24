@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default function HomeWindow({ posts }: Props) {
-  const [closing, setClosing] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [minimized, setMinimized] = useState(false);
   const [position, setPosition] = useState({ x: 50, y: 50 });
@@ -19,13 +18,6 @@ export default function HomeWindow({ posts }: Props) {
   const [dragging, setDragging] = useState(false);
   const [resizing, setResizing] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  const handleClose = () => {
-    setClosing(true);
-    setTimeout(() => {
-      setHidden(true);
-    }, 500);
-  };
 
   const handleMinimize = () => {
     setMinimized(true);
@@ -74,7 +66,7 @@ export default function HomeWindow({ posts }: Props) {
 
   return (
     <div
-      className={`win98-window m-4 absolute z-10 ${closing ? 'fade-out' : ''} ${minimized ? 'minimized' : ''}`}
+      className={`win98-window m-4 absolute z-10 ${minimized ? 'minimized' : ''}`}
       style={{ top: position.y, left: position.x, width: size.width, height: size.height }}
     >
       <div className="win98-titlebar cursor-move" onMouseDown={handleMouseDown}>
@@ -84,11 +76,6 @@ export default function HomeWindow({ posts }: Props) {
             className="win98-btn minimize"
             aria-label="Minimize"
             onClick={handleMinimize}
-          />
-          <button
-            className="win98-btn close"
-            aria-label="Close"
-            onClick={handleClose}
           />
         </div>
       </div>
