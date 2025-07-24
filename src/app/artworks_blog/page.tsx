@@ -11,7 +11,7 @@ export default function BlogIndex() {
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Artworks Blog</h1>
       <div className="md:flex">
-        <aside className="md:w-1/4 md:pr-4 mb-4 md:mb-0">
+        <aside className="md:w-1/5 md:pr-4 mb-4 md:mb-0">
           <LeftSidebar />
         </aside>
         <div className="md:flex-1 main-content">
@@ -48,7 +48,7 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0">
+        <aside className="md:w-1/5 md:pl-4 mt-4 md:mt-0">
           <RightSidebar posts={posts} />
         </aside>
       </div>

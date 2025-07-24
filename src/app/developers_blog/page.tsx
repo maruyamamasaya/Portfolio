@@ -44,7 +44,7 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/4 md:pl-4 mt-4 md:mt-0 widget">
+        <aside className="md:w-1/5 md:pl-4 mt-4 md:mt-0 widget">
           <Calendar />
         </aside>
       </div>

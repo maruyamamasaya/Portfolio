@@ -98,7 +98,7 @@ export default function DeveloperEditor() {
 
   return (
     <div className="md:flex">
-      <div className="md:w-1/4 p-4 space-y-4 border-r">
+      <div className="md:w-1/5 p-4 space-y-4 border-r">
         <div>
           <label className="block mb-1 font-bold">編集対象</label>
           <select
