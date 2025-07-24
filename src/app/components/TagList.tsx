@@ -9,7 +9,7 @@ export default function TagList() {
       <ul className="flex flex-wrap gap-1 text-sm">
         {tags.map(tag => (
           <li key={tag}>
-            <Link href={`/tags/${encodeURIComponent(tag)}`} className="text-blue-600 hover:underline">
+            <Link href={`/tags/${encodeURIComponent(tag)}`} className="text-primary hover:underline">
               #{tag}
             </Link>
           </li>
