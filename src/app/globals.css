@@ -49,9 +49,9 @@
 
 /* Modern card style */
 body.win98-body {
-  font-family: theme('fontFamily.sans');
-  background: #f3f4f6;
-  color: #111827;
+  font-family: 'Share Tech Mono', monospace;
+  background: #000;
+  color: #ddd;
 }
 
 .win98-window {
