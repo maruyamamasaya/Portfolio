@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 text-white mt-8 text-sm border-t-4 border-yellow-300">
+    <footer className="bg-gradient-to-r from-indigo-800 via-purple-700 to-fuchsia-600 text-white mt-8 text-sm border-t-4 border-yellow-300">
       <div className="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
           <h2 className="font-semibold mb-2 sr-only">ナビゲーション</h2>
@@ -43,7 +43,7 @@ export default function Footer() {
           alt="Footer Icon"
           className="w-6 h-6"
         />
-        <span>&copy; 2025 パソコンレスキュー公式サイト</span>
+        <span>&copy; 2025 でじサポ｜パソコン相談室</span>
       </div>
     </footer>
   );
