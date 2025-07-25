@@ -19,7 +19,7 @@
 
 
 .blog-container {
-  @apply max-w-screen-md mx-auto px-4;
+  @apply max-w-screen-lg mx-auto px-4;
 }
 
 /* Blog heading styles */
