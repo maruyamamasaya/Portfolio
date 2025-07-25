@@ -5,38 +5,41 @@
 
 /* layout helpers for blog pages */
 .main-content {
-  @apply bg-white p-4 rounded shadow-sm mb-4;
+  @apply bg-white p-4 rounded-xl border border-gray-100 shadow-md mb-4;
 }
 
 .widget {
-  @apply bg-white p-4 rounded shadow;
+  @apply bg-white p-4 rounded-xl border border-gray-100 shadow-md;
 }
 
 
 .blog-container {
-  @apply container mx-auto;
+  @apply max-w-screen-md mx-auto px-4;
 }
 
 /* Blog heading styles */
 
 .prose h1 {
-  @apply relative mt-6 mb-4 text-white font-bold text-3xl rounded;
-  @apply bg-gradient-to-r from-primary to-secondary px-3 py-2;
+  @apply relative mt-6 mb-4 text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-balance;
 }
 
 .prose h2 {
-  @apply relative mt-6 mb-4 text-white font-bold rounded;
-  @apply bg-primary pl-3 py-1;
+  @apply relative mt-6 mb-4 text-xl font-bold text-gray-900 border-l-4 border-primary pl-3 text-balance;
 }
 
 .prose h3,
 .prose h4 {
   position: relative;
-  padding-left: 0.75rem;
   margin-top: 1.25rem;
-  font-weight: bold;
-  color: #000;
-  background: #fff;
+  padding-left: 0.75rem;
+}
+
+.prose h3 {
+  @apply text-gray-800 font-semibold border-l-2 border-blue-300 text-balance;
+}
+
+.prose h4 {
+  @apply text-gray-700 font-medium border-b border-gray-200 pb-1 text-balance;
 }
 
 .prose h2::before,
@@ -48,5 +51,5 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: #93c5fd;
+  background-color: theme('colors.blue.300');
 }
