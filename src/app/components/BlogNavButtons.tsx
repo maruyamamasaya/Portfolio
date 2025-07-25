@@ -18,9 +18,6 @@ export default function BlogNavButtons() {
       <Link href="/blog" className="px-3 py-1 bg-primary text-white rounded">
         ブログトップ
       </Link>
-      <span className="px-3 py-1 bg-gray-200 rounded text-gray-600">
-        /developers_blog
-      </span>
       <Link href="/art_blog" className="px-3 py-1 bg-primary text-white rounded">
         Art Blog
       </Link>
