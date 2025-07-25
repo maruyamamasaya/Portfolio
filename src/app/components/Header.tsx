@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import DarkModeToggle from './DarkModeToggle';
+import Drawer from './Drawer';
 
 export default function Header() {
   const pathname = usePathname();
@@ -45,15 +46,17 @@ export default function Header() {
           </ul>
         </nav>
         <DarkModeToggle />
-        <nav className={`${open ? 'block' : 'hidden'} sm:hidden absolute top-full left-0 w-full bg-gradient-to-b from-primary via-primary to-secondary text-white`}>
-          <ul className="flex flex-col p-4 space-y-2 text-sm">
+        <Drawer open={open} onClose={() => setOpen(false)}>
+          <ul className="flex flex-col space-y-4 mt-8">
             {navItems.map(item => (
               <li key={item.href}>
-                <Link href={item.href} onClick={() => setOpen(false)}>{item.label}</Link>
+                <Link href={item.href} onClick={() => setOpen(false)} className="block py-1">
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
-        </nav>
+        </Drawer>
       </div>
       {/* Category links removed */}
     </header>

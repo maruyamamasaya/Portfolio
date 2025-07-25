@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Breadcrumbs from './components/Breadcrumbs';
+import PageTransition from './components/PageTransition';
 
 export const metadata: Metadata = {
   title: 'でじサポ｜パソコン相談室',
@@ -23,10 +24,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ja">
       <body className="min-h-screen bg-gray-100 dark:bg-gray-900 text-[#222426] dark:text-gray-200 font-sans font-medium antialiased">
         <Header />
-        <main className="container mx-auto p-4">
-          {children}
-          <Breadcrumbs />
-        </main>
+        <PageTransition>
+          <main className="container mx-auto p-4">
+            {children}
+            <Breadcrumbs />
+          </main>
+        </PageTransition>
         <Footer />
       </body>
     </html>
