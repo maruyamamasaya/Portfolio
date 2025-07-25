@@ -12,6 +12,7 @@ export default function Header() {
     { href: '/about', label: 'プロフィール' },
     { href: '/works', label: 'Work' },
     { href: '/blog', label: 'ブログ' },
+    { href: '/categories', label: 'カテゴリ' },
     { href: '/tags', label: 'タグ検索' },
   ];
 
@@ -45,6 +46,14 @@ export default function Header() {
             ))}
           </ul>
         </nav>
+        <form action="/search" method="get" className="hidden sm:block ml-4">
+          <input
+            type="text"
+            name="q"
+            placeholder="検索..."
+            className="border rounded px-2 py-1 text-sm"
+          />
+        </form>
         <DarkModeToggle />
         <Drawer open={open} onClose={() => setOpen(false)}>
           <ul className="flex flex-col space-y-4 mt-8">
@@ -56,6 +65,14 @@ export default function Header() {
               </li>
             ))}
           </ul>
+          <form action="/search" method="get" className="mt-4">
+            <input
+              type="text"
+              name="q"
+              placeholder="検索..."
+              className="w-full border rounded px-2 py-1"
+            />
+          </form>
         </Drawer>
       </div>
       {/* Category links removed */}
