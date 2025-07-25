@@ -1,6 +1,21 @@
+"use client";
+import { useState } from 'react';
 import Link from 'next/link';
 
+const items = [
+  {
+    href: '/developers_blog',
+    label: '/developers_blog',
+    desc: '制作過程や開発メモをまとめます。',
+  },
+  { href: '/art_blog', label: 'Art Blog', desc: '個人アーティストとしての活動記録。' },
+  { href: '/artworks_blog', label: 'Artworks', desc: '作品展示ギャラリー。' },
+  { href: '/tech_blog', label: 'Tech Blog', desc: '最近のテック事情を解説。' },
+  { href: '/repair_blog', label: 'Rescue Log', desc: 'パソコンやゲーム機の修理記録。' },
+];
 export default function Profile() {
+  const [message, setMessage] = useState('');
+
   return (
     <div className="max-w-[1011px] mx-auto p-4 rounded-lg shadow-md bg-gradient-to-r from-[#8ed1fc] to-[#9b51e0] text-white">
       <h3 className="font-bold mb-2 text-lg sm:text-xl">プロフィール</h3>
@@ -8,39 +23,20 @@ export default function Profile() {
       <Link href="/about" className="underline text-sm sm:text-base">
         詳しく見る
       </Link>
-      <ul className="mt-4 space-y-1 text-sm sm:text-base">
-        <li>
-          <span className="text-gray-200">/developers_blog</span>
-          : 制作過程や開発メモをまとめます。
-        </li>
-        <li>
-          <Link href="/art_blog" className="underline">
-
-            Art Blog
-          </Link>
-          : 個人アーティストとしての活動記録。
-        </li>
-        <li>
-          <Link href="/artworks_blog" className="underline">
-
-            Artworks
-          </Link>
-          : 作品展示ギャラリー。
-        </li>
-        <li>
-          <Link href="/tech_blog" className="underline">
-
-            Tech Blog
-          </Link>
-          : 最近のテック事情を解説。
-        </li>
-        <li>
-          <Link href="/repair_blog" className="underline">
-
-            Rescue Log
-          </Link>
-          : パソコンやゲーム機の修理記録。
-        </li>
+      <p className="h-6 mt-3 text-xs sm:text-sm text-yellow-200">{message}</p>
+      <ul className="mt-2 space-y-1 text-sm sm:text-base">
+        {items.map(item => (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className="underline hover:text-gray-200"
+              onMouseEnter={() => setMessage(item.desc)}
+              onMouseLeave={() => setMessage('')}
+            >
+              {item.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
