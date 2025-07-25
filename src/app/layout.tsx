@@ -24,8 +24,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="min-h-screen bg-gray-100 dark:bg-gray-900 text-[#222426] dark:text-gray-200 font-sans font-medium antialiased">
         <Header />
         <main className="container mx-auto p-4">
-          <Breadcrumbs />
           {children}
+          <Breadcrumbs />
         </main>
         <Footer />
       </body>
