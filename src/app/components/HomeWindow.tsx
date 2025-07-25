@@ -9,6 +9,8 @@ import { Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from './ScrollFadeIn';
 import Card from './Card';
+import HeroAnimation from './HeroAnimation';
+import RecommendedSlider from './RecommendedSlider';
 
 type HomeWindowProps = {
   posts: Post[];
@@ -17,13 +19,25 @@ type HomeWindowProps = {
 export default function HomeWindow({ posts }: HomeWindowProps) {
   return (
     <div className="space-y-12">
-      <HeroSection />
+      {/* Heroセクション */}
+      <div className="px-4 sm:px-8">
+        <HeroAnimation />
+        <HeroSection />
+      </div>
+
+      {/* サービス・実績など */}
       <ServicesSection />
       <WorksSection />
       <TestimonialsSection />
       <FAQSection />
       <CTASection />
 
+      {/* おすすめ記事スライダー */}
+      <div className="px-4 sm:px-8">
+        <RecommendedSlider posts={posts} />
+      </div>
+
+      {/* ブログセクション */}
       <div className="px-4 sm:px-8">
         <BlogNavButtons />
         <h2 className="text-2xl font-bold my-6">Blog</h2>
