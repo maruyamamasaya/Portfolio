@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import BlogNavButtons from '../components/BlogNavButtons';
 import ImageSlider from '../components/ImageSlider';
