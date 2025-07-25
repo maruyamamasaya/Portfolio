@@ -1,3 +1,9 @@
+import HeroSection from './HeroSection';
+import ServicesSection from './ServicesSection';
+import WorksSection from './WorksSection';
+import TestimonialsSection from './TestimonialsSection';
+import FAQSection from './FAQSection';
+import CTASection from './CTASection';
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
@@ -6,35 +12,55 @@ import Card from './Card';
 import HeroAnimation from './HeroAnimation';
 import RecommendedSlider from './RecommendedSlider';
 
-interface Props {
+type HomeWindowProps = {
   posts: Post[];
-}
+};
 
-export default function HomeWindow({ posts }: Props) {
+export default function HomeWindow({ posts }: HomeWindowProps) {
   return (
-    <div className="m-4">
-      <div className="mb-4">
+    <div className="space-y-12">
+      {/* Heroセクション */}
+      <div className="px-4 sm:px-8">
         <HeroAnimation />
+        <HeroSection />
       </div>
-      <RecommendedSlider posts={posts} />
-      <BlogNavButtons />
-      <div className="mb-4" />
-      <h2 className="text-xl font-semibold mb-4">Blog</h2>
-      <ul className="space-y-4">
-        {posts.map(post => (
-          <ScrollFadeIn key={post.slug} as={Card} className="flex items-start space-x-2">
-            {post.image && (
-              <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
-            )}
-            <div>
-              <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
-                {post.title}
-              </Link>
-              <span className="block text-sm text-gray-500">{post.date}</span>
-            </div>
-          </ScrollFadeIn>
-        ))}
-      </ul>
+
+      {/* サービス・実績など */}
+      <ServicesSection />
+      <WorksSection />
+      <TestimonialsSection />
+      <FAQSection />
+      <CTASection />
+
+      {/* おすすめ記事スライダー */}
+      <div className="px-4 sm:px-8">
+        <RecommendedSlider posts={posts} />
+      </div>
+
+      {/* ブログセクション */}
+      <div className="px-4 sm:px-8">
+        <BlogNavButtons />
+        <h2 className="text-2xl font-bold my-6">Blog</h2>
+        <ul className="space-y-4">
+          {posts.map((post) => (
+            <ScrollFadeIn key={post.slug} as={Card} className="flex items-start space-x-4">
+              {post.image && (
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-16 h-16 object-cover rounded"
+                />
+              )}
+              <div>
+                <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
+                  {post.title}
+                </Link>
+                <span className="block text-sm text-gray-500">{post.date}</span>
+              </div>
+            </ScrollFadeIn>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
