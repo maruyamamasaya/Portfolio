@@ -1,8 +1,9 @@
 import BlogNavButtons from '../components/BlogNavButtons';
+import ScrollFadeIn from '../components/ScrollFadeIn';
 
 export default function About() {
   return (
-    <div className="max-w-2xl mx-auto px-4">
+    <ScrollFadeIn className="max-w-2xl mx-auto px-4">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">独立系エンジニア × クリエイター</h1>
 
@@ -29,6 +30,6 @@ export default function About() {
       </p>
 
       <p className="text-sm text-gray-500">※ 本名は非公開。活動名は今後設定予定です。</p>
-    </div>
+    </ScrollFadeIn>
   );
 }

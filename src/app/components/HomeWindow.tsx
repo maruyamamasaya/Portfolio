@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
+import ScrollFadeIn from './ScrollFadeIn';
 
 interface Props {
   posts: Post[];
@@ -14,7 +15,7 @@ export default function HomeWindow({ posts }: Props) {
       <h2 className="text-xl font-semibold mb-4">Blog</h2>
       <ul className="space-y-4">
         {posts.map(post => (
-          <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
+          <ScrollFadeIn key={post.slug} as="li" className="border-b pb-4 flex items-start space-x-2">
             {post.image && (
               <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
             )}
@@ -24,7 +25,7 @@ export default function HomeWindow({ posts }: Props) {
               </Link>
               <span className="block text-sm text-gray-500">{post.date}</span>
             </div>
-          </li>
+          </ScrollFadeIn>
         ))}
       </ul>
     </div>
