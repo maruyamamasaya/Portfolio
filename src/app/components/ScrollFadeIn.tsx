@@ -1,10 +1,10 @@
 "use client";
-import { useEffect, useRef, useState, ReactNode } from "react";
+import { useEffect, useRef, useState, ReactNode, ElementType } from "react";
 
 interface Props {
   children: ReactNode;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
 }
 
 export default function ScrollFadeIn({
