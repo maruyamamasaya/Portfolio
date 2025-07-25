@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { getSortedPosts } from '@/lib/artPosts';
 import LeftSidebar from '@/app/components/LeftSidebar';
-import RightSidebar from '@/app/components/RightSidebar';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
 import './styles/win7.css';
 
@@ -49,9 +48,6 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/5 md:pl-4 mt-4 md:mt-0 win7-sidebar">
-          <RightSidebar posts={posts} />
-        </aside>
       </div>
     </div>
   );

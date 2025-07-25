@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { getSortedRepairPosts } from '@/lib/repairPosts';
 import LeftSidebar from '@/app/components/LeftSidebar';
-import RightSidebar from '@/app/components/RightSidebar';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
 
 export default function BlogIndex() {
@@ -47,9 +46,6 @@ export default function BlogIndex() {
             ))}
           </ul>
         </div>
-        <aside className="md:w-1/5 md:pl-4 mt-4 md:mt-0">
-          <RightSidebar posts={posts} />
-        </aside>
       </div>
     </div>
   );
