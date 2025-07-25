@@ -3,6 +3,8 @@ import { Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from './ScrollFadeIn';
 import Card from './Card';
+import HeroAnimation from './HeroAnimation';
+import RecommendedSlider from './RecommendedSlider';
 
 interface Props {
   posts: Post[];
@@ -11,6 +13,10 @@ interface Props {
 export default function HomeWindow({ posts }: Props) {
   return (
     <div className="m-4">
+      <div className="mb-4">
+        <HeroAnimation />
+      </div>
+      <RecommendedSlider posts={posts} />
       <BlogNavButtons />
       <div className="mb-4" />
       <h2 className="text-xl font-semibold mb-4">Blog</h2>
