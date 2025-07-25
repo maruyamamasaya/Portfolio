@@ -31,8 +31,8 @@ module.exports = {
         sans: ['"Noto Sans JP"', 'ui-sans-serif', 'system-ui']
       },
       colors: {
-        primary: '#e60012',
-        secondary: '#005bac'
+        primary: '#005bac',
+        secondary: '#93c5fd'
       }
     }
   },
