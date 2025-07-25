@@ -12,6 +12,11 @@
   @apply bg-white p-4 rounded shadow;
 }
 
+.dark .main-content,
+.dark .widget {
+  @apply bg-gray-800 text-gray-100;
+}
+
 
 .blog-container {
   @apply container mx-auto;

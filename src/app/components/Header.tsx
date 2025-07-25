@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import DarkModeToggle from './DarkModeToggle';
 
 export default function Header() {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export default function Header() {
 
 
   return (
-    <header className="bg-gradient-to-r from-primary via-primary to-secondary text-white">
+    <header className="backdrop-blur-md bg-white/30 dark:bg-gray-800/30 shadow text-gray-800 dark:text-gray-200">
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-digital font-bold flex items-center">
           <img
@@ -44,6 +45,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
+        <DarkModeToggle />
         <nav className={`${open ? 'block' : 'hidden'} sm:hidden absolute top-full left-0 w-full bg-gradient-to-b from-primary via-primary to-secondary text-white`}>
           <ul className="flex flex-col p-4 space-y-2 text-sm">
             {navItems.map(item => (
