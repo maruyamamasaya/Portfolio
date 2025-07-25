@@ -17,7 +17,7 @@ export default function Profile() {
   const [message, setMessage] = useState('');
 
   return (
-    <div className="max-w-[1011px] mx-auto p-4 rounded-lg shadow-md bg-gradient-to-r from-[#8ed1fc] to-[#9b51e0] text-white">
+    <div>
       <h3 className="font-bold mb-2 text-lg sm:text-xl">プロフィール</h3>
       <p className="text-sm sm:text-base mb-2">独立系エンジニア兼クリエイター。</p>
       <Link href="/about" className="underline text-sm sm:text-base">
