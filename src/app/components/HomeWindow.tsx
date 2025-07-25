@@ -9,7 +9,6 @@ import { Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from './ScrollFadeIn';
 import Card from './Card';
-import HeroAnimation from './HeroAnimation';
 import RecommendedSlider from './RecommendedSlider';
 
 type HomeWindowProps = {
@@ -20,10 +19,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
   return (
     <div className="space-y-12">
       {/* Heroセクション */}
-      <div className="px-4 sm:px-8">
-        <HeroAnimation />
-        <HeroSection />
-      </div>
+      <HeroSection />
 
       {/* サービス・実績など */}
       <ServicesSection />
