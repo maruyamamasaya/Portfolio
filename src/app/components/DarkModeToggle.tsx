@@ -31,7 +31,7 @@ export default function DarkModeToggle() {
     >
       <motion.span
         animate={{ rotate: dark ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         className="block"
       >
         {dark ? "\uD83C\uDF19" : "\u2600\uFE0F"}

@@ -42,7 +42,7 @@ module.exports = {
         }
       },
       animation: {
-        fadeInUp: 'fadeInUp 0.6s ease forwards'
+        fadeInUp: 'fadeInUp 0.3s ease-in-out forwards'
       },
       typography: ({ theme }) => ({
         DEFAULT: {

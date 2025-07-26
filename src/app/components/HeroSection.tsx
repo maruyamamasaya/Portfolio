@@ -15,7 +15,7 @@ export default function HeroSection() {
         <p className="text-white">パソコンやIT活用のお悩みをサポートします。</p>
         <Link
           href="/contact"
-          className="inline-block px-4 py-2 bg-primary text-white rounded shadow motion-safe:transition-transform motion-reduce:transition-none duration-200 hover:scale-105"
+          className="inline-block px-4 py-2 bg-primary text-white rounded shadow motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out hover:scale-105"
         >
           お問い合わせ
         </Link>

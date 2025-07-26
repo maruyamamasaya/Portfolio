@@ -108,7 +108,7 @@ export default function TagSearch({ tags, onChange }: Props) {
             suggestions.map((tag, idx) => (
               <li
                 key={tag}
-                className={`px-2 py-2 text-center cursor-pointer motion-safe:transition-colors motion-reduce:transition-none duration-300 ${
+                className={`px-2 py-2 text-center cursor-pointer motion-safe:transition-colors motion-reduce:transition-none duration-300 ease-in-out ${
                   idx === activeIndex ? "bg-primary/20" : ""
                 }`}
                 onMouseDown={() => {

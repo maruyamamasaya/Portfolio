@@ -25,7 +25,7 @@ export default function Drawer({ open, onClose, children }: DrawerProps) {
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
-            transition={{ type: "tween" }}
+            transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
           >
             {children}
           </motion.div>
