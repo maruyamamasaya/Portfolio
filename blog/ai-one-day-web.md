@@ -6,7 +6,7 @@ tags:
   - "AI"
   - "Web制作"
   - "体験談"
-category: "AI活用"
+category: "ai"
 updated: "2025-10-15"
 ---
 

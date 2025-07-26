@@ -4,7 +4,7 @@ date: "2025-06-30"
 image: "/images/sample.png"
 tags:
   - "メタタグ"
-category: "メタ情報"
+category: "meta"
 updated: "2025-08-01"
 ---
 

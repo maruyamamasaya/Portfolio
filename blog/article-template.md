@@ -5,7 +5,7 @@ image: "/images/sample-article.png"
 tags:
   - "サンプル"
   - "チュートリアル"
-category: "チュートリアル"
+category: "tutorial"
 updated: "2025-09-02"
 ---
 

@@ -1,5 +1,6 @@
 import RecentPosts from './RecentPosts';
 import TagList from './TagList';
+import CategoryList from './CategoryList';
 import { Post } from '@/lib/posts';
 
 interface Props {
@@ -14,6 +15,9 @@ export default function RightSidebar({ posts }: Props) {
       </div>
       <div className="widget">
         <RecentPosts posts={posts} />
+      </div>
+      <div className="widget">
+        <CategoryList />
       </div>
       <div className="widget">
         <TagList />
