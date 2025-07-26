@@ -18,6 +18,14 @@ export default function HeroSection() {
         >
           お問い合わせ
         </Link>
+        <form action="/search" method="get" className="flex justify-center">
+          <input
+            type="text"
+            name="q"
+            placeholder="記事タイトル・タグから検索"
+            className="w-full sm:w-64 px-3 py-2 rounded border"
+          />
+        </form>
       </div>
     </section>
   );

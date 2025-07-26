@@ -18,7 +18,7 @@ export default function SearchPage({ searchParams }: { searchParams: { q?: strin
         <input
           type="text"
           name="q"
-          placeholder="キーワード検索..."
+          placeholder="キーワードを入力"
           defaultValue={query}
           className="border rounded px-2 py-1 w-full sm:w-64"
         />

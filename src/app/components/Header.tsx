@@ -163,7 +163,7 @@ export default function Header() {
           <input
             type="text"
             name="q"
-            placeholder="検索..."
+            placeholder="キーワードを入力"
             className="border rounded px-2 py-1 text-sm"
           />
         </form>
@@ -187,7 +187,7 @@ export default function Header() {
             <input
               type="text"
               name="q"
-              placeholder="検索..."
+              placeholder="キーワードを入力"
               className="w-full border rounded px-2 py-1"
             />
           </form>
