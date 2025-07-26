@@ -7,7 +7,7 @@ function metaTemplate() {
 }
 
 export default function DeveloperEditor() {
-  const [target, setTarget] = useState<'blog' | 'dev' | 'art' | 'artworks' | 'tech'>('dev');
+  const [target, setTarget] = useState<'blog' | 'dev'>('dev');
   const [files, setFiles] = useState<string[]>([]);
   const [selected, setSelected] = useState('');
   const [content, setContent] = useState('');
@@ -17,17 +17,11 @@ export default function DeveloperEditor() {
 
   const baseMap = {
     blog: 'posts',
-    dev: 'dev-posts',
-    art: 'art-posts',
-    artworks: 'artworks-posts',
-    tech: 'tech-posts'
+    dev: 'dev-posts'
   } as const;
   const pathMap = {
     blog: '/blog',
-    dev: '/developers_blog',
-    art: '/art_blog',
-    artworks: '/artworks_blog',
-    tech: '/tech_blog'
+    dev: '/developers_blog'
   } as const;
 
   useEffect(() => {
@@ -106,15 +100,12 @@ export default function DeveloperEditor() {
             value={target}
             onChange={e =>
               setTarget(
-                e.target.value as 'blog' | 'dev' | 'art' | 'artworks' | 'tech'
+                e.target.value as 'blog' | 'dev'
               )
             }
           >
             <option value="blog">blog</option>
             <option value="dev">developers_blog</option>
-            <option value="art">art_blog</option>
-            <option value="artworks">artworks_blog</option>
-            <option value="tech">tech_blog</option>
           </select>
         </div>
         <ul className="space-y-2">
