@@ -8,9 +8,7 @@ export default function Taskbar() {
   );
 
   const shortcuts = [
-    { href: '/', label: 'Home' },
-    { href: '/art_blog', label: 'Art Blog' },
-    { href: '/artworks_blog', label: 'ArtWorks' }
+    { href: '/', label: 'Home' }
   ];
 
   useEffect(() => {
