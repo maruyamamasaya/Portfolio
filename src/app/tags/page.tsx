@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { getAllTags } from '@/lib/posts';
+import { getAllTags, getSortedPosts } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
-import TagSearch from './TagSearch';
+import TagFilter from './TagFilter';
 
 export default function TagsPage() {
   const tags = getAllTags();
+  const posts = getSortedPosts();
   const displayTags = tags.slice(0, 30);
   const hasMore = tags.length > 30;
   return (
@@ -12,7 +13,7 @@ export default function TagsPage() {
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Tags</h1>
       <div className="mb-4">
-        <TagSearch tags={tags} />
+        <TagFilter tags={tags} posts={posts} />
       </div>
       <ul className="flex flex-wrap gap-2">
         {displayTags.map(tag => (
