@@ -1,33 +1,27 @@
-import { getCategoryTree, CategoryNode } from '@/lib/categoryTree';
+import Link from 'next/link';
+import { categories } from '@/data/categories';
 import BlogNavButtons from '../components/BlogNavButtons';
 
-function renderNode(node: CategoryNode) {
-  return (
-    <li key={node.path} className="mb-2">
-      <span className="font-semibold">{node.name}</span>
-      {node.files.length > 0 && (
-        <ul className="pl-4 list-disc">
-          {node.files.map(file => (
-            <li key={file}>{file}</li>
-          ))}
-        </ul>
-      )}
-      {node.children.length > 0 && (
-        <ul className="pl-4 border-l mt-1">
-          {node.children.map(child => renderNode(child))}
-        </ul>
-      )}
-    </li>
-  );
-}
-
 export default function CategoriesPage() {
-  const tree = getCategoryTree();
   return (
     <div className="prose prose-light dark:prose-dark relative">
       <BlogNavButtons />
       <h1>Categories</h1>
-      <ul className="pl-0">{renderNode(tree)}</ul>
+      <ul className="grid gap-4 p-0 list-none">
+        {categories.map(cat => (
+          <li key={cat.slug} className="border rounded p-4 flex space-x-3">
+            <span className="text-2xl">{cat.icon}</span>
+            <div>
+              <h2 className="m-0">
+                <Link href={`/categories/${cat.slug}`} className="no-underline hover:underline">
+                  {cat.name}
+                </Link>
+              </h2>
+              <p className="m-0 text-sm">{cat.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
