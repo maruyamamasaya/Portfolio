@@ -1,4 +1,4 @@
-import { unified, type Plugin } from 'unified';
+import { unified, type Plugin, type Processor } from 'unified';
 import parse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
@@ -105,7 +105,7 @@ export default async function markdownToHtml(
     convertMarkdownTables(replaceInternalLinks(markdown))
   );
 
-  const processor = unified()
+  const processor: Processor = unified()
     .use(parse)
     .use(headingsPlugin(headings))
     .use(remarkRehype)
