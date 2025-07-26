@@ -61,6 +61,16 @@ npm install
 npm run dev
 ```
 
+### 初回マウントアニメーションの無効化
+
+開発中にページ遷移アニメーションを停止したい場合は、`.env.local` に次の設定を追加します。
+
+```env
+NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION=true
+```
+
+この変数が `true` のとき、`PageTransition` コンポーネントによるフェードインをスキップします。
+
 ## デプロイ
 `npm run build` でビルドし、`npm start` でサーバーを起動します。EC2 などの Node.js が動作する環境で実行してください。
 

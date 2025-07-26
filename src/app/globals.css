@@ -90,3 +90,10 @@
 .prose img {
   @apply rounded-md shadow-md my-4;
 }
+
+/* GPU acceleration for smoother animations */
+.gpu-optimize {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
