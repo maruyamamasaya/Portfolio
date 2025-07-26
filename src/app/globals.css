@@ -3,6 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* unified transition class respecting user motion preference */
+.transition-base {
+  @apply motion-safe:transition-all motion-reduce:transition-none duration-300 ease-in-out;
+}
+
 /* layout helpers for blog pages */
 .main-content {
   @apply bg-white p-4 md:p-6 rounded-xl border border-gray-100 shadow-md mb-4;

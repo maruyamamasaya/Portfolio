@@ -25,7 +25,7 @@ export default function RecommendedSlider({ posts }: Props) {
         <Link
           key={post.slug}
           href={`/blog/${post.slug}`}
-          className={`absolute inset-0 transition-opacity duration-700 ${
+          className={`absolute inset-0 motion-safe:transition-opacity motion-reduce:transition-none duration-700 ${
             i === index ? 'opacity-100' : 'opacity-0'
           }`}
         >
