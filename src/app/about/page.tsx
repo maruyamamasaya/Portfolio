@@ -2,10 +2,11 @@ import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import ProfileCategories from '../components/ProfileCategories';
 import SkillBars from '../components/SkillBars';
+import CTASection from '../components/CTASection';
 
 export default function About() {
   return (
-    <ScrollFadeIn className="max-w-2xl mx-auto px-4">
+    <ScrollFadeIn className="max-w-2xl mx-auto px-4 space-y-8">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">独立系エンジニア × クリエイター</h1>
 
@@ -34,6 +35,29 @@ export default function About() {
       <p className="text-sm text-gray-500">※ 本名は非公開。活動名は今後設定予定です。</p>
       <SkillBars />
       <ProfileCategories />
+
+      <section className="space-y-6 text-sm">
+        <div>
+          <h2 className="text-lg font-bold mb-2">活動ポリシー</h2>
+          <p>ユーザーファースト・信頼性・継続学習を軸に活動しています。</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold mb-2">利用ツール</h2>
+          <p>React / Next.js / Tailwind CSS / Figma / Zapier などを駆使しています。</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold mb-2">更新履歴</h2>
+          <ul className="list-disc ml-5 space-y-1">
+            <li>2025-01 サイトリニューアル</li>
+            <li>2024-11 ブログ機能追加</li>
+          </ul>
+        </div>
+      </section>
+
+      <CTASection
+        href="mailto:contact@freehackapp.com"
+        label="\uD83D\uDCE9 お仕事のご相談はこちら"
+      />
     </ScrollFadeIn>
   );
 }
