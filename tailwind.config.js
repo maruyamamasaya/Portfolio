@@ -43,7 +43,18 @@ module.exports = {
       },
       animation: {
         fadeInUp: 'fadeInUp 0.6s ease forwards'
-      }
+      },
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: '100%',
+            p: {
+              fontWeight: '400',
+              lineHeight: '1.75'
+            }
+          }
+        }
+      })
     }
   },
   plugins: [require('@tailwindcss/typography')]
