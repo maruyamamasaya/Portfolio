@@ -6,6 +6,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Breadcrumbs from './components/Breadcrumbs';
 import PageTransition from './components/PageTransition';
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
   title: 'でじサポ｜パソコン相談室',
@@ -22,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className="min-h-screen bg-gray-100 dark:bg-gray-900 text-[#222426] dark:text-gray-200 font-sans font-medium antialiased">
+      <body className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-[#222426] dark:text-gray-200 font-medium antialiased`}>
         <Header />
         <PageTransition>
           <main className="container mx-auto p-4">
