@@ -33,8 +33,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     return (
       <div className="blog-container">
         <BlogNavButtons />
-        <div className="md:flex">
-        <article className="prose md:flex-1 md:pr-4 main-content">
+        <article className="prose main-content">
           {post.image && (
             <img src={post.image} alt="eyecatch" className="mb-4" />
           )}
@@ -54,12 +53,11 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           )}
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
-        <aside className="md:w-1/5 md:pl-4 mt-4 md:mt-0 space-y-4">
+        <section className="space-y-4">
           <div className="widget">
             <TableOfContents headings={headings} />
           </div>
-        </aside>
-        </div>
+        </section>
       </div>
     );
   } catch {

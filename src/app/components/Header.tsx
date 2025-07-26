@@ -18,13 +18,18 @@ export default function Header() {
 
 
   return (
-    <header className="backdrop-blur-md bg-white/30 dark:bg-gray-800/30 shadow text-gray-800 dark:text-gray-200">
+    <header className="backdrop-blur-md bg-white/90 dark:bg-gray-900/90 shadow text-gray-900 dark:text-gray-100">
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-digital font-bold flex items-center">
           <img
-            src="/images/header_icon.png"
+            src="/images/img1.svg"
             alt="Header Icon"
-            className="w-8 h-8 mr-2"
+            className="w-8 h-8 mr-2 block dark:hidden"
+          />
+          <img
+            src="/images/img2.svg"
+            alt="Header Icon Dark"
+            className="w-8 h-8 mr-2 hidden dark:block"
           />
           <Link href="/">でじサポ｜パソコン相談室</Link>
         </h1>
@@ -33,9 +38,9 @@ export default function Header() {
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
-          <span className="block w-6 h-0.5 bg-white mb-1" />
-          <span className="block w-6 h-0.5 bg-white mb-1" />
-          <span className="block w-6 h-0.5 bg-white" />
+          <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1" />
+          <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1" />
+          <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200" />
         </button>
         <nav className="hidden sm:block">
           <ul className="flex space-x-4 text-sm">
