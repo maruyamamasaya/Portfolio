@@ -1,4 +1,4 @@
-import { unified } from 'unified';
+import { unified, type Plugin, type Processor } from 'unified';
 import parse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
@@ -71,7 +71,7 @@ function formatBold(content: string): string {
 }
 
 // MDAST（Markdownの抽象構文木）に対するプラグイン
-function headingsPlugin(headings: Heading[]) {
+function headingsPlugin(headings: Heading[]): Plugin<[], Root> {
   return () => (tree: Root) => {
     const visit = (node: any) => {
       if (node.type === 'heading' && node.depth <= 3) {
@@ -105,14 +105,15 @@ export default async function markdownToHtml(
     convertMarkdownTables(replaceInternalLinks(markdown))
   );
 
-  const result = await unified()
+  const processor: Processor = unified()
     .use(parse)
     .use(headingsPlugin(headings))
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
-    .use(rehypeStringify)
-    .process(processed);
+    .use(rehypeStringify);
+
+  const result = await processor.process(processed);
 
   return { html: result.toString(), headings };
 }
