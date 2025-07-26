@@ -73,16 +73,31 @@ export default function TagSearch({ tags, onChange }: Props) {
     }
   };
 
+  const handleSearch = () => {
+    if (query) {
+      selectTag(query);
+      setQuery("");
+    }
+  };
+
   return (
     <div className="relative">
-      <input
-        type="text"
-        placeholder="タグを検索"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        onKeyDown={onKeyDown}
-        className="border rounded px-2 py-1 w-full sm:w-64"
-      />
+      <div className="flex w-full">
+        <input
+          type="text"
+          placeholder="タグを検索"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          onKeyDown={onKeyDown}
+          className="border rounded-l px-3 h-12 flex-grow w-full"
+        />
+        <button
+          onClick={handleSearch}
+          className="h-12 px-4 bg-primary text-white rounded-r min-w-[4rem]"
+        >
+          検索
+        </button>
+      </div>
       {query && (
         <ul className="absolute left-0 right-0 mt-1 bg-white border rounded shadow max-h-60 overflow-auto z-10">
           {isLoading ? (
@@ -93,7 +108,7 @@ export default function TagSearch({ tags, onChange }: Props) {
             suggestions.map((tag, idx) => (
               <li
                 key={tag}
-                className={`px-2 py-1 cursor-pointer ${
+                className={`px-2 py-2 text-center cursor-pointer ${
                   idx === activeIndex ? "bg-primary/20" : ""
                 }`}
                 onMouseDown={() => {
@@ -105,12 +120,12 @@ export default function TagSearch({ tags, onChange }: Props) {
               </li>
             ))
           ) : (
-            <li className="px-2 py-1 text-gray-500">一致するタグが見つかりません</li>
+            <li className="px-2 py-2 text-gray-500 text-center">一致するタグが見つかりません</li>
           )}
         </ul>
       )}
       {selected.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-2">
+        <div className="flex flex-wrap gap-2 mt-2 mb-2">
           {selected.map(tag => (
             <span
               key={tag}

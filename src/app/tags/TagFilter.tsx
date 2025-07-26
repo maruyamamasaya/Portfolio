@@ -13,7 +13,9 @@ interface Props {
 export default function TagFilter({ tags, posts }: Props) {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
   const [isLoading, setIsLoading] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
   const popularTags = tags.slice(0, 5);
+  const isCollapsible = tags.length > 20;
 
   const handleChange = (selected: string[]) => {
     setIsLoading(true);
@@ -32,7 +34,19 @@ export default function TagFilter({ tags, posts }: Props) {
 
   return (
     <div>
-      <TagSearch tags={tags} onChange={handleChange} />
+      {isCollapsible && (
+        <button
+          onClick={() => setShowFilter(!showFilter)}
+          className="mb-2 h-12 px-4 bg-primary text-white rounded w-full sm:w-auto"
+        >
+          {showFilter ? 'フィルターを閉じる' : 'フィルターを開く'}
+        </button>
+      )}
+      {(!isCollapsible || showFilter) && (
+        <div className="mb-2">
+          <TagSearch tags={tags} onChange={handleChange} />
+        </div>
+      )}
       {isLoading ? (
         <Loader />
       ) : filteredPosts.length === 0 ? (
