@@ -78,7 +78,7 @@ export default async function markdownToHtml(
   );
 
 
-  const result = await remark()
+  const result = await (remark() as any)
     .use(() => tree => {
       const visit = (node: any) => {
         if (node.type === 'heading' && node.depth <= 3) {
@@ -101,10 +101,10 @@ export default async function markdownToHtml(
       };
       visit(tree);
     })
-    .use(remarkRehype)
-    .use(rehypeSlug)
-    .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
-    .use(rehypeStringify)
+    .use(remarkRehype as any)
+    .use(rehypeSlug as any)
+    .use(rehypeAutolinkHeadings as any, { behavior: 'wrap' })
+    .use(rehypeStringify as any)
     .process(processed);
 
   return { html: result.toString(), headings };
