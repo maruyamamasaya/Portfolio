@@ -44,7 +44,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
     return (
       <div className="blog-container">
         <BlogNavButtons />
-        <article className="prose main-content">
+        <article className="prose prose-light dark:prose-dark main-content">
           {post.image && (
             <img src={post.image} alt="eyecatch" className="mb-4" />
           )}
