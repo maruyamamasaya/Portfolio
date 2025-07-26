@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Breadcrumbs from './components/Breadcrumbs';
 import PageTransition from './components/PageTransition';
+import TagList from './components/TagList';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
@@ -27,6 +28,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ja">
       <body className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-[#222426] dark:text-gray-200 font-medium antialiased transition-base`}>
         <Header />
+        <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+          <div className="container mx-auto p-2">
+            <TagList />
+          </div>
+        </div>
         <PageTransition>
           <main className="container mx-auto p-4">
             {children}

@@ -4,6 +4,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeStringify from 'rehype-stringify';
+import { Root } from 'mdast';
 
 export interface Heading {
   id: string;
@@ -69,6 +70,32 @@ function formatBold(content: string): string {
   return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 }
 
+// MDAST（Markdownの抽象構文木）に対するプラグイン
+function headingsPlugin(headings: Heading[]) {
+  return () => (tree: Root) => {
+    const visit = (node: any) => {
+      if (node.type === 'heading' && node.depth <= 3) {
+        const text = node.children
+          .filter((child: any) => child.type === 'text')
+          .map((child: any) => child.value)
+          .join('');
+        const existingId = node.data?.hProperties?.id as string | undefined;
+        const id = existingId || slugify(text);
+        node.data = node.data || {};
+        node.data.hProperties = node.data.hProperties || {};
+        if (!existingId) {
+          node.data.hProperties.id = id;
+        }
+        headings.push({ id, text, level: node.depth });
+      }
+      if (node.children) {
+        node.children.forEach((child: any) => visit(child));
+      }
+    };
+    visit(tree);
+  };
+}
+
 export default async function markdownToHtml(
   markdown: string
 ): Promise<{ html: string; headings: Heading[] }> {
@@ -78,32 +105,9 @@ export default async function markdownToHtml(
     convertMarkdownTables(replaceInternalLinks(markdown))
   );
 
-  const headingsPlugin = () => (tree: any) => {
-      const visit = (node: any) => {
-        if (node.type === 'heading' && node.depth <= 3) {
-          const text = node.children
-            .filter((child: any) => child.type === 'text')
-            .map((child: any) => child.value)
-            .join('');
-          const existingId = node.data?.hProperties?.id as string | undefined;
-          const id = existingId || slugify(text);
-          node.data = node.data || {};
-          node.data.hProperties = node.data.hProperties || {};
-          if (!existingId) {
-            node.data.hProperties.id = id;
-          }
-          headings.push({ id, text, level: node.depth });
-        }
-        if (node.children) {
-          node.children.forEach((child: any) => visit(child));
-        }
-      };
-      visit(tree);
-    };
-
   const result = await unified()
     .use(parse)
-    .use(headingsPlugin)
+    .use(headingsPlugin(headings))
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
