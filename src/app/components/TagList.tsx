@@ -12,7 +12,7 @@ export default function TagList() {
   };
   return (
     <div>
-      <h3 className="font-bold mb-2">タグ</h3>
+      <h3 className="font-bold mb-2">タグ一覧</h3>
       <div className="flex flex-wrap gap-2">
         {tagCounts.map(({ tag, count }) => (
           <TagButton key={tag} label={tag} sizeClass={getSizeClass(count)} />
