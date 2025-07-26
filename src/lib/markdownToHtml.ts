@@ -78,15 +78,18 @@ export default async function markdownToHtml(
   const result = await remark()
     .use(() => tree => {
       const visit = (node: any) => {
-        if (node.type === 'heading' && node.depth <= 4) {
+        if (node.type === 'heading' && node.depth <= 3) {
           const text = node.children
             .filter((child: any) => child.type === 'text')
             .map((child: any) => child.value)
             .join('');
-          const id = slugify(text);
+          const existingId = node.data?.hProperties?.id as string | undefined;
+          const id = existingId || slugify(text);
           node.data = node.data || {};
           node.data.hProperties = node.data.hProperties || {};
-          node.data.hProperties.id = id;
+          if (!existingId) {
+            node.data.hProperties.id = id;
+          }
           headings.push({ id, text, level: node.depth });
         }
         if (node.children) {

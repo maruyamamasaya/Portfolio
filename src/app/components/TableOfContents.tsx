@@ -8,19 +8,23 @@ export interface Heading {
 
 export default function TableOfContents({ headings }: { headings: Heading[] }) {
   if (!headings || headings.length === 0) return null;
-  const indent = ['','ml-2','ml-4','ml-6'];
+  const levels = [
+    'pl-0 text-base',
+    'pl-4 text-sm',
+    'pl-8 text-xs'
+  ];
   return (
-    <div>
+    <aside className="bg-gray-100 p-4 rounded-lg mb-6">
       <h3 className="font-bold mb-2">目次</h3>
-      <ul className="text-sm space-y-1">
+      <ul className="space-y-1">
         {headings.map(h => (
-          <li key={h.id} className={indent[h.level - 1] || indent[indent.length - 1]}>
+          <li key={h.id} className={levels[h.level - 1] || levels[levels.length - 1]}>
             <Link href={`#${h.id}`} className="text-primary hover:underline">
               {h.text}
             </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </aside>
   );
 }

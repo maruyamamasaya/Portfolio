@@ -49,9 +49,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             <img src={post.image} alt="eyecatch" className="mb-4" />
           )}
           {headings && headings.length > 0 && (
-            <div className="md:hidden mb-4">
-              <TableOfContents headings={headings} />
-            </div>
+            <TableOfContents headings={headings} />
           )}
           <h1 className="text-3xl md:text-4xl font-bold mb-2">{post.title}</h1>
           <p className="text-sm text-gray-500 mb-4">著者: 管理者 / {post.date}{post.updated && ` (更新: ${post.updated})`}</p>
@@ -83,7 +81,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <RelatedPosts posts={related} />
         <section className="space-y-4">
           <LeftSidebar />
-          <RightSidebar posts={posts} headings={headings} />
+          <RightSidebar posts={posts} />
         </section>
       </div>
     );
