@@ -15,7 +15,7 @@ export default function NotFound() {
 
       <Link
         href="/"
-        className="mt-6 px-6 py-3 border border-neon rounded-xl hover:bg-neon hover:text-black transition-colors duration-300"
+        className="mt-6 px-6 py-3 border border-neon rounded-xl hover:bg-neon hover:text-black motion-safe:transition-colors motion-reduce:transition-none duration-300"
       >
         ⟵ メインフレームへ帰還
       </Link>

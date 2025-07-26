@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-[#222426] dark:text-gray-200 font-medium antialiased`}>
+      <body className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-[#222426] dark:text-gray-200 font-medium antialiased transition-base`}>
         <Header />
         <PageTransition>
           <main className="container mx-auto p-4">
