@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { getSortedDevPosts } from '@/lib/devPosts';
 import BlogNavButtons from '../components/BlogNavButtons';
+import TagBadge from '../components/TagBadge';
 
 export const metadata: Metadata = {
   robots: { index: false, follow: false }
@@ -31,14 +32,8 @@ export default function BlogIndex() {
                   </span>
                   {post.tags && (
                     <span className="block text-xs text-gray-600 space-x-1">
-                      {post.tags.map(tag => (
-                        <Link
-                          key={tag}
-                          href={`/tags/${encodeURIComponent(tag)}`}
-                          className="hover:underline"
-                        >
-                          #{tag}
-                        </Link>
+                      {post.tags.slice(0, 3).map(tag => (
+                        <TagBadge key={tag} tag={tag} />
                       ))}
                     </span>
                   )}

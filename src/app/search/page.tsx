@@ -3,6 +3,7 @@ import { searchPosts, getSortedPosts, Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import { Metadata } from 'next';
 import SearchBar from '../components/SearchBar';
+import TagBadge from '../components/TagBadge';
 
 export const metadata: Metadata = {
   title: 'Search'
@@ -92,16 +93,25 @@ export default function SearchPage({
                     className="w-full h-40 object-cover rounded"
                   />
                 )}
-                <Link href={`/blog/${post.slug}`} className="text-primary hover:underline text-lg">
-                  {highlight(post.title)}
-                </Link>
-                <div className="text-sm text-gray-500">
-                  {post.date}
-                  {post.category && ` / ${post.category}`}
+                <div className="space-y-1">
+                  <Link href={`/blog/${post.slug}`} className="text-primary hover:underline text-lg">
+                    {highlight(post.title)}
+                  </Link>
+                  <div className="text-sm text-gray-500">
+                    {post.date}
+                    {post.category && ` / ${post.category}`}
+                  </div>
+                  <p className="text-sm">
+                    {highlight(getExcerpt(post.content))}...
+                  </p>
+                  {post.tags && (
+                    <div className="flex flex-wrap gap-1 text-xs">
+                      {post.tags.slice(0, 3).map(tag => (
+                        <TagBadge key={tag} tag={tag} />
+                      ))}
+                    </div>
+                  )}
                 </div>
-                <p className="text-sm">
-                  {highlight(getExcerpt(post.content))}...
-                </p>
               </li>
             ))}
           </ul>

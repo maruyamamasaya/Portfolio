@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import Card from './Card';
+import TagBadge from './TagBadge';
 
 interface Props {
   post: Post;
@@ -22,14 +23,8 @@ export default function PostCard({ post }: Props) {
           <span className="text-sm text-gray-500">{post.date}</span>
           {post.tags && (
             <div className="flex flex-wrap gap-1 text-xs">
-              {post.tags.map(tag => (
-                <Link
-                  key={tag}
-                  href={`/tags/${encodeURIComponent(tag)}`}
-                  className="bg-gray-200 px-2 py-1 rounded hover:underline"
-                >
-                  #{tag}
-                </Link>
+              {post.tags.slice(0, 3).map(tag => (
+                <TagBadge key={tag} tag={tag} />
               ))}
             </div>
           )}
