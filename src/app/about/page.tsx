@@ -1,6 +1,7 @@
 import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import ProfileCategories from '../components/ProfileCategories';
+import SkillBars from '../components/SkillBars';
 
 export default function About() {
   return (
@@ -31,6 +32,7 @@ export default function About() {
       </p>
 
       <p className="text-sm text-gray-500">※ 本名は非公開。活動名は今後設定予定です。</p>
+      <SkillBars />
       <ProfileCategories />
     </ScrollFadeIn>
   );
