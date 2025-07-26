@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { searchPosts, Post } from '@/lib/posts';
+import { searchPosts, getSortedPosts, Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import { Metadata } from 'next';
+import SearchBar from '../components/SearchBar';
 
 export const metadata: Metadata = {
   title: 'Search'
@@ -10,16 +11,31 @@ export const metadata: Metadata = {
 export default function SearchPage({
   searchParams
 }: {
-  searchParams: { q?: string; tag?: string | string[] }
+  searchParams: { q?: string; category?: string; tag?: string | string[] };
 }) {
   const query = searchParams.q ?? '';
-  const tags = searchParams.tag
-    ? Array.isArray(searchParams.tag)
-      ? searchParams.tag.map(t => decodeURIComponent(t))
-      : [decodeURIComponent(searchParams.tag)]
+  const category = searchParams.category ?? '';
+  const tagParam = searchParams.tag;
+  const tags: string[] = tagParam
+    ? Array.isArray(tagParam)
+      ? tagParam.map(t => decodeURIComponent(t))
+      : [decodeURIComponent(tagParam)]
     : [];
-  const results: Post[] = query || tags.length ? searchPosts(query, tags) : [];
-  const hasFilter = query !== '' || tags.length > 0;
+
+  let results: Post[] = query || category || tags.length
+    ? searchPosts(query)
+    : getSortedPosts();
+
+  if (category) {
+    results = results.filter(p => p.category === category);
+  }
+  if (tags.length) {
+    results = results.filter(p =>
+      p.tags?.some(t => tags.includes(t))
+    );
+  }
+
+  const hasFilter = query !== '' || category !== '' || tags.length > 0;
 
   const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const highlight = (text: string) => {
@@ -34,6 +50,7 @@ export default function SearchPage({
       )
     );
   };
+
   const getExcerpt = (content: string, length = 80) => {
     const plain = content
       .replace(/```[\s\S]*?```/g, '')
@@ -50,6 +67,7 @@ export default function SearchPage({
     <div>
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Search</h1>
+
       {tags.length > 0 && (
         <div className="mb-2 flex flex-wrap gap-2">
           {tags.map(tag => (
@@ -59,15 +77,9 @@ export default function SearchPage({
           ))}
         </div>
       )}
-      <form className="mb-4">
-        <input
-          type="text"
-          name="q"
-          placeholder="キーワードを入力"
-          defaultValue={query}
-          className="border rounded px-2 py-1 w-full sm:w-64"
-        />
-      </form>
+
+      <SearchBar className="mb-4" />
+
       {hasFilter && (
         results.length ? (
           <ul className="space-y-4">

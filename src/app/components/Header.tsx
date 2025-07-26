@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import DarkModeToggle from './DarkModeToggle';
 import Drawer from './Drawer';
+import SearchBar from './SearchBar';
 
 export default function Header() {
   const pathname = usePathname();
@@ -150,7 +151,7 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex items-center space-x-1 hover:text-primary motion-safe:transition-transform motion-reduce:transition-none duration-200 hover:scale-105"
+                  className="inline-flex items-center space-x-1 hover:text-primary motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out hover:scale-105"
                 >
                   {item.icon}
                   <span>{item.label}</span>
@@ -159,14 +160,9 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <form action="/search" method="get" className="hidden sm:block ml-4">
-          <input
-            type="text"
-            name="q"
-            placeholder="キーワードを入力"
-            className="border rounded px-2 py-1 text-sm"
-          />
-        </form>
+        <div className="hidden sm:block ml-4 w-48">
+          <SearchBar />
+        </div>
         <DarkModeToggle />
         <Drawer open={open} onClose={() => setOpen(false)}>
           <ul className="flex flex-col space-y-4 mt-8">
@@ -183,14 +179,9 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <form action="/search" method="get" className="mt-4">
-            <input
-              type="text"
-              name="q"
-              placeholder="キーワードを入力"
-              className="w-full border rounded px-2 py-1"
-            />
-          </form>
+          <div className="mt-4">
+            <SearchBar />
+          </div>
         </Drawer>
       </div>
       {/* Category links removed */}

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import SearchBar from './SearchBar';
 
 export default function HeroSection() {
   return (
@@ -14,18 +15,11 @@ export default function HeroSection() {
         <p className="text-white">パソコンやIT活用のお悩みをサポートします。</p>
         <Link
           href="/contact"
-          className="inline-block px-4 py-2 bg-primary text-white rounded shadow motion-safe:transition-transform motion-reduce:transition-none duration-200 hover:scale-105"
+          className="inline-block px-4 py-2 bg-primary text-white rounded shadow motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out hover:scale-105"
         >
           お問い合わせ
         </Link>
-        <form action="/search" method="get" className="flex justify-center">
-          <input
-            type="text"
-            name="q"
-            placeholder="記事タイトル・タグから検索"
-            className="w-full sm:w-64 px-3 py-2 rounded border"
-          />
-        </form>
+        <SearchBar className="flex justify-center" />
       </div>
     </section>
   );
