@@ -83,21 +83,18 @@ export default function SearchPage({
 
       {hasFilter && (
         results.length ? (
-          <ul className="space-y-4">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {results.map(post => (
-              <li
-                key={post.slug}
-                className="flex space-x-4 p-2 bg-white dark:bg-gray-800 rounded shadow"
-              >
+              <li key={post.slug} className="bg-white dark:bg-gray-800 rounded shadow p-4 space-y-2">
                 {post.image && (
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-24 h-24 object-cover flex-shrink-0 rounded"
+                    className="w-full h-40 object-cover rounded"
                   />
                 )}
-                <div className="flex-1 space-y-1">
-                  <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
+                <div className="space-y-1">
+                  <Link href={`/blog/${post.slug}`} className="text-primary hover:underline text-lg">
                     {highlight(post.title)}
                   </Link>
                   <div className="text-sm text-gray-500">
