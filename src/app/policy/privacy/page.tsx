@@ -82,7 +82,7 @@ export default function Privacy() {
         <br />
         <a
           href="mailto:contact@freehackapp.com"
-          className="text-primary hover:underline"
+          className="accent-text hover:underline"
         >
           contact@freehackapp.com
         </a>

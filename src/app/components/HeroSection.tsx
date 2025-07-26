@@ -10,7 +10,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/50 via-purple-500/50 to-pink-500/50" />
       <div className="relative text-center space-y-4 bg-black/50 p-4 rounded">
         <h2 className="text-3xl font-bold text-balance text-white">
-          分からないを<span className="text-primary">分かる</span>に変える
+          分からないを<span className="accent-text">分かる</span>に変える
         </h2>
         <p className="text-white">パソコンやIT活用のお悩みをサポートします。</p>
         <Link

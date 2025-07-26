@@ -94,7 +94,7 @@ export default function SearchPage({
                   />
                 )}
                 <div className="space-y-1">
-                  <Link href={`/blog/${post.slug}`} className="text-primary hover:underline text-lg">
+                  <Link href={`/blog/${post.slug}`} className="accent-text hover:underline text-lg">
                     {highlight(post.title)}
                   </Link>
                   <div className="text-sm text-gray-500">

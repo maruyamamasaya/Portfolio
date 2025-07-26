@@ -24,7 +24,7 @@ export default function Law() {
           <dd>
             <a
               href="mailto:contact@freehackapp.com"
-              className="text-primary hover:underline"
+              className="accent-text hover:underline"
             >
               contact@freehackapp.com
             </a>

@@ -112,7 +112,7 @@ export default function DeveloperEditor() {
           {files.map(name => (
             <li key={name}>
               <button
-                className="text-primary underline"
+                className="accent-text underline"
                 onClick={() => openFile(name)}
               >
                 {name}

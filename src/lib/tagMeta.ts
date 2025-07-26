@@ -3,5 +3,5 @@ export const tagMeta: Record<string, { icon: string; textColor: string; bgColor:
   'デザイン': { icon: '🎨', textColor: 'text-pink-700', bgColor: 'bg-pink-100' }
 };
 
-export const defaultTagMeta = { icon: '🏷', textColor: 'text-primary', bgColor: 'bg-gray-200' };
+export const defaultTagMeta = { icon: '🏷', textColor: 'accent-text', bgColor: 'bg-gray-200' };
 
