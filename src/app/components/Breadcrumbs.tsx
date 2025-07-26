@@ -38,7 +38,7 @@ export default function Breadcrumbs() {
             >
               <ArrowIcon />
               {isLast ? (
-                <span aria-current="page" className="font-semibold text-primary">
+                <span aria-current="page" className="font-semibold accent-text">
                   {decodeURIComponent(seg)}
                 </span>
               ) : (

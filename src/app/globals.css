@@ -9,7 +9,7 @@
 }
 
 /* accent text color switching with theme */
-.text-primary {
+.accent-text {
   @apply text-primary dark:text-secondary;
 }
 

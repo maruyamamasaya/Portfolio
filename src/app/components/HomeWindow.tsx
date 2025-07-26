@@ -53,7 +53,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
                   />
                 )}
                 <div>
-                  <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
+                  <Link href={`/blog/${post.slug}`} className="accent-text hover:underline">
                     {post.title}
                   </Link>
                   <span className="block text-sm text-gray-500">{post.date}</span>

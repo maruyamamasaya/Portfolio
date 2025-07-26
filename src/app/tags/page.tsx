@@ -29,7 +29,7 @@ export default function TagsPage() {
       </ul>
       {hasMore && (
         <div className="mt-4">
-          <Link href="/tags/more" className="text-primary hover:underline">
+          <Link href="/tags/more" className="accent-text hover:underline">
             もっと見る
           </Link>
         </div>
