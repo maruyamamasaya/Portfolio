@@ -24,7 +24,7 @@ function renderNode(node: CategoryNode) {
 export default function CategoriesPage() {
   const tree = getCategoryTree();
   return (
-    <div className="prose relative">
+    <div className="prose prose-light dark:prose-dark relative">
       <BlogNavButtons />
       <h1>Categories</h1>
       <ul className="pl-0">{renderNode(tree)}</ul>

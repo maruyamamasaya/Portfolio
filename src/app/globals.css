@@ -8,6 +8,19 @@
   @apply motion-safe:transition-all motion-reduce:transition-none duration-300 ease-in-out;
 }
 
+/* accent text color switching with theme */
+.text-primary {
+  @apply text-primary dark:text-secondary;
+}
+
+/* prose text color variants */
+.prose-light {
+  @apply text-light;
+}
+.prose-dark {
+  @apply text-dark;
+}
+
 /* layout helpers for blog pages */
 .main-content {
   @apply bg-white p-4 md:p-6 rounded-xl border border-gray-100 shadow-md mb-4;
