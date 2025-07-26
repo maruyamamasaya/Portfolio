@@ -5,12 +5,18 @@ interface Props {
   children: ReactNode;
   className?: string;
   as?: ElementType;
+  /**
+   * Animation delay in milliseconds. Useful when rendering lists
+   * to stagger animations and reduce simultaneous triggers.
+   */
+  delay?: number;
 }
 
 export default function ScrollFadeIn({
   children,
   className = "",
-  as: Component = "div"
+  as: Component = "div",
+  delay = 0
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -25,7 +31,7 @@ export default function ScrollFadeIn({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.2 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -35,6 +41,7 @@ export default function ScrollFadeIn({
     <Component
       ref={ref as any}
       className={`${className} ${visible ? "animate-fadeInUp" : "opacity-0"}`}
+      style={{ animationDelay: `${delay}ms` }}
     >
       {children}
     </Component>
