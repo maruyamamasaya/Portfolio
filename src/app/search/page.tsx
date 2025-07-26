@@ -1,15 +1,28 @@
 import Link from 'next/link';
-import { searchPosts, Post } from '@/lib/posts';
+import { searchPosts, getSortedPosts, Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import { Metadata } from 'next';
+import SearchBar from '../components/SearchBar';
 
 export const metadata: Metadata = {
   title: 'Search'
 };
 
-export default function SearchPage({ searchParams }: { searchParams: { q?: string } }) {
+export default function SearchPage({
+  searchParams
+}: {
+  searchParams: { q?: string; category?: string; tag?: string };
+}) {
   const query = searchParams.q ?? '';
-  const results: Post[] = query ? searchPosts(query) : [];
+  const category = searchParams.category ?? '';
+  const tag = searchParams.tag ?? '';
+  let results: Post[] = query ? searchPosts(query) : getSortedPosts();
+  if (category) {
+    results = results.filter(p => p.category === category);
+  }
+  if (tag) {
+    results = results.filter(p => p.tags?.includes(tag));
+  }
 
   const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const highlight = (text: string) => {
@@ -40,15 +53,7 @@ export default function SearchPage({ searchParams }: { searchParams: { q?: strin
     <div>
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Search</h1>
-      <form className="mb-4">
-        <input
-          type="text"
-          name="q"
-          placeholder="キーワードを入力"
-          defaultValue={query}
-          className="border rounded px-2 py-1 w-full sm:w-64"
-        />
-      </form>
+      <SearchBar className="mb-4" />
       {query && (
         results.length ? (
           <ul className="space-y-4">
