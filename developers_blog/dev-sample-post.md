@@ -5,6 +5,7 @@ image: "/images/dev.png"
 tags:
   - "サンプル"
   - "開発"
+category: "開発"
 updated: "2025-08-02"
 ---
 
