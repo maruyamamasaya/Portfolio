@@ -1,4 +1,5 @@
-import { remark } from 'remark';
+import { unified } from 'unified';
+import parse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -77,9 +78,7 @@ export default async function markdownToHtml(
     convertMarkdownTables(replaceInternalLinks(markdown))
   );
 
-
-  const result = await remark()
-    .use(() => tree => {
+  const headingsPlugin = () => (tree: any) => {
       const visit = (node: any) => {
         if (node.type === 'heading' && node.depth <= 3) {
           const text = node.children
@@ -100,7 +99,11 @@ export default async function markdownToHtml(
         }
       };
       visit(tree);
-    })
+    };
+
+  const result = await unified()
+    .use(parse)
+    .use(headingsPlugin)
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
