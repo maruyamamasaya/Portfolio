@@ -37,7 +37,7 @@ export default function TagFilter({ tags, posts }: Props) {
       {isCollapsible && (
         <button
           onClick={() => setShowFilter(!showFilter)}
-          className="mb-2 h-12 px-4 bg-primary text-white rounded w-full sm:w-auto"
+          className="mb-2 h-12 px-4 bg-primary text-white rounded-xl shadow-md w-full sm:w-auto"
         >
           {showFilter ? 'フィルターを閉じる' : 'フィルターを開く'}
         </button>
@@ -67,7 +67,7 @@ export default function TagFilter({ tags, posts }: Props) {
       ) : (
         <ul className="mt-4 space-y-4">
           {filteredPosts.map(post => (
-            <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
+            <li key={post.slug} className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md animate-fadeInUp">
               {post.image && (
                 <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
               )}

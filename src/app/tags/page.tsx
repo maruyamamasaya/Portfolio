@@ -15,11 +15,11 @@ export default function TagsPage() {
       <div className="mb-4">
         <TagFilter tags={tags} posts={posts} />
       </div>
-      <ul className="flex flex-wrap gap-2">
+      <ul className="flex flex-wrap gap-4">
         {displayTags.map(tag => (
           <li
             key={tag}
-            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow"
+            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow-md"
           >
             <Link href={`/tags/${encodeURIComponent(tag)}`} className="hover:underline">
               {tag}

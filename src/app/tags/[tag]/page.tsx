@@ -25,7 +25,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
       <h1 className="text-2xl font-bold mb-4">Tag: {decodedTag}</h1>
       <ul className="space-y-4">
         {posts.map(post => (
-          <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
+          <li key={post.slug} className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md animate-fadeInUp">
             {post.image && (
               <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
             )}
