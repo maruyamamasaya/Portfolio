@@ -1,4 +1,5 @@
 import HeroSection from './HeroSection';
+import Profile from './Profile';
 import ServicesSection from './ServicesSection';
 import WorksSection from './WorksSection';
 import TestimonialsSection from './TestimonialsSection';
@@ -18,6 +19,11 @@ type HomeWindowProps = {
 export default function HomeWindow({ posts }: HomeWindowProps) {
   return (
     <div className="space-y-12">
+      {/* プロフィールセクション */}
+      <section className="mt-4">
+        <Profile />
+      </section>
+
       {/* Heroセクション */}
       <HeroSection />
 
