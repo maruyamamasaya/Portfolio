@@ -59,6 +59,22 @@ export default function Header() {
       )
     },
     {
+      href: '/ai-course',
+      label: 'AI講座',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-4 h-4"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 12h8M12 8v8" />
+        </svg>
+      )
+    },
+    {
       href: '/blog',
       label: 'ブログ',
       icon: (
