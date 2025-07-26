@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-primary via-primary to-secondary text-white mt-8 text-sm border-t-4 border-yellow-300">
+    <footer className="bg-gradient-to-r from-gray-900 via-indigo-900 to-purple-800 text-white mt-8 text-sm border-t-4 border-yellow-300">
       <div className="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
           <h2 className="font-semibold mb-2 sr-only">ナビゲーション</h2>
