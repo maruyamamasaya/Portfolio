@@ -9,16 +9,118 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const navItems = [
-    { href: '/about', label: 'プロフィール' },
-    { href: '/works', label: 'Work' },
-    { href: '/blog', label: 'ブログ' },
-    { href: '/categories', label: 'カテゴリ' },
-    { href: '/tags', label: 'タグ検索' },
+    {
+      href: '/about',
+      label: 'プロフィール',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-4 h-4"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 20v-1c0-2.21 3.58-4 8-4s8 1.79 8 4v1"
+          />
+        </svg>
+      )
+    },
+    {
+      href: '/works',
+      label: 'Work',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-4 h-4"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 7h18v13H3z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"
+          />
+        </svg>
+      )
+    },
+    {
+      href: '/blog',
+      label: 'ブログ',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-4 h-4"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 4h7v16H4zM13 4h7v16h-7z"
+          />
+        </svg>
+      )
+    },
+    {
+      href: '/categories',
+      label: 'カテゴリ',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-4 h-4"
+        >
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+        </svg>
+      )
+    },
+    {
+      href: '/tags',
+      label: 'タグ検索',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-4 h-4"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 12l9 9 9-9-9-9-9 9z"
+          />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      )
+    }
   ];
 
 
   return (
-    <header className="backdrop-blur-md bg-white/90 dark:bg-gray-900/90 shadow text-gray-900 dark:text-gray-100">
+    <header
+      className="backdrop-blur-md bg-gradient-to-b from-white/80 to-gray-50/80 dark:from-gray-900/80 dark:to-gray-800/80 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100"
+    >
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-digital font-bold flex items-center">
           <img
@@ -44,9 +146,15 @@ export default function Header() {
         </button>
         <nav className="hidden sm:block">
           <ul className="flex space-x-4 text-sm">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
+                <Link
+                  href={item.href}
+                  className="inline-flex items-center space-x-1 hover:text-primary transition-transform duration-200 hover:scale-105"
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </Link>
               </li>
             ))}
           </ul>
@@ -64,8 +172,13 @@ export default function Header() {
           <ul className="flex flex-col space-y-4 mt-8">
             {navItems.map(item => (
               <li key={item.href}>
-                <Link href={item.href} onClick={() => setOpen(false)} className="block py-1">
-                  {item.label}
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center space-x-2 py-1 hover:text-primary"
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
                 </Link>
               </li>
             ))}
