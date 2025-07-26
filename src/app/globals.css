@@ -5,7 +5,7 @@
 
 /* layout helpers for blog pages */
 .main-content {
-  @apply bg-white p-4 rounded-xl border border-gray-100 shadow-md mb-4;
+  @apply bg-white p-4 md:p-6 rounded-xl border border-gray-100 shadow-md mb-4;
 }
 
 .widget {
@@ -28,6 +28,8 @@
 
 .prose p {
   font-weight: 400;
+  line-height: 1.8;
+  margin-bottom: 1.25em;
 }
 
 /* Blog heading styles */
@@ -65,4 +67,21 @@
   bottom: 0;
   width: 4px;
   background-color: theme('colors.blue.300');
+}
+
+/* Code blocks and images */
+.prose pre {
+  @apply bg-gray-800 text-gray-100 p-4 rounded overflow-x-auto;
+}
+
+.prose code {
+  @apply bg-gray-100 text-pink-600 px-1 py-0.5 rounded;
+}
+
+.dark .prose code {
+  @apply bg-gray-800 text-pink-200;
+}
+
+.prose img {
+  @apply rounded-md shadow-md my-4;
 }
