@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 interface PostMeta {
   slug: string;
   title: string;
-  category?: string;
+  category: string;
   tags?: string[];
 }
 
