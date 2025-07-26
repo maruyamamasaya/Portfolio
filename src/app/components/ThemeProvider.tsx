@@ -16,9 +16,19 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored === "dark") {
+    const system = window.matchMedia("(prefers-color-scheme: dark)");
+    if (stored) {
+      setTheme(stored);
+    } else if (system.matches) {
       setTheme("dark");
     }
+    const listener = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem("theme")) {
+        setTheme(e.matches ? "dark" : "light");
+      }
+    };
+    system.addEventListener("change", listener);
+    return () => system.removeEventListener("change", listener);
   }, []);
 
   useEffect(() => {
