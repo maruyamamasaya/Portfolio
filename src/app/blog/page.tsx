@@ -1,10 +1,13 @@
-import Link from 'next/link';
 import { getSortedPosts } from '@/lib/posts';
 import LeftSidebar from '@/app/components/LeftSidebar';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
+import PostCard from '@/app/components/PostCard';
 
 export default function BlogIndex() {
   const posts = getSortedPosts();
+  const latest = posts.slice(0, 3);
+  const rest = posts.slice(3);
+
   return (
     <div className="blog-container">
       <BlogNavButtons />
@@ -13,39 +16,25 @@ export default function BlogIndex() {
         <aside className="md:w-1/5 md:pr-4 mb-4 md:mb-0">
           <LeftSidebar />
         </aside>
-        <div className="md:flex-1 main-content">
-          <ul className="space-y-4">
-            {posts.map(post => (
-              <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
-                {post.image && (
-                  <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
-                )}
-                <div>
-                  <Link href={`/blog/${post.slug}`}
-                    className="text-primary hover:underline">
-                    {post.title}
-                  </Link>
-                  <span className="block text-sm text-gray-500">
-                    {post.date}
-                    {post.updated && ` (更新: ${post.updated})`}
-                  </span>
-                  {post.tags && (
-                    <span className="block text-xs text-gray-600 space-x-1">
-                      {post.tags.map(tag => (
-                        <Link
-                          key={tag}
-                          href={`/tags/${encodeURIComponent(tag)}`}
-                          className="hover:underline"
-                        >
-                          #{tag}
-                        </Link>
-                      ))}
-                    </span>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
+        <div className="md:flex-1 space-y-8">
+          <section className="main-content">
+            <h2 className="text-xl font-bold mb-4">最新記事</h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {latest.map(post => (
+                <PostCard key={post.slug} post={post} />
+              ))}
+            </div>
+          </section>
+          {rest.length > 0 && (
+            <section className="main-content">
+              <h2 className="text-xl font-bold mb-4">過去の記事</h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {rest.map(post => (
+                  <PostCard key={post.slug} post={post} />
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>
