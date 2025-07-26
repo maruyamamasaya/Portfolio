@@ -90,6 +90,10 @@ export function getPostsByTags(tags: string[]): Post[] {
   );
 }
 
+export function getPostsByCategory(category: string): Post[] {
+  return getSortedPosts().filter(post => post.category === category);
+}
+
 export function searchPosts(query: string, tags: string[] = []): Post[] {
   const q = query.toLowerCase();
   return getSortedPosts().filter(post => {

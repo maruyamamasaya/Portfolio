@@ -1,5 +1,6 @@
 import Profile from './Profile';
 import TagList from './TagList';
+import CategoryList from './CategoryList';
 
 export default function LeftSidebar() {
 
@@ -8,9 +9,12 @@ export default function LeftSidebar() {
       <div className="widget">
         <Profile />
       </div>
-        <div className="widget">
-          <TagList />
-        </div>
+      <div className="widget">
+        <CategoryList />
+      </div>
+      <div className="widget">
+        <TagList />
+      </div>
     </div>
   );
 }

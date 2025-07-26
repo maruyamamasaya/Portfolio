@@ -7,21 +7,27 @@ export interface Category {
 
 export const categories: Category[] = [
   {
-    slug: 'ai-tools',
-    name: 'AIツール',
-    description: 'AIを活用した便利なツール',
-    icon: '💡',
+    slug: 'ai',
+    name: 'AI活用',
+    description: 'AIを活用した記事やツールの紹介',
+    icon: '🤖',
   },
   {
-    slug: 'dev-tools',
-    name: '開発ツール',
-    description: '開発に役立つサービスやライブラリ',
+    slug: 'tutorial',
+    name: 'チュートリアル',
+    description: '手順解説や Tips をまとめた記事',
+    icon: '📑',
+  },
+  {
+    slug: 'meta',
+    name: 'メタ情報',
+    description: 'ブログ運営などメタ的な内容',
+    icon: '📝',
+  },
+  {
+    slug: 'dev',
+    name: '開発',
+    description: '開発者向けの技術情報',
     icon: '🛠️',
-  },
-  {
-    slug: 'design',
-    name: 'デザイン',
-    description: 'デザインに関するノウハウやツール',
-    icon: '🎨',
   },
 ];
