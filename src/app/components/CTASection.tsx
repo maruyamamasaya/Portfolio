@@ -1,11 +1,24 @@
 import Link from 'next/link';
 
-export default function CTASection() {
+interface Props {
+  title?: string;
+  href?: string;
+  label?: string;
+}
+
+export default function CTASection({
+  title = 'お問い合わせはこちら',
+  href = '/contact',
+  label = 'お問い合わせ'
+}: Props) {
   return (
-    <section className="mb-12 text-center">
-      <h2 className="text-2xl font-bold mb-4">お問い合わせはこちら</h2>
-      <Link href="/contact" className="px-6 py-3 bg-primary text-white rounded">
-        お問い合わせ
+    <section className="my-12 text-center space-y-4">
+      <h2 className="text-2xl font-bold">{title}</h2>
+      <Link
+        href={href}
+        className="inline-block px-6 py-3 bg-primary text-white rounded shadow hover:bg-primary/80"
+      >
+        {label}
       </Link>
     </section>
   );
