@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Breadcrumbs from './components/Breadcrumbs';
 import PageTransition from './components/PageTransition';
 import TagList from './components/TagList';
+import { ThemeProvider } from './components/ThemeProvider';
 import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
@@ -26,7 +27,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-[#222426] dark:text-gray-200 font-medium antialiased transition-base`}>
+      <body className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-light dark:text-dark font-medium antialiased transition-base`}>
+        <ThemeProvider>
         <Header />
         <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="container mx-auto p-2">
@@ -40,6 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </main>
         </PageTransition>
         <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

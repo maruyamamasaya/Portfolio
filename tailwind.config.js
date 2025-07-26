@@ -33,7 +33,9 @@ module.exports = {
       },
       colors: {
         primary: '#005bac',
-        secondary: '#93c5fd'
+        secondary: '#93c5fd',
+        'light': '#222426',
+        'dark': '#f5f5f5'
       },
       keyframes: {
         fadeInUp: {
