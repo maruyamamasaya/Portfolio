@@ -1,7 +1,9 @@
 "use client";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+
+let isFirstLoad = true;
 
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -9,12 +11,16 @@ export default function PageTransition({ children }: { children: ReactNode }) {
   if (disable) {
     return <>{children}</>;
   }
+  useEffect(() => {
+    isFirstLoad = false;
+  }, []);
+  const initial = isFirstLoad ? false : { opacity: 0 };
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
         className="gpu-optimize"
-        initial={{ opacity: 0 }}
+        initial={initial}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
