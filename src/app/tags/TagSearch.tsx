@@ -82,24 +82,24 @@ export default function TagSearch({ tags, onChange }: Props) {
 
   return (
     <div className="relative">
-      <div className="flex w-full">
+      <div className="flex w-full rounded-xl shadow-md overflow-hidden">
         <input
           type="text"
           placeholder="タグを検索"
           value={query}
           onChange={e => setQuery(e.target.value)}
           onKeyDown={onKeyDown}
-          className="border rounded-l px-3 h-12 flex-grow w-full"
+          className="border-r border-gray-300 dark:border-gray-600 px-3 h-12 flex-grow w-full focus:outline-none dark:bg-gray-800"
         />
         <button
           onClick={handleSearch}
-          className="h-12 px-4 bg-primary text-white rounded-r min-w-[4rem]"
+          className="h-12 px-4 bg-primary text-white font-medium min-w-[4rem]"
         >
           検索
         </button>
       </div>
       {query && (
-        <ul className="absolute left-0 right-0 mt-1 bg-white border rounded shadow max-h-60 overflow-auto z-10">
+        <ul className="absolute left-0 right-0 mt-1 bg-white dark:bg-gray-800 border dark:border-gray-600 rounded-xl shadow-md max-h-60 overflow-auto z-10 animate-fadeInUp">
           {isLoading ? (
             <li className="px-2 py-1">
               <Loader />
@@ -108,7 +108,7 @@ export default function TagSearch({ tags, onChange }: Props) {
             suggestions.map((tag, idx) => (
               <li
                 key={tag}
-                className={`px-2 py-2 text-center cursor-pointer ${
+                className={`px-2 py-2 text-center cursor-pointer transition-colors ${
                   idx === activeIndex ? "bg-primary/20" : ""
                 }`}
                 onMouseDown={() => {
@@ -125,11 +125,11 @@ export default function TagSearch({ tags, onChange }: Props) {
         </ul>
       )}
       {selected.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-2 mb-2">
+        <div className="flex flex-wrap gap-2 mt-4">
           {selected.map(tag => (
             <span
               key={tag}
-              className="flex items-center bg-primary/20 rounded-full px-2 py-1 text-sm"
+              className="flex items-center bg-primary/20 rounded-full px-3 py-1 text-sm shadow"
             >
               {tag}
               <button
@@ -142,7 +142,7 @@ export default function TagSearch({ tags, onChange }: Props) {
           ))}
           <button
             onClick={clearTags}
-            className="px-2 py-1 bg-gray-200 rounded text-sm"
+            className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm"
           >
             クリア
           </button>
