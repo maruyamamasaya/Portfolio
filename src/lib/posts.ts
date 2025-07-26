@@ -66,6 +66,19 @@ export function getAllTags(): string[] {
   return Array.from(tagSet);
 }
 
+export function getTagCounts(): { tag: string; count: number }[] {
+  const posts = getSortedPosts();
+  const counts: Record<string, number> = {};
+  posts.forEach(post => {
+    post.tags?.forEach(tag => {
+      counts[tag] = (counts[tag] || 0) + 1;
+    });
+  });
+  return Object.entries(counts)
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count);
+}
+
 export function getPostsByTag(tag: string): Post[] {
   return getSortedPosts().filter(post => post.tags?.includes(tag));
 }
