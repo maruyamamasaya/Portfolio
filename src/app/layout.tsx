@@ -13,6 +13,7 @@ import { Poppins } from 'next/font/google';
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://freehackapp.com'),
   title: 'でじサポ｜パソコン相談室',
   description:
     '法人・個人向けにOA機器の整備や設定、ソフトウェアのお困りごとをサポートするポートフォリオサイト。修理記録や最新テック情報、開発日誌などを掲載。',
