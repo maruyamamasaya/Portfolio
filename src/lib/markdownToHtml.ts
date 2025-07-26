@@ -1,5 +1,8 @@
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeStringify from 'rehype-stringify';
 
 export interface Heading {
   id: string;
@@ -98,7 +101,10 @@ export default async function markdownToHtml(
       };
       visit(tree);
     })
-    .use(html)
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
+    .use(rehypeStringify)
     .process(processed);
 
   return { html: result.toString(), headings };
