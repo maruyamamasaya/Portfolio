@@ -37,6 +37,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           {post.image && (
             <img src={post.image} alt="eyecatch" className="mb-4" />
           )}
+          {headings && headings.length > 0 && (
+            <TableOfContents headings={headings} />
+          )}
           <h1>{post.title}</h1>
           <p className="text-sm text-gray-500">
             {post.date}
@@ -53,11 +56,6 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           )}
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
-        <section className="space-y-4">
-          <div className="widget">
-            <TableOfContents headings={headings} />
-          </div>
-        </section>
       </div>
     );
   } catch {
