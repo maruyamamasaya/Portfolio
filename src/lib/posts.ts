@@ -7,7 +7,7 @@ export interface Post {
   title: string;
   date: string;
   image?: string;
-  category?: string;
+  category: string;
   tags?: string[];
   updated?: string;
   content: string;
@@ -30,7 +30,7 @@ export function getSortedPosts(): Post[] {
       title: data.title as string,
       date: data.date as string,
       image: data.image as string | undefined,
-      category: data.category as string | undefined,
+      category: data.category as string,
       tags: data.tags as string[] | undefined,
       updated: data.updated as string | undefined,
       content
@@ -50,7 +50,7 @@ export function getPost(slug: string): Post {
     title: data.title as string,
     date: data.date as string,
     image: data.image as string | undefined,
-    category: data.category as string | undefined,
+    category: data.category as string,
     tags: data.tags as string[] | undefined,
     updated: data.updated as string | undefined,
     content
@@ -99,7 +99,7 @@ export function searchPosts(query: string, tags: string[] = []): Post[] {
           const inTitle = post.title.toLowerCase().includes(q);
           const inContent = post.content.toLowerCase().includes(q);
           const inTags = post.tags?.some(tag => tag.toLowerCase().includes(q));
-          const inCategory = post.category?.toLowerCase().includes(q);
+          const inCategory = post.category.toLowerCase().includes(q);
           return inTitle || inContent || inTags || inCategory;
         })();
     const matchesTags = tags.every(t => post.tags?.includes(t));
