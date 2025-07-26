@@ -7,9 +7,19 @@ export const metadata: Metadata = {
   title: 'Search'
 };
 
-export default function SearchPage({ searchParams }: { searchParams: { q?: string } }) {
+export default function SearchPage({
+  searchParams
+}: {
+  searchParams: { q?: string; tag?: string | string[] }
+}) {
   const query = searchParams.q ?? '';
-  const results: Post[] = query ? searchPosts(query) : [];
+  const tags = searchParams.tag
+    ? Array.isArray(searchParams.tag)
+      ? searchParams.tag.map(t => decodeURIComponent(t))
+      : [decodeURIComponent(searchParams.tag)]
+    : [];
+  const results: Post[] = query || tags.length ? searchPosts(query, tags) : [];
+  const hasFilter = query !== '' || tags.length > 0;
 
   const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const highlight = (text: string) => {
@@ -40,6 +50,15 @@ export default function SearchPage({ searchParams }: { searchParams: { q?: strin
     <div>
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Search</h1>
+      {tags.length > 0 && (
+        <div className="mb-2 flex flex-wrap gap-2">
+          {tags.map(tag => (
+            <span key={tag} className="bg-primary/20 px-2 py-1 rounded text-sm">
+              <Link href={`/tags/${encodeURIComponent(tag)}`}>#{tag}</Link>
+            </span>
+          ))}
+        </div>
+      )}
       <form className="mb-4">
         <input
           type="text"
@@ -49,7 +68,7 @@ export default function SearchPage({ searchParams }: { searchParams: { q?: strin
           className="border rounded px-2 py-1 w-full sm:w-64"
         />
       </form>
-      {query && (
+      {hasFilter && (
         results.length ? (
           <ul className="space-y-4">
             {results.map(post => (
