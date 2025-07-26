@@ -8,10 +8,6 @@
 - [開発者向け編集ページ](#開発者向け編集ページ)
 - [画像ファイルについて](#画像ファイルについて)
   - [画像の配置先と推奨サイズ](#画像の配置先と推奨サイズ)
-- [revalidate エンドポイントのセキュリティ](#revalidate-エンドポイントのセキュリティ)
-  - [実装例](#実装例)
-  - [環境変数](#環境変数)
-  - [追加のベストプラクティス](#追加のベストプラクティス)
 
 ## Markdown ファイル構成
 
@@ -32,8 +28,9 @@ npm run dev
 
 ## 開発者向け編集ページ
 
-Basic 認証を通過すると、`/developer_edit` で Markdown 記事を直接編集できます。
-画面上から新規ファイルの作成や保存、静的ページの再生成が行えます。
+`/developer_edit` ではブラウザ上で Markdown 記事の作成や編集が行えます。
+公開ページの改ざんを防ぐため、このページには Basic 認証などでアクセス制限を必ず実装してください。
+本リポジトリには認証設定が含まれていないため、運用前に適切な認証機構を追加する必要があります。
 
 ## 画像ファイルについて
 
@@ -55,45 +52,4 @@ Basic 認証を通過すると、`/developer_edit` で Markdown 記事を直接�
 | OGP 画像 | `eye-catch.png` | 16:9 | 1200×630 |
 
 `favicon.png` と `eye-catch.png` は `public/images` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
-
-## revalidate エンドポイントのセキュリティ
-
-Next.js では `res.revalidate()` を用いて静的ページを再生成できますが、
-無制限に呼び出せるとサーバー負荷の増大や意図しない改ざんにつながります。
-このプロジェクトでは `/api/revalidate` を以下のように保護しています。
-
-### 実装例
-
-```ts
-import { NextRequest, NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
-
-export async function POST(req: NextRequest) {
-  const secret = req.nextUrl.searchParams.get('secret');
-  if (secret !== process.env.REVALIDATE_SECRET) {
-    return NextResponse.json({ message: 'Invalid token' }, { status: 401 });
-  }
-
-  const { slug } = await req.json();
-  if (!slug) {
-    return NextResponse.json({ message: 'Missing slug' }, { status: 400 });
-  }
-
-  revalidatePath(`/blog/${slug}`);
-  return NextResponse.json({ revalidated: true, slug });
-}
-```
-
-### 環境変数
-
-`.env` に次の値を設定してください。
-
-```env
-REVALIDATE_SECRET=my_super_secret_token
-```
-
-### 追加のベストプラクティス
-
-- 管理画面など認証済みの場所からのみ呼び出す
-- 必要に応じてレート制限やログ出力を組み合わせる
 
