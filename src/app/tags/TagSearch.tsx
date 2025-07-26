@@ -1,16 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 interface Props {
   tags: string[];
+  onChange?: (selected: string[]) => void;
 }
 
-export default function TagSearch({ tags }: Props) {
+export default function TagSearch({ tags, onChange }: Props) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [activeIndex, setActiveIndex] = useState(-1);
-  const router = useRouter();
+  const [selected, setSelected] = useState<string[]>([]);
 
   useEffect(() => {
     const q = query.toLowerCase();
@@ -31,7 +31,21 @@ export default function TagSearch({ tags }: Props) {
   }, [query, tags]);
 
   const selectTag = (tag: string) => {
-    router.push(`/tags/${encodeURIComponent(tag)}`);
+    if (selected.includes(tag)) return;
+    const next = [...selected, tag];
+    setSelected(next);
+    onChange?.(next);
+  };
+
+  const removeTag = (tag: string) => {
+    const next = selected.filter(t => t !== tag);
+    setSelected(next);
+    onChange?.(next);
+  };
+
+  const clearTags = () => {
+    setSelected([]);
+    onChange?.([]);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -46,6 +60,7 @@ export default function TagSearch({ tags }: Props) {
       e.preventDefault();
       if (activeIndex >= 0) {
         selectTag(suggestions[activeIndex]);
+        setQuery("");
       }
     }
   };
@@ -69,7 +84,10 @@ export default function TagSearch({ tags }: Props) {
                 className={`px-2 py-1 cursor-pointer ${
                   idx === activeIndex ? "bg-primary/20" : ""
                 }`}
-                onMouseDown={() => selectTag(tag)}
+                onMouseDown={() => {
+                  selectTag(tag);
+                  setQuery("");
+                }}
               >
                 {tag}
               </li>
@@ -78,6 +96,30 @@ export default function TagSearch({ tags }: Props) {
             <li className="px-2 py-1 text-gray-500">一致するタグが見つかりません</li>
           )}
         </ul>
+      )}
+      {selected.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-2">
+          {selected.map(tag => (
+            <span
+              key={tag}
+              className="flex items-center bg-primary/20 rounded-full px-2 py-1 text-sm"
+            >
+              {tag}
+              <button
+                className="ml-1 text-gray-600 hover:text-gray-900"
+                onClick={() => removeTag(tag)}
+              >
+                &times;
+              </button>
+            </span>
+          ))}
+          <button
+            onClick={clearTags}
+            className="px-2 py-1 bg-gray-200 rounded text-sm"
+          >
+            クリア
+          </button>
+        </div>
       )}
     </div>
   );

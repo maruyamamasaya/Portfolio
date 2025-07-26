@@ -67,6 +67,13 @@ export function getPostsByTag(tag: string): Post[] {
   return getSortedPosts().filter(post => post.tags?.includes(tag));
 }
 
+export function getPostsByTags(tags: string[]): Post[] {
+  if (!tags.length) return getSortedPosts();
+  return getSortedPosts().filter(post =>
+    tags.every(t => post.tags?.includes(t))
+  );
+}
+
 export function searchPosts(query: string): Post[] {
   const q = query.toLowerCase();
   return getSortedPosts().filter(post => {
