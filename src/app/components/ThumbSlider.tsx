@@ -26,7 +26,7 @@ export default function ThumbSlider({ slides }: Props) {
     <div>
       <div className="relative w-full overflow-hidden aspect-[4/3]">
         <div
-          className="flex motion-safe:transition-transform motion-reduce:transition-none duration-700"
+          className="flex motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out"
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
           {slides.map((slide, i) => (
