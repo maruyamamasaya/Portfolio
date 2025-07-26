@@ -90,14 +90,20 @@ export function getPostsByTags(tags: string[]): Post[] {
   );
 }
 
-export function searchPosts(query: string): Post[] {
+export function searchPosts(query: string, tags: string[] = []): Post[] {
   const q = query.toLowerCase();
   return getSortedPosts().filter(post => {
-    const inTitle = post.title.toLowerCase().includes(q);
-    const inContent = post.content.toLowerCase().includes(q);
-    const inTags = post.tags?.some(tag => tag.toLowerCase().includes(q));
-    const inCategory = post.category?.toLowerCase().includes(q);
-    return inTitle || inContent || inTags || inCategory;
+    const matchesQuery = !q
+      ? true
+      : (() => {
+          const inTitle = post.title.toLowerCase().includes(q);
+          const inContent = post.content.toLowerCase().includes(q);
+          const inTags = post.tags?.some(tag => tag.toLowerCase().includes(q));
+          const inCategory = post.category?.toLowerCase().includes(q);
+          return inTitle || inContent || inTags || inCategory;
+        })();
+    const matchesTags = tags.every(t => post.tags?.includes(t));
+    return matchesQuery && matchesTags;
   });
 }
 

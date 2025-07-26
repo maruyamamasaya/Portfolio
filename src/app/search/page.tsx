@@ -11,18 +11,31 @@ export const metadata: Metadata = {
 export default function SearchPage({
   searchParams
 }: {
-  searchParams: { q?: string; category?: string; tag?: string };
+  searchParams: { q?: string; category?: string; tag?: string | string[] };
 }) {
   const query = searchParams.q ?? '';
   const category = searchParams.category ?? '';
-  const tag = searchParams.tag ?? '';
-  let results: Post[] = query ? searchPosts(query) : getSortedPosts();
+  const tagParam = searchParams.tag;
+  const tags: string[] = tagParam
+    ? Array.isArray(tagParam)
+      ? tagParam.map(t => decodeURIComponent(t))
+      : [decodeURIComponent(tagParam)]
+    : [];
+
+  let results: Post[] = query || category || tags.length
+    ? searchPosts(query)
+    : getSortedPosts();
+
   if (category) {
     results = results.filter(p => p.category === category);
   }
-  if (tag) {
-    results = results.filter(p => p.tags?.includes(tag));
+  if (tags.length) {
+    results = results.filter(p =>
+      p.tags?.some(t => tags.includes(t))
+    );
   }
+
+  const hasFilter = query !== '' || category !== '' || tags.length > 0;
 
   const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const highlight = (text: string) => {
@@ -37,6 +50,7 @@ export default function SearchPage({
       )
     );
   };
+
   const getExcerpt = (content: string, length = 80) => {
     const plain = content
       .replace(/```[\s\S]*?```/g, '')
@@ -53,8 +67,20 @@ export default function SearchPage({
     <div>
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Search</h1>
+
+      {tags.length > 0 && (
+        <div className="mb-2 flex flex-wrap gap-2">
+          {tags.map(tag => (
+            <span key={tag} className="bg-primary/20 px-2 py-1 rounded text-sm">
+              <Link href={`/tags/${encodeURIComponent(tag)}`}>#{tag}</Link>
+            </span>
+          ))}
+        </div>
+      )}
+
       <SearchBar className="mb-4" />
-      {query && (
+
+      {hasFilter && (
         results.length ? (
           <ul className="space-y-4">
             {results.map(post => (

@@ -23,9 +23,13 @@ export default function PostCard({ post }: Props) {
           {post.tags && (
             <div className="flex flex-wrap gap-1 text-xs">
               {post.tags.map(tag => (
-                <span key={tag} className="bg-gray-200 px-2 py-1 rounded">
+                <Link
+                  key={tag}
+                  href={`/tags/${encodeURIComponent(tag)}`}
+                  className="bg-gray-200 px-2 py-1 rounded hover:underline"
+                >
                   #{tag}
-                </span>
+                </Link>
               ))}
             </div>
           )}

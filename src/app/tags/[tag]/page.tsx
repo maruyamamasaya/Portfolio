@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getAllTags, getPostsByTag } from '@/lib/posts';
+import { getAllTags, searchPosts } from '@/lib/posts';
 import BlogNavButtons from '../../components/BlogNavButtons';
 
 export async function generateStaticParams() {
@@ -13,9 +13,16 @@ export async function generateMetadata({ params }: { params: { tag: string } }):
   return { title: `Tag: ${decodedTag}` };
 }
 
-export default function TagPage({ params }: { params: { tag: string } }) {
+export default function TagPage({
+  params,
+  searchParams
+}: {
+  params: { tag: string };
+  searchParams: { q?: string }
+}) {
   const decodedTag = decodeURIComponent(params.tag);
-  const posts = getPostsByTag(decodedTag);
+  const query = searchParams.q ?? '';
+  const posts = searchPosts(query, [decodedTag]);
   if (!posts.length) {
     notFound();
   }
