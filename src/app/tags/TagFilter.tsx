@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import TagSearch from './TagSearch';
+import Loader from '../components/Loader';
 
 interface Props {
   tags: string[];
@@ -11,51 +12,77 @@ interface Props {
 
 export default function TagFilter({ tags, posts }: Props) {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>(posts);
+  const [isLoading, setIsLoading] = useState(false);
+  const popularTags = tags.slice(0, 5);
 
   const handleChange = (selected: string[]) => {
-    if (selected.length === 0) {
-      setFilteredPosts(posts);
-      return;
-    }
-    setFilteredPosts(
-      posts.filter(p => selected.every(t => p.tags?.includes(t)))
-    );
+    setIsLoading(true);
+    setTimeout(() => {
+      if (selected.length === 0) {
+        setFilteredPosts(posts);
+        setIsLoading(false);
+        return;
+      }
+      setFilteredPosts(
+        posts.filter(p => selected.every(t => p.tags?.includes(t)))
+      );
+      setIsLoading(false);
+    }, 300);
   };
 
   return (
     <div>
       <TagSearch tags={tags} onChange={handleChange} />
-      <ul className="mt-4 space-y-4">
-        {filteredPosts.map(post => (
-          <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
-            {post.image && (
-              <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
-            )}
-            <div>
-              <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
-                {post.title}
+      {isLoading ? (
+        <Loader />
+      ) : filteredPosts.length === 0 ? (
+        <div className="text-center text-gray-500 mt-4">
+          <p className="text-base">😕 該当するタグが見つかりませんでした。</p>
+          <div className="flex justify-center flex-wrap gap-2 mt-2">
+            {popularTags.map(tag => (
+              <Link
+                key={tag}
+                href={`/tags/${encodeURIComponent(tag)}`}
+                className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow"
+              >
+                {tag}
               </Link>
-              <span className="block text-sm text-gray-500">
-                {post.date}
-                {post.updated && ` (更新: ${post.updated})`}
-              </span>
-              {post.tags && (
-                <span className="block text-xs text-gray-600 space-x-1">
-                  {post.tags.map(tag => (
-                    <Link
-                      key={tag}
-                      href={`/tags/${encodeURIComponent(tag)}`}
-                      className="hover:underline"
-                    >
-                      #{tag}
-                    </Link>
-                  ))}
-                </span>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <ul className="mt-4 space-y-4">
+          {filteredPosts.map(post => (
+            <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
+              {post.image && (
+                <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
               )}
-            </div>
-          </li>
-        ))}
-      </ul>
+              <div>
+                <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
+                  {post.title}
+                </Link>
+                <span className="block text-sm text-gray-500">
+                  {post.date}
+                  {post.updated && ` (更新: ${post.updated})`}
+                </span>
+                {post.tags && (
+                  <span className="block text-xs text-gray-600 space-x-1">
+                    {post.tags.map(tag => (
+                      <Link
+                        key={tag}
+                        href={`/tags/${encodeURIComponent(tag)}`}
+                        className="hover:underline"
+                      >
+                        #{tag}
+                      </Link>
+                    ))}
+                  </span>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

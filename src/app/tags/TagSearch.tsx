@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Loader from "../components/Loader";
 
 interface Props {
   tags: string[];
@@ -9,25 +10,32 @@ interface Props {
 export default function TagSearch({ tags, onChange }: Props) {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [selected, setSelected] = useState<string[]>([]);
 
   useEffect(() => {
-    const q = query.toLowerCase();
-    if (!q) {
-      setSuggestions([]);
+    setIsLoading(true);
+    const timeout = setTimeout(() => {
+      const q = query.toLowerCase();
+      if (!q) {
+        setSuggestions([]);
+        setActiveIndex(-1);
+        setIsLoading(false);
+        return;
+      }
+      const matched = tags
+        .filter(tag => tag.toLowerCase().includes(q))
+        .sort(
+          (a, b) =>
+            a.toLowerCase().indexOf(q) - b.toLowerCase().indexOf(q)
+        )
+        .slice(0, 10);
+      setSuggestions(matched);
       setActiveIndex(-1);
-      return;
-    }
-    const matched = tags
-      .filter(tag => tag.toLowerCase().includes(q))
-      .sort(
-        (a, b) =>
-          a.toLowerCase().indexOf(q) - b.toLowerCase().indexOf(q)
-      )
-      .slice(0, 10);
-    setSuggestions(matched);
-    setActiveIndex(-1);
+      setIsLoading(false);
+    }, 300);
+    return () => clearTimeout(timeout);
   }, [query, tags]);
 
   const selectTag = (tag: string) => {
@@ -77,7 +85,11 @@ export default function TagSearch({ tags, onChange }: Props) {
       />
       {query && (
         <ul className="absolute left-0 right-0 mt-1 bg-white border rounded shadow max-h-60 overflow-auto z-10">
-          {suggestions.length ? (
+          {isLoading ? (
+            <li className="px-2 py-1">
+              <Loader />
+            </li>
+          ) : suggestions.length ? (
             suggestions.map((tag, idx) => (
               <li
                 key={tag}
