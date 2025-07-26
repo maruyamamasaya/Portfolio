@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import TagSearch from './TagSearch';
 import Loader from '../components/Loader';
+import TagBadge from '../components/TagBadge';
 
 interface Props {
   tags: string[];
@@ -81,14 +82,8 @@ export default function TagFilter({ tags, posts }: Props) {
                 </span>
                 {post.tags && (
                   <span className="block text-xs text-gray-600 space-x-1">
-                    {post.tags.map(tag => (
-                      <Link
-                        key={tag}
-                        href={`/tags/${encodeURIComponent(tag)}`}
-                        className="hover:underline"
-                      >
-                        #{tag}
-                      </Link>
+                    {post.tags.slice(0, 3).map(tag => (
+                      <TagBadge key={tag} tag={tag} />
                     ))}
                   </span>
                 )}

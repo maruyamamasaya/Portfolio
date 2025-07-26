@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getAllTags, searchPosts } from '@/lib/posts';
 import BlogNavButtons from '../../components/BlogNavButtons';
+import TagBadge from '../../components/TagBadge';
 
 export async function generateStaticParams() {
   return getAllTags().map(tag => ({ tag }));
@@ -46,14 +47,8 @@ export default function TagPage({
               </span>
               {post.tags && (
                 <span className="block text-xs text-gray-600 space-x-1">
-                  {post.tags.map(tag => (
-                    <Link
-                      key={tag}
-                      href={`/tags/${encodeURIComponent(tag)}`}
-                      className="hover:underline"
-                    >
-                      #{tag}
-                    </Link>
+                  {post.tags.slice(0, 3).map(tag => (
+                    <TagBadge key={tag} tag={tag} />
                   ))}
                 </span>
               )}
