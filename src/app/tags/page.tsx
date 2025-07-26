@@ -1,38 +1,19 @@
 import Link from 'next/link';
 import { getAllTags } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
+import TagSearch from './TagSearch';
 
-export default function TagsPage({
-  searchParams,
-}: {
-  searchParams: { q?: string };
-}) {
-  const query = searchParams.q?.toLowerCase() ?? '';
+export default function TagsPage() {
   const tags = getAllTags();
-  const filteredTags = query
-    ? tags.filter(tag => tag.toLowerCase().includes(query))
-    : tags;
-  const displayTags = filteredTags.slice(0, 30);
-  const hasMore = filteredTags.length > 30;
+  const displayTags = tags.slice(0, 30);
+  const hasMore = tags.length > 30;
   return (
     <div>
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Tags</h1>
-      <form className="mb-4 flex">
-        <input
-          type="text"
-          name="q"
-          placeholder="タグを検索"
-          defaultValue={query}
-          className="border rounded px-2 py-1 w-full sm:w-64"
-        />
-        <button
-          type="submit"
-          className="ml-2 px-3 py-1 bg-primary text-white rounded"
-        >
-          検索
-        </button>
-      </form>
+      <div className="mb-4">
+        <TagSearch tags={tags} />
+      </div>
       <ul className="flex flex-wrap gap-2">
         {displayTags.map(tag => (
           <li
