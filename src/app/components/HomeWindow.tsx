@@ -28,34 +28,34 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       <FAQSection />
       <CTASection />
 
-      {/* おすすめ記事スライダー */}
-      <div className="px-4 sm:px-8">
-        <RecommendedSlider posts={posts} />
-      </div>
-
-      {/* ブログセクション */}
-      <div className="px-4 sm:px-8">
-        <BlogNavButtons />
-        <h2 className="text-2xl font-bold my-6">Blog</h2>
-        <ul className="space-y-4">
-          {posts.map((post) => (
-            <ScrollFadeIn key={post.slug} as={Card} className="flex items-start space-x-4">
-              {post.image && (
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  className="w-16 h-16 object-cover rounded"
-                />
-              )}
-              <div>
-                <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
-                  {post.title}
-                </Link>
-                <span className="block text-sm text-gray-500">{post.date}</span>
-              </div>
-            </ScrollFadeIn>
-          ))}
-        </ul>
+      {/* おすすめ記事スライダーとブログ一覧 */}
+      <div className="px-4 sm:px-8 grid gap-8 lg:grid-cols-3 items-start">
+        <div className="lg:col-span-2">
+          <RecommendedSlider posts={posts} />
+        </div>
+        <div>
+          <BlogNavButtons />
+          <h2 className="text-2xl font-bold my-6">Blog</h2>
+          <ul className="space-y-4">
+            {posts.map((post) => (
+              <ScrollFadeIn key={post.slug} as={Card} className="flex items-start space-x-4">
+                {post.image && (
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-16 h-16 object-cover rounded"
+                  />
+                )}
+                <div>
+                  <Link href={`/blog/${post.slug}`} className="text-primary hover:underline">
+                    {post.title}
+                  </Link>
+                  <span className="block text-sm text-gray-500">{post.date}</span>
+                </div>
+              </ScrollFadeIn>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
