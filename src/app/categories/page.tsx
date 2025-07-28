@@ -8,12 +8,15 @@ export default function CategoriesPage() {
       <BlogNavButtons />
       <h1>Categories</h1>
       <ul className="grid gap-4 p-0 list-none">
-        {categories.map(cat => (
+        {categories.map((cat) => (
           <li key={cat.slug} className="border rounded p-4 flex space-x-3">
             <span className="text-2xl">{cat.icon}</span>
             <div>
               <h2 className="m-0">
-                <Link href={`/categories/${cat.slug}`} className="no-underline hover:underline">
+                <Link
+                  href={`/categories/${cat.slug}`}
+                  className="no-underline hover:underline"
+                >
                   {cat.name}
                 </Link>
               </h2>

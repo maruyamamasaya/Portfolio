@@ -29,7 +29,9 @@ export default function Privacy() {
       </ul>
 
       <h2 className="text-xl font-bold mt-6 mb-2">3. 利用目的</h2>
-      <p className="mb-4">取得した個人情報は、以下の目的にのみ使用いたします：</p>
+      <p className="mb-4">
+        取得した個人情報は、以下の目的にのみ使用いたします：
+      </p>
       <ul className="list-disc ml-6 mb-4">
         <li>お問い合わせ対応</li>
         <li>会員サービスの提供および本人確認</li>
@@ -44,13 +46,17 @@ export default function Privacy() {
       </p>
 
       <h2 className="text-xl font-bold mt-6 mb-2">5. 外部サービスとの連携</h2>
-      <p className="mb-4">本サイトでは、以下の外部サービスを使用する場合があります：</p>
+      <p className="mb-4">
+        本サイトでは、以下の外部サービスを使用する場合があります：
+      </p>
       <ul className="list-disc ml-6 mb-4">
         <li>Google Analytics（アクセス解析）</li>
         <li>Stripe、PayPal 等の決済代行サービス</li>
         <li>ログイン認証（Google、Apple IDなど）</li>
       </ul>
-      <p className="mb-4">各サービスのプライバシーポリシーについては、各社の公式サイトをご参照ください。</p>
+      <p className="mb-4">
+        各サービスのプライバシーポリシーについては、各社の公式サイトをご参照ください。
+      </p>
 
       <h2 className="text-xl font-bold mt-6 mb-2">6. Cookieの使用について</h2>
       <p className="mb-4">
@@ -58,13 +64,17 @@ export default function Privacy() {
         Cookieの使用に同意した上でサイトをご利用ください。ブラウザ設定により無効にすることも可能です。
       </p>
 
-      <h2 className="text-xl font-bold mt-6 mb-2">7. 個人情報の管理と安全対策</h2>
+      <h2 className="text-xl font-bold mt-6 mb-2">
+        7. 個人情報の管理と安全対策
+      </h2>
       <p className="mb-4">
         取得した情報は、適切なセキュリティ対策のもと、外部からの不正アクセスや漏洩を防止します。
         万一、情報漏洩等が発生した場合には、速やかに報告・対応いたします。
       </p>
 
-      <h2 className="text-xl font-bold mt-6 mb-2">8. 個人情報の開示・訂正・削除</h2>
+      <h2 className="text-xl font-bold mt-6 mb-2">
+        8. 個人情報の開示・訂正・削除
+      </h2>
       <p className="mb-4">
         ご本人からの個人情報に関する開示・訂正・削除等のご希望には、合理的な範囲で速やかに対応いたします。
         ご希望の際は、下記のお問い合わせ窓口までご連絡ください。

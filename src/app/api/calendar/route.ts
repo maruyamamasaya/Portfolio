@@ -10,7 +10,10 @@ export async function GET(req: NextRequest) {
   const month = parseInt(req.nextUrl.searchParams.get('month') || '');
 
   if (Number.isNaN(year) || Number.isNaN(month)) {
-    return NextResponse.json({ error: 'Invalid year or month' }, { status: 400 });
+    return NextResponse.json(
+      { error: 'Invalid year or month' },
+      { status: 400 },
+    );
   }
 
   const posts = await getSortedDevPosts();
@@ -19,7 +22,7 @@ export async function GET(req: NextRequest) {
 
   while (date.getMonth() === month) {
     const dayStr = format(date);
-    const dayPosts = posts.filter(p => p.date === dayStr);
+    const dayPosts = posts.filter((p) => p.date === dayStr);
     days.push({ date: dayStr, posts: dayPosts });
     date.setDate(date.getDate() + 1);
   }

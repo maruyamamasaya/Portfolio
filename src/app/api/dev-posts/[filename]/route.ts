@@ -13,7 +13,7 @@ function validateFilename(name: unknown) {
 
 export async function GET(
   req: Request,
-  { params }: { params: { filename: string } }
+  { params }: { params: { filename: string } },
 ) {
   const safeName = validateFilename(params.filename);
   if (!safeName) {
@@ -33,7 +33,7 @@ export async function GET(
 
 export async function PUT(
   req: Request,
-  { params }: { params: { filename: string } }
+  { params }: { params: { filename: string } },
 ) {
   try {
     const { content } = await req.json();
@@ -45,13 +45,16 @@ export async function PUT(
     await fs.writeFile(filePath, content ?? '', 'utf8');
     return NextResponse.json({ ok: true });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to write file' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to write file' },
+      { status: 500 },
+    );
   }
 }
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { filename: string } }
+  { params }: { params: { filename: string } },
 ) {
   const safeName = validateFilename(params.filename);
   if (!safeName) {
@@ -65,6 +68,9 @@ export async function DELETE(
     if (err.code === 'ENOENT') {
       return NextResponse.json({ error: 'File not found' }, { status: 404 });
     }
-    return NextResponse.json({ error: 'Failed to delete file' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to delete file' },
+      { status: 500 },
+    );
   }
 }

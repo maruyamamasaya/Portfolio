@@ -1,12 +1,12 @@
 ---
-title: "記事本体サンプル"
-date: "2025-09-01"
-image: "/images/sample-article.png"
+title: '記事本体サンプル'
+date: '2025-09-01'
+image: '/images/sample-article.png'
 tags:
-  - "サンプル"
-  - "チュートリアル"
-category: "tutorial"
-updated: "2025-09-02"
+  - 'サンプル'
+  - 'チュートリアル'
+category: 'tutorial'
+updated: '2025-09-02'
 ---
 
 # 記事本体サンプル

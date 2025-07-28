@@ -5,6 +5,7 @@
 でじサポは、PC トラブルやウェブ制作に関する情報を発信するブログ兼ポートフォリオサイトです。Markdown で記事を管理し、編集ページから手軽に投稿できます。
 
 ## 目次
+
 - [デモ](#デモ)
 - [主な機能](#主な機能)
 - [使用技術](#使用技術)
@@ -22,11 +23,13 @@
 - [貢献方法](#貢献方法)
 
 ## デモ
+
 アプリの動作イメージは以下の GIF を参考にしてください。
 
 ![デモ GIF](public/images/demo.gif)
 
 ## 主な機能
+
 - ✏️ Markdown 記事の投稿・編集
 - 🗂️ カテゴリ・タグによる記事管理
 - 📱 レスポンシブ対応
@@ -34,6 +37,7 @@
   - トップページの検索バーでは記事タイトル・本文・カテゴリ・タグを横断して検索できます。
 
 ## 使用技術
+
 - React / Next.js
 - TypeScript
 - Tailwind CSS
@@ -41,6 +45,7 @@
 - Framer Motion
 
 ## ディレクトリ構成
+
 ```text
 src/
   app/          # ページおよびレイアウト
@@ -57,6 +62,7 @@ developers_blog/# 開発者向け記事
 API エンドポイントの詳細は `docs/api-routes.md` に記載しています。
 
 ## セットアップ
+
 依存パッケージをインストールした後、開発サーバーを起動します。
 
 ```bash
@@ -96,53 +102,62 @@ NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION=true
 BASIC_AUTH_USERNAME=your_username
 BASIC_AUTH_PASSWORD=your_password
 ```
+
 ## 環境変数
+
 アプリで利用する主な環境変数を以下にまとめています。`.env.example` を参考に `.env.local` を作成してください。
 
-| 変数名 | 説明 |
-| ---- | ---- |
-| NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION | 初回マウントアニメーションを無効化 |
-| BASIC_AUTH_USERNAME | Basic 認証のユーザー名 |
-| BASIC_AUTH_PASSWORD | Basic 認証のパスワード |
-| REVALIDATE_SECRET | `/api/revalidate` の `secret` パラメータに使用 |
+| 変数名                                | 説明                                           |
+| ------------------------------------- | ---------------------------------------------- |
+| NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION | 初回マウントアニメーションを無効化             |
+| BASIC_AUTH_USERNAME                   | Basic 認証のユーザー名                         |
+| BASIC_AUTH_PASSWORD                   | Basic 認証のパスワード                         |
+| REVALIDATE_SECRET                     | `/api/revalidate` の `secret` パラメータに使用 |
 
 `REVALIDATE_SECRET` の値は `/api/revalidate?secret=...` に指定し、手動で ISR を再生成する際の認証トークンとして利用します。
 
-
 ## デプロイ
+
 `npm run build` でビルドし、`npm start` でサーバーを起動します。EC2 などの Node.js が動作する環境で実行してください。
 
 ## 開発者向け編集ページ
+
 `/developer_edit` ではブラウザ上で Markdown 記事の作成や編集が行えます。公開ページの改ざんを防ぐため、このページには Basic 認証などでアクセス制限を必ず実装してください。本リポジトリには認証設定が含まれていないため、運用前に適切な認証機構を追加する必要があります。
 
 ## 画像ファイルについて
+
 このリポジトリではバイナリファイル（画像など）をサポートしていません。ヘッダーアイコンやヒーロー画像、フッターアイコンは `/images` に配置してお使いください。
 
 ### 画像の配置先と推奨サイズ
+
 アプリで利用するアイコンや背景画像は `public/images/` ディレクトリに配置します。配置後は URL として `/images/ファイル名` を指定してください。
 
 **注意**: Next.js の仕様上、`public` フォルダ以外に置いた画像はブラウザから読み込めません。`app/images` や `src/images` などに配置しないようにしてください。
 
-| 用途 | ファイル名 | 推奨アスペクト比 | 推奨ピクセル数 |
-| ---- | --------- | --------------- | -------------- |
-| ヘッダーアイコン | `header_icon.png` | 1:1 | 64×64 |
-| ヒーロー背景 | `hero_bg.png` | 16:9 | 1920×1080 |
-| フッターアイコン | `footer_icon.png` | 1:1 | 48×48 |
-| ファビコン | `favicon.png` | 1:1 | 32×32 |
-| OGP 画像 | `eye-catch.png` | 16:9 | 1200×630 |
+| 用途             | ファイル名        | 推奨アスペクト比 | 推奨ピクセル数 |
+| ---------------- | ----------------- | ---------------- | -------------- |
+| ヘッダーアイコン | `header_icon.png` | 1:1              | 64×64          |
+| ヒーロー背景     | `hero_bg.png`     | 16:9             | 1920×1080      |
+| フッターアイコン | `footer_icon.png` | 1:1              | 48×48          |
+| ファビコン       | `favicon.png`     | 1:1              | 32×32          |
+| OGP 画像         | `eye-catch.png`   | 16:9             | 1200×630       |
 
 `favicon.png` と `eye-catch.png` は `public/images` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
 
 ## Todo
+
 - バックエンド API の追加実装
 - 記事へのコメント機能
 
 ## ライセンス
+
 [MIT](LICENSE)
 
 ## 作者・連絡先
+
 - GitHub: [username](https://github.com/username)
 - Twitter: [@user](https://twitter.com/user)
 
 ## 貢献方法
+
 不具合報告や機能提案は Issues から受け付けています。プルリクエストも大歓迎です。

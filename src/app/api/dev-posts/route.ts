@@ -14,10 +14,13 @@ function validateFilename(name: unknown) {
 export async function GET() {
   try {
     const files = await fs.readdir(postsDir);
-    const mdFiles = files.filter(f => f.endsWith('.md'));
+    const mdFiles = files.filter((f) => f.endsWith('.md'));
     return NextResponse.json(mdFiles);
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to read posts' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to read posts' },
+      { status: 500 },
+    );
   }
 }
 
@@ -32,6 +35,9 @@ export async function POST(req: Request) {
     await fs.writeFile(filePath, content ?? '', 'utf8');
     return NextResponse.json({ ok: true });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to write file' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to write file' },
+      { status: 500 },
+    );
   }
 }

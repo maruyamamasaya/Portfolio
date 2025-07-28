@@ -44,7 +44,12 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
           <h2 className="text-2xl font-bold my-6">Blog</h2>
           <ul className="space-y-4">
             {posts.map((post, i) => (
-              <ScrollFadeIn key={post.slug} delay={i * 100} as={Card} className="flex items-start space-x-4">
+              <ScrollFadeIn
+                key={post.slug}
+                delay={i * 100}
+                as={Card}
+                className="flex items-start space-x-4"
+              >
                 {post.image && (
                   <img
                     src={post.image}
@@ -53,10 +58,15 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
                   />
                 )}
                 <div>
-                  <Link href={`/blog/${post.slug}`} className="accent-text hover:underline">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="accent-text hover:underline"
+                  >
                     {post.title}
                   </Link>
-                  <span className="block text-sm text-gray-500">{post.date}</span>
+                  <span className="block text-sm text-gray-500">
+                    {post.date}
+                  </span>
                 </div>
               </ScrollFadeIn>
             ))}

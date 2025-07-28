@@ -9,12 +9,15 @@ export default async function MoreTagsPage() {
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">All Tags</h1>
       <ul className="flex flex-wrap gap-4">
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <li
             key={tag}
             className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow-md"
           >
-            <Link href={`/tags/${encodeURIComponent(tag)}`} className="hover:underline">
+            <Link
+              href={`/tags/${encodeURIComponent(tag)}`}
+              className="hover:underline"
+            >
               {tag}
             </Link>
           </li>

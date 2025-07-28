@@ -16,25 +16,28 @@ export interface DevPost {
 const devPostsDirectory = path.join(process.cwd(), 'developers_blog');
 
 export async function getSortedDevPosts(): Promise<DevPost[]> {
-  const fileNames = (await fs.readdir(devPostsDirectory))
-    .filter(file => file.endsWith('.md'));
-  const posts = await Promise.all(fileNames.map(async (fileName) => {
-    const slug = fileName.replace(/\.md$/, '');
-    const fullPath = path.join(devPostsDirectory, fileName);
-    const fileContents = await fs.readFile(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
+  const fileNames = (await fs.readdir(devPostsDirectory)).filter((file) =>
+    file.endsWith('.md'),
+  );
+  const posts = await Promise.all(
+    fileNames.map(async (fileName) => {
+      const slug = fileName.replace(/\.md$/, '');
+      const fullPath = path.join(devPostsDirectory, fileName);
+      const fileContents = await fs.readFile(fullPath, 'utf8');
+      const { data, content } = matter(fileContents);
 
-    return {
-      slug,
-      title: data.title as string,
-      date: data.date as string,
-      image: data.image as string | undefined,
-      category: data.category as string,
-      tags: data.tags as string[] | undefined,
-      updated: data.updated as string | undefined,
-      content
-    };
-  }));
+      return {
+        slug,
+        title: data.title as string,
+        date: data.date as string,
+        image: data.image as string | undefined,
+        category: data.category as string,
+        tags: data.tags as string[] | undefined,
+        updated: data.updated as string | undefined,
+        content,
+      };
+    }),
+  );
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
@@ -52,6 +55,6 @@ export async function getDevPost(slug: string): Promise<DevPost> {
     category: data.category as string,
     tags: data.tags as string[] | undefined,
     updated: data.updated as string | undefined,
-    content
+    content,
   };
 }

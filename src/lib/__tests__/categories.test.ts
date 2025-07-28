@@ -7,7 +7,7 @@ describe('getCategory', () => {
       slug: 'ai',
       name: 'AI活用',
       description: 'AIを活用した記事やツールの紹介',
-      icon: '🤖'
+      icon: '🤖',
     });
   });
 });

@@ -10,7 +10,9 @@ export default function NotFound() {
         <p className="text-lg text-gray-400">
           ❖ 仮想空間内に 該当ノードが見つかりませんでした。
         </p>
-        <p className="text-sm text-gray-500 mt-2">[ CODE: ∅404∅ · LOCATION: UNKNOWN ]</p>
+        <p className="text-sm text-gray-500 mt-2">
+          [ CODE: ∅404∅ · LOCATION: UNKNOWN ]
+        </p>
       </div>
 
       <Link

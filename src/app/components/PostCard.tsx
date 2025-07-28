@@ -23,7 +23,7 @@ export default function PostCard({ post }: Props) {
           <span className="text-sm text-gray-500">{post.date}</span>
           {post.tags && (
             <div className="flex flex-wrap gap-1 text-xs">
-              {post.tags.slice(0, 3).map(tag => (
+              {post.tags.slice(0, 3).map((tag) => (
                 <TagBadge key={tag} tag={tag} />
               ))}
             </div>

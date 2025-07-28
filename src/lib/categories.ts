@@ -13,13 +13,16 @@ export interface CategoryLink {
 }
 
 export function getCategories(): CategoryLink[] {
-  return categoryData.map(cat => ({ name: cat.name, href: `/categories/${cat.slug}` }));
+  return categoryData.map((cat) => ({
+    name: cat.name,
+    href: `/categories/${cat.slug}`,
+  }));
 }
 
 export function getCategory(slug: string): Category | undefined {
-  return categoryData.find(cat => cat.slug === slug);
+  return categoryData.find((cat) => cat.slug === slug);
 }
 
 export function getAllCategorySlugs(): string[] {
-  return categoryData.map(cat => cat.slug);
+  return categoryData.map((cat) => cat.slug);
 }

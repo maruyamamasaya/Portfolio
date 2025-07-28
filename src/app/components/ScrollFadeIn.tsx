@@ -1,5 +1,5 @@
-"use client";
-import { useEffect, useRef, useState, ReactNode, ElementType } from "react";
+'use client';
+import { useEffect, useRef, useState, ReactNode, ElementType } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -14,9 +14,9 @@ interface Props {
 
 export default function ScrollFadeIn({
   children,
-  className = "",
-  as: Component = "div",
-  delay = 0
+  className = '',
+  as: Component = 'div',
+  delay = 0,
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -31,7 +31,7 @@ export default function ScrollFadeIn({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -40,7 +40,7 @@ export default function ScrollFadeIn({
   return (
     <Component
       ref={ref as any}
-      className={`${className} ${visible ? "animate-fadeInUp" : "opacity-0"}`}
+      className={`${className} ${visible ? 'animate-fadeInUp' : 'opacity-0'}`}
       style={{ animationDelay: `${delay}ms` }}
     >
       {children}

@@ -1,13 +1,13 @@
-"use client";
-import { ReactNode, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+'use client';
+import { ReactNode, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 let isFirstLoad = true;
 
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const disable = process.env.NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION === "true";
+  const disable = process.env.NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION === 'true';
   if (disable) {
     return <>{children}</>;
   }

@@ -8,10 +8,13 @@ export default function About() {
   return (
     <ScrollFadeIn className="max-w-2xl mx-auto px-4 space-y-8">
       <BlogNavButtons />
-      <h1 className="text-3xl font-extrabold mb-6">独立系エンジニア × クリエイター</h1>
+      <h1 className="text-3xl font-extrabold mb-6">
+        独立系エンジニア × クリエイター
+      </h1>
 
       <p className="mb-4 text-lg">
-        「分からない」を「分かる」に変える──<br />
+        「分からない」を「分かる」に変える──
+        <br />
         技術・アート・マーケを横断する“攻略型”の情報発信を行っています。
       </p>
 
@@ -38,30 +41,39 @@ export default function About() {
       </p>
 
       <section className="space-y-2 text-sm">
-        <h2 className="text-lg font-bold">LINE公式アカウント × ChatGPT × AWS</h2>
+        <h2 className="text-lg font-bold">
+          LINE公式アカウント × ChatGPT × AWS
+        </h2>
         <p>LINE自動応答・モバイルオーダー機能の独自開発</p>
         <p>
-          AWS上で構築したインフラに、LINE Messaging APIとChatGPTを統合。ユーザーと
+          AWS上で構築したインフラに、LINE Messaging
+          APIとChatGPTを統合。ユーザーと
           の自然な対話を実現するLINE窓口や、飲食店向けのモバイルオーダー機能を開発しま
           した。LINE上で注文・問い合わせ・予約が完結する仕組みを提供し、店舗業務の効率
           化とユーザー体験の向上を実現しています。
         </p>
         <p>
-          使用技術：AWS（Lambda, API Gateway, DynamoDB, S3 他）／LINE Messaging API／OpenAI
-          API
+          使用技術：AWS（Lambda, API Gateway, DynamoDB, S3 他）／LINE Messaging
+          API／OpenAI API
         </p>
-        <p>開発内容：自動応答Bot構築／注文情報の管理／LINE上でのメニュー表示・選択フローの設計</p>
+        <p>
+          開発内容：自動応答Bot構築／注文情報の管理／LINE上でのメニュー表示・選択フローの設計
+        </p>
         <p>特徴：インフラレスでスケーラブルな構成／ノーアプリで完結するUX</p>
       </section>
 
-      <p className="text-sm text-gray-500">※ 本名は非公開。活動名は今後設定予定です。</p>
+      <p className="text-sm text-gray-500">
+        ※ 本名は非公開。活動名は今後設定予定です。
+      </p>
       <SkillBars />
       <ProfileCategories />
 
       <section className="space-y-2 text-sm">
         <h2 className="text-lg font-bold">Media / SNS活動</h2>
         <p>🎬 YouTubeチャンネル2つ ＆ Instagram</p>
-        <p>趣味で、ポップス・クラシック音楽の解説・レビューを発信する動画アカウントを運営中。</p>
+        <p>
+          趣味で、ポップス・クラシック音楽の解説・レビューを発信する動画アカウントを運営中。
+        </p>
         <p>
           音楽の背景や構造を分かりやすく紐解く“聴く攻略本”をコンセプトに、ショート動画を中心とした発信を行っています。
         </p>
@@ -106,7 +118,10 @@ export default function About() {
         </div>
         <div>
           <h2 className="text-lg font-bold mb-2">利用ツール</h2>
-          <p>React / Next.js / Tailwind CSS / Figma / Zapier などを駆使しています。</p>
+          <p>
+            React / Next.js / Tailwind CSS / Figma / Zapier
+            などを駆使しています。
+          </p>
         </div>
         <div>
           <h2 className="text-lg font-bold mb-2">更新履歴</h2>

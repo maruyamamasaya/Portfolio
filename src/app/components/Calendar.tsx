@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -16,32 +16,32 @@ export default function Calendar() {
 
   useEffect(() => {
     fetch(`/api/calendar?year=${year}&month=${month}`)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(setDays)
       .catch(() => setDays([]));
   }, [year, month]);
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const dayMap = new Map(days.map(d => [d.date, d.posts]));
+  const dayMap = new Map(days.map((d) => [d.date, d.posts]));
 
   function prevMonth() {
     setSelected(null);
     if (month === 0) {
-      setYear(y => y - 1);
+      setYear((y) => y - 1);
       setMonth(11);
     } else {
-      setMonth(m => m - 1);
+      setMonth((m) => m - 1);
     }
   }
 
   function nextMonth() {
     setSelected(null);
     if (month === 11) {
-      setYear(y => y + 1);
+      setYear((y) => y + 1);
       setMonth(0);
     } else {
-      setMonth(m => m + 1);
+      setMonth((m) => m + 1);
     }
   }
 
@@ -54,13 +54,21 @@ export default function Calendar() {
   return (
     <div className="calendar-widget text-sm">
       <div className="font-bold mb-2 text-center flex items-center justify-between">
-        <button onClick={prevMonth} className="px-2 hover:scale-110 transition">&lt;</button>
-        <span className="mx-2">{year} / {month + 1}</span>
-        <button onClick={nextMonth} className="px-2 hover:scale-110 transition">&gt;</button>
+        <button onClick={prevMonth} className="px-2 hover:scale-110 transition">
+          &lt;
+        </button>
+        <span className="mx-2">
+          {year} / {month + 1}
+        </span>
+        <button onClick={nextMonth} className="px-2 hover:scale-110 transition">
+          &gt;
+        </button>
       </div>
       <div className="grid grid-cols-7 gap-1 fade-in">
-        {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => (
-          <div key={d} className="text-center font-semibold">{d}</div>
+        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
+          <div key={d} className="text-center font-semibold">
+            {d}
+          </div>
         ))}
         {cells.map((d, idx) => {
           if (!d) return <div key={`e${idx}`} />;
@@ -84,7 +92,7 @@ export default function Calendar() {
       {selected && (
         <div className="mt-2 space-y-1 fade-in">
           {dayMap.get(selected)?.length ? (
-            dayMap.get(selected)!.map(post => (
+            dayMap.get(selected)!.map((post) => (
               <Link
                 key={post.slug}
                 href={`/developers_blog/${post.slug}`}
@@ -101,4 +109,3 @@ export default function Calendar() {
     </div>
   );
 }
-

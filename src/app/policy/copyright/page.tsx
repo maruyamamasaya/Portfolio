@@ -36,8 +36,8 @@ export default function CopyrightPolicy() {
       <h2 className="text-xl font-bold mt-6 mb-2">4. 著作権侵害への対処</h2>
       <p className="mb-4">
         本サイトのコンテンツが無断で転載・悪用されていることを発見した場合、
-        プロバイダ責任制限法に基づき、該当コンテンツの削除申請、Google DMCA申請、
-        および法的措置を含めた厳正な対応を行います。
+        プロバイダ責任制限法に基づき、該当コンテンツの削除申請、Google
+        DMCA申請、 および法的措置を含めた厳正な対応を行います。
       </p>
 
       <p className="text-sm text-gray-500 mt-6">制定日：2025年7月15日</p>

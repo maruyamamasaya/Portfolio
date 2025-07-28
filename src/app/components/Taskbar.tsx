@@ -1,19 +1,25 @@
-"use client";
+'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Taskbar() {
   const [time, setTime] = useState<string>(() =>
-    new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' })
+    new Date().toLocaleTimeString('ja-JP', {
+      hour: '2-digit',
+      minute: '2-digit',
+    }),
   );
 
-  const shortcuts = [
-    { href: '/', label: 'Home' }
-  ];
+  const shortcuts = [{ href: '/', label: 'Home' }];
 
   useEffect(() => {
     const id = setInterval(() => {
-      setTime(new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit' }));
+      setTime(
+        new Date().toLocaleTimeString('ja-JP', {
+          hour: '2-digit',
+          minute: '2-digit',
+        }),
+      );
     }, 60000);
     return () => clearInterval(id);
   }, []);
@@ -22,7 +28,7 @@ export default function Taskbar() {
     <div className="win98-taskbar">
       <button className="win98-start-button">Start</button>
       <nav className="flex space-x-2 ml-2">
-        {shortcuts.map(item => (
+        {shortcuts.map((item) => (
           <Link
             href={item.href}
             key={item.href}

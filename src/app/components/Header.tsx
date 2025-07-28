@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -32,7 +32,7 @@ export default function Header() {
             d="M4 20v-1c0-2.21 3.58-4 8-4s8 1.79 8 4v1"
           />
         </svg>
-      )
+      ),
     },
     {
       href: '/works',
@@ -56,7 +56,7 @@ export default function Header() {
             d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"
           />
         </svg>
-      )
+      ),
     },
     {
       href: '/ai-course',
@@ -72,7 +72,7 @@ export default function Header() {
           <circle cx="12" cy="12" r="10" />
           <path d="M8 12h8M12 8v8" />
         </svg>
-      )
+      ),
     },
     {
       href: '/blog',
@@ -91,7 +91,7 @@ export default function Header() {
             d="M4 4h7v16H4zM13 4h7v16h-7z"
           />
         </svg>
-      )
+      ),
     },
     {
       href: '/categories',
@@ -109,7 +109,7 @@ export default function Header() {
           <rect x="3" y="14" width="7" height="7" />
           <rect x="14" y="14" width="7" height="7" />
         </svg>
-      )
+      ),
     },
     {
       href: '/tags',
@@ -129,15 +129,12 @@ export default function Header() {
           />
           <circle cx="12" cy="12" r="3" />
         </svg>
-      )
-    }
+      ),
+    },
   ];
 
-
   return (
-    <header
-      className="backdrop-blur-md bg-gradient-to-b from-white/80 to-gray-50/80 dark:from-gray-900/80 dark:to-gray-800/80 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100"
-    >
+    <header className="backdrop-blur-md bg-gradient-to-b from-white/80 to-gray-50/80 dark:from-gray-900/80 dark:to-gray-800/80 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100">
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-digital font-bold flex items-center">
           <img
@@ -163,7 +160,7 @@ export default function Header() {
         </button>
         <nav className="hidden sm:block">
           <ul className="flex space-x-4 text-sm">
-            {navItems.map(item => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
@@ -182,7 +179,7 @@ export default function Header() {
         <DarkModeToggle />
         <Drawer open={open} onClose={() => setOpen(false)}>
           <ul className="flex flex-col space-y-4 mt-8">
-            {navItems.map(item => (
+            {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

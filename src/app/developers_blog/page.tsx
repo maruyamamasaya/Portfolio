@@ -5,7 +5,7 @@ import BlogNavButtons from '../components/BlogNavButtons';
 import TagBadge from '../components/TagBadge';
 
 export const metadata: Metadata = {
-  robots: { index: false, follow: false }
+  robots: { index: false, follow: false },
 };
 
 export default async function BlogIndex() {
@@ -17,8 +17,11 @@ export default async function BlogIndex() {
       <div className="md:flex">
         <div className="md:flex-1 main-content">
           <ul className="space-y-4">
-            {posts.map(post => (
-              <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
+            {posts.map((post) => (
+              <li
+                key={post.slug}
+                className="border-b pb-4 flex items-start space-x-2"
+              >
                 {post.image && (
                   <img
                     src={post.image}
@@ -36,7 +39,7 @@ export default async function BlogIndex() {
                   </span>
                   {post.tags && (
                     <span className="block text-xs text-gray-600 space-x-1">
-                      {post.tags.slice(0, 3).map(tag => (
+                      {post.tags.slice(0, 3).map((tag) => (
                         <TagBadge key={tag} tag={tag} />
                       ))}
                     </span>

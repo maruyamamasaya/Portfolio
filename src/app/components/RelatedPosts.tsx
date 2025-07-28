@@ -7,11 +7,18 @@ export default function RelatedPosts({ posts }: { posts: Post[] }) {
     <div className="my-8">
       <h3 className="font-bold mb-2">関連記事</h3>
       <ul className="grid gap-4 md:grid-cols-3">
-        {posts.map(post => (
-          <li key={post.slug} className="border rounded overflow-hidden bg-white dark:bg-gray-800">
-            <Link href={`/blog/${post.slug}`}> 
+        {posts.map((post) => (
+          <li
+            key={post.slug}
+            className="border rounded overflow-hidden bg-white dark:bg-gray-800"
+          >
+            <Link href={`/blog/${post.slug}`}>
               {post.image && (
-                <img src={post.image} alt={post.title} className="w-full h-32 object-cover" />
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="w-full h-32 object-cover"
+                />
               )}
               <div className="p-2 text-sm">{post.title}</div>
             </Link>

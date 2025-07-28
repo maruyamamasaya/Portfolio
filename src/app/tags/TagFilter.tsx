@@ -27,7 +27,7 @@ export default function TagFilter({ tags, posts }: Props) {
         return;
       }
       setFilteredPosts(
-        posts.filter(p => selected.every(t => p.tags?.includes(t)))
+        posts.filter((p) => selected.every((t) => p.tags?.includes(t))),
       );
       setIsLoading(false);
     }, 300);
@@ -54,7 +54,7 @@ export default function TagFilter({ tags, posts }: Props) {
         <div className="text-center text-gray-500 mt-4">
           <p className="text-base">😕 該当するタグが見つかりませんでした。</p>
           <div className="flex justify-center flex-wrap gap-2 mt-2">
-            {popularTags.map(tag => (
+            {popularTags.map((tag) => (
               <Link
                 key={tag}
                 href={`/tags/${encodeURIComponent(tag)}`}
@@ -67,8 +67,11 @@ export default function TagFilter({ tags, posts }: Props) {
         </div>
       ) : (
         <ul className="mt-4 space-y-4">
-          {filteredPosts.map(post => (
-            <li key={post.slug} className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md animate-fadeInUp">
+          {filteredPosts.map((post) => (
+            <li
+              key={post.slug}
+              className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md animate-fadeInUp"
+            >
               {post.image && (
                 <img
                   src={post.image}
@@ -77,7 +80,10 @@ export default function TagFilter({ tags, posts }: Props) {
                 />
               )}
               <div>
-                <Link href={`/blog/${post.slug}`} className="accent-text hover:underline">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="accent-text hover:underline"
+                >
                   {post.title}
                 </Link>
                 <span className="block text-sm text-gray-500">
@@ -86,7 +92,7 @@ export default function TagFilter({ tags, posts }: Props) {
                 </span>
                 {post.tags && (
                   <span className="block text-xs text-gray-600 space-x-1">
-                    {post.tags.slice(0, 3).map(tag => (
+                    {post.tags.slice(0, 3).map((tag) => (
                       <TagBadge key={tag} tag={tag} />
                     ))}
                   </span>

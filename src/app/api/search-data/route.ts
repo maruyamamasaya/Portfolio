@@ -3,13 +3,15 @@ import { getSortedPosts } from '@/lib/posts';
 
 export async function GET() {
   const posts = await getSortedPosts();
-  const categories = Array.from(new Set(posts.map(p => p.category).filter(Boolean))) as string[];
-  const tags = Array.from(new Set(posts.flatMap(p => p.tags ?? [])));
-  const meta = posts.map(p => ({
+  const categories = Array.from(
+    new Set(posts.map((p) => p.category).filter(Boolean)),
+  ) as string[];
+  const tags = Array.from(new Set(posts.flatMap((p) => p.tags ?? [])));
+  const meta = posts.map((p) => ({
     slug: p.slug,
     title: p.title,
     category: p.category,
-    tags: p.tags
+    tags: p.tags,
   }));
   return NextResponse.json({ posts: meta, categories, tags });
 }

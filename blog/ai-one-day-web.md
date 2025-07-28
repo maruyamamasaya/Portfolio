@@ -1,13 +1,13 @@
 ---
-title: "AIが1日でWebサイトを作る時代"
-date: "2025-10-15"
-image: "/images/sample-article.png"
+title: 'AIが1日でWebサイトを作る時代'
+date: '2025-10-15'
+image: '/images/sample-article.png'
 tags:
-  - "AI"
-  - "Web制作"
-  - "体験談"
-category: "ai"
-updated: "2025-10-15"
+  - 'AI'
+  - 'Web制作'
+  - '体験談'
+category: 'ai'
+updated: '2025-10-15'
 ---
 
 # 開発者が1年かかることを、AIは1日でやってのける
@@ -141,29 +141,35 @@ AIは命令されたことには素早く反応する。しかし、「何を作
 2025年現在、AIとノーコードの進化はめざましい。以下はWeb制作に活用しやすいツールの一例だ。
 
 ### 会話型AI
+
 - ChatGPT（OpenAI）
 - Claude（Anthropic）
 - Gemini（Google）
 
 ### 画像生成AI
+
 - Midjourney
 - DALL·E 3
 - Adobe Firefly
 
 ### コーディング支援AI
+
 - GitHub Copilot
 - Cursor
 
 ### デザイン支援
+
 - Figma（AIアシストあり）
 - Canva Magic Design
 
 ### ノーコード系
+
 - Webflow
 - STUDIO
 - Framer
 
 ### ホスティング／CMS
+
 - Vercel（Next.jsと相性◎）
 - Netlify
 - Notion + Super.so
@@ -175,11 +181,13 @@ AIは命令されたことには素早く反応する。しかし、「何を作
 AIを使えば何でも自動で完璧、と思いがちだが、やはり注意点や課題もある。
 
 ❗️よくあるつまずきポイント
+
 - プロンプトが曖昧だと、出力がブレる：目的と構成を具体的に伝えるのがコツ。
 - 著作権的にNGな画像や文が混ざることもある：商用利用前には要チェック。
 - 学習済みのAIが古い情報をベースにしていることもある：最新情報は自分で確認。
 
 ✅ 解決のためのヒント
+
 - 良い結果を得るには「具体性」と「文脈」が重要。
 - ひとつの回答に頼らず、複数回試すこと。
 - 最終的な調整・確認は人間の目でしっかり行う。
@@ -204,12 +212,10 @@ AIの力を使えば、Web制作だけでなく、あらゆる創造・実行の
 
 AI時代の主役は、AIを持っている人ではなく、AIに“目的”を与えられる人だ。
 
-今日から、1日15分でいい。ChatGPTに話しかけてみよう。未来のプロトタイプは、そこから始まる。
----
+## 今日から、1日15分でいい。ChatGPTに話しかけてみよう。未来のプロトタイプは、そこから始まる。
 
 <div class="share-buttons">
   <a href="https://twitter.com/share?url=https://example.com/blog/ai-one-day-web&text=AI%E3%81%8C1%E6%97%A5%E3%81%A7Web%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%E6%99%82%E4%BB%A3" target="_blank" rel="noopener noreferrer">Twitter/X でシェア</a>
   <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/blog/ai-one-day-web" target="_blank" rel="noopener noreferrer">Facebook でシェア</a>
   <a href="https://social-plugins.line.me/lineit/share?url=https://example.com/blog/ai-one-day-web" target="_blank" rel="noopener noreferrer">LINE でシェア</a>
 </div>
-

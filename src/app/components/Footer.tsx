@@ -7,20 +7,38 @@ export default function Footer() {
         <div>
           <h2 className="font-semibold mb-2 sr-only">ナビゲーション</h2>
           <ul className="space-y-1">
-            <li><Link href="/">ホーム</Link></li>
-            <li><Link href="/about">プロフィール</Link></li>
-            <li><Link href="/works">Work</Link></li>
-            <li><Link href="/blog">ブログ</Link></li>
-            <li><Link href="/contact">お問い合わせ</Link></li>
+            <li>
+              <Link href="/">ホーム</Link>
+            </li>
+            <li>
+              <Link href="/about">プロフィール</Link>
+            </li>
+            <li>
+              <Link href="/works">Work</Link>
+            </li>
+            <li>
+              <Link href="/blog">ブログ</Link>
+            </li>
+            <li>
+              <Link href="/contact">お問い合わせ</Link>
+            </li>
           </ul>
         </div>
         <div>
           <h2 className="font-semibold mb-2 sr-only">ポリシー</h2>
           <ul className="space-y-1">
-            <li><Link href="/policy/terms">利用規約</Link></li>
-            <li><Link href="/policy/privacy">プライバシーポリシー</Link></li>
-            <li><Link href="/policy/copyright">著作権について</Link></li>
-            <li><Link href="/policy/law">特定商取引法に基づく表記</Link></li>
+            <li>
+              <Link href="/policy/terms">利用規約</Link>
+            </li>
+            <li>
+              <Link href="/policy/privacy">プライバシーポリシー</Link>
+            </li>
+            <li>
+              <Link href="/policy/copyright">著作権について</Link>
+            </li>
+            <li>
+              <Link href="/policy/law">特定商取引法に基づく表記</Link>
+            </li>
           </ul>
         </div>
         <div>
@@ -101,7 +119,9 @@ export default function Footer() {
         </div>
         <div>
           <h2 className="font-semibold mb-2 sr-only">お問い合わせ</h2>
-          <Link href="/contact" className="hover:underline">お問い合わせフォーム</Link>
+          <Link href="/contact" className="hover:underline">
+            お問い合わせフォーム
+          </Link>
         </div>
       </div>
       <div className="bg-gray-900 text-center py-4 text-xs flex items-center justify-center space-x-2">

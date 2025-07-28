@@ -1,6 +1,6 @@
-"use client";
-import { forwardRef, ReactNode } from "react";
-import { motion } from "framer-motion";
+'use client';
+import { forwardRef, ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 interface Props {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Card = forwardRef<HTMLDivElement, Props>(
-  ({ children, className = "", onClick }, ref) => (
+  ({ children, className = '', onClick }, ref) => (
     <motion.div
       ref={ref}
       whileHover={{ scale: 1.05 }}
@@ -19,7 +19,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
     >
       {children}
     </motion.div>
-  )
+  ),
 );
-Card.displayName = "Card";
+Card.displayName = 'Card';
 export default Card;
