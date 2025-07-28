@@ -55,7 +55,7 @@ export default function About() {
 
       <section className="space-y-2 text-sm">
         <h2 className="text-lg font-bold">Media / SNS活動</h2>
-        <p>🎬 YouTubeチャンネル ＆ Instagram</p>
+        <p>🎬 YouTubeチャンネル2つ ＆ Instagram</p>
         <p>趣味で、ポップス・クラシック音楽の解説・レビューを発信する動画アカウントを運営中。</p>
         <p>
           音楽の背景や構造を分かりやすく紐解く“聴く攻略本”をコンセプトに、ショート動画を中心とした発信を行っています。
@@ -73,7 +73,15 @@ export default function About() {
             rel="noopener noreferrer"
             className="px-4 py-2 bg-primary text-white rounded shadow hover:bg-primary/80"
           >
-            YouTubeで見る
+            YouTubeチャンネル1
+          </a>
+          <a
+            href="https://youtube.com/channel2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-primary text-white rounded shadow hover:bg-primary/80"
+          >
+            YouTubeチャンネル2
           </a>
           <a
             href="https://instagram.com"
