@@ -24,7 +24,7 @@ export default function TestimonialsSection() {
         {testimonials.map((t, i) => (
           <div
             key={i}
-            className="flex-shrink-0 w-64 p-4 bg-white dark:bg-gray-800 rounded shadow"
+            className="flex-shrink-0 w-64 p-4 bg-white dark:bg-gray-700 rounded shadow"
           >
             <div className="flex items-center space-x-2 mb-2">
               <img

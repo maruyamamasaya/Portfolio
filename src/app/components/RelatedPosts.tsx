@@ -10,7 +10,7 @@ export default function RelatedPosts({ posts }: { posts: Post[] }) {
         {posts.map((post) => (
           <li
             key={post.slug}
-            className="border rounded overflow-hidden bg-white dark:bg-gray-800"
+            className="border rounded overflow-hidden bg-white dark:bg-gray-700"
           >
             <Link href={`/blog/${post.slug}`}>
               {post.image && (
