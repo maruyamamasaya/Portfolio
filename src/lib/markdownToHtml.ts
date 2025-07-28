@@ -115,7 +115,7 @@ export default async function markdownToHtml(
     convertMarkdownTables(replaceInternalLinks(markdown)),
   );
 
-  const processor: Processor = unified()
+  const processor = unified()
     .use(parse)
     .use(headingsPlugin(headings))
     .use(remarkRehype)
