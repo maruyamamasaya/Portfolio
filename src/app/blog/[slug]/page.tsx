@@ -46,7 +46,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <BlogNavButtons />
         <article className="prose prose-light dark:prose-dark main-content">
           {post.image && (
-            <img src={post.image} alt="eyecatch" className="mb-4" />
+            <img src={post.image} alt={post.alt ?? post.slug} className="mb-4" />
           )}
           {headings && headings.length > 0 && (
             <TableOfContents headings={headings} />
