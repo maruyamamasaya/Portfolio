@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { getAllTags, searchPosts } from '@/lib/posts';
 import BlogNavButtons from '../../components/BlogNavButtons';
 import TagBadge from '../../components/TagBadge';
@@ -43,9 +44,11 @@ export default async function TagPage({
             className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-700 rounded-xl shadow-md animate-fadeInUp"
           >
             {post.image && (
-              <img
+              <Image
                 src={post.image}
                 alt={`Thumbnail for ${post.title}`}
+                width={64}
+                height={64}
                 className="w-16 h-16 object-cover"
               />
             )}
