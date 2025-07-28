@@ -1,13 +1,7 @@
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
-  globals: {
-    'ts-jest': {
-      isolatedModules: true,
-    },
-  },
 };
