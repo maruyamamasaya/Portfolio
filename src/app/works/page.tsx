@@ -2,6 +2,7 @@
 
 import BlogNavButtons from '../components/BlogNavButtons';
 import Card from '../components/Card';
+import Image from 'next/image';
 
 import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
 
