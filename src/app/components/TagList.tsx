@@ -1,8 +1,8 @@
 import { getTagCounts } from '@/lib/posts';
 import TagButton from './TagButton';
 
-export default function TagList() {
-  const tagCounts = getTagCounts();
+export default async function TagList() {
+  const tagCounts = await getTagCounts();
   const max = tagCounts[0]?.count || 1;
   const getSizeClass = (count: number) => {
     const ratio = count / max;
