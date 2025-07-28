@@ -53,6 +53,7 @@ developers_blog/# 開発者向け記事
 ## Markdown ファイル構成
 
 ブログ記事の Markdown ファイルのフォーマットは `docs/markdown-structure.md` にまとめています。`tags` や `updated` などのメタ情報もここで確認できます。
+API エンドポイントの詳細は `docs/api-routes.md` に記載しています。
 
 ## セットアップ
 依存パッケージをインストールした後、開発サーバーを起動します。
@@ -88,7 +89,9 @@ BASIC_AUTH_PASSWORD=your_password
 | NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION | 初回マウントアニメーションを無効化 |
 | BASIC_AUTH_USERNAME | Basic 認証のユーザー名 |
 | BASIC_AUTH_PASSWORD | Basic 認証のパスワード |
-| REVALIDATE_SECRET | `/api/revalidate` 用のシークレット |
+| REVALIDATE_SECRET | `/api/revalidate` の `secret` パラメータに使用 |
+
+`REVALIDATE_SECRET` の値は `/api/revalidate?secret=...` に指定し、手動で ISR を再生成する際の認証トークンとして利用します。
 
 
 ## デプロイ
