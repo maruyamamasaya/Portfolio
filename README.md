@@ -32,10 +32,11 @@
   - トップページの検索バーでは記事タイトル・本文・カテゴリ・タグを横断して検索できます。
 
 ## 使用技術
-- React / Next.js
-- TypeScript
+- React / Next.js - モダンで保守性の高いホームページを構築
+- AWS (Lambda, DynamoDB) - LINE連携のスケーラブルなバックエンド
+- LINE Messaging API & ChatGPT - モバイルオーダーや自動応答システムを独自開発
+- Prisma - 型安全なORM
 - Tailwind CSS
-- Prisma
 - Framer Motion
 
 ## ディレクトリ構成

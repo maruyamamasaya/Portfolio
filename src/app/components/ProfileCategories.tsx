@@ -34,6 +34,15 @@ const categories: Category[] = [
       { src: '/images/img2.svg', caption: '名刺・チラシ制作' },
     ],
   },
+  {
+    title: 'モバイルオーダー',
+    desc: 'AWSとLINE APIで実現する飲食店向け注文システム。',
+    slides: [
+      { src: '/images/img1.svg', caption: 'ChatGPT連携注文受付' },
+      { src: '/images/img4.svg', caption: 'キッチン管理画面' },
+      { src: '/images/img2.svg', caption: 'データ分析にも対応' },
+    ],
+  },
 ];
 
 export default function ProfileCategories() {

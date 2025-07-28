@@ -7,6 +7,9 @@ export default function SkillBars() {
     { name: 'Tailwind', icon: '🌀', level: 80 },
     { name: 'Figma', icon: '🎨', level: 70 },
     { name: 'Zapier', icon: '⚡', level: 60 },
+    { name: 'AWS × LINE API', icon: '☁️', level: 75 },
+    { name: 'ChatGPT連携', icon: '🤖', level: 70 },
+    { name: 'モバイルオーダー開発', icon: '🍔', level: 80 },
   ];
   return (
     <section className="mb-8">
