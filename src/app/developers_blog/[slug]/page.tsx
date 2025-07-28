@@ -5,6 +5,7 @@ import markdownToHtml from '@/lib/markdownToHtml';
 import { getDevPost, getSortedDevPosts } from '@/lib/devPosts';
 import TableOfContents from '@/app/components/TableOfContents';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
+import CodeCopyInit from '@/app/components/CodeCopyInit';
 
 export async function generateStaticParams() {
   const posts = await getSortedDevPosts();
@@ -66,6 +67,7 @@ export default async function BlogPost({
           )}
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </article>
+        <CodeCopyInit />
       </div>
     );
   } catch {

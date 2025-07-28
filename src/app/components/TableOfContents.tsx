@@ -11,7 +11,7 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
   const levels = ['pl-0 text-base', 'pl-4 text-sm', 'pl-8 text-xs'];
   return (
     <aside
-      className="mb-6 rounded-lg p-4 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 dark:text-gray-100"
+      className="mb-6 rounded-lg p-4 bg-gray-100 dark:bg-gray-700 dark:text-gray-100"
     >
       <h3 className="font-bold mb-2">目次</h3>
       <ul className="list-none m-0 p-0 space-y-1">
