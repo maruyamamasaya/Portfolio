@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 
@@ -15,14 +15,13 @@ export interface DevPost {
 
 const devPostsDirectory = path.join(process.cwd(), 'developers_blog');
 
-export function getSortedDevPosts(): DevPost[] {
-  const fileNames = fs
-    .readdirSync(devPostsDirectory)
+export async function getSortedDevPosts(): Promise<DevPost[]> {
+  const fileNames = (await fs.readdir(devPostsDirectory))
     .filter(file => file.endsWith('.md'));
-  const posts = fileNames.map((fileName) => {
+  const posts = await Promise.all(fileNames.map(async (fileName) => {
     const slug = fileName.replace(/\.md$/, '');
     const fullPath = path.join(devPostsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = await fs.readFile(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
     return {
@@ -35,14 +34,14 @@ export function getSortedDevPosts(): DevPost[] {
       updated: data.updated as string | undefined,
       content
     };
-  });
+  }));
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export function getDevPost(slug: string): DevPost {
+export async function getDevPost(slug: string): Promise<DevPost> {
   const fullPath = path.join(devPostsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const fileContents = await fs.readFile(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
   return {

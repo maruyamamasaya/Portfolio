@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
 
@@ -16,14 +16,13 @@ export interface Post {
 
 const postsDirectory = path.join(process.cwd(), 'blog');
 
-export function getSortedPosts(): Post[] {
-  const fileNames = fs
-    .readdirSync(postsDirectory)
+export async function getSortedPosts(): Promise<Post[]> {
+  const fileNames = (await fs.readdir(postsDirectory))
     .filter(file => file.endsWith('.md'));
-  const posts = fileNames.map((fileName) => {
+  const posts = await Promise.all(fileNames.map(async (fileName) => {
     const slug = fileName.replace(/\.md$/, '');
     const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = await fs.readFile(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
     return {
@@ -37,14 +36,14 @@ export function getSortedPosts(): Post[] {
       updated: data.updated as string | undefined,
       content
     };
-  });
+  }));
 
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
-export function getPost(slug: string): Post {
+export async function getPost(slug: string): Promise<Post> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const fileContents = await fs.readFile(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
   return {
@@ -60,8 +59,8 @@ export function getPost(slug: string): Post {
   };
 }
 
-export function getAllTags(): string[] {
-  const posts = getSortedPosts();
+export async function getAllTags(): Promise<string[]> {
+  const posts = await getSortedPosts();
   const tagSet = new Set<string>();
   posts.forEach(post => {
     post.tags?.forEach(tag => tagSet.add(tag));
@@ -69,8 +68,8 @@ export function getAllTags(): string[] {
   return Array.from(tagSet);
 }
 
-export function getTagCounts(): { tag: string; count: number }[] {
-  const posts = getSortedPosts();
+export async function getTagCounts(): Promise<{ tag: string; count: number }[]> {
+  const posts = await getSortedPosts();
   const counts: Record<string, number> = {};
   posts.forEach(post => {
     post.tags?.forEach(tag => {
@@ -82,24 +81,24 @@ export function getTagCounts(): { tag: string; count: number }[] {
     .sort((a, b) => b.count - a.count);
 }
 
-export function getPostsByTag(tag: string): Post[] {
-  return getSortedPosts().filter(post => post.tags?.includes(tag));
+export async function getPostsByTag(tag: string): Promise<Post[]> {
+  return (await getSortedPosts()).filter(post => post.tags?.includes(tag));
 }
 
-export function getPostsByTags(tags: string[]): Post[] {
+export async function getPostsByTags(tags: string[]): Promise<Post[]> {
   if (!tags.length) return getSortedPosts();
-  return getSortedPosts().filter(post =>
+  return (await getSortedPosts()).filter(post =>
     tags.every(t => post.tags?.includes(t))
   );
 }
 
-export function getPostsByCategory(category: string): Post[] {
-  return getSortedPosts().filter(post => post.category === category);
+export async function getPostsByCategory(category: string): Promise<Post[]> {
+  return (await getSortedPosts()).filter(post => post.category === category);
 }
 
-export function searchPosts(query: string, tags: string[] = []): Post[] {
+export async function searchPosts(query: string, tags: string[] = []): Promise<Post[]> {
   const q = query.toLowerCase();
-  return getSortedPosts().filter(post => {
+  return (await getSortedPosts()).filter(post => {
     const matchesQuery = !q
       ? true
       : (() => {
@@ -114,7 +113,7 @@ export function searchPosts(query: string, tags: string[] = []): Post[] {
   });
 }
 
-export function getBacklinks(slug: string): Post[] {
-  const posts = getSortedPosts();
+export async function getBacklinks(slug: string): Promise<Post[]> {
+  const posts = await getSortedPosts();
   return posts.filter(post => post.content.includes(`${slug}.md`));
 }

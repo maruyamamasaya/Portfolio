@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 
 export interface CategoryNode {
@@ -10,8 +10,8 @@ export interface CategoryNode {
 
 const baseDir = path.join(process.cwd(), 'blog');
 
-function readDir(dirPath: string): CategoryNode {
-  const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+async function readDir(dirPath: string): Promise<CategoryNode> {
+  const entries = await fs.readdir(dirPath, { withFileTypes: true });
   const node: CategoryNode = {
     name: path.basename(dirPath),
     path: path.relative(baseDir, dirPath) || '.',
@@ -22,7 +22,7 @@ function readDir(dirPath: string): CategoryNode {
   for (const entry of entries) {
     const full = path.join(dirPath, entry.name);
     if (entry.isDirectory()) {
-      node.children.push(readDir(full));
+      node.children.push(await readDir(full));
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
       node.files.push(entry.name.replace(/\.md$/, ''));
     }
@@ -31,6 +31,6 @@ function readDir(dirPath: string): CategoryNode {
   return node;
 }
 
-export function getCategoryTree(): CategoryNode {
+export async function getCategoryTree(): Promise<CategoryNode> {
   return readDir(baseDir);
 }

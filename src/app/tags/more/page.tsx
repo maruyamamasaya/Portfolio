@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { getAllTags } from '@/lib/posts';
 import BlogNavButtons from '../../components/BlogNavButtons';
 
-export default function MoreTagsPage() {
-  const tags = getAllTags();
+export default async function MoreTagsPage() {
+  const tags = await getAllTags();
   return (
     <div>
       <BlogNavButtons />

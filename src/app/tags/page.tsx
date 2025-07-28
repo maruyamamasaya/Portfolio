@@ -3,9 +3,9 @@ import { getAllTags, getSortedPosts } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import TagFilter from './TagFilter';
 
-export default function TagsPage() {
-  const tags = getAllTags();
-  const posts = getSortedPosts();
+export default async function TagsPage() {
+  const tags = await getAllTags();
+  const posts = await getSortedPosts();
   const displayTags = tags.slice(0, 30);
   const hasMore = tags.length > 30;
   return (

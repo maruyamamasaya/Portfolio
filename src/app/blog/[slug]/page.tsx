@@ -12,7 +12,7 @@ import PrevNextLinks from '@/app/components/PrevNextLinks';
 import RelatedPosts from '@/app/components/RelatedPosts';
 
 export async function generateStaticParams() {
-  const posts = getSortedPosts();
+  const posts = await getSortedPosts();
   return posts.map(post => ({ slug: post.slug }));
 }
 
@@ -20,7 +20,7 @@ export async function generateMetadata(
   { params }: { params: { slug: string } }
 ): Promise<Metadata> {
   try {
-    const post = getPost(params.slug);
+    const post = await getPost(params.slug);
     return {
       title: post.title,
       other: { date: post.date, updated: post.updated, tags: post.tags }
@@ -32,14 +32,14 @@ export async function generateMetadata(
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   try {
-    const posts = getSortedPosts();
+    const posts = await getSortedPosts();
     const index = posts.findIndex(p => p.slug === params.slug);
     const prev = index > 0 ? posts[index - 1] : undefined;
     const next = index < posts.length - 1 ? posts[index + 1] : undefined;
     const related = posts.filter(p => p.slug !== params.slug).slice(0, 3);
 
-    const post = getPost(params.slug);
-    const backlinks = getBacklinks(params.slug);
+    const post = await getPost(params.slug);
+    const backlinks = await getBacklinks(params.slug);
     const { html, headings } = await markdownToHtml(post.content);
     return (
       <div className="blog-container">

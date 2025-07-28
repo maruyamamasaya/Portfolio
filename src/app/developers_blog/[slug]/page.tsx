@@ -7,7 +7,7 @@ import TableOfContents from '@/app/components/TableOfContents';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
 
 export async function generateStaticParams() {
-  const posts = getSortedDevPosts();
+  const posts = await getSortedDevPosts();
   return posts.map(post => ({ slug: post.slug }));
 }
 
@@ -15,7 +15,7 @@ export async function generateMetadata(
   { params }: { params: { slug: string } }
 ): Promise<Metadata> {
   try {
-    const post = getDevPost(params.slug);
+    const post = await getDevPost(params.slug);
     return {
       title: post.title,
       other: { date: post.date, updated: post.updated, tags: post.tags },
@@ -28,7 +28,7 @@ export async function generateMetadata(
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
   try {
-    const post = getDevPost(params.slug);
+    const post = await getDevPost(params.slug);
     const { html, headings } = await markdownToHtml(post.content);
     return (
       <div className="blog-container">
