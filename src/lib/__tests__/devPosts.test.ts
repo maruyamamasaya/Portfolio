@@ -7,7 +7,8 @@ describe('devPosts utilities', () => {
   });
 
   it('getDevPost returns post data', async () => {
-    const post = await getDevPost('dev-sample-post');
+    const slug = 'dev-sample-post';
+    const post = await getDevPost(slug);
     expect(post.title).toContain('メタタグ');
   });
 
