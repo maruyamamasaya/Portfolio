@@ -9,10 +9,10 @@ describe('posts utilities', () => {
   });
 
   it('getPost returns correct post data', async () => {
-    const slug = 'meta-sample-post';
+    const slug = 'ai-one-day-web';
     const post = await getPost(slug);
-    expect(post.title).toBe('メタタグサンプル');
-    expect(post.tags).toContain('メタタグ');
+    expect(post.title).toBe('AIが1日でWebサイトを作る時代');
+    expect(post.tags).toContain('AI');
   });
 
   it('getPost throws FileNotFoundError for missing file', async () => {
