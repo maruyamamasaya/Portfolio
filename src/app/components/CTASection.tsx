@@ -12,7 +12,7 @@ export default function CTASection({
   label = 'お問い合わせ',
 }: Props) {
   return (
-    <section className="my-12 text-center space-y-4">
+    <section className="section-spacing text-center space-y-4">
       <h2 className="text-2xl font-bold">{title}</h2>
       <Link
         href={href}
