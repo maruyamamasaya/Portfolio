@@ -11,6 +11,7 @@
 - [ディレクトリ構成](#ディレクトリ構成)
 - [Markdown ファイル構成](#markdown-ファイル構成)
 - [セットアップ](#セットアップ)
+- [環境変数](#環境変数)
 - [デプロイ](#デプロイ)
 - [開発者向け編集ページ](#開発者向け編集ページ)
 - [画像ファイルについて](#画像ファイルについて)
@@ -79,6 +80,16 @@ NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION=true
 BASIC_AUTH_USERNAME=your_username
 BASIC_AUTH_PASSWORD=your_password
 ```
+## 環境変数
+アプリで利用する主な環境変数を以下にまとめています。`.env.example` を参考に `.env.local` を作成してください。
+
+| 変数名 | 説明 |
+| ---- | ---- |
+| NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION | 初回マウントアニメーションを無効化 |
+| BASIC_AUTH_USERNAME | Basic 認証のユーザー名 |
+| BASIC_AUTH_PASSWORD | Basic 認証のパスワード |
+| REVALIDATE_SECRET | `/api/revalidate` 用のシークレット |
+
 
 ## デプロイ
 `npm run build` でビルドし、`npm start` でサーバーを起動します。EC2 などの Node.js が動作する環境で実行してください。
