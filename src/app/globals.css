@@ -70,6 +70,18 @@
   @apply text-gray-800 font-semibold border-l-2 border-blue-300 text-balance;
 }
 
+.dark .prose h2 {
+  @apply text-gray-100 bg-gray-800;
+}
+
+.dark .prose h3 {
+  @apply text-gray-100 bg-gray-800 border-blue-300;
+}
+
+.dark .prose h4 {
+  @apply text-gray-100 bg-gray-800 border-gray-600;
+}
+
 .prose h4 {
   @apply text-gray-700 font-medium border-b border-gray-200 pb-1 text-balance;
 }
