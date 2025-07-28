@@ -10,4 +10,8 @@ describe('devPosts utilities', () => {
     const post = await getDevPost('dev-sample-post');
     expect(post.title).toContain('メタタグ');
   });
+
+  it('getDevPost throws for missing file', async () => {
+    await expect(getDevPost('missing-post')).rejects.toThrow('Dev post not found');
+  });
 });

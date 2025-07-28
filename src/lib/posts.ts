@@ -24,6 +24,11 @@ export async function getSortedPosts(): Promise<Post[]> {
     fileNames.map(async (fileName) => {
       const slug = fileName.replace(/\.md$/, '');
       const fullPath = path.join(postsDirectory, fileName);
+      try {
+        await fs.access(fullPath);
+      } catch {
+        throw new Error(`Post not found: ${slug}`);
+      }
       const fileContents = await fs.readFile(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
 
@@ -46,6 +51,11 @@ export async function getSortedPosts(): Promise<Post[]> {
 
 export async function getPost(slug: string): Promise<Post> {
   const fullPath = path.join(postsDirectory, `${slug}.md`);
+  try {
+    await fs.access(fullPath);
+  } catch {
+    throw new Error(`Post not found: ${slug}`);
+  }
   const fileContents = await fs.readFile(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 

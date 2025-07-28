@@ -12,6 +12,10 @@ describe('posts utilities', () => {
     expect(post.title).toBe('メタタグサンプル');
     expect(post.tags).toContain('メタタグ');
   });
+  
+  it('getPost throws for missing file', async () => {
+    await expect(getPost('missing-post')).rejects.toThrow('Post not found');
+  });
 
   it('getPostsByTag returns posts with specified tag', async () => {
     const posts = await getPostsByTag('AI');
