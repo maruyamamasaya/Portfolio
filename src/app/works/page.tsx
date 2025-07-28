@@ -3,15 +3,7 @@
 import Image from 'next/image';
 import BlogNavButtons from '../components/BlogNavButtons';
 import Card from '../components/Card';
-
-interface Artwork {
-  id: number;
-  title: string;
-  year: number;
-  medium: string;
-  description?: string;
-  image: string;
-}
+import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
 
 const artworks: Artwork[] = [
   {
@@ -75,12 +67,14 @@ const artworks: Artwork[] = [
 ];
 
 export default function Works() {
+  const regularArtworks = artworks.filter((a) => a.id <= 5);
+  const slideshowArtworks = artworks.filter((a) => a.id > 5);
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">Works</h1>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {artworks.map((art) => (
+        {regularArtworks.map((art) => (
           <Card key={art.id} className="space-y-2">
             <Image
               src={art.image}
@@ -97,6 +91,11 @@ export default function Works() {
           </Card>
         ))}
       </div>
+      {slideshowArtworks.length > 0 && (
+        <div className="mt-8">
+          <ArtworkSlideshow artworks={slideshowArtworks} />
+        </div>
+      )}
     </div>
   );
 }
