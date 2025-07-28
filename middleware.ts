@@ -15,7 +15,9 @@ export function middleware(req: NextRequest) {
       const [user, pwd] = Buffer.from(authValue, 'base64')
         .toString()
         .split(':');
-      if (user === 'DENNOGENKYO' && pwd === 'CYBERDREAM') {
+      const username = process.env.BASIC_AUTH_USERNAME ?? '';
+      const password = process.env.BASIC_AUTH_PASSWORD ?? '';
+      if (user === username && pwd === password) {
         return NextResponse.next();
       }
     }
