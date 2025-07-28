@@ -1,7 +1,5 @@
 module.exports = {
+  preset: 'ts-jest',
   testEnvironment: 'node',
-  transform: {
-    '^.+\\.[tj]sx?$': 'babel-jest',
-  },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
 };
