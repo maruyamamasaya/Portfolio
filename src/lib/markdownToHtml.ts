@@ -22,7 +22,7 @@ function slugify(text: string): string {
 
 function replaceInternalLinks(content: string): string {
   return content.replace(/\b([A-Za-z0-9_-]+)\.md\b/g, (_, slug) =>
-    `[ここに記入すると](/blog/${slug})`
+    `[${slug}](/blog/${slug})`
   );
 }
 
