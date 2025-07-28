@@ -51,7 +51,11 @@ export default function ThumbSlider({ slides }: Props) {
             onClick={() => setIndex(i)}
             className={`w-12 h-12 overflow-hidden rounded ${index === i ? 'ring-2 ring-primary' : ''}`}
           >
-            <img src={slide.src} alt={`thumb-${i}`} className="object-cover w-full h-full" />
+            <img
+              src={slide.src}
+              alt={`Thumbnail for ${slide.caption}`}
+              className="object-cover w-full h-full"
+            />
           </button>
         ))}
       </div>

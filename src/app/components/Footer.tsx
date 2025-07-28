@@ -107,7 +107,7 @@ export default function Footer() {
       <div className="bg-gray-900 text-center py-4 text-xs flex items-center justify-center space-x-2">
         <img
           src="/images/footer_icon.png"
-          alt="Footer Icon"
+          alt="Footer logo"
           className="w-6 h-6"
         />
         <span>&copy; 2025 でじサポ｜パソコン相談室</span>

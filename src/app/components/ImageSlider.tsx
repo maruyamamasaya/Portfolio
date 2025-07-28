@@ -27,7 +27,7 @@ export default function ImageSlider({ images }: Props) {
           <div key={i} className="flex-shrink-0 w-full">
             <Image
               src={src}
-              alt={`slide-${i}`}
+              alt={`Slide ${i + 1}`}
               width={600}
               height={400}
               className="w-full h-auto object-cover"

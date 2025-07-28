@@ -142,12 +142,12 @@ export default function Header() {
         <h1 className="text-2xl font-digital font-bold flex items-center">
           <img
             src="/images/img1.svg"
-            alt="Header Icon"
+            alt="Light mode logo"
             className="w-8 h-8 mr-2 block dark:hidden"
           />
           <img
             src="/images/img2.svg"
-            alt="Header Icon Dark"
+            alt="Dark mode logo"
             className="w-8 h-8 mr-2 hidden dark:block"
           />
           <Link href="/">でじサポ｜パソコン相談室</Link>
