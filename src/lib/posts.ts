@@ -7,6 +7,7 @@ export interface Post {
   title: string;
   date: string;
   image?: string;
+  alt?: string;
   category: string;
   tags?: string[];
   updated?: string;
@@ -30,6 +31,7 @@ export function getSortedPosts(): Post[] {
       title: data.title as string,
       date: data.date as string,
       image: data.image as string | undefined,
+      alt: data.alt as string | undefined,
       category: data.category as string,
       tags: data.tags as string[] | undefined,
       updated: data.updated as string | undefined,
@@ -50,6 +52,7 @@ export function getPost(slug: string): Post {
     title: data.title as string,
     date: data.date as string,
     image: data.image as string | undefined,
+    alt: data.alt as string | undefined,
     category: data.category as string,
     tags: data.tags as string[] | undefined,
     updated: data.updated as string | undefined,
