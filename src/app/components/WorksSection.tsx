@@ -17,7 +17,7 @@ const works = [
 
 export default function WorksSection() {
   return (
-    <section className="mb-12">
+    <section className="section-spacing">
       <h2 className="text-2xl font-bold mb-4">実績・導入事例</h2>
       <div className="grid gap-8 md:grid-cols-3">
         {works.map((work, i) => (

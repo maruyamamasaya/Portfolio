@@ -10,7 +10,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="mb-12">
+    <section className="section-spacing">
       <h2 className="text-2xl font-bold mb-4">サービス紹介</h2>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {services.map((s) => (

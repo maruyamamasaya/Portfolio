@@ -13,7 +13,7 @@ const faqs = [
 export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section className="mb-12">
+    <section className="section-spacing">
       <h2 className="text-2xl font-bold mb-4">よくある質問</h2>
       <ul className="space-y-2">
         {faqs.map((f, i) => (
