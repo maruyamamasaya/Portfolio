@@ -4,8 +4,10 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+    },
   },
 };
