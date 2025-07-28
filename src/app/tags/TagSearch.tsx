@@ -86,7 +86,7 @@ export default function TagSearch({ tags, onChange }: Props) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={onKeyDown}
-          className="border-r border-gray-300 dark:border-gray-600 px-3 h-12 flex-grow w-full focus:outline-none dark:bg-gray-700"
+          className="border-r border-gray-300 dark:border-gray-600 px-3 h-12 flex-grow w-full focus:outline-none dark:bg-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
         />
         <button
           onClick={handleSearch}
@@ -96,7 +96,7 @@ export default function TagSearch({ tags, onChange }: Props) {
         </button>
       </div>
       {query && (
-        <ul className="absolute left-0 right-0 mt-1 bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-xl shadow-md max-h-60 overflow-auto z-10 animate-fadeInUp">
+        <ul className="absolute left-0 right-0 mt-1 bg-white dark:bg-gray-800 border dark:border-gray-600 rounded-xl shadow-md max-h-60 overflow-auto z-10 animate-fadeInUp dark:text-gray-100">
           {isLoading ? (
             <li className="px-2 py-1">
               <Loader />
@@ -107,7 +107,7 @@ export default function TagSearch({ tags, onChange }: Props) {
                 key={tag}
                 className={`px-2 py-2 text-center cursor-pointer motion-safe:transition-colors motion-reduce:transition-none duration-300 ease-in-out ${
                   idx === activeIndex ? 'bg-primary/20' : ''
-                }`}
+                } dark:text-gray-100`}
                 onMouseDown={() => {
                   selectTag(tag);
                   setQuery('');
@@ -117,7 +117,7 @@ export default function TagSearch({ tags, onChange }: Props) {
               </li>
             ))
           ) : (
-            <li className="px-2 py-2 text-gray-500 text-center">
+            <li className="px-2 py-2 text-gray-500 dark:text-gray-400 text-center">
               一致するタグが見つかりません
             </li>
           )}
@@ -128,11 +128,11 @@ export default function TagSearch({ tags, onChange }: Props) {
           {selected.map((tag) => (
             <span
               key={tag}
-              className="flex items-center bg-primary/20 rounded-full px-3 py-1 text-sm shadow"
+              className="flex items-center bg-primary/20 dark:bg-primary/30 rounded-full px-3 py-1 text-sm shadow dark:text-gray-100"
             >
               {tag}
               <button
-                className="ml-1 text-gray-600 hover:text-gray-900"
+                className="ml-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
                 onClick={() => removeTag(tag)}
               >
                 &times;
@@ -141,7 +141,7 @@ export default function TagSearch({ tags, onChange }: Props) {
           ))}
           <button
             onClick={clearTags}
-            className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm"
+            className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm dark:text-gray-100"
           >
             クリア
           </button>
