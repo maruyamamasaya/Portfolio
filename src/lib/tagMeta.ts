@@ -8,6 +8,6 @@ export const tagMeta: Record<
 
 export const defaultTagMeta = {
   icon: '🏷',
-  textColor: 'accent-text',
-  bgColor: 'bg-gray-200',
+  textColor: 'text-gray-600 dark:text-gray-100',
+  bgColor: 'bg-gray-200 dark:bg-gray-700',
 };

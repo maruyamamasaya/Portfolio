@@ -10,7 +10,7 @@ export default function TagBadge({ tag }: Props) {
   return (
     <Link
       href={`/tags/${encodeURIComponent(tag)}`}
-      className={`${meta.bgColor} ${meta.textColor} flex items-center space-x-1 px-2 py-1 rounded text-xs hover:underline cursor-pointer`}
+      className={`tag flex items-center space-x-1 px-2 py-1 rounded text-xs bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-100 hover:underline hover:bg-gray-300 dark:hover:bg-gray-600 ${meta.bgColor} ${meta.textColor}`}
     >
       <span>{meta.icon}</span>
       <span>{tag}</span>
