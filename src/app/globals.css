@@ -95,6 +95,18 @@
   @apply text-gray-700 font-medium border-b border-gray-200 pb-1 text-balance;
 }
 
+.prose h5,
+.prose h6 {
+  @apply text-gray-700 font-medium text-balance;
+}
+
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  @apply text-gray-100;
+}
+
 .prose h2::before,
 .prose h3::before,
 .prose h4::before {
@@ -109,7 +121,7 @@
 
 /* Code blocks and images */
 .prose pre {
-  @apply bg-gray-700 text-gray-100 p-4 rounded overflow-x-auto;
+  @apply bg-gray-700 text-gray-100 p-4 rounded overflow-x-auto relative;
 }
 
 .prose code {
@@ -122,6 +134,16 @@
 
 .prose img {
   @apply rounded-md shadow-md my-4;
+}
+
+.prose ul,
+.prose ol {
+  @apply pl-5 mb-4;
+}
+
+.dark .prose ul li::marker,
+.dark .prose ol li::marker {
+  @apply text-gray-300;
 }
 
 /* Improve readability of blockquotes */
@@ -140,4 +162,9 @@
   will-change: transform, opacity;
   backface-visibility: hidden;
   transform: translateZ(0);
+}
+
+/* copy button for code blocks */
+.copy-btn {
+  @apply absolute top-2 right-2 bg-gray-600 dark:bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-80 hover:opacity-100;
 }

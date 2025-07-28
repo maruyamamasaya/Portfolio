@@ -10,6 +10,7 @@ import TableOfContents from '@/app/components/TableOfContents';
 import ShareButtons from '@/app/components/ShareButtons';
 import PrevNextLinks from '@/app/components/PrevNextLinks';
 import RelatedPosts from '@/app/components/RelatedPosts';
+import CodeCopyInit from '@/app/components/CodeCopyInit';
 
 export async function generateStaticParams() {
   const posts = await getSortedPosts();
@@ -96,6 +97,7 @@ export default async function BlogPost({
           <LeftSidebar />
           <RightSidebar posts={posts} />
         </section>
+        <CodeCopyInit />
       </div>
     );
   } catch {
