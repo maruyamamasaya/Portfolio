@@ -51,14 +51,15 @@ export default function SearchBar({ className }: Props) {
     );
   }, [query, posts]);
 
-  const runSearch = (q: string) => {
+  const runSearch = (q?: string) => {
+    const keyword = q ?? query;
     const params = new URLSearchParams();
-    if (q) params.set('q', q);
+    if (keyword) params.set('q', keyword);
     if (category) params.set('category', category);
     if (tag) params.set('tag', tag);
     router.push(`/search?${params.toString()}`);
-    if (q) {
-      const next = [q, ...history.filter((h) => h !== q)].slice(0, 5);
+    if (keyword) {
+      const next = [keyword, ...history.filter((h) => h !== keyword)].slice(0, 5);
       setHistory(next);
       localStorage.setItem('searchHistory', JSON.stringify(next));
     }
@@ -71,7 +72,7 @@ export default function SearchBar({ className }: Props) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            runSearch(query);
+            runSearch();
           }}
           className="space-y-2"
         >
@@ -169,7 +170,7 @@ export default function SearchBar({ className }: Props) {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                runSearch(query);
+                runSearch();
                 setMobileOpen(false);
               }}
               className="space-y-2"

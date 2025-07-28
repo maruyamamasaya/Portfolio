@@ -17,10 +17,11 @@ export default async function SearchPage({
   const query = searchParams.q ?? '';
   const category = searchParams.category ?? '';
   const tagParam = searchParams.tag;
-  const tags: string[] = tagParam
-    ? Array.isArray(tagParam)
-      ? tagParam.map((t) => decodeURIComponent(t))
-      : [decodeURIComponent(tagParam)]
+  const tagString = Array.isArray(tagParam)
+    ? tagParam.join(',')
+    : tagParam ?? '';
+  const tags = tagString
+    ? tagString.split(',').map((t) => decodeURIComponent(t))
     : [];
 
   let results: Post[] =
