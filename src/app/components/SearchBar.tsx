@@ -83,7 +83,7 @@ export default function SearchBar({ className }: Props) {
             className="border rounded px-2 py-1 w-full"
           />
           {suggestions.length > 0 && (
-            <ul className="absolute left-0 right-0 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded shadow mt-1 z-10 max-h-60 overflow-auto">
+            <ul className="absolute left-0 right-0 bg-white dark:bg-gray-700 border dark:border-gray-700 rounded shadow mt-1 z-10 max-h-60 overflow-auto">
               {suggestions.map((s) => (
                 <li
                   key={s.slug}
@@ -165,7 +165,7 @@ export default function SearchBar({ className }: Props) {
             </svg>
           </button>
         ) : (
-          <div className="absolute inset-x-0 top-0 bg-white dark:bg-gray-800 p-2 shadow z-50">
+          <div className="absolute inset-x-0 top-0 bg-white dark:bg-gray-700 p-2 shadow z-50">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -192,7 +192,7 @@ export default function SearchBar({ className }: Props) {
                 </button>
               </div>
               {suggestions.length > 0 && (
-                <ul className="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded shadow mt-1 z-10 max-h-60 overflow-auto">
+                <ul className="bg-white dark:bg-gray-700 border dark:border-gray-700 rounded shadow mt-1 z-10 max-h-60 overflow-auto">
                   {suggestions.map((s) => (
                     <li
                       key={s.slug}

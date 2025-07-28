@@ -29,11 +29,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <body
-        className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-light dark:text-dark font-medium antialiased transition-base`}
+        className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-700 text-light dark:text-dark font-normal antialiased transition-base`}
       >
         <ThemeProvider>
           <Header />
-          <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div className="container mx-auto p-2">
               <TagList />
             </div>

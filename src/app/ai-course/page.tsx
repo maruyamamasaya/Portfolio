@@ -208,7 +208,7 @@ export default function AICoursePage() {
       <ScrollFadeIn className="max-w-3xl mx-auto p-4 space-y-4">
         <h2 className="text-2xl font-bold">受講者の声</h2>
         <div className="space-y-4">
-          <figure className="bg-white dark:bg-gray-800 rounded shadow p-4">
+          <figure className="bg-white dark:bg-gray-700 rounded shadow p-4">
             <blockquote className="text-sm">
               「1人で運営していたECが、AIのおかげで3倍の売上に」
             </blockquote>
@@ -216,7 +216,7 @@ export default function AICoursePage() {
               ─ ネットショップオーナー（40代女性）
             </figcaption>
           </figure>
-          <figure className="bg-white dark:bg-gray-800 rounded shadow p-4">
+          <figure className="bg-white dark:bg-gray-700 rounded shadow p-4">
             <blockquote className="text-sm">
               「ChatGPTが秘書代わり。報告書も議事録も3分で完成」
             </blockquote>
@@ -224,7 +224,7 @@ export default function AICoursePage() {
               ─ 会社員（30代男性）
             </figcaption>
           </figure>
-          <figure className="bg-white dark:bg-gray-800 rounded shadow p-4">
+          <figure className="bg-white dark:bg-gray-700 rounded shadow p-4">
             <blockquote className="text-sm">
               「息子の受験勉強に役立つとは…家族全員が使ってます」
             </blockquote>

@@ -88,7 +88,7 @@ export default async function SearchPage({
             {results.map((post) => (
               <li
                 key={post.slug}
-                className="bg-white dark:bg-gray-800 rounded shadow p-4 space-y-2"
+                className="bg-white dark:bg-gray-700 rounded shadow p-4 space-y-2"
               >
                 {post.image && (
                   <img

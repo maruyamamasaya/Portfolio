@@ -86,7 +86,7 @@ export default function TagSearch({ tags, onChange }: Props) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={onKeyDown}
-          className="border-r border-gray-300 dark:border-gray-600 px-3 h-12 flex-grow w-full focus:outline-none dark:bg-gray-800"
+          className="border-r border-gray-300 dark:border-gray-600 px-3 h-12 flex-grow w-full focus:outline-none dark:bg-gray-700"
         />
         <button
           onClick={handleSearch}
@@ -96,7 +96,7 @@ export default function TagSearch({ tags, onChange }: Props) {
         </button>
       </div>
       {query && (
-        <ul className="absolute left-0 right-0 mt-1 bg-white dark:bg-gray-800 border dark:border-gray-600 rounded-xl shadow-md max-h-60 overflow-auto z-10 animate-fadeInUp">
+        <ul className="absolute left-0 right-0 mt-1 bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-xl shadow-md max-h-60 overflow-auto z-10 animate-fadeInUp">
           {isLoading ? (
             <li className="px-2 py-1">
               <Loader />

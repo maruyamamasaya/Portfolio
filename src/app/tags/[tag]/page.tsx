@@ -40,7 +40,7 @@ export default async function TagPage({
         {posts.map((post) => (
           <li
             key={post.slug}
-            className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md animate-fadeInUp"
+            className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-700 rounded-xl shadow-md animate-fadeInUp"
           >
             {post.image && (
               <img

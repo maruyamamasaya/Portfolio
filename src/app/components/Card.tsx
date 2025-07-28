@@ -14,7 +14,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
       ref={ref}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={`rounded-lg shadow-md p-4 bg-white dark:bg-gray-800 ${className}`}
+      className={`rounded-lg shadow-md p-4 bg-white dark:bg-gray-700 ${className}`}
       onClick={onClick}
     >
       {children}

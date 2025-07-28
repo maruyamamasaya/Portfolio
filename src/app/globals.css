@@ -32,7 +32,7 @@
 
 .dark .main-content,
 .dark .widget {
-  @apply bg-gray-800 text-gray-100;
+  @apply bg-gray-700 text-gray-100;
 }
 
 .blog-container {
@@ -88,7 +88,7 @@
 
 /* Code blocks and images */
 .prose pre {
-  @apply bg-gray-800 text-gray-100 p-4 rounded overflow-x-auto;
+  @apply bg-gray-700 text-gray-100 p-4 rounded overflow-x-auto;
 }
 
 .prose code {
@@ -96,7 +96,7 @@
 }
 
 .dark .prose code {
-  @apply bg-gray-800 text-pink-200;
+  @apply bg-gray-700 text-pink-200;
 }
 
 .prose img {
