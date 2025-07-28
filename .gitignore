@@ -2,3 +2,18 @@ node_modules
 .next
 .DS_Store
 public/images/main-hero*.png
+
+# Environment files
+.env
+.env.*
+
+# Log files and directories
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary editor files
+*~
+*.swp
+*.swo
