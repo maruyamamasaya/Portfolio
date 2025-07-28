@@ -1,17 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import BlogNavButtons from '../components/BlogNavButtons';
-import Card from '../components/Card';
-
-interface Artwork {
-  id: number;
-  title: string;
-  year: number;
-  medium: string;
-  description?: string;
-  image: string;
-}
+import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
 
 const artworks: Artwork[] = [
   {
@@ -79,24 +69,7 @@ export default function Works() {
     <div className="max-w-5xl mx-auto px-4 py-8">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">Works</h1>
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {artworks.map((art) => (
-          <Card key={art.id} className="space-y-2">
-            <Image
-              src={art.image}
-              alt={art.title}
-              width={600}
-              height={400}
-              className="w-full h-auto object-cover rounded"
-            />
-            <h3 className="font-semibold">{art.title}</h3>
-            <p className="text-sm text-gray-500">
-              {art.year} / {art.medium}
-            </p>
-            {art.description && <p className="text-sm">{art.description}</p>}
-          </Card>
-        ))}
-      </div>
+      <ArtworkSlideshow artworks={artworks} />
     </div>
   );
 }
