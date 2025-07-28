@@ -30,15 +30,15 @@ export default async function BlogIndex() {
                   />
                 )}
                 <div>
-                  <span className="text-gray-800">
+                  <span className="text-gray-800 dark:text-white">
                     /developers_blog/{post.slug}
                   </span>
-                  <span className="block text-sm text-gray-500">
+                  <span className="block text-sm text-gray-500 dark:text-gray-300">
                     {post.date}
                     {post.updated && ` (更新: ${post.updated})`}
                   </span>
                   {post.tags && (
-                    <span className="block text-xs text-gray-600 space-x-1">
+                    <span className="block text-xs text-gray-600 dark:text-gray-300 space-x-1">
                       {post.tags.slice(0, 3).map((tag) => (
                         <TagBadge key={tag} tag={tag} />
                       ))}
