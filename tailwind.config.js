@@ -25,11 +25,13 @@ module.exports = {
           '"Segoe UI"',
           '"Noto Sans Japanese"',
           'Meiryo',
-          'sans-serif'
+          'sans-serif',
+          '"Noto Sans JP"',
+          'ui-sans-serif',
+          'system-ui'
         ],
         xp: ['Tahoma', 'Verdana', 'sans-serif'],
-        digital: ['"Share Tech Mono"', 'monospace'],
-        sans: ['"Noto Sans JP"', 'ui-sans-serif', 'system-ui']
+        digital: ['"Share Tech Mono"', 'monospace']
       },
       colors: {
         primary: '#005bac',
