@@ -11,6 +11,7 @@
 - [ディレクトリ構成](#ディレクトリ構成)
 - [Markdown ファイル構成](#markdown-ファイル構成)
 - [セットアップ](#セットアップ)
+- [テストと Lint](#テストと-lint)
 - [環境変数](#環境変数)
 - [デプロイ](#デプロイ)
 - [開発者向け編集ページ](#開発者向け編集ページ)
@@ -62,6 +63,20 @@ API エンドポイントの詳細は `docs/api-routes.md` に記載していま
 npm install
 npm run dev
 ```
+
+## テストと Lint
+
+コード変更時は次のコマンドで静的解析とテストを実行できます。
+
+```bash
+npm run lint
+npm test
+```
+
+`npm run lint` は `.eslintrc.json` を参照して ESLint を実行します。
+`npm test` は `jest.config.js` に基づいて Jest を起動します。
+テスト実行には `.env.local` に定義した環境変数が利用されるため、`\*.example` をも
+とに設定してください。
 
 ### 初回マウントアニメーションの無効化
 
