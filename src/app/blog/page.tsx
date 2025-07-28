@@ -1,6 +1,5 @@
 import { getSortedPosts } from '@/lib/posts';
 import LeftSidebar from '@/app/components/LeftSidebar';
-import BlogNavButtons from '@/app/components/BlogNavButtons';
 import PostCard from '@/app/components/PostCard';
 
 export default async function BlogIndex() {
@@ -10,7 +9,6 @@ export default async function BlogIndex() {
 
   return (
     <div className="blog-container">
-      <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Blog</h1>
       <div className="md:flex">
         <aside className="md:w-1/5 md:pr-4 mb-4 md:mb-0">
