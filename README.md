@@ -71,6 +71,15 @@ NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION=true
 
 この変数が `true` のとき、`PageTransition` コンポーネントによるフェードインをスキップします。
 
+### Basic 認証の設定
+
+開発者向けページへのアクセスには Basic 認証を利用します。ユーザー名とパスワードを `.env.local` に設定してください。
+
+```env
+BASIC_AUTH_USERNAME=your_username
+BASIC_AUTH_PASSWORD=your_password
+```
+
 ## デプロイ
 `npm run build` でビルドし、`npm start` でサーバーを起動します。EC2 などの Node.js が動作する環境で実行してください。
 
