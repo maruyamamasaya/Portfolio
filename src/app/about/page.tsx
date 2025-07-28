@@ -32,6 +32,23 @@ export default function About() {
         多様な切り口から価値ある情報をお届けします。
       </p>
 
+      <section className="space-y-2 text-sm">
+        <h2 className="text-lg font-bold">LINE公式アカウント × ChatGPT × AWS</h2>
+        <p>LINE自動応答・モバイルオーダー機能の独自開発</p>
+        <p>
+          AWS上で構築したインフラに、LINE Messaging APIとChatGPTを統合。ユーザーと
+          の自然な対話を実現するLINE窓口や、飲食店向けのモバイルオーダー機能を開発しま
+          した。LINE上で注文・問い合わせ・予約が完結する仕組みを提供し、店舗業務の効率
+          化とユーザー体験の向上を実現しています。
+        </p>
+        <p>
+          使用技術：AWS（Lambda, API Gateway, DynamoDB, S3 他）／LINE Messaging API／OpenAI
+          API
+        </p>
+        <p>開発内容：自動応答Bot構築／注文情報の管理／LINE上でのメニュー表示・選択フローの設計</p>
+        <p>特徴：インフラレスでスケーラブルな構成／ノーアプリで完結するUX</p>
+      </section>
+
       <p className="text-sm text-gray-500">※ 本名は非公開。活動名は今後設定予定です。</p>
       <SkillBars />
       <ProfileCategories />
