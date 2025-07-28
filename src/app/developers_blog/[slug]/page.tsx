@@ -8,25 +8,31 @@ import BlogNavButtons from '@/app/components/BlogNavButtons';
 
 export async function generateStaticParams() {
   const posts = await getSortedDevPosts();
-  return posts.map(post => ({ slug: post.slug }));
+  return posts.map((post) => ({ slug: post.slug }));
 }
 
-export async function generateMetadata(
-  { params }: { params: { slug: string } }
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   try {
     const post = await getDevPost(params.slug);
     return {
       title: post.title,
       other: { date: post.date, updated: post.updated, tags: post.tags },
-      robots: { index: false, follow: false }
+      robots: { index: false, follow: false },
     };
   } catch {
     return { title: 'Not Found', robots: { index: false, follow: false } };
   }
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({
+  params,
+}: {
+  params: { slug: string };
+}) {
   try {
     const post = await getDevPost(params.slug);
     const { html, headings } = await markdownToHtml(post.content);
@@ -51,7 +57,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           </p>
           {post.tags && (
             <ul className="flex space-x-2 text-xs mb-2">
-              {post.tags.map(tag => (
+              {post.tags.map((tag) => (
                 <li key={tag} className="bg-gray-200 px-2 py-1 rounded">
                   <Link href={`/tags/${encodeURIComponent(tag)}`}>{tag}</Link>
                 </li>

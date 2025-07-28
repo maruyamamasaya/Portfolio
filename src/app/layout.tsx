@@ -22,27 +22,29 @@ export const metadata: Metadata = {
   },
   openGraph: {
     images: '/images/eye-catch.png',
-  }
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-light dark:text-dark font-medium antialiased transition-base`}>
+      <body
+        className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-900 text-light dark:text-dark font-medium antialiased transition-base`}
+      >
         <ThemeProvider>
-        <Header />
-        <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-          <div className="container mx-auto p-2">
-            <TagList />
+          <Header />
+          <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+            <div className="container mx-auto p-2">
+              <TagList />
+            </div>
           </div>
-        </div>
-        <PageTransition>
-          <main className="container mx-auto p-4">
-            {children}
-            <Breadcrumbs />
-          </main>
-        </PageTransition>
-        <Footer />
+          <PageTransition>
+            <main className="container mx-auto p-4">
+              {children}
+              <Breadcrumbs />
+            </main>
+          </PageTransition>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

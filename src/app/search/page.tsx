@@ -6,11 +6,11 @@ import SearchBar from '../components/SearchBar';
 import TagBadge from '../components/TagBadge';
 
 export const metadata: Metadata = {
-  title: 'Search'
+  title: 'Search',
 };
 
 export default async function SearchPage({
-  searchParams
+  searchParams,
 }: {
   searchParams: { q?: string; category?: string; tag?: string | string[] };
 }) {
@@ -19,21 +19,20 @@ export default async function SearchPage({
   const tagParam = searchParams.tag;
   const tags: string[] = tagParam
     ? Array.isArray(tagParam)
-      ? tagParam.map(t => decodeURIComponent(t))
+      ? tagParam.map((t) => decodeURIComponent(t))
       : [decodeURIComponent(tagParam)]
     : [];
 
-  let results: Post[] = query || category || tags.length
-    ? await searchPosts(query)
-    : await getSortedPosts();
+  let results: Post[] =
+    query || category || tags.length
+      ? await searchPosts(query)
+      : await getSortedPosts();
 
   if (category) {
-    results = results.filter(p => p.category === category);
+    results = results.filter((p) => p.category === category);
   }
   if (tags.length) {
-    results = results.filter(p =>
-      p.tags?.some(t => tags.includes(t))
-    );
+    results = results.filter((p) => p.tags?.some((t) => tags.includes(t)));
   }
 
   const hasFilter = query !== '' || category !== '' || tags.length > 0;
@@ -45,10 +44,12 @@ export default async function SearchPage({
     const parts = text.split(regex);
     return parts.map((part, i) =>
       part.toLowerCase() === query.toLowerCase() ? (
-        <mark key={i} className="bg-primary/20">{part}</mark>
+        <mark key={i} className="bg-primary/20">
+          {part}
+        </mark>
       ) : (
         part
-      )
+      ),
     );
   };
 
@@ -71,7 +72,7 @@ export default async function SearchPage({
 
       {tags.length > 0 && (
         <div className="mb-2 flex flex-wrap gap-2">
-          {tags.map(tag => (
+          {tags.map((tag) => (
             <span key={tag} className="bg-primary/20 px-2 py-1 rounded text-sm">
               <Link href={`/tags/${encodeURIComponent(tag)}`}>#{tag}</Link>
             </span>
@@ -81,11 +82,14 @@ export default async function SearchPage({
 
       <SearchBar className="mb-4" />
 
-      {hasFilter && (
-        results.length ? (
+      {hasFilter &&
+        (results.length ? (
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {results.map(post => (
-              <li key={post.slug} className="bg-white dark:bg-gray-800 rounded shadow p-4 space-y-2">
+            {results.map((post) => (
+              <li
+                key={post.slug}
+                className="bg-white dark:bg-gray-800 rounded shadow p-4 space-y-2"
+              >
                 {post.image && (
                   <img
                     src={post.image}
@@ -94,7 +98,10 @@ export default async function SearchPage({
                   />
                 )}
                 <div className="space-y-1">
-                  <Link href={`/blog/${post.slug}`} className="accent-text hover:underline text-lg">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="accent-text hover:underline text-lg"
+                  >
                     {highlight(post.title)}
                   </Link>
                   <div className="text-sm text-gray-500">
@@ -106,7 +113,7 @@ export default async function SearchPage({
                   </p>
                   {post.tags && (
                     <div className="flex flex-wrap gap-1 text-xs">
-                      {post.tags.slice(0, 3).map(tag => (
+                      {post.tags.slice(0, 3).map((tag) => (
                         <TagBadge key={tag} tag={tag} />
                       ))}
                     </div>
@@ -117,8 +124,7 @@ export default async function SearchPage({
           </ul>
         ) : (
           <p>該当する記事が見つかりませんでした。</p>
-        )
-      )}
+        ))}
     </div>
   );
 }

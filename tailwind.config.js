@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}"
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -28,25 +26,25 @@ module.exports = {
           'sans-serif',
           '"Noto Sans JP"',
           'ui-sans-serif',
-          'system-ui'
+          'system-ui',
         ],
         xp: ['Tahoma', 'Verdana', 'sans-serif'],
-        digital: ['"Share Tech Mono"', 'monospace']
+        digital: ['"Share Tech Mono"', 'monospace'],
       },
       colors: {
         primary: '#005bac',
         secondary: '#93c5fd',
-        'light': '#222426',
-        'dark': '#f5f5f5'
+        light: '#222426',
+        dark: '#f5f5f5',
       },
       keyframes: {
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' }
-        }
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
-        fadeInUp: 'fadeInUp 0.3s ease-in-out forwards'
+        fadeInUp: 'fadeInUp 0.3s ease-in-out forwards',
       },
       typography: ({ theme }) => ({
         DEFAULT: {
@@ -54,12 +52,12 @@ module.exports = {
             maxWidth: '100%',
             p: {
               fontWeight: '400',
-              lineHeight: '1.75'
-            }
-          }
-        }
-      })
-    }
+              lineHeight: '1.75',
+            },
+          },
+        },
+      }),
+    },
   },
-  plugins: [require('@tailwindcss/typography')]
+  plugins: [require('@tailwindcss/typography')],
 };

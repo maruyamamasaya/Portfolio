@@ -11,7 +11,7 @@ describe('markdownToHtml', () => {
       '| --- | --- |',
       '| A | B |',
       '',
-      '**bold**'
+      '**bold**',
     ].join('\n');
 
     const { html, headings } = await markdownToHtml(md);

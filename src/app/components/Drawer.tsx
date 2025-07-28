@@ -1,6 +1,6 @@
-"use client";
-import { ReactNode } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+'use client';
+import { ReactNode } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface DrawerProps {
   open: boolean;
@@ -22,10 +22,10 @@ export default function Drawer({ open, onClose, children }: DrawerProps) {
           />
           <motion.div
             className="fixed top-0 left-0 bottom-0 w-64 bg-white dark:bg-gray-800 z-50 p-4"
-            initial={{ x: "-100%" }}
+            initial={{ x: '-100%' }}
             animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
+            exit={{ x: '-100%' }}
+            transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
           >
             {children}
           </motion.div>

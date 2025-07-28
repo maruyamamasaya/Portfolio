@@ -14,12 +14,12 @@ export async function POST(req: NextRequest) {
   }
 
   const { paths } = await req.json();
-  if (!Array.isArray(paths) || paths.some(p => typeof p !== 'string')) {
+  if (!Array.isArray(paths) || paths.some((p) => typeof p !== 'string')) {
     return NextResponse.json({ message: 'Missing paths' }, { status: 400 });
   }
 
   try {
-    paths.forEach(p => revalidatePath(p));
+    paths.forEach((p) => revalidatePath(p));
     return NextResponse.json({ revalidated: true, paths });
   } catch (err) {
     return NextResponse.json(

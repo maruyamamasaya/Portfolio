@@ -1,6 +1,6 @@
-"use client";
-import { useState, useEffect } from "react";
-import Loader from "../components/Loader";
+'use client';
+import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 
 interface Props {
   tags: string[];
@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function TagSearch({ tags, onChange }: Props) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -25,11 +25,8 @@ export default function TagSearch({ tags, onChange }: Props) {
         return;
       }
       const matched = tags
-        .filter(tag => tag.toLowerCase().includes(q))
-        .sort(
-          (a, b) =>
-            a.toLowerCase().indexOf(q) - b.toLowerCase().indexOf(q)
-        )
+        .filter((tag) => tag.toLowerCase().includes(q))
+        .sort((a, b) => a.toLowerCase().indexOf(q) - b.toLowerCase().indexOf(q))
         .slice(0, 10);
       setSuggestions(matched);
       setActiveIndex(-1);
@@ -46,7 +43,7 @@ export default function TagSearch({ tags, onChange }: Props) {
   };
 
   const removeTag = (tag: string) => {
-    const next = selected.filter(t => t !== tag);
+    const next = selected.filter((t) => t !== tag);
     setSelected(next);
     onChange?.(next);
   };
@@ -58,17 +55,17 @@ export default function TagSearch({ tags, onChange }: Props) {
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!suggestions.length) return;
-    if (e.key === "ArrowDown") {
+    if (e.key === 'ArrowDown') {
       e.preventDefault();
-      setActiveIndex(i => (i + 1) % suggestions.length);
-    } else if (e.key === "ArrowUp") {
+      setActiveIndex((i) => (i + 1) % suggestions.length);
+    } else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      setActiveIndex(i => (i - 1 + suggestions.length) % suggestions.length);
-    } else if (e.key === "Enter") {
+      setActiveIndex((i) => (i - 1 + suggestions.length) % suggestions.length);
+    } else if (e.key === 'Enter') {
       e.preventDefault();
       if (activeIndex >= 0) {
         selectTag(suggestions[activeIndex]);
-        setQuery("");
+        setQuery('');
       }
     }
   };
@@ -76,7 +73,7 @@ export default function TagSearch({ tags, onChange }: Props) {
   const handleSearch = () => {
     if (query) {
       selectTag(query);
-      setQuery("");
+      setQuery('');
     }
   };
 
@@ -87,7 +84,7 @@ export default function TagSearch({ tags, onChange }: Props) {
           type="text"
           placeholder="タグを検索"
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
           onKeyDown={onKeyDown}
           className="border-r border-gray-300 dark:border-gray-600 px-3 h-12 flex-grow w-full focus:outline-none dark:bg-gray-800"
         />
@@ -109,24 +106,26 @@ export default function TagSearch({ tags, onChange }: Props) {
               <li
                 key={tag}
                 className={`px-2 py-2 text-center cursor-pointer motion-safe:transition-colors motion-reduce:transition-none duration-300 ease-in-out ${
-                  idx === activeIndex ? "bg-primary/20" : ""
+                  idx === activeIndex ? 'bg-primary/20' : ''
                 }`}
                 onMouseDown={() => {
                   selectTag(tag);
-                  setQuery("");
+                  setQuery('');
                 }}
               >
                 {tag}
               </li>
             ))
           ) : (
-            <li className="px-2 py-2 text-gray-500 text-center">一致するタグが見つかりません</li>
+            <li className="px-2 py-2 text-gray-500 text-center">
+              一致するタグが見つかりません
+            </li>
           )}
         </ul>
       )}
       {selected.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-4">
-          {selected.map(tag => (
+          {selected.map((tag) => (
             <span
               key={tag}
               className="flex items-center bg-primary/20 rounded-full px-3 py-1 text-sm shadow"

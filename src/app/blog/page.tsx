@@ -20,7 +20,7 @@ export default async function BlogIndex() {
           <section className="main-content">
             <h2 className="text-xl font-bold mb-4">最新記事</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {latest.map(post => (
+              {latest.map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
@@ -29,7 +29,7 @@ export default async function BlogIndex() {
             <section className="main-content">
               <h2 className="text-xl font-bold mb-4">過去の記事</h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {rest.map(post => (
+                {rest.map((post) => (
                   <PostCard key={post.slug} post={post} />
                 ))}
               </div>

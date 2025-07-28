@@ -9,14 +9,14 @@
 
 ```md
 ---
-title: "記事タイトル"
-date: "YYYY-MM-DD"
-image: "/images/example.png"
+title: '記事タイトル'
+date: 'YYYY-MM-DD'
+image: '/images/example.png'
 tags:
-  - "タグ1"
-  - "タグ2"
-category: "カテゴリー名"
-updated: "YYYY-MM-DD"
+  - 'タグ1'
+  - 'タグ2'
+category: 'カテゴリー名'
+updated: 'YYYY-MM-DD'
 ---
 
 本文が続きます。
@@ -31,7 +31,7 @@ updated: "YYYY-MM-DD"
 `|` で区切る Markdown の表記は、自動的に HTML テーブルとして変換されます。以下のように記述してください。
 
 ```md
-|項目|IPv4|IPv6|
-|---|---|---|
-|アドレス長|32ビット|128ビット|
+| 項目       | IPv4     | IPv6      |
+| ---------- | -------- | --------- |
+| アドレス長 | 32ビット | 128ビット |
 ```

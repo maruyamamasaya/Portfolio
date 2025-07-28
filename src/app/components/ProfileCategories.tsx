@@ -11,7 +11,10 @@ const categories: Category[] = [
     title: 'LINE公式アカウント',
     desc: 'リッチメニューやクーポン配信など店舗別にカスタマイズ。',
     slides: [
-      { src: '/images/img1.svg', caption: 'LINEリッチメニュー：店舗別カスタマイズ対応' },
+      {
+        src: '/images/img1.svg',
+        caption: 'LINEリッチメニュー：店舗別カスタマイズ対応',
+      },
       { src: '/images/img2.svg', caption: '友だち追加クーポン' },
       { src: '/images/img3.svg', caption: '自動応答チャット' },
     ],
@@ -39,7 +42,7 @@ const categories: Category[] = [
 export default function ProfileCategories() {
   return (
     <section className="space-y-12 mt-8">
-      {categories.map(cat => (
+      {categories.map((cat) => (
         <div key={cat.title} className="space-y-2">
           <h2 className="text-xl font-bold">{cat.title}</h2>
           <p className="text-sm">{cat.desc}</p>

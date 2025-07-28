@@ -36,7 +36,9 @@ export default function Law() {
         </div>
         <div>
           <dt className="font-bold">商品代金以外の必要料金</dt>
-          <dd>消費税、振込手数料、配送料など（商品により異なる場合があります）</dd>
+          <dd>
+            消費税、振込手数料、配送料など（商品により異なる場合があります）
+          </dd>
         </div>
         <div>
           <dt className="font-bold">お支払い方法</dt>

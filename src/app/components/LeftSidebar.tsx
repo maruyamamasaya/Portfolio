@@ -3,7 +3,6 @@ import TagList from './TagList';
 import CategoryList from './CategoryList';
 
 export default function LeftSidebar() {
-
   return (
     <div className="space-y-4">
       <div className="widget">

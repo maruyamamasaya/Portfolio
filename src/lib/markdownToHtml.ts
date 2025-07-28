@@ -21,8 +21,9 @@ function slugify(text: string): string {
 }
 
 function replaceInternalLinks(content: string): string {
-  return content.replace(/\b([A-Za-z0-9_-]+)\.md\b/g, (_, slug) =>
-    `[${slug}](/blog/${slug})`
+  return content.replace(
+    /\b([A-Za-z0-9_-]+)\.md\b/g,
+    (_, slug) => `[${slug}](/blog/${slug})`,
   );
 }
 
@@ -34,25 +35,34 @@ function convertMarkdownTables(content: string): string {
     const line = lines[i];
     const next = lines[i + 1];
     const isHeader = /^\|.*\|$/.test(line.trim());
-    const isDelimiter = next && /^\|?\s*[:-]+\s*(\|\s*[:-]+\s*)+\|?$/.test(next.trim());
+    const isDelimiter =
+      next && /^\|?\s*[:-]+\s*(\|\s*[:-]+\s*)+\|?$/.test(next.trim());
 
     if (isHeader && isDelimiter) {
-      const headers = line.trim().slice(1, -1).split('|').map(h => h.trim());
+      const headers = line
+        .trim()
+        .slice(1, -1)
+        .split('|')
+        .map((h) => h.trim());
       const rows: string[][] = [];
       i += 2;
       while (i < lines.length && /^\|.*\|$/.test(lines[i].trim())) {
-        const cells = lines[i].trim().slice(1, -1).split('|').map(c => c.trim());
+        const cells = lines[i]
+          .trim()
+          .slice(1, -1)
+          .split('|')
+          .map((c) => c.trim());
         rows.push(cells);
         i++;
       }
       i--; // adjust for outer loop
       let html = '<table><thead><tr>';
-      html += headers.map(h => `<th>${h}</th>`).join('');
+      html += headers.map((h) => `<th>${h}</th>`).join('');
       html += '</tr></thead>';
       if (rows.length) {
         html += '<tbody>';
-        rows.forEach(r => {
-          html += '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>';
+        rows.forEach((r) => {
+          html += '<tr>' + r.map((c) => `<td>${c}</td>`).join('') + '</tr>';
         });
         html += '</tbody>';
       }
@@ -97,12 +107,12 @@ function headingsPlugin(headings: Heading[]): Plugin<[], Root> {
 }
 
 export default async function markdownToHtml(
-  markdown: string
+  markdown: string,
 ): Promise<{ html: string; headings: Heading[] }> {
   const headings: Heading[] = [];
 
   const processed = formatBold(
-    convertMarkdownTables(replaceInternalLinks(markdown))
+    convertMarkdownTables(replaceInternalLinks(markdown)),
   );
 
   const processor: Processor = unified()

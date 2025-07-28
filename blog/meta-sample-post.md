@@ -1,11 +1,11 @@
 ---
-title: "メタタグサンプル"
-date: "2025-06-30"
-image: "/images/sample.png"
+title: 'メタタグサンプル'
+date: '2025-06-30'
+image: '/images/sample.png'
 tags:
-  - "メタタグ"
-category: "meta"
-updated: "2025-08-01"
+  - 'メタタグ'
+category: 'meta'
+updated: '2025-08-01'
 ---
 
 この投稿はメタタグの動作確認用です。カテゴリーや更新日時を表示するサンプルとして追加されています。

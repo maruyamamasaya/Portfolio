@@ -15,6 +15,6 @@ describe('posts utilities', () => {
 
   it('getPostsByTag returns posts with specified tag', () => {
     const posts = getPostsByTag('AI');
-    expect(posts.some(p => p.slug === 'ai-one-day-web')).toBe(true);
+    expect(posts.some((p) => p.slug === 'ai-one-day-web')).toBe(true);
   });
 });

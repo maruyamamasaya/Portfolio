@@ -17,7 +17,7 @@ export default function ThumbSlider({ slides }: Props) {
   useEffect(() => {
     if (slides.length <= 1) return;
     const id = setInterval(() => {
-      setIndex(i => (i + 1) % slides.length);
+      setIndex((i) => (i + 1) % slides.length);
     }, 5000);
     return () => clearInterval(id);
   }, [slides.length]);

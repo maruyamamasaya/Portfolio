@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export default function SkillBars() {
   const skills = [
@@ -12,7 +12,7 @@ export default function SkillBars() {
     <section className="mb-8">
       <h2 className="text-xl font-bold mb-4">スキルセット</h2>
       <div className="space-y-4">
-        {skills.map(skill => (
+        {skills.map((skill) => (
           <div key={skill.name}>
             <div className="flex justify-between text-sm mb-1">
               <span className="flex items-center space-x-2">

@@ -23,12 +23,12 @@ export function middleware(req: NextRequest) {
     }
     return new NextResponse('Authentication required', {
       status: 401,
-      headers: { 'WWW-Authenticate': 'Basic realm="Secure Area"' }
+      headers: { 'WWW-Authenticate': 'Basic realm="Secure Area"' },
     });
   }
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: '/:path*'
+  matcher: '/:path*',
 };

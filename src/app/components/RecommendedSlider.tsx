@@ -14,7 +14,7 @@ export default function RecommendedSlider({ posts }: Props) {
   useEffect(() => {
     if (posts.length <= 1) return;
     const id = setInterval(() => {
-      setIndex(i => (i + 1) % posts.length);
+      setIndex((i) => (i + 1) % posts.length);
     }, 5000);
     return () => clearInterval(id);
   }, [posts.length]);

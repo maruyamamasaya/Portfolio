@@ -5,7 +5,7 @@ import ScrollFadeIn from '../components/ScrollFadeIn';
 import Card from '../components/Card';
 
 export const metadata: Metadata = {
-  title: 'AI講座 | でじサポ'
+  title: 'AI講座 | でじサポ',
 };
 
 export default function AICoursePage() {
@@ -13,47 +13,53 @@ export default function AICoursePage() {
     {
       title: 'ステップ1：ChatGPTと“話す”練習',
       points: ['プロンプトの基本', '文章改善・要約'],
-      image: '/images/img1.svg'
+      image: '/images/img1.svg',
     },
     {
       title: 'ステップ2：画像生成とデザイン',
       points: ['SNS用バナー生成', '無料ツール活用術'],
-      image: '/images/img2.svg'
+      image: '/images/img2.svg',
     },
     {
       title: 'ステップ3：AI × 自動化テクニック',
       points: ['定型業務を一発解決', 'ノーコード連携'],
-      image: '/images/img3.svg'
+      image: '/images/img3.svg',
     },
     {
       title: 'ステップ4：あなた専用AIの作り方',
       points: ['LINE Bot作成', 'スライド自動生成'],
-      image: '/images/img4.svg'
-    }
+      image: '/images/img4.svg',
+    },
   ];
 
   const examples = [
     {
       title: 'EC運営が3倍の売上に',
       desc: 'AIで商品説明と在庫管理を自動化',
-      image: '/images/img2.svg'
+      image: '/images/img2.svg',
     },
     {
       title: 'レポート作成が3分で完了',
       desc: 'ChatGPTが秘書代わり',
-      image: '/images/img3.svg'
+      image: '/images/img3.svg',
     },
     {
       title: '家族全員で学習に活用',
       desc: '受験勉強にも役立つと好評',
-      image: '/images/img5.svg'
-    }
+      image: '/images/img5.svg',
+    },
   ];
 
   const faqs = [
     { q: '本当に初心者でも大丈夫？', a: '名前しか知らない方にこそ最適です。' },
-    { q: 'どんな人が受講していますか？', a: '主婦からフリーランスまで幅広い層です。' },
-    { q: 'どんなAIを使うんですか？', a: 'ChatGPTやDALL·E、Canva、Zapierなどを実践的に扱います。' }
+    {
+      q: 'どんな人が受講していますか？',
+      a: '主婦からフリーランスまで幅広い層です。',
+    },
+    {
+      q: 'どんなAIを使うんですか？',
+      a: 'ChatGPTやDALL·E、Canva、Zapierなどを実践的に扱います。',
+    },
   ];
 
   return (
@@ -138,10 +144,16 @@ export default function AICoursePage() {
         <div className="grid gap-4 md:grid-cols-4">
           {steps.map((s, i) => (
             <Card key={i} className="space-y-2 text-center">
-              <Image src={s.image} alt={s.title} width={300} height={200} className="mx-auto" />
+              <Image
+                src={s.image}
+                alt={s.title}
+                width={300}
+                height={200}
+                className="mx-auto"
+              />
               <h3 className="font-semibold text-sm">{s.title}</h3>
               <ul className="list-disc ml-5 text-xs space-y-1">
-                {s.points.map(p => (
+                {s.points.map((p) => (
                   <li key={p}>{p}</li>
                 ))}
               </ul>
@@ -156,7 +168,13 @@ export default function AICoursePage() {
         <div className="grid gap-4 md:grid-cols-3">
           {examples.map((ex, i) => (
             <Card key={i} className="space-y-2">
-              <Image src={ex.image} alt={ex.title} width={400} height={250} className="w-full h-auto rounded" />
+              <Image
+                src={ex.image}
+                alt={ex.title}
+                width={400}
+                height={250}
+                className="w-full h-auto rounded"
+              />
               <h3 className="font-semibold">{ex.title}</h3>
               <p className="text-sm">{ex.desc}</p>
             </Card>
@@ -191,16 +209,28 @@ export default function AICoursePage() {
         <h2 className="text-2xl font-bold">受講者の声</h2>
         <div className="space-y-4">
           <figure className="bg-white dark:bg-gray-800 rounded shadow p-4">
-            <blockquote className="text-sm">「1人で運営していたECが、AIのおかげで3倍の売上に」</blockquote>
-            <figcaption className="text-right mt-2 text-xs text-gray-500">─ ネットショップオーナー（40代女性）</figcaption>
+            <blockquote className="text-sm">
+              「1人で運営していたECが、AIのおかげで3倍の売上に」
+            </blockquote>
+            <figcaption className="text-right mt-2 text-xs text-gray-500">
+              ─ ネットショップオーナー（40代女性）
+            </figcaption>
           </figure>
           <figure className="bg-white dark:bg-gray-800 rounded shadow p-4">
-            <blockquote className="text-sm">「ChatGPTが秘書代わり。報告書も議事録も3分で完成」</blockquote>
-            <figcaption className="text-right mt-2 text-xs text-gray-500">─ 会社員（30代男性）</figcaption>
+            <blockquote className="text-sm">
+              「ChatGPTが秘書代わり。報告書も議事録も3分で完成」
+            </blockquote>
+            <figcaption className="text-right mt-2 text-xs text-gray-500">
+              ─ 会社員（30代男性）
+            </figcaption>
           </figure>
           <figure className="bg-white dark:bg-gray-800 rounded shadow p-4">
-            <blockquote className="text-sm">「息子の受験勉強に役立つとは…家族全員が使ってます」</blockquote>
-            <figcaption className="text-right mt-2 text-xs text-gray-500">─ 主婦（50代）</figcaption>
+            <blockquote className="text-sm">
+              「息子の受験勉強に役立つとは…家族全員が使ってます」
+            </blockquote>
+            <figcaption className="text-right mt-2 text-xs text-gray-500">
+              ─ 主婦（50代）
+            </figcaption>
           </figure>
         </div>
         <p className="text-sm">
@@ -217,7 +247,9 @@ export default function AICoursePage() {
           {faqs.map((f, i) => (
             <li key={i} className="border rounded">
               <details className="p-2">
-                <summary className="cursor-pointer font-semibold">{f.q}</summary>
+                <summary className="cursor-pointer font-semibold">
+                  {f.q}
+                </summary>
                 <p className="mt-1 text-sm">{f.a}</p>
               </details>
             </li>
@@ -225,8 +257,7 @@ export default function AICoursePage() {
         </ul>
         <p className="text-sm mt-2">
           ここに掲載されていない疑問点も、受講前に遠慮なくお問い合わせ
-          ください。あなたの状況に合わせた活用例を提案させていただき
-          ます。
+          ください。あなたの状況に合わせた活用例を提案させていただき ます。
         </p>
       </ScrollFadeIn>
 
@@ -238,10 +269,11 @@ export default function AICoursePage() {
           迷っている時間はもったいない。まずは無料体験で、AIの力を自
           分の目で確かめてみてください。
         </p>
-        <p>
-          今だけ特典：ChatGPTの使い方完全ガイドPDFを無料プレゼント！
-        </p>
-        <Link href="/contact" className="inline-block px-6 py-3 bg-primary rounded shadow">
+        <p>今だけ特典：ChatGPTの使い方完全ガイドPDFを無料プレゼント！</p>
+        <Link
+          href="/contact"
+          className="inline-block px-6 py-3 bg-primary rounded shadow"
+        >
           今すぐ無料で始める
         </Link>
       </ScrollFadeIn>

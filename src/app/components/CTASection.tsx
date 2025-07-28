@@ -9,7 +9,7 @@ interface Props {
 export default function CTASection({
   title = 'お問い合わせはこちら',
   href = '/contact',
-  label = 'お問い合わせ'
+  label = 'お問い合わせ',
 }: Props) {
   return (
     <section className="my-12 text-center space-y-4">

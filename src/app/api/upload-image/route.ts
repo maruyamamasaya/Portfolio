@@ -19,6 +19,9 @@ export async function POST(req: Request) {
     await fs.writeFile(filePath, buffer);
     return NextResponse.json({ ok: true, filename });
   } catch (err) {
-    return NextResponse.json({ error: 'Failed to upload file' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to upload file' },
+      { status: 500 },
+    );
   }
 }

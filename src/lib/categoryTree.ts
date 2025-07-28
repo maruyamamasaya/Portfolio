@@ -16,7 +16,7 @@ async function readDir(dirPath: string): Promise<CategoryNode> {
     name: path.basename(dirPath),
     path: path.relative(baseDir, dirPath) || '.',
     files: [],
-    children: []
+    children: [],
   };
 
   for (const entry of entries) {

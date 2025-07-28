@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useEffect, useState } from 'react';
 
 function metaTemplate() {
@@ -17,17 +17,17 @@ export default function DeveloperEditor() {
 
   const baseMap = {
     blog: 'posts',
-    dev: 'dev-posts'
+    dev: 'dev-posts',
   } as const;
   const pathMap = {
     blog: '/blog',
-    dev: '/developers_blog'
+    dev: '/developers_blog',
   } as const;
 
   useEffect(() => {
     const base = baseMap[target];
     fetch(`/api/${base}`)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((data: string[]) => setFiles(data))
       .catch(() => setStatus('ファイル一覧の取得に失敗しました'));
     setSelected('');
@@ -65,12 +65,12 @@ export default function DeveloperEditor() {
     const res = await fetch(url, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body
+      body,
     });
     if (res.ok) {
       setStatus('保存しました');
       if (isNew) {
-        setFiles(prev => [...prev, selected]);
+        setFiles((prev) => [...prev, selected]);
         setIsNew(false);
       }
     } else {
@@ -85,7 +85,7 @@ export default function DeveloperEditor() {
     await fetch('/api/revalidate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ paths: [basePath, `${basePath}/${slug}`] })
+      body: JSON.stringify({ paths: [basePath, `${basePath}/${slug}`] }),
     });
     setStatus('更新しました');
   };
@@ -98,18 +98,14 @@ export default function DeveloperEditor() {
           <select
             className="border p-1 w-full"
             value={target}
-            onChange={e =>
-              setTarget(
-                e.target.value as 'blog' | 'dev'
-              )
-            }
+            onChange={(e) => setTarget(e.target.value as 'blog' | 'dev')}
           >
             <option value="blog">blog</option>
             <option value="dev">developers_blog</option>
           </select>
         </div>
         <ul className="space-y-2">
-          {files.map(name => (
+          {files.map((name) => (
             <li key={name}>
               <button
                 className="accent-text underline"
@@ -133,7 +129,7 @@ export default function DeveloperEditor() {
           <label className="block mb-1 font-bold">画像アップロード</label>
           <input
             type="file"
-            onChange={e => setUpload(e.target.files?.[0] || null)}
+            onChange={(e) => setUpload(e.target.files?.[0] || null)}
             className="mb-2"
           />
           <button
@@ -144,9 +140,11 @@ export default function DeveloperEditor() {
               form.append('file', upload);
               const res = await fetch('/api/upload-image', {
                 method: 'POST',
-                body: form
+                body: form,
               });
-              setStatus(res.ok ? 'アップロードしました' : 'アップロードに失敗しました');
+              setStatus(
+                res.ok ? 'アップロードしました' : 'アップロードに失敗しました',
+              );
             }}
           >
             アップロード
@@ -158,7 +156,7 @@ export default function DeveloperEditor() {
         <textarea
           className="w-full h-96 border p-2"
           value={content}
-          onChange={e => setContent(e.target.value)}
+          onChange={(e) => setContent(e.target.value)}
         />
         <div className="mt-2">
           <button

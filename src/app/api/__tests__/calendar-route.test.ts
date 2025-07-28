@@ -3,7 +3,9 @@ import { NextRequest } from 'next/server';
 
 describe('GET /api/calendar', () => {
   it('returns calendar data', async () => {
-    const req = new NextRequest('http://localhost/api/calendar?year=2025&month=6');
+    const req = new NextRequest(
+      'http://localhost/api/calendar?year=2025&month=6',
+    );
     const res = await GET(req);
     expect(res.status).toBe(200);
     const data = await res.json();
