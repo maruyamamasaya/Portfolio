@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Search'
 };
 
-export default function SearchPage({
+export default async function SearchPage({
   searchParams
 }: {
   searchParams: { q?: string; category?: string; tag?: string | string[] };
@@ -24,8 +24,8 @@ export default function SearchPage({
     : [];
 
   let results: Post[] = query || category || tags.length
-    ? searchPosts(query)
-    : getSortedPosts();
+    ? await searchPosts(query)
+    : await getSortedPosts();
 
   if (category) {
     results = results.filter(p => p.category === category);

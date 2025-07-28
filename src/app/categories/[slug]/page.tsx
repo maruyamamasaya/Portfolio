@@ -14,12 +14,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return { title: cat ? `Category: ${cat.name}` : 'Not Found' };
 }
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
+export default async function CategoryPage({ params }: { params: { slug: string } }) {
   const category = getCategory(params.slug);
   if (!category) {
     notFound();
   }
-  const posts = getPostsByCategory(params.slug);
+  const posts = await getPostsByCategory(params.slug);
   if (!posts.length) {
     notFound();
   }

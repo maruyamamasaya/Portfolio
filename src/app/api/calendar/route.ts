@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid year or month' }, { status: 400 });
   }
 
-  const posts = getSortedDevPosts();
+  const posts = await getSortedDevPosts();
   const days = [] as { date: string; posts: typeof posts }[];
   const date = new Date(year, month, 1);
 

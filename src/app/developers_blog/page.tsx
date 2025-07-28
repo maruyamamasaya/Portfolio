@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false }
 };
 
-export default function BlogIndex() {
-  const posts = getSortedDevPosts();
+export default async function BlogIndex() {
+  const posts = await getSortedDevPosts();
   return (
     <div className="blog-container">
       <BlogNavButtons />

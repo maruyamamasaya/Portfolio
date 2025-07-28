@@ -3,8 +3,8 @@ import LeftSidebar from '@/app/components/LeftSidebar';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
 import PostCard from '@/app/components/PostCard';
 
-export default function BlogIndex() {
-  const posts = getSortedPosts();
+export default async function BlogIndex() {
+  const posts = await getSortedPosts();
   const latest = posts.slice(0, 3);
   const rest = posts.slice(3);
 

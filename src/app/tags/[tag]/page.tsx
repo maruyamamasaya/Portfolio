@@ -6,7 +6,8 @@ import BlogNavButtons from '../../components/BlogNavButtons';
 import TagBadge from '../../components/TagBadge';
 
 export async function generateStaticParams() {
-  return getAllTags().map(tag => ({ tag }));
+  const tags = await getAllTags();
+  return tags.map(tag => ({ tag }));
 }
 
 export async function generateMetadata({ params }: { params: { tag: string } }): Promise<Metadata> {
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: { tag: string } }):
   return { title: `Tag: ${decodedTag}` };
 }
 
-export default function TagPage({
+export default async function TagPage({
   params,
   searchParams
 }: {
@@ -23,7 +24,7 @@ export default function TagPage({
 }) {
   const decodedTag = decodeURIComponent(params.tag);
   const query = searchParams.q ?? '';
-  const posts = searchPosts(query, [decodedTag]);
+  const posts = await searchPosts(query, [decodedTag]);
   if (!posts.length) {
     notFound();
   }
