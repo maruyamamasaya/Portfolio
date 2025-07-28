@@ -53,6 +53,39 @@ export default function About() {
       <SkillBars />
       <ProfileCategories />
 
+      <section className="space-y-2 text-sm">
+        <h2 className="text-lg font-bold">Media / SNS活動</h2>
+        <p>🎬 YouTubeチャンネル ＆ Instagram</p>
+        <p>趣味で、ポップス・クラシック音楽の解説・レビューを発信する動画アカウントを運営中。</p>
+        <p>
+          音楽の背景や構造を分かりやすく紐解く“聴く攻略本”をコンセプトに、ショート動画を中心とした発信を行っています。
+        </p>
+        <p>総再生回数：100万回超（ショート動画中心）</p>
+        <p>総登録者数：約500名（2025年時点）</p>
+        <p>コンテンツ例：楽曲分析、作曲家紹介、音楽ジャンルの解説 など</p>
+        <p className="text-xs text-gray-500">
+          ポップス・クラシック音楽を分かりやすく解説するショート動画チャンネル
+        </p>
+        <div className="flex space-x-4">
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-primary text-white rounded shadow hover:bg-primary/80"
+          >
+            YouTubeで見る
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-primary text-white rounded shadow hover:bg-primary/80"
+          >
+            Instagramで見る
+          </a>
+        </div>
+      </section>
+
       <section className="space-y-6 text-sm">
         <div>
           <h2 className="text-lg font-bold mb-2">活動ポリシー</h2>
