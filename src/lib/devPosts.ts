@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import matter from 'gray-matter';
+import { FileNotFoundError } from './errors';
 
 export interface DevPost {
   slug: string;
@@ -26,7 +27,7 @@ export async function getSortedDevPosts(): Promise<DevPost[]> {
       try {
         await fs.access(fullPath);
       } catch {
-        throw new Error(`Dev post not found: ${slug}`);
+        throw new FileNotFoundError(`Dev post not found: ${slug}`);
       }
       const fileContents = await fs.readFile(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
@@ -52,7 +53,7 @@ export async function getDevPost(slug: string): Promise<DevPost> {
   try {
     await fs.access(fullPath);
   } catch {
-    throw new Error(`Dev post not found: ${slug}`);
+    throw new FileNotFoundError(`Dev post not found: ${slug}`);
   }
   const fileContents = await fs.readFile(fullPath, 'utf8');
   const { data, content } = matter(fileContents);

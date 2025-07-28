@@ -1,4 +1,5 @@
 import { getSortedPosts, getPost, getPostsByTag } from '../posts';
+import { FileNotFoundError } from '../errors';
 
 describe('posts utilities', () => {
   it('getSortedPosts returns posts sorted by date desc', async () => {
@@ -12,9 +13,11 @@ describe('posts utilities', () => {
     expect(post.title).toBe('メタタグサンプル');
     expect(post.tags).toContain('メタタグ');
   });
-  
-  it('getPost throws for missing file', async () => {
-    await expect(getPost('missing-post')).rejects.toThrow('Post not found');
+
+  it('getPost throws FileNotFoundError for missing file', async () => {
+    await expect(getPost('missing-post')).rejects.toBeInstanceOf(
+      FileNotFoundError,
+    );
   });
 
   it('getPostsByTag returns posts with specified tag', async () => {
