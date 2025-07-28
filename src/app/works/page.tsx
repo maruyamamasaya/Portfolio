@@ -54,6 +54,24 @@ const artworks: Artwork[] = [
     description: 'キャラクターデザインの習作。',
     image: '/images/img5.svg',
   },
+  {
+    id: 6,
+    title: '日本の森とデジタル',
+    year: 2024,
+    medium: 'Digital',
+    description:
+      '自然の森が複雑な生態系を通じて無数の生命を育むように、AIは膨大なデータを吸収し、深層学習という「見えない森」を形成していく。一本一本の樹木が森を成すように、一つひとつのパラメータが知性を形づくる──自然とデジタル、その生成の原理は驚くほど似ている。',
+    image: '/images/img1.svg',
+  },
+  {
+    id: 7,
+    title: '日本の森とデジタル II',
+    year: 2024,
+    medium: 'Digital',
+    description:
+      '自然の森が複雑な生態系を通じて無数の生命を育むように、AIは膨大なデータを吸収し、深層学習という「見えない森」を形成していく。一本一本の樹木が森を成すように、一つひとつのパラメータが知性を形づくる──自然とデジタル、その生成の原理は驚くほど似ている。',
+    image: '/images/img2.svg',
+  },
 ];
 
 export default function Works() {
