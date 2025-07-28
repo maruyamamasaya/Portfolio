@@ -8,12 +8,16 @@ let isFirstLoad = true;
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const disable = process.env.NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION === 'true';
+
+  useEffect(() => {
+    if (!disable) {
+      isFirstLoad = false;
+    }
+  }, [disable]);
+
   if (disable) {
     return <>{children}</>;
   }
-  useEffect(() => {
-    isFirstLoad = false;
-  }, []);
   const initial = isFirstLoad ? false : { opacity: 0 };
   return (
     <AnimatePresence mode="wait" initial={false}>
