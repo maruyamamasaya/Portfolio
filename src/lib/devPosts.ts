@@ -23,6 +23,11 @@ export async function getSortedDevPosts(): Promise<DevPost[]> {
     fileNames.map(async (fileName) => {
       const slug = fileName.replace(/\.md$/, '');
       const fullPath = path.join(devPostsDirectory, fileName);
+      try {
+        await fs.access(fullPath);
+      } catch {
+        throw new Error(`Dev post not found: ${slug}`);
+      }
       const fileContents = await fs.readFile(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
 
@@ -44,6 +49,11 @@ export async function getSortedDevPosts(): Promise<DevPost[]> {
 
 export async function getDevPost(slug: string): Promise<DevPost> {
   const fullPath = path.join(devPostsDirectory, `${slug}.md`);
+  try {
+    await fs.access(fullPath);
+  } catch {
+    throw new Error(`Dev post not found: ${slug}`);
+  }
   const fileContents = await fs.readFile(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
