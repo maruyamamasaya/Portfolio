@@ -116,9 +116,8 @@ BASIC_AUTH_PASSWORD=your_password
 `favicon.png` と `eye-catch.png` は `public/images` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
 
 ## Todo
-- バックエンド API の実装
+- バックエンド API の追加実装
 - 記事へのコメント機能
-- ダークモード対応
 
 ## ライセンス
 [MIT](LICENSE)
