@@ -8,7 +8,8 @@ describe('posts utilities', () => {
   });
 
   it('getPost returns correct post data', async () => {
-    const post = await getPost('meta-sample-post');
+    const slug = 'meta-sample-post';
+    const post = await getPost(slug);
     expect(post.title).toBe('メタタグサンプル');
     expect(post.tags).toContain('メタタグ');
   });
@@ -18,7 +19,8 @@ describe('posts utilities', () => {
   });
 
   it('getPostsByTag returns posts with specified tag', async () => {
-    const posts = await getPostsByTag('AI');
+    const tag = 'AI';
+    const posts = await getPostsByTag(tag);
     expect(posts.some((p) => p.slug === 'ai-one-day-web')).toBe(true);
   });
 });
