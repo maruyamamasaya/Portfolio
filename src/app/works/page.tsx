@@ -1,8 +1,8 @@
 'use client';
 
-import Image from 'next/image';
 import BlogNavButtons from '../components/BlogNavButtons';
 import Card from '../components/Card';
+
 import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
 
 const artworks: Artwork[] = [
