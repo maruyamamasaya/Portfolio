@@ -1,6 +1,8 @@
 'use client';
 
 import BlogNavButtons from '../components/BlogNavButtons';
+import Card from '../components/Card';
+
 import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
 
 const artworks: Artwork[] = [
@@ -65,11 +67,35 @@ const artworks: Artwork[] = [
 ];
 
 export default function Works() {
+  const regularArtworks = artworks.filter((a) => a.id <= 5);
+  const slideshowArtworks = artworks.filter((a) => a.id > 5);
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">Works</h1>
-      <ArtworkSlideshow artworks={artworks} />
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        {regularArtworks.map((art) => (
+          <Card key={art.id} className="space-y-2">
+            <Image
+              src={art.image}
+              alt={art.title}
+              width={600}
+              height={400}
+              className="w-full h-auto object-cover rounded"
+            />
+            <h3 className="font-semibold">{art.title}</h3>
+            <p className="text-sm text-gray-500">
+              {art.year} / {art.medium}
+            </p>
+            {art.description && <p className="text-sm">{art.description}</p>}
+          </Card>
+        ))}
+      </div>
+      {slideshowArtworks.length > 0 && (
+        <div className="mt-8">
+          <ArtworkSlideshow artworks={slideshowArtworks} />
+        </div>
+      )}
     </div>
   );
 }
