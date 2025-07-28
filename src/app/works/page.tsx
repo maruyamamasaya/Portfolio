@@ -74,6 +74,15 @@ export default function Works() {
     <div className="max-w-5xl mx-auto px-4 py-8">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">Works</h1>
+      <div className="mb-6 space-y-4">
+        <h2 className="text-xl font-bold">かたちにした思考の軌跡</h2>
+        <p>
+          このセクションでは、これまでに制作してきたビジュアル作品やプロジェクトを紹介しています。アイデアの芽から完成に至るまでのプロセスも含めて、思考と表現の融合を記録しています。
+        </p>
+        <p>
+          日々の創作活動の中で生まれた作品をまとめています。ジャンルや形式を問わず、試行錯誤や発見の過程を大切にしながら、表現のかたちを追求しています。
+        </p>
+      </div>
       <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
         {regularArtworks.map((art) => (
           <Card key={art.id} className="space-y-2">
