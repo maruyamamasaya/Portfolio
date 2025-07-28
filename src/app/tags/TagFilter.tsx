@@ -70,7 +70,11 @@ export default function TagFilter({ tags, posts }: Props) {
           {filteredPosts.map(post => (
             <li key={post.slug} className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md animate-fadeInUp">
               {post.image && (
-                <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
+                <img
+                  src={post.image}
+                  alt={`Thumbnail for ${post.title}`}
+                  className="w-16 h-16 object-cover"
+                />
               )}
               <div>
                 <Link href={`/blog/${post.slug}`} className="accent-text hover:underline">

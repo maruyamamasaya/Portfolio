@@ -20,7 +20,11 @@ export default async function BlogIndex() {
             {posts.map(post => (
               <li key={post.slug} className="border-b pb-4 flex items-start space-x-2">
                 {post.image && (
-                  <img src={post.image} alt="thumb" className="w-16 h-16 object-cover" />
+                  <img
+                    src={post.image}
+                    alt={`Thumbnail for ${post.title}`}
+                    className="w-16 h-16 object-cover"
+                  />
                 )}
                 <div>
                   <span className="text-gray-800">
