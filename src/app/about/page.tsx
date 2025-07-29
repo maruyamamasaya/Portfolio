@@ -84,13 +84,13 @@ export default function About() {
             {
               icon: '/images/arcana.png',
               title: 'Arcana - アルカナ チャンネル',
-              description: 'クラシック音楽の構造を丁寧に読み解く解説型チャンネル。',
+              description: 'エンタメ系ショート動画作成。TCGオフィシャルのルールやカード紹介をするチャンネル。',
               href: 'https://www.youtube.com/@Arcana-%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%8A',
             },
             {
               icon: '🎥',
               title: '【ざっくり紹介】楽曲紹介チャンネル〜黒の讃美歌〜',
-              description: 'ポップスやクラシックを横断した楽曲レビュー。',
+              description: 'クラシック音楽の構造を丁寧に読み解く解説型チャンネル。',
               href: 'https://www.youtube.com/@musicwordriio',
             },
             {
