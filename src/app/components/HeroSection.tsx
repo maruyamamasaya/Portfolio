@@ -19,7 +19,7 @@ export default function HeroSection() {
         >
           お問い合わせ
         </Link>
-        <SearchBar className="flex justify-center" />
+        <SearchBar className="flex justify-center" showHistory={false} />
       </div>
     </section>
   );
