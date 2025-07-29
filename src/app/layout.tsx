@@ -14,7 +14,7 @@ import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
-export const metadata: Metadata = {
+export const metadata = {
   metadataBase: new URL('https://freehackapp.com'),
   title: 'でじサポ｜パソコン相談室',
   description:
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: '/images/eye-catch.png',
   },
-};
+} satisfies Metadata;
 
 export default async function RootLayout({
   children,

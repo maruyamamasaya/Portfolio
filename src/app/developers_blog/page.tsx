@@ -5,9 +5,9 @@ import BlogNavButtons from '../components/BlogNavButtons';
 import TagBadge from '../components/TagBadge';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
+export const metadata = {
   robots: { index: false, follow: false },
-};
+} satisfies Metadata;
 
 export default async function BlogIndex() {
   const posts = await getSortedDevPosts();
