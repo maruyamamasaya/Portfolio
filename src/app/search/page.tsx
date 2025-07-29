@@ -111,7 +111,7 @@ export default async function SearchPage({
                   >
                     {highlight(post.title)}
                   </Link>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-base text-gray-500">
                     {post.date}
                     {post.category && ` / ${post.category}`}
                   </div>

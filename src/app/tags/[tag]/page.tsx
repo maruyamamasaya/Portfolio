@@ -59,7 +59,7 @@ export default async function TagPage({
               >
                 {post.title}
               </Link>
-              <span className="block text-sm text-gray-500">
+              <span className="block text-base text-gray-500">
                 {post.date}
                 {post.updated && ` (更新: ${post.updated})`}
               </span>
