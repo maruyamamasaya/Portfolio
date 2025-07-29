@@ -136,7 +136,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="backdrop-blur-md bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100">
+    <header className="backdrop-blur-sm bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 bg-white dark:bg-gray-800 text-blue-600 p-2 rounded"
@@ -156,7 +156,7 @@ export default function Header() {
           </Link>
         </h1>
         <button
-          className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2"
+          className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2 rounded focus:ring-2 focus:outline-none"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -165,7 +165,7 @@ export default function Header() {
           <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200" />
         </button>
         <nav className="hidden sm:block">
-          <ul className="flex space-x-4 text-sm">
+          <ul className="flex gap-4 md:gap-6 text-base">
             {navItems.map((item) => (
               <li key={item.href}>
                 {item.href === '/categories' ? (
@@ -173,7 +173,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="inline-flex items-center space-x-1 hover:text-primary motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out hover:scale-105"
+                    className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200 motion-safe:transition-transform motion-reduce:transition-none hover:scale-105"
                   >
                     {item.icon}
                     <span>{item.label}</span>
@@ -202,7 +202,7 @@ export default function Header() {
                   <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center space-x-2 py-1 hover:text-primary"
+                    className="flex items-center space-x-2 rounded min-h-[44px] min-w-[44px] px-3 py-2 w-full text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200"
                   >
                     {item.icon}
                     <span>{item.label}</span>
