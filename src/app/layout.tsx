@@ -44,17 +44,17 @@ export default async function RootLayout({
       >
         <ThemeProvider>
           <Header />
-          <div className="bg-white dark:bg-gray-700 border-b border-gray-200 dark:border-gray-700">
-            <div className="container mx-auto p-2">
-              <TagListHeader tagCounts={displayCounts} />
-            </div>
-          </div>
           <PageTransition>
             <main id="main-content" className="container mx-auto p-4">
               {children}
               <Breadcrumbs />
             </main>
           </PageTransition>
+          <div className="bg-white dark:bg-gray-700 border-t border-gray-200 dark:border-gray-700">
+            <div className="container mx-auto p-2">
+              <TagListHeader tagCounts={displayCounts} />
+            </div>
+          </div>
           <Footer />
           <BottomNav />
         </ThemeProvider>
