@@ -7,9 +7,9 @@ import TagBadge from '../components/TagBadge';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Search',
-};
+} satisfies Metadata;
 
 export default async function SearchPage({
   searchParams,
