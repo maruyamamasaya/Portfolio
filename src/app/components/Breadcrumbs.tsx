@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Breadcrumbs() {
   const pathname = usePathname();
-  const segments = pathname.split('/').filter(Boolean);
+  const segments: string[] = pathname.split('/').filter(Boolean);
 
   const ArrowIcon = () => (
     <svg
@@ -34,7 +34,7 @@ export default function Breadcrumbs() {
             Home
           </Link>
         </li>
-        {segments.map((seg, index) => {
+        {segments.map((seg: string, index: number) => {
           const href = '/' + segments.slice(0, index + 1).join('/');
           const isLast = index === segments.length - 1;
           const isHiddenMobile =
