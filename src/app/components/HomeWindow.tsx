@@ -8,7 +8,6 @@ import CTASection from './CTASection';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Post } from '@/lib/posts';
-import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from './ScrollFadeIn';
 import Card from './Card';
 import RecommendedSlider from './RecommendedSlider';
@@ -40,8 +39,6 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
           <RecommendedSlider posts={posts} />
         </div>
         <div>
-          <BlogNavButtons />
-          <h2 className="text-2xl font-bold my-6">Blog</h2>
           <ul className="space-y-4">
             {posts.map((post, i) => (
               <ScrollFadeIn
