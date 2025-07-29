@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </div>
           </div>
           <PageTransition>
-            <main className="container mx-auto p-4">
+            <main id="main-content" className="container mx-auto p-4">
               {children}
               <Breadcrumbs />
             </main>
