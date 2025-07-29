@@ -7,7 +7,8 @@ import Footer from './components/Footer';
 import BottomNav from './components/BottomNav';
 import Breadcrumbs from './components/Breadcrumbs';
 import PageTransition from './components/PageTransition';
-import TagListWrapper from './components/TagListWrapper';
+import TagListHeader from './components/TagListHeader';
+import { getTagCounts } from '@/lib/posts';
 import { ThemeProvider } from './components/ThemeProvider';
 import { Poppins } from 'next/font/google';
 
@@ -26,7 +27,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const tagCounts = await getTagCounts();
+  const displayCounts = tagCounts.slice(0, 30);
   return (
     <html lang="ja">
       <head>
@@ -39,7 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Header />
           <div className="bg-white dark:bg-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div className="container mx-auto p-2">
-              <TagListWrapper />
+              <TagListHeader tagCounts={displayCounts} />
             </div>
           </div>
           <PageTransition>
