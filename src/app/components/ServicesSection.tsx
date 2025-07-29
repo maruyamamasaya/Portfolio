@@ -10,6 +10,26 @@ const services = [
   { title: 'ITサポート', desc: '導入・運用支援', icon: '/images/img3.svg' },
 ];
 
+const serviceTable = [
+  {
+    category: 'サイト制作',
+    content: 'WordPressや静的サイトなど、目的に合ったホームページを提案・構築します。',
+  },
+  {
+    category: 'デザイン',
+    content: 'ロゴ、バナー、チラシなどのビジュアル制作もお任せください。',
+  },
+  {
+    category: 'ITサポート',
+    content: 'パソコンや業務システムの導入・設定・運用まで幅広く対応します。',
+  },
+  {
+    category: 'SNS運用支援',
+    content:
+      'LINE公式アカウントの開設・配信サポート、Instagramの企画運用も対応可能です。',
+  },
+];
+
 export default function ServicesSection() {
   return (
     <section className="section-spacing">
@@ -20,11 +40,43 @@ export default function ServicesSection() {
             key={s.title}
             className="p-4 bg-white dark:bg-gray-700 rounded shadow flex flex-col items-center text-center"
           >
-            <Image src={s.icon} alt={s.title} width={64} height={64} className="w-16 h-16 mb-2" />
+            <Image
+              src={s.icon}
+              alt={s.title}
+              width={64}
+              height={64}
+              className="w-16 h-16 mb-2"
+            />
             <h3 className="font-semibold">{s.title}</h3>
             <p className="text-sm">{s.desc}</p>
           </div>
         ))}
+      </div>
+
+      <div className="mt-8 overflow-x-auto">
+        <table className="w-full border-collapse shadow rounded-lg overflow-hidden text-sm">
+          <thead>
+            <tr className="font-bold bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+              <th className="p-4 text-left">サービスカテゴリ</th>
+              <th className="p-4 text-left">内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            {serviceTable.map((row, i) => (
+              <tr
+                key={row.category}
+                className={
+                  i % 2 === 0
+                    ? 'bg-white dark:bg-gray-800'
+                    : 'bg-gray-50 dark:bg-gray-700'
+                }
+              >
+                <td className="p-4">{row.category}</td>
+                <td className="p-4">{row.content}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );
