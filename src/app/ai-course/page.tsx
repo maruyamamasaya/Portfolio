@@ -92,7 +92,7 @@ export default function AICoursePage() {
       </section>
 
       {/* 2. なぜ今AIを学ぶのか */}
-      <ScrollFadeIn className="max-w-3xl mx-auto space-y-4 p-4">
+      <ScrollFadeIn className="max-w-screen-lg mx-auto space-y-4 px-4 sm:px-6 md:px-10">
         <h2 className="text-2xl font-bold">なぜ今、AIを学ぶべきなのか？</h2>
         <ul className="list-disc ml-5 space-y-1">
           <li>AIに仕事が奪われると聞いて不安…</li>
@@ -108,7 +108,7 @@ export default function AICoursePage() {
       </ScrollFadeIn>
 
       {/* 3. 未来のスキル＝AI活用力 */}
-      <ScrollFadeIn className="max-w-3xl mx-auto space-y-3 p-4">
+      <ScrollFadeIn className="max-w-screen-lg mx-auto space-y-3 px-4 sm:px-6 md:px-10">
         <h2 className="text-2xl font-bold">未来のスキル＝AI活用力</h2>
         <p>
           ChatGPT・画像生成・自動化など、実務に直結するスキルを一気に
@@ -123,7 +123,7 @@ export default function AICoursePage() {
       </ScrollFadeIn>
 
       {/* 4. この講座で得られること */}
-      <ScrollFadeIn className="max-w-3xl mx-auto p-4 space-y-1">
+      <ScrollFadeIn className="max-w-screen-lg mx-auto px-4 sm:px-6 md:px-10 space-y-1">
         <h2 className="text-2xl font-bold">この講座で得られること</h2>
         <ul className="list-disc ml-5 space-y-1">
           <li>メール・企画書の自動生成で時短</li>
@@ -139,7 +139,7 @@ export default function AICoursePage() {
       </ScrollFadeIn>
 
       {/* 受講者の声 */}
-      <ScrollFadeIn className="max-w-2xl mx-auto p-6 space-y-4">
+      <ScrollFadeIn className="max-w-screen-lg mx-auto px-4 sm:px-6 md:px-10 space-y-4">
         <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
           <span className="absolute -top-3 left-4 text-2xl text-primary">📣</span>
           <h2 className="text-xl font-bold mb-4 text-center">受講者の声</h2>
@@ -153,7 +153,7 @@ export default function AICoursePage() {
       </ScrollFadeIn>
 
       {/* 5. コンテンツ構成（4STEP） */}
-      <ScrollFadeIn className="max-w-5xl mx-auto p-4 space-y-4">
+      <ScrollFadeIn className="w-full max-w-none p-4 sm:px-6 md:px-10 space-y-4">
         <h2 className="text-2xl font-bold">4STEPカリキュラム</h2>
         <div className="grid gap-4 md:grid-cols-4">
           {steps.map((s, i) => (
@@ -177,7 +177,7 @@ export default function AICoursePage() {
       </ScrollFadeIn>
 
       {/* 6. AIで変わる現実の例 */}
-      <ScrollFadeIn className="max-w-5xl mx-auto p-4 space-y-4">
+      <ScrollFadeIn className="w-full max-w-none p-4 sm:px-6 md:px-10 space-y-4">
         <h2 className="text-2xl font-bold">AIで変わる現実の例</h2>
         <div className="grid gap-4 md:grid-cols-3">
           {examples.map((ex, i) => (
@@ -203,7 +203,7 @@ export default function AICoursePage() {
       </ScrollFadeIn>
 
       {/* 7. サポート＆受講環境 */}
-      <ScrollFadeIn className="max-w-3xl mx-auto p-4 space-y-1">
+      <ScrollFadeIn className="max-w-screen-lg mx-auto px-4 sm:px-6 md:px-10 space-y-1">
         <h2 className="text-2xl font-bold">サポート＆受講環境</h2>
         <ul className="list-disc ml-5 space-y-1">
           <li>スマホだけでもOK、全レッスン動画付き</li>
@@ -220,7 +220,7 @@ export default function AICoursePage() {
 
 
       {/* 9. よくある質問 */}
-      <ScrollFadeIn className="max-w-3xl mx-auto p-4 space-y-4">
+      <ScrollFadeIn className="max-w-screen-lg mx-auto px-4 sm:px-6 md:px-10 space-y-4">
         <h2 className="text-2xl font-bold">よくある質問</h2>
         <ul className="space-y-2">
           {faqs.map((f, i) => (

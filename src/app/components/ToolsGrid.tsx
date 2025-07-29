@@ -45,7 +45,7 @@ export default function ToolsGrid() {
       <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
         利用ツール
       </h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {tools.map((tool) => (
           <button
             key={tool.name}

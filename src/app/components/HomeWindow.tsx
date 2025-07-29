@@ -33,7 +33,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       <CTASection />
 
       {/* おすすめ記事一覧 */}
-      <section className="px-4 sm:px-8 max-w-screen-md mx-auto space-y-4">
+      <section className="px-4 sm:px-6 md:px-10 w-full mx-auto space-y-4">
         <h2 className="text-xl font-bold text-center">おすすめ記事</h2>
         <div className="md:grid md:[grid-template-columns:2fr_1fr] md:gap-4">
           <RecommendedSlider posts={posts} />

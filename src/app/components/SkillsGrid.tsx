@@ -46,7 +46,7 @@ export default function SkillsGrid() {
       {categories.map((category) => (
         <div key={category.title} className="space-y-2">
           <h3 className="text-lg font-semibold">{category.title}</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <div className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {category.skills.map((skill) => (
               <div
                 key={skill.name}
