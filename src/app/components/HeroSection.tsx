@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import SearchBar from './SearchBar';
 
 export default function HeroSection() {
   return (
@@ -19,7 +18,6 @@ export default function HeroSection() {
         >
           お問い合わせ
         </Link>
-        <SearchBar className="flex justify-center" showHistory={false} />
       </div>
     </section>
   );
