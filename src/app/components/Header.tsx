@@ -164,12 +164,12 @@ export default function Header() {
           <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200" />
         </button>
         <nav className="hidden sm:block">
-          <ul className="flex gap-4 md:gap-6 text-base">
+          <ul className="flex gap-3 md:gap-4 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200 motion-safe:transition-transform motion-reduce:transition-none hover:scale-105"
+                  className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200 motion-safe:transition-transform motion-reduce:transition-none hover:scale-105"
                 >
                   {item.icon}
                   <span>{item.label}</span>
