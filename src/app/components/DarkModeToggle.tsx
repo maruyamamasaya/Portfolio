@@ -1,5 +1,6 @@
 'use client';
 import { LazyMotion, domAnimation, m, useReducedMotion } from 'framer-motion';
+
 import { useTheme } from './ThemeProvider';
 
 export default function DarkModeToggle() {
@@ -8,6 +9,7 @@ export default function DarkModeToggle() {
 
   return (
     <LazyMotion features={domAnimation}>
+
       <button
         onClick={toggleTheme}
         aria-label="Toggle dark mode"

@@ -7,6 +7,7 @@ import {
   AnimatePresence,
   useReducedMotion,
 } from 'framer-motion';
+
 import Image from 'next/image';
 
 interface ToolInfo {
@@ -57,6 +58,7 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
                 onClick={onClose}
                 aria-label="Close"
                 className="absolute top-4 right-4 text-gray-500 hover:text-primary cursor-pointer transition-base"
+
               >
                 ×
               </button>

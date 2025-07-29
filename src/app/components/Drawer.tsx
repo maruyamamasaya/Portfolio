@@ -8,6 +8,7 @@ import {
   useReducedMotion,
 } from 'framer-motion';
 
+
 interface DrawerProps {
   open: boolean;
   onClose: () => void;

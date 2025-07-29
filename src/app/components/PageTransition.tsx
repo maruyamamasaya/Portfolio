@@ -1,6 +1,7 @@
 'use client';
 import { ReactNode, useEffect } from 'react';
 import { AnimatePresence, LazyMotion, domAnimation, m, useReducedMotion } from 'framer-motion';
+
 import { usePathname } from 'next/navigation';
 
 let isFirstLoad = true;
