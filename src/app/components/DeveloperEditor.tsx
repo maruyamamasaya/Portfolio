@@ -24,6 +24,7 @@ export default function DeveloperEditor() {
   const [status, setStatus] = useState('');
   const [upload, setUpload] = useState<File | null>(null);
   const [isNew, setIsNew] = useState(false);
+  const [newFilename, setNewFilename] = useState('');
 
 
   useEffect(() => {
@@ -52,6 +53,16 @@ export default function DeveloperEditor() {
     setSelected(safe);
     setContent(metaTemplate());
     setIsNew(true);
+  };
+
+  const createFile = () => {
+    const trimmed = newFilename.trim();
+    if (!trimmed || /[\\/]/.test(trimmed)) {
+      setStatus('ファイル名が不正です');
+      return;
+    }
+    newFile(trimmed);
+    setNewFilename('');
   };
 
   const saveFile = async () => {
@@ -118,15 +129,18 @@ export default function DeveloperEditor() {
             </li>
           ))}
         </ul>
-        <button
-          className="px-2 py-1 bg-gray-200"
-          onClick={() => {
-            const name = prompt('新しいファイル名を入力');
-            if (name) newFile(name);
-          }}
-        >
-          新規記事
-        </button>
+        <div>
+          <label className="block mb-1 font-bold">新規記事</label>
+          <input
+            className="border p-1 w-full mb-1"
+            placeholder="filename"
+            value={newFilename}
+            onChange={(e) => setNewFilename(e.target.value)}
+          />
+          <button className="px-2 py-1 bg-gray-200" onClick={createFile}>
+            作成
+          </button>
+        </div>
         <div className="mt-4">
           <label className="block mb-1 font-bold">画像アップロード</label>
           <input
