@@ -1,4 +1,4 @@
-import { unified, type Plugin } from 'unified';
+import { unified } from 'unified';
 import parse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeSlug from 'rehype-slug';
@@ -80,33 +80,28 @@ function formatBold(content: string): string {
   return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 }
 
-// MDAST（Markdownの抽象構文木）に対するプラグイン
-// Plugin to collect headings from the markdown AST
-function headingsPlugin(headings: Heading[]): Plugin {
-  return function plugin() {
-    return function transformer(tree: Root) {
-      const visit = (node: any) => {
-        if (node.type === 'heading' && node.depth <= 3) {
-          const text = node.children
-            .filter((child: any) => child.type === 'text')
-            .map((child: any) => child.value)
-            .join('');
-          const existingId = node.data?.hProperties?.id as string | undefined;
-          const id = existingId || slugify(text);
-          node.data = node.data || {};
-          node.data.hProperties = node.data.hProperties || {};
-          if (!existingId) {
-            node.data.hProperties.id = id;
-          }
-          headings.push({ id, text, level: node.depth });
-        }
-        if (node.children) {
-          node.children.forEach((child: any) => visit(child));
-        }
-      };
-      visit(tree);
-    };
+// Collect headings from the markdown AST
+function collectHeadings(tree: Root, headings: Heading[]): void {
+  const visit = (node: any) => {
+    if (node.type === 'heading' && node.depth <= 3) {
+      const text = node.children
+        .filter((child: any) => child.type === 'text')
+        .map((child: any) => child.value)
+        .join('');
+      const existingId = node.data?.hProperties?.id as string | undefined;
+      const id = existingId || slugify(text);
+      node.data = node.data || {};
+      node.data.hProperties = node.data.hProperties || {};
+      if (!existingId) {
+        node.data.hProperties.id = id;
+      }
+      headings.push({ id, text, level: node.depth });
+    }
+    if (node.children) {
+      node.children.forEach((child: any) => visit(child));
+    }
   };
+  visit(tree);
 }
 
 export default async function markdownToHtml(
@@ -118,15 +113,18 @@ export default async function markdownToHtml(
     convertMarkdownTables(replaceInternalLinks(markdown)),
   );
 
+  const parser = unified().use(parse);
+  const tree = parser.parse(processed);
+  collectHeadings(tree, headings);
+
   const processor = unified()
-    .use(parse)
-    .use(headingsPlugin, headings)
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
     .use(rehypeStringify);
 
-  const result = await processor.process(processed);
+  const transformed = await processor.run(tree);
+  const html = processor.stringify(transformed);
 
-  return { html: result.toString(), headings };
+  return { html, headings };
 }
