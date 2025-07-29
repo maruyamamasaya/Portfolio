@@ -68,45 +68,49 @@ export default function About() {
       </p>
       <ProfileCategories />
 
-      <section className="space-y-2 text-sm">
-        <h2 className="text-lg font-bold">Media / SNS活動</h2>
-        <p>🎬 YouTubeチャンネル2つ ＆ Instagram</p>
-        <p>
-          趣味で、ポップス・クラシック音楽の解説・レビューを発信する動画アカウントを運営中。
+      <section className="space-y-4">
+        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+          Media / SNS活動
+        </h2>
+        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+          🎬 YouTubeチャンネル2つとInstagramで、ポップス・クラシック音楽の解説やレビュー動画を投稿しています。音楽の背景や構造をわかりやすく紐解く「聴く攻略本」をコンセプトに、ショート動画中心で発信中です。
         </p>
-        <p>
-          音楽の背景や構造を分かりやすく紐解く“聴く攻略本”をコンセプトに、ショート動画を中心とした発信を行っています。
+        <p className="text-sm font-semibold text-primary">
+          総再生回数：100万回超（ショート動画中心）
         </p>
-        <p>総再生回数：100万回超（ショート動画中心）</p>
-        <p>総登録者数：約500名（2025年時点）</p>
-        <p>コンテンツ例：楽曲分析、作曲家紹介、音楽ジャンルの解説 など</p>
+        <p className="text-sm font-semibold text-primary">
+          総登録者数：約500名（2025年時点）
+        </p>
+        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+          コンテンツ例：楽曲分析、作曲家紹介、音楽ジャンルの解説 など
+        </p>
         <p className="text-xs text-gray-500">
           ポップス・クラシック音楽を分かりやすく解説するショート動画チャンネル
         </p>
-        <div className="flex space-x-4">
+        <div className="flex flex-wrap gap-4 mt-4">
           <a
-            href="https://youtube.com"
+            href="https://www.youtube.com/@Arcana-%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%8A"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-primary text-white rounded shadow hover:bg-primary/80"
+            className="flex items-center bg-primary text-white rounded px-4 py-2 font-medium shadow-md hover:bg-primary/80 transition"
           >
-            YouTubeチャンネル1
+            <span className="mr-2">🎥</span> Arcana - アルカナ チャンネル
           </a>
           <a
-            href="https://youtube.com/channel2"
+            href="https://www.youtube.com/@musicwordriio"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-primary text-white rounded shadow hover:bg-primary/80"
+            className="flex items-center bg-primary text-white rounded px-4 py-2 font-medium shadow-md hover:bg-primary/80 transition"
           >
-            YouTubeチャンネル2
+            <span className="mr-2">🎥</span> 【ざっくり紹介】楽曲紹介チャンネル 〜黒の讃美歌〜
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/xsbyli/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-primary text-white rounded shadow hover:bg-primary/80"
+            className="flex items-center bg-primary text-white rounded px-4 py-2 font-medium shadow-md hover:bg-primary/80 transition"
           >
-            Instagramで見る
+            <span className="mr-2">📷</span> Instagramで見る
           </a>
         </div>
       </section>
