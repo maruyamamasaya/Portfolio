@@ -81,7 +81,7 @@ function formatBold(content: string): string {
 }
 
 // MDAST（Markdownの抽象構文木）に対するプラグイン
-function headingsPlugin(headings: Heading[]): Plugin<[], Root> {
+function headingsPlugin(headings: Heading[]): Plugin {
   return () => (tree: Root) => {
     const visit = (node: any) => {
       if (node.type === 'heading' && node.depth <= 3) {
