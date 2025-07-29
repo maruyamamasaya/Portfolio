@@ -54,7 +54,7 @@ const artworks: Artwork[] = [
     medium: 'Digital',
     description:
       '自然の森が複雑な生態系を通じて無数の生命を育むように、AIは膨大なデータを吸収し、深層学習という「見えない森」を形成していく。一本一本の樹木が森を成すように、一つひとつのパラメータが知性を形づくる──自然とデジタル、その生成の原理は驚くほど似ている。',
-    image: '/images/img1.svg',
+    image: '/images/artwork01-mori.png',
   },
   {
     id: 7,
@@ -63,7 +63,7 @@ const artworks: Artwork[] = [
     medium: 'Digital',
     description:
       '自然の森が複雑な生態系を通じて無数の生命を育むように、AIは膨大なデータを吸収し、深層学習という「見えない森」を形成していく。一本一本の樹木が森を成すように、一つひとつのパラメータが知性を形づくる──自然とデジタル、その生成の原理は驚くほど似ている。',
-    image: '/images/img2.svg',
+    image: '/images/artwork02-mori.png',
   },
 ];
 

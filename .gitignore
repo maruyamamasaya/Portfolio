@@ -17,3 +17,7 @@ yarn-error.log*
 *~
 *.swp
 *.swo
+
+# Mori artwork placeholders
+public/images/artwork01-mori.png
+public/images/artwork02-mori.png
