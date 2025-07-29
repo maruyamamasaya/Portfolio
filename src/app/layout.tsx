@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import BottomNav from './components/BottomNav';
 import Breadcrumbs from './components/Breadcrumbs';
 import PageTransition from './components/PageTransition';
 import TagListWrapper from './components/TagListWrapper';
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </main>
           </PageTransition>
           <Footer />
+          <BottomNav />
         </ThemeProvider>
       </body>
     </html>
