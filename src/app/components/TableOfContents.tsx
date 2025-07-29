@@ -9,11 +9,12 @@ export interface Heading {
 }
 
 export default function TableOfContents({ headings }: { headings: Heading[] }) {
-  if (!headings || headings.length === 0) return null;
   const [activeId, setActiveId] = useState('');
   const levels = ['pl-0 text-base', 'pl-4 text-sm', 'pl-8 text-xs'];
 
   useEffect(() => {
+    if (!headings || headings.length === 0) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -31,6 +32,8 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
     });
     return () => observer.disconnect();
   }, [headings]);
+
+  if (!headings || headings.length === 0) return null;
 
   return (
     <aside
