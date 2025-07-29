@@ -138,14 +138,14 @@ export default function About() {
         <SkillsGrid />
         <div>
           <h2 className="text-lg font-bold mb-2">更新履歴</h2>
-          <ul className="ml-5 space-y-1">
-            <li className="flex space-x-2 items-start">
-              <span className="w-28 text-gray-500 font-serif">2025/07/30</span>
-              <span className="border-b border-gray-300 dark:border-gray-600">サイトリニューアル</span>
+          <ul className="ml-5 space-y-2">
+            <li className="flex space-x-2 items-start py-2 leading-relaxed">
+              <span className="w-28 font-mono text-gray-600 text-base">2025/07/30</span>
+              <span className="border-b border-gray-300 dark:border-gray-600 text-base font-medium">サイトリニューアル</span>
             </li>
-            <li className="flex space-x-2 items-start">
-              <span className="w-28 text-gray-500 font-serif">2025/07/30</span>
-              <span className="border-b border-gray-300 dark:border-gray-600">ブログ機能追加</span>
+            <li className="flex space-x-2 items-start py-2 leading-relaxed">
+              <span className="w-28 font-mono text-gray-600 text-base">2025/07/30</span>
+              <span className="border-b border-gray-300 dark:border-gray-600 text-base font-medium">ブログ機能追加</span>
             </li>
           </ul>
         </div>
