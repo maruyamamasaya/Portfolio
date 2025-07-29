@@ -26,9 +26,10 @@ export default function ProfileCardBlog() {
             </svg>
           </Link>
           <Link href="https://note.com/freelancehack" aria-label="note" className="hover:text-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-              <path d="M3 3h18v18H3V3zm3.5 3v12h11V8.25L15.75 6H6.5z" />
-            </svg>
+            <Image src="/image/note-200px.png" alt="note" width={20} height={20} className="w-5 h-5" />
+          </Link>
+          <Link href="https://lin.ee/21wyOGD" aria-label="LINE公式アカウント" className="hover:text-primary">
+            <Image src="/image/LINEdevelop-200px.png" alt="LINE公式アカウント" width={20} height={20} className="w-5 h-5" />
           </Link>
         </div>
         <Link href="/about" className="underline text-sm leading-relaxed">

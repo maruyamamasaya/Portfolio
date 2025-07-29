@@ -52,15 +52,13 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 hover:text-yellow-300"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                <Image
+                  src="/image/instagram-200px.png"
+                  alt="Instagram"
+                  width={20}
+                  height={20}
                   className="w-4 h-4"
-                >
-                  <rect x="2" y="2" width="20" height="20" rx="5" />
-                  <circle cx="12" cy="12" r="4" fill="white" />
-                  <circle cx="17" cy="7" r="1" fill="white" />
-                </svg>
+                />
                 <span>Instagram</span>
               </a>
             </li>
@@ -83,20 +81,70 @@ export default function Footer() {
             </li>
             <li>
               <a
+                href="https://www.tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+              >
+                <Image
+                  src="/image/tiktok-200px.png"
+                  alt="TikTok"
+                  width={20}
+                  height={20}
+                  className="w-4 h-4"
+                />
+                <span>TikTok</span>
+              </a>
+            </li>
+            <li>
+              <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 hover:text-yellow-300"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                <Image
+                  src="/image/youtube-200px.png"
+                  alt="YouTube"
+                  width={20}
+                  height={20}
                   className="w-4 h-4"
-                >
-                  <path d="M10 15l5-3-5-3v6z" />
-                  <rect x="2" y="6" width="20" height="12" rx="2" />
-                </svg>
+                />
                 <span>YouTube</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://note.com/freelancehack"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+              >
+                <Image
+                  src="/image/note-200px.png"
+                  alt="note"
+                  width={20}
+                  height={20}
+                  className="w-4 h-4"
+                />
+                <span>note</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://lin.ee/21wyOGD"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+              >
+                <Image
+                  src="/image/LINEdevelop-200px.png"
+                  alt="LINE公式アカウント"
+                  width={20}
+                  height={20}
+                  className="w-4 h-4"
+                />
+                <span>LINE公式アカウント</span>
               </a>
             </li>
             <li>
