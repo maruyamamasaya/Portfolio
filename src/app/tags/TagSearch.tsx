@@ -128,11 +128,11 @@ export default function TagSearch({ tags, onChange }: Props) {
           {selected.map((tag) => (
             <span
               key={tag}
-              className="flex items-center bg-primary/20 dark:bg-primary/30 rounded-full px-3 py-2 text-base shadow dark:text-gray-100 transition-base hover:shadow-lg active:shadow-inner"
+              className="flex items-center bg-primary/20 dark:bg-primary/30 rounded-full px-3 py-1 text-sm font-medium shadow dark:text-gray-100"
             >
               {tag}
               <button
-                className="ml-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 active:text-gray-800 dark:active:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary transition-base"
+                className="ml-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary"
                 onClick={() => removeTag(tag)}
               >
                 &times;
@@ -141,7 +141,7 @@ export default function TagSearch({ tags, onChange }: Props) {
           ))}
           <button
             onClick={clearTags}
-            className="px-3 py-2 bg-gray-200 dark:bg-gray-700 rounded-full text-base dark:text-gray-100 transition-base hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-gray-400 dark:active:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+            className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
           >
             クリア
           </button>

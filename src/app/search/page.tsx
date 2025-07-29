@@ -93,33 +93,33 @@ export default async function SearchPage({
                 key={post.slug}
                 as="li"
                 delay={idx * 50}
-                className="bg-white dark:bg-gray-700 rounded shadow p-4 space-y-2"
+                className="group flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 {post.image && (
                   <Image
                     src={post.image}
                     alt={post.title}
-                    width={400}
-                    height={160}
-                    className="w-full h-40 object-cover rounded"
+                    width={64}
+                    height={64}
+                    className="w-16 h-16 object-cover rounded-lg border shadow-sm"
                   />
                 )}
-                <div className="space-y-1">
+                <div className="flex-1">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="accent-text hover:underline text-lg"
+                    className="text-lg font-bold text-gray-800 dark:text-white group-hover:text-primary transition"
                   >
                     {highlight(post.title)}
                   </Link>
-                  <div className="text-base text-gray-500">
+                  <p className="text-sm text-gray-500 mt-1">
                     {post.date}
                     {post.category && ` / ${post.category}`}
-                  </div>
+                  </p>
                   <p className="text-sm">
                     {highlight(getExcerpt(post.content))}...
                   </p>
                   {post.tags && (
-                    <div className="flex flex-wrap gap-1 text-xs">
+                    <div className="mt-2 flex flex-wrap gap-2">
                       {post.tags.slice(0, 3).map((tag) => (
                         <TagBadge key={tag} tag={tag} />
                       ))}

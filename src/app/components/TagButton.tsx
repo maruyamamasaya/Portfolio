@@ -11,7 +11,7 @@ export default function TagButton({ label, sizeClass = 'text-sm' }: Props) {
   return (
     <Link
       href={`/tags/${encodeURIComponent(label)}`}
-      className={`${meta.textColor} hover:underline ${sizeClass} mr-2 inline-flex items-center justify-center space-x-1 h-11 min-w-11 px-3`}
+      className={`inline-flex items-center space-x-1 font-medium rounded-full px-3 py-1 ${sizeClass} ${meta.bgColor} ${meta.textColor} hover:opacity-80`}
     >
       <span>{meta.icon}</span>
       <span>{label}</span>
