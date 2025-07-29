@@ -63,9 +63,6 @@ export default function About() {
         <p>特徴：インフラレスでスケーラブルな構成／ノーアプリで完結するUX</p>
       </section>
 
-      <p className="text-sm text-gray-500">
-        ※ 本名は非公開。活動名は今後設定予定です。
-      </p>
       <ProfileCategories />
 
       <section className="space-y-2 text-sm">
