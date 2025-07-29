@@ -4,9 +4,9 @@ import ScrollFadeIn from '../components/ScrollFadeIn';
 import Card from '../components/Card';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'AI講座 | でじサポ',
-};
+} satisfies Metadata;
 
 export default function AICoursePage() {
   const steps = [
