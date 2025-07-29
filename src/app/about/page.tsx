@@ -4,6 +4,7 @@ import ProfileCategories from '../components/ProfileCategories';
 import SkillBars from '../components/SkillBars';
 import CTASection from '../components/CTASection';
 import ToolsGrid from '../components/ToolsGrid';
+import MediaCardGrid from '../components/MediaCardGrid';
 
 export default function About() {
   return (
@@ -66,50 +67,40 @@ export default function About() {
       <ProfileCategories />
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+        <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
           Media / SNS活動
         </h2>
         <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
           🎬 YouTubeチャンネル2つとInstagramで、ポップス・クラシック音楽の解説やレビュー動画を投稿しています。音楽の背景や構造をわかりやすく紐解く「聴く攻略本」をコンセプトに、ショート動画中心で発信中です。
         </p>
-        <p className="text-sm font-semibold text-primary">
-          総再生回数：100万回超（ショート動画中心）
-        </p>
-        <p className="text-sm font-semibold text-primary">
-          総登録者数：約500名（2025年時点）
-        </p>
-        <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-          コンテンツ例：楽曲分析、作曲家紹介、音楽ジャンルの解説 など
-        </p>
-        <p className="text-xs text-gray-500">
-          ポップス・クラシック音楽を分かりやすく解説するショート動画チャンネル
-        </p>
-        <div className="flex flex-wrap gap-4 mt-4">
-          <a
-            href="https://www.youtube.com/@Arcana-%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%8A"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center bg-primary text-white rounded px-4 py-2 font-medium shadow-md hover:bg-primary/80 transition"
-          >
-            <span className="mr-2">🎥</span> Arcana - アルカナ チャンネル
-          </a>
-          <a
-            href="https://www.youtube.com/@musicwordriio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center bg-primary text-white rounded px-4 py-2 font-medium shadow-md hover:bg-primary/80 transition"
-          >
-            <span className="mr-2">🎥</span> 【ざっくり紹介】楽曲紹介チャンネル 〜黒の讃美歌〜
-          </a>
-          <a
-            href="https://www.instagram.com/xsbyli/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center bg-primary text-white rounded px-4 py-2 font-medium shadow-md hover:bg-primary/80 transition"
-          >
-            <span className="mr-2">📷</span> Instagramで見る
-          </a>
+        <div className="space-y-1 text-sm font-semibold text-primary">
+          <p>総再生回数：100万回超（ショート動画中心）</p>
+          <p>総登録者数：約500名（2025年時点）</p>
         </div>
+
+        {/** Media cards */}
+        <MediaCardGrid
+          items={[
+            {
+              icon: '🎥',
+              title: 'Arcana - アルカナ チャンネル',
+              description: 'クラシック音楽の構造を丁寧に読み解く解説型チャンネル。',
+              href: 'https://www.youtube.com/@Arcana-%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%8A',
+            },
+            {
+              icon: '🎥',
+              title: '【ざっくり紹介】楽曲紹介チャンネル〜黒の讃美歌〜',
+              description: 'ポップスやクラシックを横断した楽曲レビュー。',
+              href: 'https://www.youtube.com/@musicwordriio',
+            },
+            {
+              icon: '📷',
+              title: 'Instagram',
+              description: 'ショート動画と写真で分かりやすく音楽を解説。',
+              href: 'https://www.instagram.com/xsbyli/',
+            },
+          ]}
+        />
       </section>
 
       <section className="space-y-6 text-sm">
