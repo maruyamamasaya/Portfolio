@@ -53,7 +53,7 @@ export default function Footer() {
                 className="inline-flex items-center space-x-1 hover:text-yellow-300"
               >
                 <Image
-                  src="/image/instagram-200px.png"
+                  src="/images/instagram-200px.png"
                   alt="Instagram"
                   width={20}
                   height={20}
@@ -87,7 +87,7 @@ export default function Footer() {
                 className="inline-flex items-center space-x-1 hover:text-yellow-300"
               >
                 <Image
-                  src="/image/tiktok-200px.png"
+                  src="/images/tiktok-200px.png"
                   alt="TikTok"
                   width={20}
                   height={20}
@@ -104,7 +104,7 @@ export default function Footer() {
                 className="inline-flex items-center space-x-1 hover:text-yellow-300"
               >
                 <Image
-                  src="/image/youtube-200px.png"
+                  src="/images/youtube-200px.png"
                   alt="YouTube"
                   width={20}
                   height={20}
@@ -121,7 +121,7 @@ export default function Footer() {
                 className="inline-flex items-center space-x-1 hover:text-yellow-300"
               >
                 <Image
-                  src="/image/note-200px.png"
+                  src="/images/note-200px.png"
                   alt="note"
                   width={20}
                   height={20}
@@ -138,7 +138,7 @@ export default function Footer() {
                 className="inline-flex items-center space-x-1 hover:text-yellow-300"
               >
                 <Image
-                  src="/image/LINEdevelop-200px.png"
+                  src="/images/LINEdevelop-200px.png"
                   alt="LINE公式アカウント"
                   width={20}
                   height={20}

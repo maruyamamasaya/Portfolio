@@ -70,7 +70,7 @@ const artworks: Artwork[] = [
 ];
 
 const arcanaImages = Array.from({ length: 12 }, (_, i) =>
-  `/image/arcana/arcanacard${String(i + 1).padStart(5, '0')}.png`,
+  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.png`,
 );
 
 export default function Works() {
