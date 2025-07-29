@@ -103,6 +103,7 @@ export default function SearchBar({ className, showHistory = true }: Props) {
           <div className="flex space-x-2">
             {categories.length > 0 && (
               <select
+                aria-label="カテゴリ"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 className="border rounded px-2 py-1 flex-1"
