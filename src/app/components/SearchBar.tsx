@@ -173,7 +173,12 @@ export default function SearchBar({ className, showHistory = true }: Props) {
             </svg>
           </button>
         ) : (
-          <div className="absolute inset-x-0 top-0 bg-white dark:bg-gray-700 p-2 shadow z-50">
+          <>
+            <div
+              className="fixed inset-0 bg-black/40 z-40"
+              onClick={() => setMobileOpen(false)}
+            />
+            <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-700 p-2 shadow z-50">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -200,7 +205,7 @@ export default function SearchBar({ className, showHistory = true }: Props) {
                   type="button"
                   aria-label="Close search"
                   onClick={() => setMobileOpen(false)}
-                  className="p-2"
+                  className="p-2 text-2xl"
                 >
                   ×
                 </button>
@@ -224,6 +229,7 @@ export default function SearchBar({ className, showHistory = true }: Props) {
               )}
             </form>
           </div>
+        </>
         )}
       </div>
     </div>
