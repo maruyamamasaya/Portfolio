@@ -24,11 +24,11 @@ export default async function CategoryPage({
 }) {
   const category = getCategory(params.slug);
   if (!category) {
-    notFound();
+    return notFound();
   }
   const posts = await getPostsByCategory(params.slug);
   if (!posts.length) {
-    notFound();
+    return notFound();
   }
   return (
     <div className="blog-container">
