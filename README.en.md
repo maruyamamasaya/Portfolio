@@ -73,7 +73,7 @@ NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION=true
 
 ### Basic authentication
 
-The `/developer_edit` page should be protected with Basic authentication. Set your credentials in `.env.local`:
+`/developer_edit` is protected with Basic authentication. Set your credentials in `.env.local`:
 
 ```env
 BASIC_AUTH_USERNAME=your_username
@@ -106,7 +106,7 @@ Host the server on a Node.js environment such as AWS EC2.
 
 ## Developer Edit Page
 
-The `/developer_edit` route allows in-browser creation and editing of Markdown articles. Be sure to protect this page with authentication before exposing it to the public. This repository does not include authentication setup by default.
+The `/developer_edit` route allows in-browser creation and editing of Markdown articles. Access to this page requires the Basic authentication credentials defined in `.env.local`.
 
 ## Images
 
