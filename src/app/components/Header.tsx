@@ -178,7 +178,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <div className="flex items-center space-x-2 ml-auto">
+        <div className="flex items-center space-x-4 ml-auto">
           <div className="hidden sm:block w-48">
             <SearchBar showHistory={false} />
           </div>
