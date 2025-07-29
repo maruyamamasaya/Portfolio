@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
+import ArcanaWorkCarousel from '../components/ArcanaWorkCarousel';
 
 const artworks: Artwork[] = [
   {
@@ -68,6 +69,10 @@ const artworks: Artwork[] = [
   },
 ];
 
+const arcanaImages = Array.from({ length: 12 }, (_, i) =>
+  `/image/arcana/arcanacard${String(i + 1).padStart(5, '0')}.png`,
+);
+
 export default function Works() {
   const regularArtworks = artworks.filter((a) => a.id <= 5);
   const slideshowArtworks = artworks.filter((a) => a.id > 5);
@@ -114,6 +119,7 @@ export default function Works() {
             神秘的なアルカナの力を駆使して戦うターン制カードゲームを開発中。
             美麗なイラストと戦略性が魅力です。
           </p>
+          <ArcanaWorkCarousel images={arcanaImages} autoSlideInterval={3000} />
           <Link
             href="/arcana"
             className="inline-block px-4 py-2 bg-primary text-white rounded shadow"
