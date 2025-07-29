@@ -5,6 +5,7 @@ import Card from '../components/Card';
 import Image from 'next/image';
 
 import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
+import ArcanaCardCarousel from '../components/ArcanaCardCarousel';
 
 const artworks: Artwork[] = [
   {
@@ -106,6 +107,14 @@ export default function Works() {
           <ArtworkSlideshow artworks={slideshowArtworks} />
         </div>
       )}
+      <div className="mt-8 space-y-4">
+        <h2 className="text-xl font-bold">アルカナ公式 TCGカード</h2>
+        <p>
+          神秘的なアルカナの力を駆使して戦う、ターン制カードゲームを開発中。
+          美麗なイラストで描かれたカードが、戦略と運命を彩ります。
+        </p>
+        <ArcanaCardCarousel />
+      </div>
     </div>
   );
 }
