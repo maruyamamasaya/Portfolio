@@ -17,11 +17,11 @@ export interface DevPost {
 const devPostsDirectory = path.join(process.cwd(), 'developers_blog');
 
 export async function getSortedDevPosts(): Promise<DevPost[]> {
-  const fileNames = (await fs.readdir(devPostsDirectory)).filter((file) =>
-    file.endsWith('.md'),
+  const fileNames: string[] = (await fs.readdir(devPostsDirectory)).filter(
+    (file: string) => file.endsWith('.md'),
   );
   const posts = await Promise.all(
-    fileNames.map(async (fileName) => {
+    fileNames.map(async (fileName: string) => {
       const slug = fileName.replace(/\.md$/, '');
       const fullPath = path.join(devPostsDirectory, fileName);
       try {
@@ -45,7 +45,7 @@ export async function getSortedDevPosts(): Promise<DevPost[]> {
     }),
   );
 
-  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return posts.sort((a: DevPost, b: DevPost) => (a.date < b.date ? 1 : -1));
 }
 
 export async function getDevPost(slug: string): Promise<DevPost> {
