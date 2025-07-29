@@ -27,6 +27,17 @@ export default function SearchBar({ className, showHistory = true }: Props) {
   const [history, setHistory] = useState<string[]>([]);
 
   useEffect(() => {
+    if (mobileOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
     fetch('/api/search-data')
       .then((res) => res.json())
       .then((data) => {
@@ -175,10 +186,10 @@ export default function SearchBar({ className, showHistory = true }: Props) {
         ) : (
           <>
             <div
-              className="fixed inset-0 bg-black/40 z-40"
+              className="fixed inset-0 bg-black/40 z-50"
               onClick={() => setMobileOpen(false)}
             />
-            <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-700 p-2 shadow z-50">
+            <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-700 p-2 shadow z-60">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
