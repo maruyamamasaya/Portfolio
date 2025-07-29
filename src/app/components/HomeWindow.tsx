@@ -6,11 +6,11 @@ import TestimonialsSection from './TestimonialsSection';
 import FAQSection from './FAQSection';
 import CTASection from './CTASection';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Post } from '@/lib/posts';
 import ScrollFadeIn from './ScrollFadeIn';
-import Card from './Card';
 import RecommendedSlider from './RecommendedSlider';
+import PostCard from './PostCard';
+import SearchBar from './SearchBar';
 
 type HomeWindowProps = {
   posts: Post[];
@@ -33,45 +33,26 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       </section>
       <CTASection />
 
-      {/* おすすめ記事スライダーとブログ一覧 */}
-      <div className="px-4 sm:px-8 grid gap-8 lg:grid-cols-3 items-start">
-        <div className="lg:col-span-2">
-          <RecommendedSlider posts={posts} />
+      {/* おすすめ記事一覧 */}
+      <section className="px-4 sm:px-8 max-w-screen-md mx-auto space-y-4">
+        <h2 className="text-xl font-bold text-center">おすすめ記事</h2>
+        <div className="flex justify-end">
+          <SearchBar className="w-32 text-sm" />
         </div>
-        <div>
-          <ul className="space-y-4">
-            {posts.slice(0, 6).map((post, i) => (
-              <ScrollFadeIn
-                key={post.slug}
-                delay={i * 100}
-                as={Card}
-                className="flex items-start space-x-4"
-              >
-                {post.image && (
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    width={80}
-                    height={80}
-                    className="w-20 h-20 object-cover rounded"
-                  />
-                )}
-                <div>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="accent-text hover:underline"
-                  >
-                    {post.title}
-                  </Link>
-                  <span className="block text-sm text-gray-500">
-                    {post.date}
-                  </span>
-                </div>
-              </ScrollFadeIn>
-            ))}
-          </ul>
+        <RecommendedSlider posts={posts} />
+        <ul className="space-y-4">
+          {posts.slice(0, 6).map((post, i) => (
+            <ScrollFadeIn key={post.slug} as="li" delay={i * 100}>
+              <PostCard post={post} />
+            </ScrollFadeIn>
+          ))}
+        </ul>
+        <div className="text-center">
+          <Link href="/blog" className="accent-text hover:underline">
+            すべての記事を見る
+          </Link>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

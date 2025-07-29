@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import DarkModeToggle from './DarkModeToggle';
 import Drawer from './Drawer';
+import HeaderSearchBox from './HeaderSearchBox';
 
 export default function Header() {
   const pathname = usePathname();
@@ -141,7 +142,7 @@ export default function Header() {
       >
         Skip to content
       </a>
-      <div className="container mx-auto flex items-center justify-between relative p-1">
+      <div className="container mx-auto flex items-center relative p-1">
         <h1 className="text-xl font-digital font-bold flex items-center">
           <Link href="/">
             <Image
@@ -153,32 +154,37 @@ export default function Header() {
             />
           </Link>
         </h1>
-        <button
-          className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2 rounded focus:ring-2 focus:outline-none"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1" />
-          <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1" />
-          <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200" />
-        </button>
-        <nav className="hidden sm:block">
-          <ul className="flex gap-3 md:gap-4 text-sm">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200 motion-safe:transition-transform motion-reduce:transition-none hover:scale-105"
-                >
-                  {item.icon}
-                  <span>{item.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="flex items-center space-x-2 ml-auto">
+        <div className="ml-2">
+          <HeaderSearchBox />
+        </div>
+        <div className="border-l border-gray-300 pl-4 flex-1">
+          <nav className="hidden sm:flex justify-center">
+            <ul className="flex gap-3 md:gap-4 text-sm">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-2 py-1 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200 motion-safe:transition-transform motion-reduce:transition-none hover:scale-105"
+                  >
+                    {item.icon}
+                    <span>{item.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+        <div className="flex items-center space-x-2 ml-2">
           <DarkModeToggle />
+          <button
+            className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2 rounded focus:ring-2 focus:outline-none"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1" />
+            <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1" />
+            <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200" />
+          </button>
         </div>
         <Drawer open={open} onClose={() => setOpen(false)}>
           <ul className="flex flex-col space-y-4 mt-8">
