@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
+import ToolModal from './ToolModal';
 
 const tools = [
   {
@@ -76,6 +78,7 @@ const tools = [
 ];
 
 export default function ToolsGrid() {
+  const [activeTool, setActiveTool] = useState<typeof tools[number] | null>(null);
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
@@ -84,19 +87,20 @@ export default function ToolsGrid() {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {tools.map((tool) => (
           <div key={tool.name} className="relative group">
-            <div
-              className="rounded-lg p-4 shadow bg-white dark:bg-gray-800 text-center hover:shadow-lg hover:scale-105 transition"
-              tabIndex={0}
+            <button
+              onClick={() => setActiveTool(tool)}
+              className="rounded-lg p-4 w-full shadow bg-white dark:bg-gray-800 text-center hover:shadow-lg hover:scale-105 transition hover:opacity-80 cursor-pointer"
             >
               <div className="text-2xl mb-2">{tool.icon}</div>
               <p className="text-sm">{tool.name}</p>
-            </div>
+            </button>
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden w-56 p-2 text-xs text-white bg-gray-700 rounded shadow-lg group-hover:block group-focus:block whitespace-pre-line">
               {tool.description}
             </div>
           </div>
         ))}
       </div>
+      <ToolModal tool={activeTool} onClose={() => setActiveTool(null)} />
     </div>
   );
 }
