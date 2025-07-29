@@ -114,8 +114,34 @@ export default function About() {
 
       <section className="space-y-6 text-sm">
         <div>
-          <h2 className="text-lg font-bold mb-2">活動ポリシー</h2>
-          <p>ユーザーファースト・信頼性・継続学習を軸に活動しています。</p>
+          <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">
+            活動ポリシー
+          </h2>
+          <p className="mb-4">
+            <strong>「信頼される技術者であること」</strong>
+            を最優先に、ユーザー視点での価値提供を心がけています。
+            単なる知識提供や技術支援ではなく、本当に“役に立つ”体験を届けることを軸に活動しています。
+          </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+              <p className="font-semibold">ユーザーファースト</p>
+              <p>
+                誰にでもわかりやすく、丁寧なサポートを心がけ、相談しやすい空気感を大切にしています。
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+              <p className="font-semibold">信頼性の担保</p>
+              <p>
+                不確かな情報は扱わず、検証・確認を通じた正確なアドバイスを提供します。
+              </p>
+            </div>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+              <p className="font-semibold">継続学習の姿勢</p>
+              <p>
+                テクノロジーの進化に対応し続けるため、自ら学び、検証し、常に最新の知識で向き合います。
+              </p>
+            </div>
+          </div>
         </div>
         <ToolsGrid />
         <SkillBars />
