@@ -144,21 +144,15 @@ export default function Header() {
       </a>
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-digital font-bold flex items-center">
-          <Image
-            src="/images/img1.svg"
-            alt="Light mode logo"
-            width={32}
-            height={32}
-            className="w-8 h-8 mr-2 block dark:hidden"
-          />
-          <Image
-            src="/images/img2.svg"
-            alt="Dark mode logo"
-            width={32}
-            height={32}
-            className="w-8 h-8 mr-2 hidden dark:block"
-          />
-          <Link href="/">でじサポ｜パソコン相談室</Link>
+          <Link href="/">
+            <Image
+              src="/images/header_icon.png"
+              alt="パソコン相談ならお任せ"
+              width={64}
+              height={64}
+              className="w-16 h-16"
+            />
+          </Link>
         </h1>
         <button
           className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2"
