@@ -82,9 +82,9 @@ npm test
 ```
 
 `npm run lint` は `.eslintrc.json` を参照して ESLint を実行します。
-ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.svg` です。
+ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.png` です。
 `npm run format` は リポジトリの `.prettierrc` を参照して Prettier を実行します。
-ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.svg` です。
+ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.png` です。
 `npm test` は `jest.config.js` に基づいて Jest を起動します。
 テスト実行には `.env.local` に定義した環境変数が利用されるため、`\*.example` をも
 とに設定してください。
@@ -149,7 +149,7 @@ BASIC_AUTH_PASSWORD=your_password
 | OGP 画像         | `eye-catch.png`   | 16:9             | 1200×630       |
 
 `favicon.png` と `eye-catch.png` は `public/image` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
-ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.svg` です。
+ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.png` です。
 
 ## Todo
 
