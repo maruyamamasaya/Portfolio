@@ -1,7 +1,7 @@
 import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import ProfileCategories from '../components/ProfileCategories';
-import SkillBars from '../components/SkillBars';
+import SkillsGrid from '../components/SkillsGrid';
 import CTASection from '../components/CTASection';
 import ToolsGrid from '../components/ToolsGrid';
 import MediaCardGrid from '../components/MediaCardGrid';
@@ -135,7 +135,7 @@ export default function About() {
           </div>
         </div>
         <ToolsGrid />
-        <SkillBars />
+        <SkillsGrid />
         <div>
           <h2 className="text-lg font-bold mb-2">更新履歴</h2>
           <ul className="list-disc ml-5 space-y-1">
