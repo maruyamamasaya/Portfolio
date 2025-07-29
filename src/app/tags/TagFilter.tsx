@@ -67,7 +67,7 @@ export default function TagFilter({ tags, posts }: Props) {
           </div>
         </div>
       ) : (
-        <ul className="mt-4 space-y-4">
+        <ul className="mt-4 grid gap-4 sm:grid-cols-2">
           {filteredPosts.map((post) => (
             <li
               key={post.slug}
@@ -89,7 +89,7 @@ export default function TagFilter({ tags, posts }: Props) {
                 >
                   {post.title}
                 </Link>
-                <span className="block text-sm text-gray-500">
+                <span className="block text-base text-gray-500">
                   {post.date}
                   {post.updated && ` (更新: ${post.updated})`}
                 </span>

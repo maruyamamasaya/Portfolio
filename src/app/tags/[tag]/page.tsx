@@ -37,7 +37,7 @@ export default async function TagPage({
     <div>
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Tag: {decodedTag}</h1>
-      <ul className="space-y-4">
+      <ul className="grid gap-4 sm:grid-cols-2">
         {posts.map((post) => (
           <li
             key={post.slug}
@@ -59,7 +59,7 @@ export default async function TagPage({
               >
                 {post.title}
               </Link>
-              <span className="block text-sm text-gray-500">
+              <span className="block text-base text-gray-500">
                 {post.date}
                 {post.updated && ` (更新: ${post.updated})`}
               </span>
