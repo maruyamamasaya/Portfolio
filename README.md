@@ -124,7 +124,7 @@ BASIC_AUTH_PASSWORD=your_password
 
 ## 開発者向け編集ページ
 
-`/developer_edit` ではブラウザ上で Markdown 記事の作成や編集が行えます。公開ページの改ざんを防ぐため、このページには Basic 認証などでアクセス制限を必ず実装してください。本リポジトリには認証設定が含まれていないため、運用前に適切な認証機構を追加する必要があります。
+`/developer_edit` ではブラウザ上で Markdown 記事の作成や編集が行えます。公開ページの改ざんを防ぐため、このページには Basic 認証を適用済みです。`.env.local` に `BASIC_AUTH_USERNAME` と `BASIC_AUTH_PASSWORD` を設定して利用してください。
 
 ## 画像ファイルについて
 

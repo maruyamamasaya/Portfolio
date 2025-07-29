@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server';
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   if (
-    pathname.includes('developer') ||
+    pathname.startsWith('/developer_edit') ||
     pathname.startsWith('/api/dev-posts') ||
     pathname.startsWith('/api/posts') ||
     pathname.startsWith('/api/upload-image')
