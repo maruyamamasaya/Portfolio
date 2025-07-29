@@ -19,7 +19,15 @@ export default function MediaCardGrid({ items }: Props) {
           key={item.href}
           className="rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-5 bg-white dark:bg-gray-800 hover:shadow-lg transition"
         >
-          <div className="text-2xl mb-2">{item.icon}</div>
+          {item.icon.startsWith('/') ? (
+            <img
+              src={item.icon}
+              alt={item.title}
+              className="w-8 h-8 mb-2"
+            />
+          ) : (
+            <div className="text-2xl mb-2">{item.icon}</div>
+          )}
           <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
             {item.description}
