@@ -1,5 +1,10 @@
 import HomeWindow from './components/HomeWindow';
 import { getSortedPosts } from '@/lib/posts';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home',
+};
 
 export default async function HomePage() {
   const posts = await getSortedPosts();
