@@ -110,7 +110,7 @@ The `/developer_edit` route allows in-browser creation and editing of Markdown a
 
 ## Images
 
-Binary files such as images are not included. Place your own icons and backgrounds under `public/images/` and reference them via `/images/filename`.
+Binary files such as images are not included. Image assets are not managed on GitHub; upload them separately via FTP. Please refrain from creating files through automated uploads or generative AI. Place your own icons and backgrounds under `public/images/` and reference them via `/images/filename`.
 
 | Purpose         | File              | Aspect Ratio | Size      |
 | --------------- | ----------------- | ------------ | --------- |
