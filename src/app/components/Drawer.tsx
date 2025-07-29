@@ -1,6 +1,12 @@
 'use client';
 import { ReactNode } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {
+  LazyMotion,
+  domAnimation,
+  m,
+  AnimatePresence,
+  useReducedMotion,
+} from 'framer-motion';
 
 interface DrawerProps {
   open: boolean;
@@ -9,28 +15,31 @@ interface DrawerProps {
 }
 
 export default function Drawer({ open, onClose, children }: DrawerProps) {
+  const reduce = useReducedMotion();
   return (
-    <AnimatePresence>
-      {open && (
-        <>
-          <motion.div
-            className="fixed inset-0 bg-black/40 z-40"
-            onClick={onClose}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          />
-          <motion.div
-            className="fixed top-0 left-0 bottom-0 w-64 bg-white dark:bg-gray-700 z-50 p-4"
-            initial={{ x: '-100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
-            transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-          >
-            {children}
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+    <LazyMotion features={domAnimation}>
+      <AnimatePresence>
+        {open && (
+          <>
+            <m.div
+              className="fixed inset-0 bg-black/40 z-40 transition-base"
+              onClick={onClose}
+              initial={{ opacity: 0 }}
+              animate={reduce ? undefined : { opacity: 1 }}
+              exit={reduce ? undefined : { opacity: 0 }}
+            />
+            <m.div
+              className="fixed top-0 left-0 bottom-0 w-64 bg-white dark:bg-gray-700 z-50 p-4 transition-base"
+              initial={{ x: '-100%' }}
+              animate={reduce ? undefined : { x: 0 }}
+              exit={reduce ? undefined : { x: '-100%' }}
+              transition={reduce ? undefined : { type: 'tween', duration: 0.3, ease: 'easeInOut' }}
+            >
+              {children}
+            </m.div>
+          </>
+        )}
+      </AnimatePresence>
+    </LazyMotion>
   );
 }

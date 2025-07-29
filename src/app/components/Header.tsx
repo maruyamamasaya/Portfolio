@@ -177,7 +177,7 @@ export default function Header() {
         <div className="flex items-center space-x-2 ml-2">
           <DarkModeToggle />
           <button
-            className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2 rounded focus:ring-2 focus:outline-none"
+            className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2 rounded focus:ring-2 focus:outline-none transition-base"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -193,7 +193,7 @@ export default function Header() {
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="flex items-center space-x-2 rounded min-h-[44px] min-w-[44px] px-3 py-2 w-full text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200"
+                  className="flex items-center space-x-2 rounded min-h-[44px] min-w-[44px] px-3 py-2 w-full text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-base"
                 >
                   {item.icon}
                   <span>{item.label}</span>

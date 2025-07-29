@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 
 export interface Slide {
   src: string;
@@ -13,14 +14,15 @@ interface Props {
 
 export default function ThumbSlider({ slides }: Props) {
   const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    if (slides.length <= 1) return;
+    if (reduce || slides.length <= 1) return;
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, 5000);
     return () => clearInterval(id);
-  }, [slides.length]);
+  }, [slides.length, reduce]);
 
   return (
     <div>
@@ -49,7 +51,7 @@ export default function ThumbSlider({ slides }: Props) {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-12 h-12 overflow-hidden rounded ${index === i ? 'ring-2 ring-primary' : ''}`}
+            className={`w-12 h-12 overflow-hidden rounded transition-base ${index === i ? 'ring-2 ring-primary' : ''}`}
           >
             <Image
               src={slide.src}

@@ -48,7 +48,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
           ))}
         </ul>
         <div className="text-center">
-          <Link href="/blog" className="accent-text hover:underline">
+          <Link href="/blog" className="accent-text hover:underline transition-base">
             すべての記事を見る
           </Link>
         </div>

@@ -11,7 +11,7 @@ export default function PostCard({ post }: Props) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition-shadow duration-300"
+      className="group flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 transition-base"
     >
       {post.image && (
         <Image

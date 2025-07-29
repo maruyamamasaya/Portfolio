@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 
 export interface Artwork {
   id: number;
@@ -18,14 +19,15 @@ interface Props {
 
 export default function ArtworkSlideshow({ artworks }: Props) {
   const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    if (artworks.length <= 1) return;
+    if (reduce || artworks.length <= 1) return;
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % artworks.length);
     }, 5000);
     return () => clearInterval(id);
-  }, [artworks.length]);
+  }, [artworks.length, reduce]);
 
   return (
     <div className="relative w-full aspect-[4/3] overflow-hidden">

@@ -26,13 +26,13 @@ export default function Taskbar() {
 
   return (
     <div className="win98-taskbar">
-      <button className="win98-start-button">Start</button>
+      <button className="win98-start-button transition-base">Start</button>
       <nav className="flex space-x-2 ml-2">
         {shortcuts.map((item) => (
           <Link
             href={item.href}
             key={item.href}
-            className="text-sm px-2 py-1 hover:underline"
+            className="text-sm px-2 py-1 hover:underline transition-base"
           >
             {item.label}
           </Link>

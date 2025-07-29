@@ -19,7 +19,7 @@ export default function FAQSection() {
         {faqs.map((f, i) => (
           <li key={i} className="border rounded">
             <button
-              className="w-full text-left px-4 py-2 font-semibold flex justify-between items-center"
+              className="w-full text-left px-4 py-2 font-semibold flex justify-between items-center transition-base"
               onClick={() => setOpen(open === i ? null : i)}
             >
               {f.q}

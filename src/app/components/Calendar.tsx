@@ -54,13 +54,13 @@ export default function Calendar() {
   return (
     <div className="calendar-widget text-sm">
       <div className="font-bold mb-2 text-center flex items-center justify-between">
-        <button onClick={prevMonth} className="px-2 hover:scale-110 transition">
+        <button onClick={prevMonth} className="px-2 hover:scale-110 transition-base">
           &lt;
         </button>
         <span className="mx-2">
           {year} / {month + 1}
         </span>
-        <button onClick={nextMonth} className="px-2 hover:scale-110 transition">
+        <button onClick={nextMonth} className="px-2 hover:scale-110 transition-base">
           &gt;
         </button>
       </div>
@@ -81,7 +81,7 @@ export default function Calendar() {
                 onClick={() => setSelected(dateStr)}
                 className={`calendar-day${isToday ? ' calendar-day-today' : ''}${
                   hasPosts ? ' calendar-day-has-posts' : ''
-                } hover:scale-110 transition`}
+                } hover:scale-110 transition-base`}
               >
                 {d.getDate()}
               </button>
@@ -96,7 +96,7 @@ export default function Calendar() {
               <Link
                 key={post.slug}
                 href={`/developers_blog/${post.slug}`}
-                className="block hover:underline"
+                className="block hover:underline transition-base"
               >
                 {post.title}
               </Link>

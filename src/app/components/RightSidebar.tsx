@@ -17,7 +17,7 @@ export default function RightSidebar({ posts }: Props) {
           href="https://jimusuru.info/"
           target="_blank"
           rel="noopener noreferrer"
-          className="block rounded-lg shadow-md overflow-hidden"
+          className="block rounded-lg shadow-md overflow-hidden transition-base"
         >
           <Image
             src="https://storage.googleapis.com/studio-design-asset-files/projects/BmqMl8R4OX/s-1280x670_v-fms_webp_3539cdc3-8ad9-4409-b61a-d7a7649a934c_middle.webp"

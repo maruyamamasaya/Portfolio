@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { Post } from '@/lib/posts';
 
 interface Props {
@@ -11,14 +12,15 @@ interface Props {
 
 export default function RecommendedSlider({ posts }: Props) {
   const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    if (posts.length <= 1) return;
+    if (reduce || posts.length <= 1) return;
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % posts.length);
     }, 5000);
     return () => clearInterval(id);
-  }, [posts.length]);
+  }, [posts.length, reduce]);
 
   return (
     <div className="relative w-full aspect-square overflow-hidden mb-4 lg:mb-0">
@@ -26,7 +28,7 @@ export default function RecommendedSlider({ posts }: Props) {
         <Link
           key={post.slug}
           href={`/blog/${post.slug}`}
-          className={`absolute inset-0 motion-safe:transition-opacity motion-reduce:transition-none duration-300 ease-in-out ${
+          className={`absolute inset-0 motion-safe:transition-opacity motion-reduce:transition-none duration-300 ease-in-out transition-base ${
             i === index ? 'opacity-100' : 'opacity-0'
           }`}
         >

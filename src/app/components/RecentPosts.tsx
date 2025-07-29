@@ -14,7 +14,7 @@ export default function RecentPosts({ posts }: Props) {
           <li key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="accent-text hover:underline"
+              className="accent-text hover:underline transition-base"
             >
               {post.title}
             </Link>

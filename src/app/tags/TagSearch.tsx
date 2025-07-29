@@ -132,7 +132,7 @@ export default function TagSearch({ tags, onChange }: Props) {
             >
               {tag}
               <button
-                className="ml-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="ml-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary transition-base"
                 onClick={() => removeTag(tag)}
               >
                 &times;
@@ -141,7 +141,7 @@ export default function TagSearch({ tags, onChange }: Props) {
           ))}
           <button
             onClick={clearTags}
-            className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary"
+            className="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-sm font-medium dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary transition-base"
           >
             クリア
           </button>

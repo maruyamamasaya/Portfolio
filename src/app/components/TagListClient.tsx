@@ -20,7 +20,7 @@ export default function TagListClient({ tagCounts }: Props) {
       <div className="flex justify-between items-center mb-2">
         <h3 className="font-bold">タグ一覧</h3>
         <button
-          className="sm:hidden text-primary underline text-sm"
+          className="sm:hidden text-primary underline text-sm transition-base"
           onClick={() => setOpen(!open)}
         >
           {open ? '閉じる' : '開く'}
