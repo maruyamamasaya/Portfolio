@@ -15,7 +15,7 @@ const artworks: Artwork[] = [
     year: 2023,
     medium: 'Digital',
     description: '抽象的な形状をモチーフにした実験的作品。',
-    image: '/images/img1.svg',
+    image: '/images/img1.png',
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const artworks: Artwork[] = [
     year: 2022,
     medium: 'Watercolor',
     description: '旅行先で描いた水彩スケッチ。',
-    image: '/images/img2.svg',
+    image: '/images/img2.png',
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const artworks: Artwork[] = [
     year: 2021,
     medium: 'Photography',
     description: '街並みをテーマにしたシリーズ。',
-    image: '/images/img3.svg',
+    image: '/images/img3.png',
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const artworks: Artwork[] = [
     year: 2020,
     medium: 'Mixed Media',
     description: '紙と布を組み合わせた立体作品。',
-    image: '/images/img4.svg',
+    image: '/images/img4.png',
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const artworks: Artwork[] = [
     year: 2019,
     medium: 'Digital',
     description: 'キャラクターデザインの習作。',
-    image: '/images/img5.svg',
+    image: '/images/img5.png',
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ const artworks: Artwork[] = [
 ];
 
 const arcanaImages = Array.from({ length: 12 }, (_, i) =>
-  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.svg`,
+  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.png`,
 );
 
 export default function Works() {
