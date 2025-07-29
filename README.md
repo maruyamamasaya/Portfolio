@@ -128,11 +128,11 @@ BASIC_AUTH_PASSWORD=your_password
 
 ## 画像ファイルについて
 
-このリポジトリではバイナリファイル（画像など）をサポートしていません。画像は GitHub で管理せず、FTP で別途アップロードしてください。アップロードや生成 AI などで新規ファイルを作成しないようご注意ください。ヘッダーアイコンやヒーロー画像、フッターアイコンは `/images` に配置してお使いください。
+このリポジトリではバイナリファイル（画像など）をサポートしていません。画像は GitHub で管理せず、FTP で別途アップロードしてください。アップロードや生成 AI などで新規ファイルを作成しないようご注意ください。ヘッダーアイコンやヒーロー画像、フッターアイコンは `/image` に配置してお使いください。
 
 ### 画像の配置先と推奨サイズ
 
-アプリで利用するアイコンや背景画像は `public/image/` ディレクトリに配置します。配置後は URL として `/images/ファイル名` を指定してください。
+アプリで利用するアイコンや背景画像は `public/image/` ディレクトリに配置します。配置後は URL として `/image/ファイル名` を指定してください。
 
 **注意**: Next.js の仕様上、`public` フォルダ以外に置いた画像はブラウザから読み込めません。`app/images` や `src/images` などに配置しないようにしてください。
 
@@ -144,7 +144,7 @@ BASIC_AUTH_PASSWORD=your_password
 | ファビコン       | `favicon.png`     | 1:1              | 32×32          |
 | OGP 画像         | `eye-catch.png`   | 16:9             | 1200×630       |
 
-`favicon.png` と `eye-catch.png` は `public/image` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
+`favicon.png` と `eye-catch.png` は `public/image` ディレクトリに配置しています。利用する際はそれぞれ `/image/favicon.png` と `/image/eye-catch.png` を参照してください。
 
 ## Todo
 

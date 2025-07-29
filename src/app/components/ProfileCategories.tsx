@@ -12,29 +12,29 @@ const categories: Category[] = [
     desc: 'リッチメニューやクーポン配信など店舗別にカスタマイズ。',
     slides: [
       {
-        src: '/images/img1.svg',
+        src: '/image/img1.svg',
         caption: 'LINEリッチメニュー：店舗別カスタマイズ対応',
       },
-      { src: '/images/img2.svg', caption: '友だち追加クーポン' },
-      { src: '/images/img3.svg', caption: '自動応答チャット' },
+      { src: '/image/img2.svg', caption: '友だち追加クーポン' },
+      { src: '/image/img3.svg', caption: '自動応答チャット' },
     ],
   },
   {
     title: '予約システム導入',
     desc: '小規模から大規模まで柔軟にサポート。',
     slides: [
-      { src: '/images/img3.svg', caption: '予約画面カスタム' },
-      { src: '/images/img4.svg', caption: '多店舗管理機能' },
-      { src: '/images/img5.svg', caption: 'データ分析レポート' },
+      { src: '/image/img3.svg', caption: '予約画面カスタム' },
+      { src: '/image/img4.svg', caption: '多店舗管理機能' },
+      { src: '/image/img5.svg', caption: 'データ分析レポート' },
     ],
   },
   {
     title: 'デザイン制作',
     desc: 'ロゴ・バナー・印刷物まで幅広く対応。',
     slides: [
-      { src: '/images/img5.svg', caption: 'ブランドロゴ提案' },
-      { src: '/images/img1.svg', caption: 'バナー広告デザイン' },
-      { src: '/images/img2.svg', caption: '名刺・チラシ制作' },
+      { src: '/image/img5.svg', caption: 'ブランドロゴ提案' },
+      { src: '/image/img1.svg', caption: 'バナー広告デザイン' },
+      { src: '/image/img2.svg', caption: '名刺・チラシ制作' },
     ],
   },
 ];

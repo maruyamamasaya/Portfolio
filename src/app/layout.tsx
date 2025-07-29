@@ -18,10 +18,10 @@ export const metadata: Metadata = {
   description:
     '法人・個人向けにOA機器の整備や設定、ソフトウェアのお困りごとをサポートするポートフォリオサイト。修理記録や最新テック情報、開発日誌などを掲載。',
   icons: {
-    icon: '/images/favicon.png',
+    icon: '/image/favicon.png',
   },
   openGraph: {
-    images: '/images/eye-catch.png',
+    images: '/image/eye-catch.png',
   },
 };
 

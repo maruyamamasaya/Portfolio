@@ -13,22 +13,22 @@ export default function AICoursePage() {
     {
       title: 'ステップ1：ChatGPTと“話す”練習',
       points: ['プロンプトの基本', '文章改善・要約'],
-      image: '/images/img1.svg',
+      image: '/image/img1.svg',
     },
     {
       title: 'ステップ2：画像生成とデザイン',
       points: ['SNS用バナー生成', '無料ツール活用術'],
-      image: '/images/img2.svg',
+      image: '/image/img2.svg',
     },
     {
       title: 'ステップ3：AI × 自動化テクニック',
       points: ['定型業務を一発解決', 'ノーコード連携'],
-      image: '/images/img3.svg',
+      image: '/image/img3.svg',
     },
     {
       title: 'ステップ4：あなた専用AIの作り方',
       points: ['LINE Bot作成', 'スライド自動生成'],
-      image: '/images/img4.svg',
+      image: '/image/img4.svg',
     },
   ];
 
@@ -36,17 +36,17 @@ export default function AICoursePage() {
     {
       title: 'EC運営が3倍の売上に',
       desc: 'AIで商品説明と在庫管理を自動化',
-      image: '/images/img2.svg',
+      image: '/image/img2.svg',
     },
     {
       title: 'レポート作成が3分で完了',
       desc: 'ChatGPTが秘書代わり',
-      image: '/images/img3.svg',
+      image: '/image/img3.svg',
     },
     {
       title: '家族全員で学習に活用',
       desc: '受験勉強にも役立つと好評',
-      image: '/images/img5.svg',
+      image: '/image/img5.svg',
     },
   ];
 
@@ -67,7 +67,7 @@ export default function AICoursePage() {
       {/* 1. HERO */}
       <section
         className="relative flex items-center justify-center h-[70vh] text-center bg-center bg-cover bg-fixed"
-        style={{ backgroundImage: 'url("/images/img4.svg")' }}
+        style={{ backgroundImage: 'url("/image/img4.svg")' }}
       >
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative space-y-4 text-white p-4 max-w-xl">

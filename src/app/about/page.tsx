@@ -82,7 +82,7 @@ export default function About() {
         <MediaCardGrid
           items={[
             {
-              icon: '/images/arcana.png',
+              icon: '/image/arcana.png',
               title: 'Arcana - アルカナ チャンネル',
               description: 'クラシック音楽の構造を丁寧に読み解く解説型チャンネル。',
               href: 'https://www.youtube.com/@Arcana-%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%8A',

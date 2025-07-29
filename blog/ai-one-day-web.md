@@ -1,7 +1,7 @@
 ---
 title: 'AIが1日でWebサイトを作る時代'
 date: '2025-10-15'
-image: '/images/sample-article.png'
+image: '/image/sample-article.png'
 tags:
   - 'AI'
   - 'Web制作'

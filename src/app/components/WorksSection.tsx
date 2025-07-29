@@ -3,15 +3,15 @@ import ImageSlider from './ImageSlider';
 const works = [
   {
     title: 'LINE公式アカウント',
-    images: ['/images/img1.svg', '/images/img2.svg', '/images/img3.svg'],
+    images: ['/image/img1.svg', '/image/img2.svg', '/image/img3.svg'],
   },
   {
     title: '予約システム導入',
-    images: ['/images/img3.svg', '/images/img4.svg', '/images/img5.svg'],
+    images: ['/image/img3.svg', '/image/img4.svg', '/image/img5.svg'],
   },
   {
     title: 'デザイン制作',
-    images: ['/images/img5.svg', '/images/img1.svg', '/images/img2.svg'],
+    images: ['/image/img5.svg', '/image/img1.svg', '/image/img2.svg'],
   },
 ];
 

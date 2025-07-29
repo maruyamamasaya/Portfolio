@@ -4,10 +4,10 @@ const services = [
   {
     title: 'サイト制作',
     desc: 'WordPressや静的サイト制作',
-    icon: '/images/img1.svg',
+    icon: '/image/img1.svg',
   },
-  { title: 'デザイン', desc: 'ロゴやバナー作成', icon: '/images/img2.svg' },
-  { title: 'ITサポート', desc: '導入・運用支援', icon: '/images/img3.svg' },
+  { title: 'デザイン', desc: 'ロゴやバナー作成', icon: '/image/img2.svg' },
+  { title: 'ITサポート', desc: '導入・運用支援', icon: '/image/img3.svg' },
 ];
 
 const serviceTable = [

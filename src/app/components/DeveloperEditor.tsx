@@ -13,7 +13,7 @@ const pathMap = {
 
 function metaTemplate() {
   const date = new Date().toISOString().slice(0, 10);
-  return `---\ntitle: ""\ndate: "${date}"\nimage: "/images/example.png"\ntags:\n  - ""\nupdated: "${date}"\n---\n\n`;
+  return `---\ntitle: ""\ndate: "${date}"\nimage: "/image/example.png"\ntags:\n  - ""\nupdated: "${date}"\n---\n\n`;
 }
 
 export default function DeveloperEditor() {

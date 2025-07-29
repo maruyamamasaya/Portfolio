@@ -11,7 +11,7 @@
 ---
 title: '記事タイトル'
 date: 'YYYY-MM-DD'
-image: '/images/example.png'
+image: '/image/example.png'
 tags:
   - 'タグ1'
   - 'タグ2'

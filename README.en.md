@@ -110,7 +110,7 @@ The `/developer_edit` route allows in-browser creation and editing of Markdown a
 
 ## Images
 
-Binary files such as images are not included. Image assets are not managed on GitHub; upload them separately via FTP. Please refrain from creating files through automated uploads or generative AI. Place your own icons and backgrounds under `public/image/` and reference them via `/images/filename`.
+Binary files such as images are not included. Image assets are not managed on GitHub; upload them separately via FTP. Please refrain from creating files through automated uploads or generative AI. Place your own icons and backgrounds under `public/image/` and reference them via `/image/filename`.
 
 | Purpose         | File              | Aspect Ratio | Size      |
 | --------------- | ----------------- | ------------ | --------- |
@@ -120,7 +120,7 @@ Binary files such as images are not included. Image assets are not managed on Gi
 | Favicon         | `favicon.png`     | 1:1          | 32×32     |
 | OGP image       | `eye-catch.png`   | 16:9         | 1200×630  |
 
-Both `favicon.png` and `eye-catch.png` reside in `public/image`. Access them as `/images/favicon.png` and `/images/eye-catch.png`.
+Both `favicon.png` and `eye-catch.png` reside in `public/image`. Access them as `/image/favicon.png` and `/image/eye-catch.png`.
 
 ## Todo
 

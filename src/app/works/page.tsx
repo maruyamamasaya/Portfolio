@@ -14,7 +14,7 @@ const artworks: Artwork[] = [
     year: 2023,
     medium: 'Digital',
     description: '抽象的な形状をモチーフにした実験的作品。',
-    image: '/images/img1.svg',
+    image: '/image/img1.svg',
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const artworks: Artwork[] = [
     year: 2022,
     medium: 'Watercolor',
     description: '旅行先で描いた水彩スケッチ。',
-    image: '/images/img2.svg',
+    image: '/image/img2.svg',
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const artworks: Artwork[] = [
     year: 2021,
     medium: 'Photography',
     description: '街並みをテーマにしたシリーズ。',
-    image: '/images/img3.svg',
+    image: '/image/img3.svg',
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const artworks: Artwork[] = [
     year: 2020,
     medium: 'Mixed Media',
     description: '紙と布を組み合わせた立体作品。',
-    image: '/images/img4.svg',
+    image: '/image/img4.svg',
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const artworks: Artwork[] = [
     year: 2019,
     medium: 'Digital',
     description: 'キャラクターデザインの習作。',
-    image: '/images/img5.svg',
+    image: '/image/img5.svg',
   },
   {
     id: 6,
@@ -55,7 +55,7 @@ const artworks: Artwork[] = [
     medium: 'Digital',
     description:
       '自然の森が複雑な生態系を通じて無数の生命を育むように、AIは膨大なデータを吸収し、深層学習という「見えない森」を形成していく。一本一本の樹木が森を成すように、一つひとつのパラメータが知性を形づくる──自然とデジタル、その生成の原理は驚くほど似ている。',
-    image: '/images/artwork01-mori.png',
+    image: '/image/artwork01-mori.png',
   },
   {
     id: 7,
@@ -64,7 +64,7 @@ const artworks: Artwork[] = [
     medium: 'Digital',
     description:
       '自然の森が複雑な生態系を通じて無数の生命を育むように、AIは膨大なデータを吸収し、深層学習という「見えない森」を形成していく。一本一本の樹木が森を成すように、一つひとつのパラメータが知性を形づくる──自然とデジタル、その生成の原理は驚くほど似ている。',
-    image: '/images/artwork02-mori.png',
+    image: '/image/artwork02-mori.png',
   },
 ];
 

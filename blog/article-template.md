@@ -1,7 +1,7 @@
 ---
 title: '記事本体サンプル'
 date: '2025-07-01'
-image: '/images/sample-article.png'
+image: '/image/sample-article.png'
 tags:
   - 'サンプル'
   - 'チュートリアル'
@@ -31,7 +31,7 @@ function hello(name: string): string {
 
 画像は次のように埋め込みます。
 
-![サンプル画像](/images/sample-article.png)
+![サンプル画像](/image/sample-article.png)
 
 > これは引用ブロックです。引用したい文章をこの形式で記述します。
 
