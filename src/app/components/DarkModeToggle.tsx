@@ -10,7 +10,7 @@ export default function DarkModeToggle() {
       onClick={toggleTheme}
       aria-label="Toggle dark mode"
       aria-pressed={theme === 'dark'}
-      className="p-2 rounded-full text-xl bg-white/70 dark:bg-gray-700/70 hover:ring-2 ring-primary transition backdrop-blur-md"
+      className="p-2 rounded-full text-xl bg-white/80 dark:bg-gray-700/80 hover:ring-2 ring-primary transition shadow backdrop-blur-md"
     >
       <motion.span
         animate={{ rotate: theme === 'dark' ? 180 : 0 }}
