@@ -12,6 +12,16 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const navItems = [
     {
+      href: '/',
+      label: 'ホーム',
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 22V12h6v10" />
+        </svg>
+      ),
+    },
+    {
       href: '/about',
       label: 'プロフィール',
       icon: (
