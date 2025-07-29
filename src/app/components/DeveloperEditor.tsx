@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
+import { categories } from '../../../data/categories';
 
 
 const baseMap = {
