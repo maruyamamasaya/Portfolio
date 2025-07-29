@@ -135,7 +135,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="backdrop-blur-md bg-gradient-to-b from-white/80 to-gray-50/80 dark:from-gray-900/80 dark:to-gray-800/80 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100">
+    <header className="backdrop-blur-md bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100">
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-digital font-bold flex items-center">
           <Image
