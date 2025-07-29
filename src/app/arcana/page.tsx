@@ -1,5 +1,6 @@
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import { Metadata } from 'next';
+import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: 'アルカナ公式 TCGカード 特設ページ',
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 
 interface Step {
   title: string;
-  description: JSX.Element;
+  description: ReactNode;
 }
 
 const steps: Step[] = [
