@@ -16,11 +16,11 @@ export default async function TagsPage() {
       <div className="mb-4">
         <TagFilter tags={tags} posts={posts} />
       </div>
-      <ul className="flex flex-wrap gap-4">
+      <ul className="flex overflow-x-auto flex-nowrap gap-4 pb-2">
         {displayTags.map((tag) => (
           <li
             key={tag}
-            className="bg-primary/20 px-3 py-2 rounded-full text-base shadow-md"
+            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow-md whitespace-nowrap"
           >
             <Link
               href={`/tags/${encodeURIComponent(tag)}`}
