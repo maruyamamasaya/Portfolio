@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
 
+
 const baseMap = {
   blog: 'posts',
   dev: 'dev-posts',
@@ -33,7 +34,7 @@ export default function DeveloperEditor() {
   const [upload, setUpload] = useState<File | null>(null);
   const [isNew, setIsNew] = useState(false);
   const [newFilename, setNewFilename] = useState('');
-
+  const [newCategory, setNewCategory] = useState(categories[0].slug);
 
   useEffect(() => {
     const base = baseMap[target];
@@ -189,6 +190,17 @@ export default function DeveloperEditor() {
             value={newFilename}
             onChange={(e) => setNewFilename(e.target.value)}
           />
+          <select
+            className="border p-1 w-full mb-1"
+            value={newCategory}
+            onChange={(e) => setNewCategory(e.target.value)}
+          >
+            {categories.map((c) => (
+              <option key={c.slug} value={c.slug}>
+                {c.name}
+              </option>
+            ))}
+          </select>
           <button className="px-2 py-1 bg-gray-200" onClick={createFile}>
             作成
           </button>
