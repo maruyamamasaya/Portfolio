@@ -183,10 +183,12 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <div className="hidden sm:block ml-4 w-48">
-          <SearchBar showHistory={false} />
+        <div className="flex items-center space-x-2 ml-auto">
+          <div className="hidden sm:block w-48">
+            <SearchBar showHistory={false} />
+          </div>
+          <DarkModeToggle />
         </div>
-        <DarkModeToggle />
         <Drawer open={open} onClose={() => setOpen(false)}>
           <ul className="flex flex-col space-y-4 mt-8">
             {navItems.map((item) => (
