@@ -1,6 +1,7 @@
 import HomeWindow from './components/HomeWindow';
 import { getSortedPosts } from '@/lib/posts';
-export const metadata = {
+import type { Metadata } from 'next';
+export const metadata: Metadata = {
   title: 'Home',
 };
 
