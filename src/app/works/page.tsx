@@ -3,6 +3,7 @@
 import BlogNavButtons from '../components/BlogNavButtons';
 import Card from '../components/Card';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
 import ArcanaCardCarousel from '../components/ArcanaCardCarousel';
@@ -114,6 +115,11 @@ export default function Works() {
           美麗なイラストで描かれたカードが、戦略と運命を彩ります。
         </p>
         <ArcanaCardCarousel />
+        <p>
+          <Link href="/arcana" className="accent-text hover:underline">
+            特設ページを見る
+          </Link>
+        </p>
       </div>
     </div>
   );
