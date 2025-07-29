@@ -3,20 +3,28 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-const images = Array.from({ length: 12 }, (_, i) =>
-  `/image/arcana/arcanacard${String(i + 1).padStart(5, '0')}.png`
+export interface ArcanaCardCarouselProps {
+  images?: string[];
+  autoSlideInterval?: number;
+}
+
+export const defaultImages = Array.from({ length: 12 }, (_, i) =>
+  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.svg`,
 );
 
-export default function ArcanaCardCarousel() {
+export default function ArcanaCardCarousel({
+  images = defaultImages,
+  autoSlideInterval = 3000,
+}: ArcanaCardCarouselProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     if (images.length <= 1) return;
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % images.length);
-    }, 3000);
+    }, autoSlideInterval);
     return () => clearInterval(id);
-  }, []);
+  }, [images.length, autoSlideInterval]);
 
   const prev = () => setIndex((i) => (i - 1 + images.length) % images.length);
   const next = () => setIndex((i) => (i + 1) % images.length);

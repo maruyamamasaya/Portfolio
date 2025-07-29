@@ -1,4 +1,5 @@
 import ScrollFadeIn from '../components/ScrollFadeIn';
+import ArcanaCardCarousel, { defaultImages } from '../components/ArcanaCardCarousel';
 import { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
@@ -106,22 +107,46 @@ const steps: Step[] = [
 ];
 
 export default function ArcanaPage() {
+  const sets = [
+    defaultImages.slice(0, 4),
+    defaultImages.slice(4, 8),
+    defaultImages.slice(8, 12),
+  ];
+
   return (
-    <div className="max-w-[700px] mx-auto p-4 space-y-12 bg-gradient-to-b from-yellow-50 to-yellow-100 rounded-lg shadow">
-      <h1 className="text-3xl font-extrabold text-center mb-4 font-serif">アルカナ公式 TCGカード 特設ページ</h1>
-      {steps.map((step, i) => (
-        <ScrollFadeIn key={i} as="section" className="space-y-4 py-8">
-          <div className="flex items-center space-x-4">
-            <span className="w-10 h-10 rounded-full bg-blue-900 text-white flex items-center justify-center text-lg font-bold">
-              {i + 1}
-            </span>
-            <h2 className="text-2xl font-bold font-serif">{step.title}</h2>
-          </div>
-          <div className="leading-relaxed space-y-2 text-gray-700 dark:text-gray-200">
-            {step.description}
-          </div>
-        </ScrollFadeIn>
-      ))}
+    <div
+      className="relative min-h-screen py-8 bg-center bg-cover"
+      style={{ backgroundImage: 'url(/images/arcana/background.svg)' }}
+    >
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="relative max-w-4xl mx-auto space-y-12 px-4">
+        <header className="text-center space-y-2 text-white">
+          <h1 className="text-3xl font-extrabold font-serif">
+            アルカナ公式 TCGカード 特設ページ
+          </h1>
+          <p>神秘的なカードが紡ぐ戦略バトルの世界をご紹介します。</p>
+        </header>
+        <div className="space-y-8">
+          {sets.map((imgs, i) => (
+            <ArcanaCardCarousel key={i} images={imgs} autoSlideInterval={3000} />
+          ))}
+        </div>
+        <div className="bg-white/90 rounded-lg shadow p-4 space-y-12 text-gray-800 dark:text-gray-200">
+          {steps.map((step, i) => (
+            <ScrollFadeIn key={i} as="section" className="space-y-4 py-8">
+              <div className="flex items-center space-x-4">
+                <span className="w-10 h-10 rounded-full bg-blue-900 text-white flex items-center justify-center text-lg font-bold">
+                  {i + 1}
+                </span>
+                <h2 className="text-2xl font-bold font-serif">{step.title}</h2>
+              </div>
+              <div className="leading-relaxed space-y-2">
+                {step.description}
+              </div>
+            </ScrollFadeIn>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
