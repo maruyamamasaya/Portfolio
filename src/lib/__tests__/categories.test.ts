@@ -1,13 +1,13 @@
 import { getCategory } from '../categories';
 
 describe('getCategory', () => {
-  it('returns category for slug ai', () => {
-    const cat = getCategory('ai');
+  it('returns category for slug pc-support', () => {
+    const cat = getCategory('pc-support');
     expect(cat).toEqual({
-      slug: 'ai',
-      name: 'AI活用',
-      description: 'AIを活用した記事やツールの紹介',
-      icon: '🤖',
+      slug: 'pc-support',
+      name: 'パソコントラブルサポート',
+      description: '初心者向けのPC・スマホ問題の解決案内',
+      icon: '💻',
     });
   });
 });

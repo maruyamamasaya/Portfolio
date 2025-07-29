@@ -7,27 +7,45 @@ export interface Category {
 
 export const categories: Category[] = [
   {
-    slug: 'ai',
-    name: 'AI活用',
-    description: 'AIを活用した記事やツールの紹介',
+    slug: 'pc-support',
+    name: 'パソコントラブルサポート',
+    description: '初心者向けのPC・スマホ問題の解決案内',
+    icon: '💻',
+  },
+  {
+    slug: 'ai-automation',
+    name: 'AI・自動化活用',
+    description: 'ChatGPT、LINE bot、業務効率化の導入支援',
     icon: '🤖',
   },
   {
-    slug: 'tutorial',
-    name: 'チュートリアル',
-    description: '手順解説や Tips をまとめた記事',
-    icon: '📑',
+    slug: 'network-wifi',
+    name: 'ネット環境・Wi-Fi改善',
+    description: '通信速度・接続設定・IPv6などの対処',
+    icon: '📶',
   },
   {
-    slug: 'meta',
-    name: 'メタ情報',
-    description: 'ブログ運営などメタ的な内容',
-    icon: '📝',
-  },
-  {
-    slug: 'dev',
-    name: '開発',
-    description: '開発者向けの技術情報',
+    slug: 'digital-support',
+    name: 'IT導入・デジタル支援',
+    description: '個人店舗・小規模事業者向けのIT支援全般',
     icon: '🛠️',
+  },
+  {
+    slug: 'design-support',
+    name: 'デザイン・制作サポート',
+    description: 'ロゴ・バナー・チラシ・SNSビジュアルの相談',
+    icon: '🎨',
+  },
+  {
+    slug: 'tool-guide',
+    name: '便利ツール紹介・操作ガイド',
+    description: 'Canva、Figma、Zapier、Notionなどの使い方',
+    icon: '🧰',
+  },
+  {
+    slug: 'faq',
+    name: 'よくある質問（FAQ）集',
+    description: '実際の相談ベースで蓄積されたノウハウ',
+    icon: '❓',
   },
 ];
