@@ -60,6 +60,7 @@ developers_blog/# 開発者向け記事
 
 ブログ記事の Markdown ファイルのフォーマットは `docs/markdown-structure.md` にまとめています。`tags` や `updated` などのメタ情報もここで確認できます。
 API エンドポイントの詳細は `docs/api-routes.md` に記載しています。
+レイアウトに使う主な Tailwind クラスは `docs/layout.md` にまとめています。
 
 ## セットアップ
 
