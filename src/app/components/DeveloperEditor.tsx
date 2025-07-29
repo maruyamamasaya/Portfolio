@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { categories } from '../../../data/categories';
@@ -232,9 +233,11 @@ export default function DeveloperEditor() {
             className="mb-2"
           />
           {upload && (
-            <img
+            <Image
               src={URL.createObjectURL(upload)}
               alt="preview"
+              width={160}
+              height={160}
               className="mx-auto mb-2 max-h-40"
             />
           )}
