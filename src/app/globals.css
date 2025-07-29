@@ -183,3 +183,9 @@
 .section-spacing {
   @apply mt-12 mb-12;
 }
+
+@media (max-width: 640px) {
+  .section-spacing {
+    @apply mt-6 mb-6;
+  }
+}
