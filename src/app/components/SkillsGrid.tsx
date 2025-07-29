@@ -1,40 +1,117 @@
 'use client';
 import React from 'react';
 
+const levelGuide = '★★★＝実務上級 / ★★＝実務経験あり / ★＝学習中';
+
 const categories = [
   {
     title: 'Frontend',
     skills: [
-      { name: 'React', icon: '⚛️', level: '★★★' },
-      { name: 'Next.js', icon: '🧭', level: '★★★' },
-      { name: 'TypeScript', icon: '📝', level: '★★★' },
-      { name: 'Tailwind CSS', icon: '🌀', level: '★★★' },
+      {
+        name: 'React',
+        icon: '⚛️',
+        level: '★★★',
+        desc: '3年以上の実務経験。コンポーネント設計と状態管理に精通。',
+      },
+      {
+        name: 'Next.js',
+        icon: '🧭',
+        level: '★★★',
+        desc: '2年以上利用。SSRと静的生成で高速サイトを構築。',
+      },
+      {
+        name: 'TypeScript',
+        icon: '📝',
+        level: '★★★',
+        desc: '3年以上使用。型安全な開発の基盤として採用。',
+      },
+      {
+        name: 'Tailwind CSS',
+        icon: '🌀',
+        level: '★★★',
+        desc: '効率的なUI開発を実現。デザインシステム構築が得意。',
+      },
     ],
   },
   {
     title: 'Backend',
     skills: [
-      { name: 'Node.js', icon: '🟢', level: '★★' },
-      { name: 'Express', icon: '🚂', level: '★★' },
-      { name: 'Firebase', icon: '🔥', level: '★★' },
-      { name: 'Supabase', icon: '🍋', level: '★' },
+      {
+        name: 'Node.js',
+        icon: '🟢',
+        level: '★★',
+        desc: 'API開発で2年以上使用。非同期処理の最適化を経験。',
+      },
+      {
+        name: 'Express',
+        icon: '🚂',
+        level: '★★',
+        desc: 'REST APIを複数構築し小規模サービスで運用。',
+      },
+      {
+        name: 'Firebase',
+        icon: '🔥',
+        level: '★★',
+        desc: '認証とDBを活用したモバイルバックエンドを構築。',
+      },
+      {
+        name: 'Supabase',
+        icon: '🍋',
+        level: '★',
+        desc: '個人開発で導入。Postgres連携を学習中。',
+      },
     ],
   },
   {
     title: 'Design',
     skills: [
-      { name: 'Figma', icon: '🎨', level: '★★★' },
-      { name: 'Illustrator', icon: '✒️', level: '★★' },
-      { name: 'Photoshop', icon: '🖌️', level: '★★' },
+      {
+        name: 'Figma',
+        icon: '🎨',
+        level: '★★★',
+        desc: 'ワイヤーフレームからUIデザインまで一貫して対応。',
+      },
+      {
+        name: 'Illustrator',
+        icon: '✒️',
+        level: '★★',
+        desc: 'ロゴ制作などベクターデザインに活用。',
+      },
+      {
+        name: 'Photoshop',
+        icon: '🖌️',
+        level: '★★',
+        desc: '画像加工やバナー作成を得意とする。',
+      },
     ],
   },
   {
     title: 'Tools',
     skills: [
-      { name: 'Git', icon: '🌱', level: '★★★' },
-      { name: 'GitHub', icon: '🐱', level: '★★★' },
-      { name: 'Docker', icon: '🐳', level: '★' },
-      { name: 'VSCode', icon: '🖥️', level: '★★★' },
+      {
+        name: 'Git',
+        icon: '🌱',
+        level: '★★★',
+        desc: '7年以上使用。チーム開発の運用整備も担当。',
+      },
+      {
+        name: 'GitHub',
+        icon: '🐱',
+        level: '★★★',
+        desc: 'Issue管理やCI/CD連携を含むフローを構築。',
+      },
+      {
+        name: 'Docker',
+        icon: '🐳',
+        level: '★',
+        desc: '開発環境のコンテナ化を学習中。',
+      },
+      {
+        name: 'VSCode',
+        icon: '🖥️',
+        level: '★★★',
+        desc: '主要IDEとして拡張機能による効率化を実践。',
+      },
     ],
   },
 ];
@@ -43,6 +120,7 @@ export default function SkillsGrid() {
   return (
     <section className="space-y-6">
       <h2 className="text-2xl font-bold mb-4">スキルセット</h2>
+      <p className="text-sm text-gray-600 dark:text-gray-400">{levelGuide}</p>
       {categories.map((category) => (
         <div key={category.title} className="space-y-2">
           <h3 className="text-lg font-semibold">{category.title}</h3>
@@ -54,7 +132,8 @@ export default function SkillsGrid() {
               >
                 <div className="text-4xl mb-2">{skill.icon}</div>
                 <p className="font-bold text-sm mb-1">{skill.name}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">{skill.level}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{skill.level}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 text-center whitespace-pre-line">{skill.desc}</p>
               </div>
             ))}
           </div>
