@@ -1,5 +1,5 @@
 import ScrollFadeIn from '../components/ScrollFadeIn';
-import ArcanaCardCarousel, { defaultImages } from '../components/ArcanaCardCarousel';
+import ArcanaCarouselList from '../components/ArcanaCarouselList';
 import { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
@@ -107,12 +107,6 @@ const steps: Step[] = [
 ];
 
 export default function ArcanaPage() {
-  const sets = [
-    defaultImages.slice(0, 4),
-    defaultImages.slice(4, 8),
-    defaultImages.slice(8, 12),
-  ];
-
   return (
     <div
       className="relative min-h-screen py-8 bg-center bg-cover"
@@ -126,11 +120,7 @@ export default function ArcanaPage() {
           </h1>
           <p>神秘的なカードが紡ぐ戦略バトルの世界をご紹介します。</p>
         </header>
-        <div className="space-y-8">
-          {sets.map((imgs, i) => (
-            <ArcanaCardCarousel key={i} images={imgs} autoSlideInterval={3000} />
-          ))}
-        </div>
+        <ArcanaCarouselList />
         <div className="bg-white/90 rounded-lg shadow p-4 space-y-12 text-gray-800 dark:text-gray-200">
           {steps.map((step, i) => (
             <ScrollFadeIn key={i} as="section" className="space-y-4 py-8">
