@@ -36,7 +36,7 @@ export default function TagSearch({ tags, onChange }: Props) {
   }, [query, tags]);
 
   const selectTag = (tag: string) => {
-    if (selected.includes(tag)) return;
+    if (!tags.includes(tag) || selected.includes(tag)) return;
     const next = [...selected, tag];
     setSelected(next);
     onChange?.(next);
@@ -71,7 +71,7 @@ export default function TagSearch({ tags, onChange }: Props) {
   };
 
   const handleSearch = () => {
-    if (query) {
+    if (query && tags.includes(query)) {
       selectTag(query);
       setQuery('');
     }
