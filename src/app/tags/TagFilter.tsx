@@ -59,7 +59,7 @@ export default function TagFilter({ tags, posts }: Props) {
               <Link
                 key={tag}
                 href={`/tags/${encodeURIComponent(tag)}`}
-                className="bg-primary/20 px-3 py-2 rounded-full text-base shadow"
+                className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow inline-flex items-center justify-center h-11 min-w-11"
               >
                 {tag}
               </Link>

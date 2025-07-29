@@ -107,7 +107,7 @@ export default function TagSearch({ tags, onChange }: Props) {
                 key={tag}
                 className={`px-3 py-2 text-center cursor-pointer motion-safe:transition-colors motion-reduce:transition-none duration-300 ease-in-out ${
                   idx === activeIndex ? 'bg-primary/20' : ''
-                } dark:text-gray-100`}
+                } dark:text-gray-100 h-11 min-w-11 flex items-center justify-center`}
                 onMouseDown={() => {
                   selectTag(tag);
                   setQuery('');
@@ -117,7 +117,7 @@ export default function TagSearch({ tags, onChange }: Props) {
               </li>
             ))
           ) : (
-            <li className="px-3 py-2 text-gray-500 dark:text-gray-400 text-center">
+            <li className="px-3 py-2 text-gray-500 dark:text-gray-400 text-center h-11 min-w-11 flex items-center justify-center">
               一致するタグが見つかりません
             </li>
           )}

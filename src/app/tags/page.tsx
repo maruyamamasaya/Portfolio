@@ -20,7 +20,7 @@ export default async function TagsPage() {
         {displayTags.map((tag) => (
           <li
             key={tag}
-            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow-md whitespace-nowrap"
+            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow-md whitespace-nowrap inline-flex items-center justify-center h-11 min-w-11"
           >
             <Link
               href={`/tags/${encodeURIComponent(tag)}`}
