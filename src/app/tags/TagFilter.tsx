@@ -77,9 +77,9 @@ export default function TagFilter({ tags, posts }: Props) {
                 <Image
                   src={post.image}
                   alt={`Thumbnail for ${post.title}`}
-                  width={64}
-                  height={64}
-                  className="w-16 h-16 object-cover rounded-lg border shadow-sm"
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 object-cover rounded-lg border shadow-sm"
                 />
               )}
               <div className="flex-1">
