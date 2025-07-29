@@ -1,7 +1,7 @@
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import ArcanaCarouselList from '../components/ArcanaCarouselList';
 import Image from 'next/image';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {

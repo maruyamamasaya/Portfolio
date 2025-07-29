@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { getDevPost, getSortedDevPosts } from '@/lib/devPosts';
