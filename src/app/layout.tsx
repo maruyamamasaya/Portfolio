@@ -45,7 +45,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <Header />
           <PageTransition>
-            <main id="main-content" className="container mx-auto p-4">
+            <main id="main-content" className="mx-auto px-4 sm:px-6 md:px-8">
               {children}
               <Breadcrumbs />
             </main>
