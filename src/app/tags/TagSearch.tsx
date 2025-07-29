@@ -90,7 +90,7 @@ export default function TagSearch({ tags, onChange }: Props) {
         />
         <button
           onClick={handleSearch}
-          className="h-12 px-4 bg-primary text-white font-medium min-w-[4rem]"
+          className="h-12 px-4 bg-primary text-white font-medium min-w-[4rem] transition-base hover:bg-primary/90 active:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary"
         >
           検索
         </button>
@@ -105,7 +105,7 @@ export default function TagSearch({ tags, onChange }: Props) {
             suggestions.map((tag, idx) => (
               <li
                 key={tag}
-                className={`px-3 py-2 text-center cursor-pointer motion-safe:transition-colors motion-reduce:transition-none duration-300 ease-in-out ${
+                className={`px-3 py-2 text-center cursor-pointer transition-base hover:bg-primary/10 active:bg-primary/20 focus:bg-primary/20 focus:outline-none ${
                   idx === activeIndex ? 'bg-primary/20' : ''
                 } dark:text-gray-100 h-11 min-w-11 flex items-center justify-center`}
                 onMouseDown={() => {
@@ -128,11 +128,11 @@ export default function TagSearch({ tags, onChange }: Props) {
           {selected.map((tag) => (
             <span
               key={tag}
-              className="flex items-center bg-primary/20 dark:bg-primary/30 rounded-full px-3 py-2 text-base shadow dark:text-gray-100"
+              className="flex items-center bg-primary/20 dark:bg-primary/30 rounded-full px-3 py-2 text-base shadow dark:text-gray-100 transition-base hover:shadow-lg active:shadow-inner"
             >
               {tag}
               <button
-                className="ml-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
+                className="ml-1 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 active:text-gray-800 dark:active:text-gray-50 focus:outline-none focus:ring-2 focus:ring-primary transition-base"
                 onClick={() => removeTag(tag)}
               >
                 &times;
@@ -141,7 +141,7 @@ export default function TagSearch({ tags, onChange }: Props) {
           ))}
           <button
             onClick={clearTags}
-            className="px-3 py-2 bg-gray-200 dark:bg-gray-700 rounded-full text-base dark:text-gray-100"
+            className="px-3 py-2 bg-gray-200 dark:bg-gray-700 rounded-full text-base dark:text-gray-100 transition-base hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-gray-400 dark:active:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
           >
             クリア
           </button>

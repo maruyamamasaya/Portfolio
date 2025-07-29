@@ -39,7 +39,7 @@ export default function TagFilter({ tags, posts }: Props) {
       {isCollapsible && (
         <button
           onClick={() => setShowFilter(!showFilter)}
-          className="mb-2 h-12 px-4 bg-primary text-white rounded-xl shadow-md w-full sm:w-auto"
+          className="mb-2 h-12 px-4 bg-primary text-white rounded-xl shadow-md w-full sm:w-auto transition-base hover:bg-primary/90 active:bg-primary/80 focus:outline-none focus:ring-2 focus:ring-primary"
         >
           {showFilter ? 'フィルターを閉じる' : 'フィルターを開く'}
         </button>
