@@ -41,7 +41,7 @@ export default async function TagPage({
         {posts.map((post) => (
           <li
             key={post.slug}
-            className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-700 rounded-xl shadow-md animate-fadeInUp"
+            className="group flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             {post.image && (
               <Image
@@ -49,26 +49,26 @@ export default async function TagPage({
                 alt={`Thumbnail for ${post.title}`}
                 width={64}
                 height={64}
-                className="w-16 h-16 object-cover"
+                className="w-16 h-16 object-cover rounded-lg border shadow-sm"
               />
             )}
-            <div>
+            <div className="flex-1">
               <Link
                 href={`/blog/${post.slug}`}
-                className="accent-text hover:underline"
+                className="text-lg font-bold text-gray-800 dark:text-white group-hover:text-primary transition"
               >
                 {post.title}
               </Link>
-              <span className="block text-base text-gray-500">
+              <p className="text-sm text-gray-500 mt-1">
                 {post.date}
                 {post.updated && ` (更新: ${post.updated})`}
-              </span>
+              </p>
               {post.tags && (
-                <span className="block text-xs text-gray-600 space-x-1">
+                <div className="mt-2 flex flex-wrap gap-2">
                   {post.tags.slice(0, 3).map((tag) => (
                     <TagBadge key={tag} tag={tag} />
                   ))}
-                </span>
+                </div>
               )}
             </div>
           </li>

@@ -21,7 +21,7 @@ export default async function BlogIndex() {
             {posts.map((post) => (
               <li
                 key={post.slug}
-                className="border-b pb-4 flex items-start space-x-2"
+                className="group flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 {post.image && (
                   <Image
@@ -29,23 +29,23 @@ export default async function BlogIndex() {
                     alt={`Thumbnail for ${post.title}`}
                     width={64}
                     height={64}
-                    className="w-16 h-16 object-cover"
+                    className="w-16 h-16 object-cover rounded-lg border shadow-sm"
                   />
                 )}
-                <div>
-                  <span className="text-gray-800 dark:text-white">
+                <div className="flex-1">
+                  <span className="text-gray-800 dark:text-white font-bold">
                     /developers_blog/{post.slug}
                   </span>
-                  <span className="block text-base text-gray-500 dark:text-gray-300">
+                  <p className="text-sm text-gray-500 mt-1 dark:text-gray-300">
                     {post.date}
                     {post.updated && ` (更新: ${post.updated})`}
-                  </span>
+                  </p>
                   {post.tags && (
-                    <span className="block text-xs text-gray-600 dark:text-gray-300 space-x-1">
+                    <div className="mt-2 flex flex-wrap gap-2">
                       {post.tags.slice(0, 3).map((tag) => (
                         <TagBadge key={tag} tag={tag} />
                       ))}
-                    </span>
+                    </div>
                   )}
                 </div>
               </li>
