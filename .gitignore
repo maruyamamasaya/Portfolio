@@ -1,7 +1,7 @@
 node_modules
 .next
 .DS_Store
-public/images/main-hero*.png
+public/image/main-hero*.png
 
 # Environment files
 .env
@@ -19,5 +19,5 @@ yarn-error.log*
 *.swo
 
 # Mori artwork placeholders
-public/images/artwork01-mori.png
-public/images/artwork02-mori.png
+public/image/artwork01-mori.png
+public/image/artwork02-mori.png
