@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import DarkModeToggle from './DarkModeToggle';
 import Drawer from './Drawer';
-import SearchBar from './SearchBar';
 
 export default function Header() {
   const pathname = usePathname();
@@ -142,15 +141,15 @@ export default function Header() {
       >
         Skip to content
       </a>
-      <div className="container mx-auto flex items-center justify-between relative p-2">
-        <h1 className="text-2xl font-digital font-bold flex items-center">
+      <div className="container mx-auto flex items-center justify-between relative p-1">
+        <h1 className="text-xl font-digital font-bold flex items-center">
           <Link href="/">
             <Image
               src="/images/header_icon.png"
               alt="パソコン相談ならお任せ"
-              width={64}
-              height={64}
-              className="w-16 h-16"
+              width={48}
+              height={48}
+              className="w-12 h-12"
             />
           </Link>
         </h1>
@@ -178,10 +177,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        <div className="flex items-center space-x-4 ml-auto">
-          <div className="hidden sm:block w-36">
-            <SearchBar showHistory={false} />
-          </div>
+        <div className="flex items-center space-x-2 ml-auto">
           <DarkModeToggle />
         </div>
         <Drawer open={open} onClose={() => setOpen(false)}>
@@ -199,9 +195,6 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <div className="mt-4">
-            <SearchBar showHistory={false} />
-          </div>
         </Drawer>
       </div>
       {/* Category links removed */}
