@@ -83,27 +83,29 @@ function formatBold(content: string): string {
 // MDAST（Markdownの抽象構文木）に対するプラグイン
 // Plugin to collect headings from the markdown AST
 function headingsPlugin(headings: Heading[]): Plugin {
-  return (tree: Root) => {
-    const visit = (node: any) => {
-      if (node.type === 'heading' && node.depth <= 3) {
-        const text = node.children
-          .filter((child: any) => child.type === 'text')
-          .map((child: any) => child.value)
-          .join('');
-        const existingId = node.data?.hProperties?.id as string | undefined;
-        const id = existingId || slugify(text);
-        node.data = node.data || {};
-        node.data.hProperties = node.data.hProperties || {};
-        if (!existingId) {
-          node.data.hProperties.id = id;
+  return function plugin() {
+    return function transformer(tree: Root) {
+      const visit = (node: any) => {
+        if (node.type === 'heading' && node.depth <= 3) {
+          const text = node.children
+            .filter((child: any) => child.type === 'text')
+            .map((child: any) => child.value)
+            .join('');
+          const existingId = node.data?.hProperties?.id as string | undefined;
+          const id = existingId || slugify(text);
+          node.data = node.data || {};
+          node.data.hProperties = node.data.hProperties || {};
+          if (!existingId) {
+            node.data.hProperties.id = id;
+          }
+          headings.push({ id, text, level: node.depth });
         }
-        headings.push({ id, text, level: node.depth });
-      }
-      if (node.children) {
-        node.children.forEach((child: any) => visit(child));
-      }
+        if (node.children) {
+          node.children.forEach((child: any) => visit(child));
+        }
+      };
+      visit(tree);
     };
-    visit(tree);
   };
 }
 
