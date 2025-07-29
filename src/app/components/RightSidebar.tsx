@@ -24,9 +24,17 @@ export default function RightSidebar({ posts }: Props) {
             alt="JIMUSURU公式サイトへの広告"
             width={640}
             height={360}
-            className="w-full h-auto aspect-[16/9]"
-          />
-        </Link>
+          className="w-full h-auto aspect-[16/9]"
+        />
+      </Link>
+      </div>
+      <div className="bg-gray-50 border rounded p-4 text-sm leading-relaxed space-y-2">
+        <p>「事務を頼むならJIMUSURU」──</p>
+        <p>
+          小規模事業者やフリーランス向けに、信頼できる事務支援を提供する
+          サービスです。
+        </p>
+        <p>当ブログ運営者もエンジニアとしてJIMUSURUに参画しています。</p>
       </div>
       <div className="widget">
         <RecentPosts posts={posts} />
