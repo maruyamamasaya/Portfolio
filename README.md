@@ -1,6 +1,6 @@
 # でじサポ｜パソコン相談室
 
-![demo](public/images/demo.gif)
+![demo](public/image/demo.gif)
 
 でじサポは、PC トラブルやウェブ制作に関する情報を発信するブログ兼ポートフォリオサイトです。Markdown で記事を管理し、編集ページから手軽に投稿できます。
 
@@ -26,7 +26,7 @@
 
 アプリの動作イメージは以下の GIF を参考にしてください。
 
-![デモ GIF](public/images/demo.gif)
+![デモ GIF](public/image/demo.gif)
 
 ## 主な機能
 
@@ -132,7 +132,7 @@ BASIC_AUTH_PASSWORD=your_password
 
 ### 画像の配置先と推奨サイズ
 
-アプリで利用するアイコンや背景画像は `public/images/` ディレクトリに配置します。配置後は URL として `/images/ファイル名` を指定してください。
+アプリで利用するアイコンや背景画像は `public/image/` ディレクトリに配置します。配置後は URL として `/images/ファイル名` を指定してください。
 
 **注意**: Next.js の仕様上、`public` フォルダ以外に置いた画像はブラウザから読み込めません。`app/images` や `src/images` などに配置しないようにしてください。
 
@@ -144,7 +144,7 @@ BASIC_AUTH_PASSWORD=your_password
 | ファビコン       | `favicon.png`     | 1:1              | 32×32          |
 | OGP 画像         | `eye-catch.png`   | 16:9             | 1200×630       |
 
-`favicon.png` と `eye-catch.png` は `public/images` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
+`favicon.png` と `eye-catch.png` は `public/image` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
 
 ## Todo
 
