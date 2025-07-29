@@ -51,9 +51,9 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
                   <Image
                     src={post.image}
                     alt={post.title}
-                    width={64}
-                    height={64}
-                    className="w-16 h-16 object-cover rounded"
+                    width={80}
+                    height={80}
+                    className="w-20 h-20 object-cover rounded"
                   />
                 )}
                 <div>
