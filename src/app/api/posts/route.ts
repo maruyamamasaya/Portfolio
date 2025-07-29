@@ -1,15 +1,9 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { NextResponse } from 'next/server';
+import { validateFilename } from '@/lib/validateFilename';
 
 const postsDir = path.join(process.cwd(), 'blog');
-
-function validateFilename(name: unknown) {
-  if (typeof name !== 'string') return null;
-  const base = path.basename(name);
-  if (base !== name || !base.endsWith('.md')) return null;
-  return base;
-}
 
 export async function GET() {
   try {
