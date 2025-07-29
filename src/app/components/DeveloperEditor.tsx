@@ -4,7 +4,6 @@ import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { categories } from '../../../data/categories';
 
-
 const baseMap = {
   blog: 'posts',
   dev: 'dev-posts',
@@ -36,6 +35,7 @@ export default function DeveloperEditor() {
   const [isNew, setIsNew] = useState(false);
   const [newFilename, setNewFilename] = useState('');
   const [newCategory, setNewCategory] = useState(categories[0].slug);
+  const [tagsList, setTagsList] = useState<string[]>([]);
 
   useEffect(() => {
     const base = baseMap[target];
@@ -54,6 +54,13 @@ export default function DeveloperEditor() {
       updated: '',
     });
   }, [target]);
+
+  useEffect(() => {
+    fetch('/api/search-data')
+      .then((res) => res.json())
+      .then((data) => setTagsList(data.tags ?? []))
+      .catch(() => setTagsList([]));
+  }, []);
 
   const openFile = async (name: string) => {
     setSelected(name);
@@ -202,7 +209,10 @@ export default function DeveloperEditor() {
               </option>
             ))}
           </select>
-          <button className="px-2 py-1 bg-gray-200 transition-base" onClick={createFile}>
+          <button
+            className="px-2 py-1 bg-gray-200 transition-base"
+            onClick={createFile}
+          >
             作成
           </button>
         </div>
@@ -238,9 +248,15 @@ export default function DeveloperEditor() {
                 method: 'POST',
                 body: form,
               });
-              setStatus(
-                res.ok ? 'アップロードしました' : 'アップロードに失敗しました',
-              );
+              if (res.ok) {
+                const data = await res.json();
+                const path = `/images/${data.filename}`;
+                setMeta((m) => ({ ...m, image: path }));
+                setContent((prev) => `${prev}\n![${data.filename}](${path})\n`);
+                setStatus('アップロードしました');
+              } else {
+                setStatus('アップロードに失敗しました');
+              }
             }}
           >
             アップロード
@@ -277,10 +293,16 @@ export default function DeveloperEditor() {
           <div>
             <label className="block text-sm">tags (,)</label>
             <input
+              list="tags-list"
               className="border p-1 w-full"
               value={meta.tags}
               onChange={(e) => setMeta({ ...meta, tags: e.target.value })}
             />
+            <datalist id="tags-list">
+              {tagsList.map((t) => (
+                <option key={t} value={t} />
+              ))}
+            </datalist>
           </div>
           <div>
             <label className="block text-sm">image</label>
