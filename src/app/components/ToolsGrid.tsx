@@ -50,7 +50,7 @@ export default function ToolsGrid() {
           <button
             key={tool.name}
             onClick={() => setActiveTool(tool)}
-            className="flex flex-col items-center rounded-lg p-4 w-full shadow bg-white dark:bg-gray-800 hover:shadow-lg hover:scale-105 transition hover:opacity-80"
+            className="flex flex-col items-center rounded-lg p-4 w-full shadow bg-white dark:bg-gray-800 hover:shadow-lg hover:scale-105 transition-base hover:opacity-80"
           >
             <Image
               src={tool.icon}

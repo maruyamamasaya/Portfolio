@@ -48,7 +48,7 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
           >
             <Link
               href={`#${h.id}`}
-              className={`accent-text hover:underline focus:underline ${
+              className={`accent-text hover:underline focus:underline transition-base ${
                 activeId === h.id ? 'font-bold' : ''
               }`}
             >

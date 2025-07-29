@@ -63,7 +63,7 @@ export default function BottomNav() {
           <li key={item.href}>
             <Link
               href={item.href}
-              className={`flex flex-col items-center py-2 text-xs ${pathname === item.href ? 'text-primary' : 'text-gray-500'}`}
+              className={`flex flex-col items-center py-2 text-xs transition-base ${pathname === item.href ? 'text-primary' : 'text-gray-500'}`}
             >
               {item.icon}
               <span>{item.label}</span>

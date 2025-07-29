@@ -1,6 +1,7 @@
 'use client';
 import { ReactNode, useEffect } from 'react';
-import LazyMotionWrapper, { AnimatePresence, motion } from './LazyMotionWrapper';
+import { AnimatePresence, LazyMotion, domAnimation, m, useReducedMotion } from 'framer-motion';
+
 import { usePathname } from 'next/navigation';
 
 let isFirstLoad = true;
@@ -8,6 +9,7 @@ let isFirstLoad = true;
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const disable = process.env.NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION === 'true';
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     if (!disable) {
@@ -20,19 +22,19 @@ export default function PageTransition({ children }: { children: ReactNode }) {
   }
   const initial = isFirstLoad ? false : { opacity: 0 };
   return (
-    <LazyMotionWrapper>
+    <LazyMotion features={domAnimation}>
       <AnimatePresence mode="wait" initial={false}>
-        <motion.div
+        <m.div
           key={pathname}
           className="gpu-optimize"
-          initial={initial}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          initial={reduce ? false : initial}
+          animate={reduce ? undefined : { opacity: 1 }}
+          exit={reduce ? undefined : { opacity: 0 }}
+          transition={reduce ? undefined : { duration: 0.3, ease: 'easeInOut' }}
         >
           {children}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
-    </LazyMotionWrapper>
+    </LazyMotion>
   );
 }

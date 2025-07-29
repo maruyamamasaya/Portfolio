@@ -9,19 +9,19 @@ export default function Footer() {
           <h2 className="font-semibold mb-2 sr-only">ナビゲーション</h2>
           <ul className="space-y-1">
             <li>
-              <Link href="/">ホーム</Link>
+            <Link href="/" className="transition-base">ホーム</Link>
             </li>
             <li>
-              <Link href="/about">プロフィール</Link>
+            <Link href="/about" className="transition-base">プロフィール</Link>
             </li>
             <li>
-              <Link href="/works">Work</Link>
+            <Link href="/works" className="transition-base">Work</Link>
             </li>
             <li>
-              <Link href="/blog">ブログ</Link>
+            <Link href="/blog" className="transition-base">ブログ</Link>
             </li>
             <li>
-              <Link href="/contact">お問い合わせ</Link>
+            <Link href="/contact" className="transition-base">お問い合わせ</Link>
             </li>
           </ul>
         </div>
@@ -29,16 +29,16 @@ export default function Footer() {
           <h2 className="font-semibold mb-2 sr-only">ポリシー</h2>
           <ul className="space-y-1">
             <li>
-              <Link href="/policy/terms">利用規約</Link>
+              <Link href="/policy/terms" className="transition-base">利用規約</Link>
             </li>
             <li>
-              <Link href="/policy/privacy">プライバシーポリシー</Link>
+              <Link href="/policy/privacy" className="transition-base">プライバシーポリシー</Link>
             </li>
             <li>
-              <Link href="/policy/copyright">著作権について</Link>
+              <Link href="/policy/copyright" className="transition-base">著作権について</Link>
             </li>
             <li>
-              <Link href="/policy/law">特定商取引法に基づく表記</Link>
+              <Link href="/policy/law" className="transition-base">特定商取引法に基づく表記</Link>
             </li>
           </ul>
         </div>
@@ -50,7 +50,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
                 <Image
                   src="/images/instagram-200px.png"
@@ -67,7 +67,7 @@ export default function Footer() {
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ export default function Footer() {
                 href="https://www.tiktok.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
                 <Image
                   src="/images/tiktok-200px.png"
@@ -101,7 +101,7 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
                 <Image
                   src="/images/youtube-200px.png"
@@ -118,7 +118,7 @@ export default function Footer() {
                 href="https://note.com/freelancehack"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
                 <Image
                   src="/images/note-200px.png"
@@ -135,7 +135,7 @@ export default function Footer() {
                 href="https://lin.ee/21wyOGD"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
                 <Image
                   src="/images/LINEdevelop-200px.png"
@@ -152,7 +152,7 @@ export default function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 hover:text-yellow-300"
+                className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -168,7 +168,7 @@ export default function Footer() {
         </div>
         <div>
           <h2 className="font-semibold mb-2 sr-only">お問い合わせ</h2>
-          <Link href="/contact" className="hover:underline">
+          <Link href="/contact" className="hover:underline transition-base">
             お問い合わせフォーム
           </Link>
         </div>

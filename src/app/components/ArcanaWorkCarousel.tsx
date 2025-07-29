@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 
 interface Props {
   images: string[];
@@ -13,14 +14,15 @@ export default function ArcanaWorkCarousel({
 }: Props) {
   const totalSlides = Math.ceil(images.length / 3);
   const [index, setIndex] = useState(0);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
-    if (totalSlides <= 1) return;
+    if (reduce || totalSlides <= 1) return;
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % totalSlides);
     }, autoSlideInterval);
     return () => clearInterval(id);
-  }, [totalSlides, autoSlideInterval]);
+  }, [totalSlides, autoSlideInterval, reduce]);
 
   const prev = () => setIndex((i) => (i - 1 + totalSlides) % totalSlides);
   const next = () => setIndex((i) => (i + 1) % totalSlides);
@@ -34,7 +36,7 @@ export default function ArcanaWorkCarousel({
     <div className="relative flex items-center justify-center space-x-2">
       <button
         onClick={prev}
-        className="px-2 py-1 bg-black/50 text-white"
+        className="px-2 py-1 bg-black/50 text-white transition-base"
         aria-label="Previous"
       >
         &lt;
@@ -53,7 +55,7 @@ export default function ArcanaWorkCarousel({
       </div>
       <button
         onClick={next}
-        className="px-2 py-1 bg-black/50 text-white"
+        className="px-2 py-1 bg-black/50 text-white transition-base"
         aria-label="Next"
       >
         &gt;

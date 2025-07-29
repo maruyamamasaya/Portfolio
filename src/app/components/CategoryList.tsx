@@ -10,7 +10,7 @@ export default function CategoryList() {
       <ul className="space-y-1 text-sm">
         {categories.map((cat) => (
           <li key={cat.href}>
-            <Link href={cat.href} className="accent-text hover:underline">
+            <Link href={cat.href} className="accent-text hover:underline transition-base">
               {cat.name}
             </Link>
           </li>

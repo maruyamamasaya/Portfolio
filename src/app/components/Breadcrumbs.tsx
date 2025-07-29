@@ -30,7 +30,7 @@ export default function Breadcrumbs() {
     >
       <ol className="inline-flex items-center">
         <li className="inline-flex items-center">
-          <Link href="/" className="hover:underline">
+          <Link href="/" className="hover:underline transition-base">
             Home
           </Link>
         </li>
@@ -51,7 +51,7 @@ export default function Breadcrumbs() {
                   {decodeURIComponent(seg)}
                 </span>
               ) : (
-                <Link href={href} className="hover:underline">
+                <Link href={href} className="hover:underline transition-base">
                   {decodeURIComponent(seg)}
                 </Link>
               )}

@@ -13,7 +13,7 @@ export default function PrevNextLinks({ prev, next }: Props) {
       {prev ? (
         <Link
           href={`/blog/${prev.slug}`}
-          className="accent-text hover:underline"
+          className="accent-text hover:underline transition-base"
         >
           &larr; {prev.title}
         </Link>
@@ -23,7 +23,7 @@ export default function PrevNextLinks({ prev, next }: Props) {
       {next && (
         <Link
           href={`/blog/${next.slug}`}
-          className="accent-text hover:underline"
+          className="accent-text hover:underline transition-base"
         >
           {next.title} &rarr;
         </Link>

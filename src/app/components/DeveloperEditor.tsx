@@ -175,7 +175,7 @@ export default function DeveloperEditor() {
           {files.map((name) => (
             <li key={name}>
               <button
-                className="accent-text underline"
+                className="accent-text underline transition-base"
                 onClick={() => openFile(name)}
               >
                 {name}
@@ -202,7 +202,7 @@ export default function DeveloperEditor() {
               </option>
             ))}
           </select>
-          <button className="px-2 py-1 bg-gray-200" onClick={createFile}>
+          <button className="px-2 py-1 bg-gray-200 transition-base" onClick={createFile}>
             作成
           </button>
         </div>
@@ -229,7 +229,7 @@ export default function DeveloperEditor() {
             />
           )}
           <button
-            className="px-2 py-1 bg-green-500 text-white"
+            className="px-2 py-1 bg-green-500 text-white transition-base"
             onClick={async () => {
               if (!upload) return;
               const form = new FormData();
@@ -325,25 +325,25 @@ export default function DeveloperEditor() {
         )}
         <div className="mt-2 space-x-2">
           <button
-            className="px-4 py-2 bg-primary text-white"
+            className="px-4 py-2 bg-primary text-white transition-base"
             onClick={saveFile}
           >
             保存
           </button>
           <button
-            className="px-4 py-2 bg-blue-600 text-white"
+            className="px-4 py-2 bg-blue-600 text-white transition-base"
             onClick={togglePreview}
           >
             {preview ? '編集' : 'プレビュー'}
           </button>
           <button
-            className="px-4 py-2 bg-green-600 text-white"
+            className="px-4 py-2 bg-green-600 text-white transition-base"
             onClick={revalidate}
           >
             公開
           </button>
           <button
-            className="px-4 py-2 bg-gray-400 text-white"
+            className="px-4 py-2 bg-gray-400 text-white transition-base"
             onClick={() => {
               setSelected('');
               setContent('');

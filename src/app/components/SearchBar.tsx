@@ -196,7 +196,7 @@ export default function SearchBar({ className, showHistory = true }: Props) {
                 />
                 <button
                   type="submit"
-                  className="px-2 py-1 bg-primary text-white rounded"
+                  className="px-2 py-1 bg-primary text-white rounded transition-base"
                 >
                   検索
                 </button>
@@ -204,7 +204,7 @@ export default function SearchBar({ className, showHistory = true }: Props) {
                   type="button"
                   aria-label="Close search"
                   onClick={() => setMobileOpen(false)}
-                  className="p-2 text-2xl"
+                  className="p-2 text-2xl transition-base"
                 >
                   ×
                 </button>

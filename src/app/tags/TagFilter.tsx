@@ -59,7 +59,7 @@ export default function TagFilter({ tags, posts }: Props) {
               <Link
               key={tag}
               href={`/tags/${encodeURIComponent(tag)}`}
-              className="bg-primary/20 px-3 py-1 rounded-full text-sm font-medium shadow inline-flex items-center"
+              className="bg-primary/20 px-3 py-1 rounded-full text-sm font-medium shadow inline-flex items-center transition-base"
             >
               {tag}
             </Link>
@@ -85,7 +85,7 @@ export default function TagFilter({ tags, posts }: Props) {
               <div className="flex-1">
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-lg font-bold text-gray-800 dark:text-white group-hover:text-primary transition"
+                  className="text-lg font-bold text-gray-800 dark:text-white group-hover:text-primary transition-base"
                 >
                   {post.title}
                 </Link>

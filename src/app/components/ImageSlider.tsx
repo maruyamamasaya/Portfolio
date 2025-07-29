@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 
 interface Props {
   images: string[];
@@ -10,13 +11,15 @@ interface Props {
 export default function ImageSlider({ images }: Props) {
   const [index, setIndex] = useState(0);
   const startX = useRef<number | null>(null);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
+    if (reduce) return;
     const id = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 3000);
     return () => clearInterval(id);
-  }, [images.length]);
+  }, [images.length, reduce]);
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     startX.current = e.clientX;

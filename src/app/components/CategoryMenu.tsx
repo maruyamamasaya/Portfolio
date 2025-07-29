@@ -25,7 +25,7 @@ export default function CategoryMenu({
       <div>
         <button
           type="button"
-          className="flex items-center space-x-2 rounded min-h-[44px] min-w-[44px] px-3 py-2 w-full text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200"
+          className="flex items-center space-x-2 rounded min-h-[44px] min-w-[44px] px-3 py-2 w-full text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-base"
           onClick={() => setOpen(!open)}
         >
           {icon}
@@ -41,7 +41,7 @@ export default function CategoryMenu({
                     onNavigate?.();
                     setOpen(false);
                   }}
-                  className="block rounded min-h-[44px] min-w-[44px] px-3 py-2 w-full text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:underline focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200"
+                  className="block rounded min-h-[44px] min-w-[44px] px-3 py-2 w-full text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:underline focus:ring-2 focus:ring-primary focus:outline-none transition-base"
                 >
                   {cat.name}
                 </Link>
@@ -59,7 +59,7 @@ export default function CategoryMenu({
         type="button"
         onMouseEnter={() => setOpen(true)}
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200 motion-safe:transition-transform motion-reduce:transition-none hover:scale-105"
+        className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-base motion-safe:transition-transform motion-reduce:transition-none hover:scale-105"
       >
         {icon}
         <span>{label}</span>
@@ -71,7 +71,7 @@ export default function CategoryMenu({
               <Link
                 href={cat.href}
                 onClick={() => setOpen(false)}
-                className="block rounded min-h-[44px] min-w-[44px] px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-2 focus:ring-primary focus:outline-none transition-all duration-200"
+                className="block rounded min-h-[44px] min-w-[44px] px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-2 focus:ring-primary focus:outline-none transition-base"
               >
                 {cat.name}
               </Link>
