@@ -40,7 +40,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
         </div>
         <div>
           <ul className="space-y-4">
-            {posts.map((post, i) => (
+            {posts.slice(0, 6).map((post, i) => (
               <ScrollFadeIn
                 key={post.slug}
                 delay={i * 100}
