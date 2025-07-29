@@ -81,8 +81,9 @@ function formatBold(content: string): string {
 }
 
 // MDAST（Markdownの抽象構文木）に対するプラグイン
+// Plugin to collect headings from the markdown AST
 function headingsPlugin(headings: Heading[]): Plugin {
-  return () => (tree: Root) => {
+  return (tree: Root) => {
     const visit = (node: any) => {
       if (node.type === 'heading' && node.depth <= 3) {
         const text = node.children
@@ -117,7 +118,7 @@ export default async function markdownToHtml(
 
   const processor = unified()
     .use(parse)
-    .use(headingsPlugin(headings))
+    .use(headingsPlugin, headings)
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
