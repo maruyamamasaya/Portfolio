@@ -10,7 +10,7 @@ export interface ArcanaCardCarouselProps {
 }
 
 export const defaultImages = Array.from({ length: 12 }, (_, i) =>
-  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.svg`,
+  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.png`,
 );
 
 export default function ArcanaCardCarousel({
