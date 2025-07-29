@@ -81,7 +81,6 @@ export default function SearchBar({ className, showHistory = true }: Props) {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="キーワードを入力"
             className="border rounded px-2 py-1 w-full"
           />
           {suggestions.length > 0 && (
@@ -193,7 +192,6 @@ export default function SearchBar({ className, showHistory = true }: Props) {
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="キーワードを入力"
                   className="border rounded px-2 py-1 flex-1"
                 />
                 <button
