@@ -21,7 +21,7 @@ export default function Profile() {
             <p className="mb-4">分からないを分かるに変える</p>
           </div>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 whitespace-pre-line">
-            導入実績は100店舗以上。\n独立6ヶ月以内に月商350万円を達成。\n登録フォロワー数 200名以上。\n発信記事数150記事以上。
+            導入実績は100店舗以上。独立6ヶ月以内に月商350万円を達成。登録フォロワー数 200名以上。発信記事数150記事以上。
           </p>
           <div className="flex justify-center sm:justify-start space-x-3 my-2">
             <Link href="https://x.com" aria-label="X" className="hover:text-primary">
