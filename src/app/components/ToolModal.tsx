@@ -51,7 +51,11 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
             >
               ×
             </button>
-            <div className="text-2xl mb-2">{tool.icon}</div>
+            <img
+              src={tool.icon}
+              alt={tool.name}
+              className="w-24 h-24 object-contain mb-4 mx-auto"
+            />
             <h3 className="text-xl font-bold mb-2">{tool.name}</h3>
             <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-200 whitespace-pre-line">
               {tool.description}
