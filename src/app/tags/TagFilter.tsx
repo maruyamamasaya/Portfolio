@@ -67,7 +67,7 @@ export default function TagFilter({ tags, posts }: Props) {
           </div>
         </div>
       ) : (
-        <ul className="mt-4 space-y-4">
+        <ul className="mt-4 grid gap-4 sm:grid-cols-2">
           {filteredPosts.map((post) => (
             <li
               key={post.slug}

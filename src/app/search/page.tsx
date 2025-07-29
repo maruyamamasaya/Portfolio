@@ -5,6 +5,7 @@ import BlogNavButtons from '../components/BlogNavButtons';
 import { Metadata } from 'next';
 import SearchBar from '../components/SearchBar';
 import TagBadge from '../components/TagBadge';
+import ScrollFadeIn from '../components/ScrollFadeIn';
 
 export const metadata: Metadata = {
   title: 'Search',
@@ -87,9 +88,11 @@ export default async function SearchPage({
       {hasFilter &&
         (results.length ? (
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {results.map((post) => (
-              <li
+            {results.map((post, idx) => (
+              <ScrollFadeIn
                 key={post.slug}
+                as="li"
+                delay={idx * 50}
                 className="bg-white dark:bg-gray-700 rounded shadow p-4 space-y-2"
               >
                 {post.image && (
@@ -123,7 +126,7 @@ export default async function SearchPage({
                     </div>
                   )}
                 </div>
-              </li>
+              </ScrollFadeIn>
             ))}
           </ul>
         ) : (

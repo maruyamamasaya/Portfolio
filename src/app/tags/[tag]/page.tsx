@@ -37,7 +37,7 @@ export default async function TagPage({
     <div>
       <BlogNavButtons />
       <h1 className="text-2xl font-bold mb-4">Tag: {decodedTag}</h1>
-      <ul className="space-y-4">
+      <ul className="grid gap-4 sm:grid-cols-2">
         {posts.map((post) => (
           <li
             key={post.slug}
