@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { searchPosts, getSortedPosts, Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import SearchBar from '../components/SearchBar';
 import TagBadge from '../components/TagBadge';
 import ScrollFadeIn from '../components/ScrollFadeIn';
