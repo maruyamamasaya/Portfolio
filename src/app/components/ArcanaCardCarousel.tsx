@@ -2,18 +2,15 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { arcanaImages } from '../../../data/arcana';
 
 export interface ArcanaCardCarouselProps {
   images?: string[];
   autoSlideInterval?: number;
 }
 
-export const defaultImages = Array.from({ length: 12 }, (_, i) =>
-  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.svg`,
-);
-
 export default function ArcanaCardCarousel({
-  images = defaultImages,
+  images = arcanaImages,
   autoSlideInterval = 3000,
 }: ArcanaCardCarouselProps) {
   const [index, setIndex] = useState(0);

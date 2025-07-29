@@ -1,5 +1,6 @@
 import ScrollFadeIn from '../components/ScrollFadeIn';
-import ArcanaCardCarousel, { defaultImages } from '../components/ArcanaCardCarousel';
+import ArcanaCardCarousel from '../components/ArcanaCardCarousel';
+import { arcanaImages } from '../../../data/arcana';
 import { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
@@ -108,9 +109,9 @@ const steps: Step[] = [
 
 export default function ArcanaPage() {
   const sets = [
-    defaultImages.slice(0, 4),
-    defaultImages.slice(4, 8),
-    defaultImages.slice(8, 12),
+    arcanaImages.slice(0, 4),
+    arcanaImages.slice(4, 8),
+    arcanaImages.slice(8, 12),
   ];
 
   return (
