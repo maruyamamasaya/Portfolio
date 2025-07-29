@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { categories } from '../../../data/categories';
+import matter from 'gray-matter';
+import markdownToHtml from '@/lib/markdownToHtml';
+
 
 const baseMap = {
   blog: 'posts',
@@ -12,16 +14,22 @@ const pathMap = {
   dev: '/developers_blog',
 } as const;
 
-function metaTemplate(category: string) {
-  const date = new Date().toISOString().slice(0, 10);
-  return `---\ntitle: ''\ndate: '${date}'\nimage: '/images/example.png'\ntags:\n  - ''\ncategory: '${category}'\nupdated: '${date}'\n---\n\n`;
-}
-
 export default function DeveloperEditor() {
   const [target, setTarget] = useState<'blog' | 'dev'>('dev');
   const [files, setFiles] = useState<string[]>([]);
   const [selected, setSelected] = useState('');
   const [content, setContent] = useState('');
+  const [meta, setMeta] = useState({
+    title: '',
+    date: '',
+    category: '',
+    tags: '',
+    image: '',
+    updated: '',
+  });
+  const [preview, setPreview] = useState(false);
+  const [html, setHtml] = useState('');
+  const [height, setHeight] = useState(400);
   const [status, setStatus] = useState('');
   const [upload, setUpload] = useState<File | null>(null);
   const [isNew, setIsNew] = useState(false);
@@ -36,6 +44,14 @@ export default function DeveloperEditor() {
       .catch(() => setStatus('ファイル一覧の取得に失敗しました'));
     setSelected('');
     setContent('');
+    setMeta({
+      title: '',
+      date: '',
+      category: '',
+      tags: '',
+      image: '',
+      updated: '',
+    });
   }, [target]);
 
   const openFile = async (name: string) => {
@@ -44,7 +60,18 @@ export default function DeveloperEditor() {
     const res = await fetch(`/api/${base}/${encodeURIComponent(name)}`);
     if (res.ok) {
       const data = await res.json();
-      setContent(data.content);
+      const parsed = matter(data.content);
+      setContent(parsed.content);
+      setMeta({
+        title: (parsed.data.title as string) ?? '',
+        date: (parsed.data.date as string) ?? '',
+        category: (parsed.data.category as string) ?? '',
+        tags: Array.isArray(parsed.data.tags)
+          ? parsed.data.tags.join(', ')
+          : '',
+        image: (parsed.data.image as string) ?? '',
+        updated: (parsed.data.updated as string) ?? '',
+      });
       setIsNew(false);
     }
   };
@@ -52,7 +79,16 @@ export default function DeveloperEditor() {
   const newFile = (name: string) => {
     const safe = name.endsWith('.md') ? name : `${name}.md`;
     setSelected(safe);
-    setContent(metaTemplate(newCategory));
+    const date = new Date().toISOString().slice(0, 10);
+    setMeta({
+      title: '',
+      date,
+      category: '',
+      tags: '',
+      image: '/images/example.png',
+      updated: date,
+    });
+    setContent('');
     setIsNew(true);
   };
 
@@ -73,9 +109,17 @@ export default function DeveloperEditor() {
       ? `/api/${base}`
       : `/api/${base}/${encodeURIComponent(selected)}`;
     const method = isNew ? 'POST' : 'PUT';
+    const front = {
+      ...meta,
+      tags: meta.tags
+        .split(',')
+        .map((t) => t.trim())
+        .filter((t) => t),
+    };
+    const markdown = matter.stringify(content, front);
     const body = isNew
-      ? JSON.stringify({ filename: selected, content })
-      : JSON.stringify({ content });
+      ? JSON.stringify({ filename: selected, content: markdown })
+      : JSON.stringify({ content: markdown });
     const res = await fetch(url, {
       method,
       headers: { 'Content-Type': 'application/json' },
@@ -102,6 +146,14 @@ export default function DeveloperEditor() {
       body: JSON.stringify({ paths: [basePath, `${basePath}/${slug}`] }),
     });
     setStatus('更新しました');
+  };
+
+  const togglePreview = async () => {
+    if (!preview) {
+      const { html } = await markdownToHtml(content);
+      setHtml(html);
+    }
+    setPreview(!preview);
   };
 
   return (
@@ -153,13 +205,28 @@ export default function DeveloperEditor() {
             作成
           </button>
         </div>
-        <div className="mt-4">
+        <div
+          className="mt-4 border p-2 text-center"
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={(e) => {
+            e.preventDefault();
+            const file = e.dataTransfer.files?.[0];
+            if (file) setUpload(file);
+          }}
+        >
           <label className="block mb-1 font-bold">画像アップロード</label>
           <input
             type="file"
             onChange={(e) => setUpload(e.target.files?.[0] || null)}
             className="mb-2"
           />
+          {upload && (
+            <img
+              src={URL.createObjectURL(upload)}
+              alt="preview"
+              className="mx-auto mb-2 max-h-40"
+            />
+          )}
           <button
             className="px-2 py-1 bg-green-500 text-white"
             onClick={async () => {
@@ -181,12 +248,81 @@ export default function DeveloperEditor() {
       </div>
       <div className="md:w-3/4 p-4">
         {selected && <h2 className="font-bold mb-2">{selected}</h2>}
-        <textarea
-          className="w-full h-96 border p-2"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <div className="mt-2">
+        <div className="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label className="block text-sm">title</label>
+            <input
+              className="border p-1 w-full"
+              value={meta.title}
+              onChange={(e) => setMeta({ ...meta, title: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-sm">date</label>
+            <input
+              className="border p-1 w-full"
+              value={meta.date}
+              onChange={(e) => setMeta({ ...meta, date: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-sm">category</label>
+            <input
+              className="border p-1 w-full"
+              value={meta.category}
+              onChange={(e) => setMeta({ ...meta, category: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-sm">tags (,)</label>
+            <input
+              className="border p-1 w-full"
+              value={meta.tags}
+              onChange={(e) => setMeta({ ...meta, tags: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-sm">image</label>
+            <input
+              className="border p-1 w-full"
+              value={meta.image}
+              onChange={(e) => setMeta({ ...meta, image: e.target.value })}
+            />
+          </div>
+          <div>
+            <label className="block text-sm">updated</label>
+            <input
+              className="border p-1 w-full"
+              value={meta.updated}
+              onChange={(e) => setMeta({ ...meta, updated: e.target.value })}
+            />
+          </div>
+        </div>
+        <div className="mb-2">
+          <label className="block text-sm">高さ: {height}px</label>
+          <input
+            type="range"
+            min="200"
+            max="800"
+            value={height}
+            onChange={(e) => setHeight(Number(e.target.value))}
+          />
+        </div>
+        {!preview ? (
+          <textarea
+            className="w-full border p-2"
+            style={{ height }}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        ) : (
+          <div
+            className="prose border p-2"
+            style={{ height, overflow: 'auto' }}
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        )}
+        <div className="mt-2 space-x-2">
           <button
             className="px-4 py-2 bg-primary text-white"
             onClick={saveFile}
@@ -194,10 +330,33 @@ export default function DeveloperEditor() {
             保存
           </button>
           <button
-            className="px-4 py-2 bg-green-600 text-white ml-2"
+            className="px-4 py-2 bg-blue-600 text-white"
+            onClick={togglePreview}
+          >
+            {preview ? '編集' : 'プレビュー'}
+          </button>
+          <button
+            className="px-4 py-2 bg-green-600 text-white"
             onClick={revalidate}
           >
-            更新
+            公開
+          </button>
+          <button
+            className="px-4 py-2 bg-gray-400 text-white"
+            onClick={() => {
+              setSelected('');
+              setContent('');
+              setMeta({
+                title: '',
+                date: '',
+                category: '',
+                tags: '',
+                image: '',
+                updated: '',
+              });
+            }}
+          >
+            キャンセル
           </button>
         </div>
         {status && <p className="mt-2 text-sm">{status}</p>}
