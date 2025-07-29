@@ -1,10 +1,9 @@
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import ArcanaCarouselList from '../components/ArcanaCarouselList';
 import Image from 'next/image';
-import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'アルカナ公式 TCGカード 特設ページ',
 };
 

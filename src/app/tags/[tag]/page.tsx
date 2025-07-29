@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getAllTags, searchPosts } from '@/lib/posts';
 import BlogNavButtons from '../../components/BlogNavButtons';
@@ -15,7 +14,7 @@ export async function generateMetadata({
   params,
 }: {
   params: { tag: string };
-}): Promise<Metadata> {
+}) {
   const decodedTag = decodeURIComponent(params.tag);
   return { title: `Tag: ${decodedTag}` };
 }

@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import Card from '../components/Card';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'AI講座 | でじサポ',
 };
 
