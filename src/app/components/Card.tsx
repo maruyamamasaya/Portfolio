@@ -1,6 +1,6 @@
 'use client';
 import { forwardRef, ReactNode } from 'react';
-import { motion } from 'framer-motion';
+import LazyMotionWrapper, { motion } from './LazyMotionWrapper';
 
 interface Props {
   children: ReactNode;
@@ -8,8 +8,12 @@ interface Props {
   onClick?: () => void;
 }
 
-const Card = forwardRef<HTMLDivElement, Props>(
-  ({ children, className = '', onClick }, ref) => (
+const Card = forwardRef<HTMLDivElement, Props>(({
+  children,
+  className = '',
+  onClick,
+}, ref) => (
+  <LazyMotionWrapper>
     <motion.div
       ref={ref}
       whileHover={{ scale: 1.05 }}
@@ -19,7 +23,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
     >
       {children}
     </motion.div>
-  ),
-);
+  </LazyMotionWrapper>
+));
 Card.displayName = 'Card';
 export default Card;
