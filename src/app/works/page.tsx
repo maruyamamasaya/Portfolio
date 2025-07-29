@@ -77,7 +77,7 @@ export default function Works() {
   const regularArtworks = artworks.filter((a) => a.id <= 5);
   const slideshowArtworks = artworks.filter((a) => a.id > 5);
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">Works</h1>
       <div className="mb-6 space-y-4">

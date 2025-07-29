@@ -2,7 +2,7 @@ import BlogNavButtons from '../../components/BlogNavButtons';
 
 export default function Terms() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
+    <div className="max-w-screen-lg mx-auto px-4 sm:px-6 md:px-10 py-8">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">利用規約</h1>
 
