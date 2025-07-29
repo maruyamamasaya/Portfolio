@@ -141,7 +141,6 @@
   @apply bg-gray-700 text-pink-200;
 }
 
-
 .prose img {
   @apply rounded-md shadow-md my-4 max-w-full h-auto;
 }
@@ -188,4 +187,14 @@
   .section-spacing {
     @apply mt-6 mb-6;
   }
+}
+
+/* Header link and button tap size */
+header a,
+header button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
 }
