@@ -16,21 +16,6 @@ export default async function TagsPage() {
       <div className="mb-4">
         <TagFilter tags={tags} posts={posts} />
       </div>
-      <ul className="flex overflow-x-auto flex-nowrap gap-4 pb-2">
-        {displayTags.map((tag) => (
-          <li
-            key={tag}
-            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow-md whitespace-nowrap inline-flex items-center justify-center h-11 min-w-11"
-          >
-            <Link
-              href={`/tags/${encodeURIComponent(tag)}`}
-              className="hover:underline"
-            >
-              {tag}
-            </Link>
-          </li>
-        ))}
-      </ul>
       {hasMore && (
         <div className="mt-4">
           <Link href="/tags/more" className="accent-text hover:underline">
@@ -38,6 +23,18 @@ export default async function TagsPage() {
           </Link>
         </div>
       )}
+      <ul className="flex overflow-x-auto flex-nowrap gap-4 pb-2 mt-4">
+        {displayTags.map((tag) => (
+          <li
+            key={tag}
+            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow-md whitespace-nowrap inline-flex items-center justify-center h-11 min-w-11"
+          >
+            <Link href={`/tags/${encodeURIComponent(tag)}`} className="hover:underline">
+              {tag}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
