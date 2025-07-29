@@ -10,7 +10,6 @@ import { Post } from '@/lib/posts';
 import ScrollFadeIn from './ScrollFadeIn';
 import RecommendedSlider from './RecommendedSlider';
 import PostCard from './PostCard';
-import SearchBar from './SearchBar';
 
 type HomeWindowProps = {
   posts: Post[];
@@ -36,9 +35,6 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       {/* おすすめ記事一覧 */}
       <section className="px-4 sm:px-8 max-w-screen-md mx-auto space-y-4">
         <h2 className="text-xl font-bold text-center">おすすめ記事</h2>
-        <div className="flex justify-end">
-          <SearchBar className="w-32 text-sm" />
-        </div>
         <RecommendedSlider posts={posts} />
         <ul className="space-y-4">
           {posts.slice(0, 6).map((post, i) => (
