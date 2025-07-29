@@ -5,8 +5,9 @@ import BlogNavButtons from '../components/BlogNavButtons';
 import SearchBar from '../components/SearchBar';
 import TagBadge from '../components/TagBadge';
 import ScrollFadeIn from '../components/ScrollFadeIn';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Search',
 };
 
