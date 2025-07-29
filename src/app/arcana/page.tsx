@@ -1,5 +1,6 @@
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import ArcanaCarouselList from '../components/ArcanaCarouselList';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 interface Step {
   title: string;
   description: ReactNode;
+  image: string;
 }
 
 const steps: Step[] = [
@@ -27,6 +29,7 @@ const steps: Step[] = [
         </ul>
       </>
     ),
+    image: '/images/arcana/arcanacard00001.svg',
   },
   {
     title: '装飾カードを6枚選択',
@@ -37,6 +40,7 @@ const steps: Step[] = [
         <p className="text-sm">※装飾カードは対戦中に使い切ると、勝利条件にはなりません。</p>
       </>
     ),
+    image: '/images/arcana/arcanacard00002.svg',
   },
   {
     title: 'アルカナカードを14枚選びます',
@@ -49,14 +53,17 @@ const steps: Step[] = [
         </ul>
       </>
     ),
+    image: '/images/arcana/arcanacard00003.svg',
   },
   {
     title: '先攻・後攻を決定',
     description: <p>ランダムまたはプレイヤー間の合意で順番を決定します。</p>,
+    image: '/images/arcana/arcanacard00004.svg',
   },
   {
     title: 'バトル開始前：コインを3枚積む儀式',
     description: <p>この儀式をもって、対戦が正式に始まります。</p>,
+    image: '/images/arcana/arcanacard00005.svg',
   },
   {
     title: 'キャラの配置と装飾アクション',
@@ -67,6 +74,7 @@ const steps: Step[] = [
         <p>それぞれ、対応する装飾カードで支援することができます。</p>
       </>
     ),
+    image: '/images/arcana/arcanacard00006.svg',
   },
   {
     title: 'アルカナ対決！',
@@ -81,6 +89,7 @@ const steps: Step[] = [
         </ul>
       </>
     ),
+    image: '/images/arcana/arcanacard00007.svg',
   },
   {
     title: '使用済みカードの管理',
@@ -89,10 +98,12 @@ const steps: Step[] = [
         使用した装飾カード・破壊されたキャラ・使い切ったアルカナは再使用不可となり、ゲームから除外されます。
       </p>
     ),
+    image: '/images/arcana/arcanacard00008.svg',
   },
   {
     title: '後攻プレイヤーのターンに移行',
     description: <p>先ほどと同様に、攻防を交代して進行します。</p>,
+    image: '/images/arcana/arcanacard00009.svg',
   },
   {
     title: '戦闘の特記事項',
@@ -103,6 +114,7 @@ const steps: Step[] = [
         <li>防御成功時は、次のターンでキャラ交代が可能です</li>
       </ul>
     ),
+    image: '/images/arcana/arcanacard00010.svg',
   },
 ];
 
@@ -130,8 +142,15 @@ export default function ArcanaPage() {
                 </span>
                 <h2 className="text-2xl font-bold font-serif">{step.title}</h2>
               </div>
-              <div className="leading-relaxed space-y-2">
-                {step.description}
+              <div className="grid md:grid-cols-2 gap-4 items-center">
+                <Image
+                  src={step.image}
+                  alt={`Step ${i + 1}`}
+                  width={500}
+                  height={300}
+                  className="w-full h-auto rounded shadow"
+                />
+                <div className="leading-relaxed space-y-2">{step.description}</div>
               </div>
             </ScrollFadeIn>
           ))}
