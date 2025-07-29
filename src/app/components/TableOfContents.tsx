@@ -1,4 +1,6 @@
+'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export interface Heading {
   id: string;
@@ -8,7 +10,28 @@ export interface Heading {
 
 export default function TableOfContents({ headings }: { headings: Heading[] }) {
   if (!headings || headings.length === 0) return null;
+  const [activeId, setActiveId] = useState('');
   const levels = ['pl-0 text-base', 'pl-4 text-sm', 'pl-8 text-xs'];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -70% 0px' },
+    );
+
+    headings.forEach((h) => {
+      const el = document.getElementById(h.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [headings]);
+
   return (
     <aside
       className="mb-6 rounded-lg p-4 bg-gray-100 dark:bg-gray-700 dark:text-gray-100"
@@ -22,7 +45,9 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
           >
             <Link
               href={`#${h.id}`}
-              className="accent-text hover:underline focus:underline"
+              className={`accent-text hover:underline focus:underline ${
+                activeId === h.id ? 'font-bold' : ''
+              }`}
             >
               {h.text}
             </Link>
