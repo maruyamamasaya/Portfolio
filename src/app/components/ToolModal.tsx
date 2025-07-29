@@ -1,6 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 interface ToolInfo {
   name: string;
@@ -51,9 +52,11 @@ export default function ToolModal({ tool, onClose }: ToolModalProps) {
             >
               ×
             </button>
-            <img
+            <Image
               src={tool.icon}
               alt={tool.name}
+              width={96}
+              height={96}
               className="w-24 h-24 object-contain mb-4 mx-auto"
             />
             <h3 className="text-xl font-bold mb-2">{tool.name}</h3>

@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import ToolModal from './ToolModal';
+import Image from 'next/image';
 
 const tools = [
   {
@@ -51,9 +52,11 @@ export default function ToolsGrid() {
             onClick={() => setActiveTool(tool)}
             className="flex flex-col items-center rounded-lg p-4 w-full shadow bg-white dark:bg-gray-800 hover:shadow-lg hover:scale-105 transition hover:opacity-80"
           >
-            <img
+            <Image
               src={tool.icon}
               alt={tool.name}
+              width={80}
+              height={80}
               className="w-20 h-20 object-contain mb-2"
             />
             <p className="text-sm text-center">{tool.name}</p>
