@@ -6,7 +6,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Breadcrumbs from './components/Breadcrumbs';
 import PageTransition from './components/PageTransition';
-import TagList from './components/TagList';
+import TagListWrapper from './components/TagListWrapper';
 import { ThemeProvider } from './components/ThemeProvider';
 import { Poppins } from 'next/font/google';
 
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Header />
           <div className="bg-white dark:bg-gray-700 border-b border-gray-200 dark:border-gray-700">
             <div className="container mx-auto p-2">
-              <TagList />
+              <TagListWrapper />
             </div>
           </div>
           <PageTransition>
