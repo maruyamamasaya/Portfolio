@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { searchPosts, getSortedPosts, Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import { Metadata } from 'next';
@@ -92,9 +93,11 @@ export default async function SearchPage({
                 className="bg-white dark:bg-gray-700 rounded shadow p-4 space-y-2"
               >
                 {post.image && (
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
+                    width={400}
+                    height={160}
                     className="w-full h-40 object-cover rounded"
                   />
                 )}

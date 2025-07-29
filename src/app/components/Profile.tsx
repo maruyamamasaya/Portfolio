@@ -1,12 +1,15 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Profile() {
   return (
     <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-3 sm:space-y-0 sm:space-x-4">
-      <img
+      <Image
         src="/images/img1.svg"
         alt="プロフィール画像"
+        width={96}
+        height={96}
         className="w-24 h-24 rounded-full object-cover"
       />
       <div className="text-center sm:text-left">

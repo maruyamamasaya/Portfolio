@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import DarkModeToggle from './DarkModeToggle';
@@ -137,14 +138,18 @@ export default function Header() {
     <header className="backdrop-blur-md bg-gradient-to-b from-white/80 to-gray-50/80 dark:from-gray-900/80 dark:to-gray-800/80 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100">
       <div className="container mx-auto flex items-center justify-between relative p-2">
         <h1 className="text-2xl font-digital font-bold flex items-center">
-          <img
+          <Image
             src="/images/img1.svg"
             alt="Light mode logo"
+            width={32}
+            height={32}
             className="w-8 h-8 mr-2 block dark:hidden"
           />
-          <img
+          <Image
             src="/images/img2.svg"
             alt="Dark mode logo"
+            width={32}
+            height={32}
             className="w-8 h-8 mr-2 hidden dark:block"
           />
           <Link href="/">でじサポ｜パソコン相談室</Link>

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const testimonials = [
   {
     name: '山田様',
@@ -27,9 +29,11 @@ export default function TestimonialsSection() {
             className="flex-shrink-0 w-64 p-4 bg-white dark:bg-gray-700 rounded shadow"
           >
             <div className="flex items-center space-x-2 mb-2">
-              <img
+              <Image
                 src={t.avatar}
                 alt={t.name}
+                width={32}
+                height={32}
                 className="w-8 h-8 rounded-full"
               />
               <span className="font-semibold text-sm">{t.name}</span>

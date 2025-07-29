@@ -8,13 +8,12 @@ export default async function BlogIndex() {
   const rest = posts.slice(3);
 
   return (
-    <div className="blog-container">
+    <div className="blog-container md:flex">
       <h1 className="text-2xl font-bold mb-4">Blog</h1>
-      <div className="md:flex">
-        <aside className="md:w-1/5 md:pr-4 mb-4 md:mb-0">
-          <LeftSidebar />
-        </aside>
-        <div className="md:flex-1 space-y-8">
+      <aside className="md:w-1/5 md:pr-4 mb-4 md:mb-0">
+        <LeftSidebar />
+      </aside>
+      <div className="md:flex-1 space-y-8">
           <section className="main-content">
             <h2 className="text-xl font-bold mb-4">最新記事</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -35,6 +34,5 @@ export default async function BlogIndex() {
           )}
         </div>
       </div>
-    </div>
   );
 }

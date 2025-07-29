@@ -3,6 +3,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { getPost, getSortedPosts, getBacklinks } from '@/lib/posts';
+import PostLayout from '@/app/components/PostLayout';
+import getExcerpt from '@/lib/excerpt';
 import LeftSidebar from '@/app/components/LeftSidebar';
 import RightSidebar from '@/app/components/RightSidebar';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
@@ -24,8 +26,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   try {
     const post = await getPost(params.slug);
+    const description = getExcerpt(post.content);
     return {
       title: post.title,
+      description,
+      openGraph: {
+        title: post.title,
+        description,
+        type: 'article',
+        images: post.image ? [post.image] : undefined,
+      },
+      twitter: {
+        card: 'summary_large_image',
+      },
       other: { date: post.date, updated: post.updated, tags: post.tags },
     };
   } catch {
@@ -51,31 +64,15 @@ export default async function BlogPost({
     return (
       <div className="blog-container">
         <BlogNavButtons />
-        <article className="prose prose-light dark:prose-dark main-content">
-          {post.image && (
-            <img
-              src={post.image}
-              alt={post.alt ?? post.slug}
-              className="mb-4"
-            />
-          )}
-          {headings && headings.length > 0 && (
-            <TableOfContents headings={headings} />
-          )}
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">{post.title}</h1>
-          <p className="text-sm text-gray-500 mb-4">
-            著者: 管理者 / {post.date}
-            {post.updated && ` (更新: ${post.updated})`}
-          </p>
-          {post.tags && (
-            <ul className="flex space-x-2 text-xs mb-2">
-              {post.tags.map((tag) => (
-                <li key={tag} className="bg-gray-200 px-2 py-1 rounded">
-                  <Link href={`/tags/${encodeURIComponent(tag)}`}>{tag}</Link>
-                </li>
-              ))}
-            </ul>
-          )}
+        <PostLayout
+          title={post.title}
+          date={`著者: 管理者 / ${post.date}`}
+          updated={post.updated}
+          tags={post.tags}
+          image={post.image}
+          imageAlt={post.alt ?? post.slug}
+          headings={headings}
+        >
           <div dangerouslySetInnerHTML={{ __html: html }} />
           <ShareButtons title={post.title} />
           {backlinks.length > 0 && (
@@ -90,13 +87,11 @@ export default async function BlogPost({
               </ul>
             </div>
           )}
-        </article>
+        </PostLayout>
         <PrevNextLinks prev={prev} next={next} />
         <RelatedPosts posts={related} />
-        <section className="space-y-4">
-          <LeftSidebar />
-          <RightSidebar posts={posts} />
-        </section>
+        <LeftSidebar />
+        <RightSidebar posts={posts} />
         <CodeCopyInit />
       </div>
     );
