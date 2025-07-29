@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { categories } from '../../../data/categories';
 
 const baseMap = {
   blog: 'posts',
@@ -11,9 +12,9 @@ const pathMap = {
   dev: '/developers_blog',
 } as const;
 
-function metaTemplate() {
+function metaTemplate(category: string) {
   const date = new Date().toISOString().slice(0, 10);
-  return `---\ntitle: ""\ndate: "${date}"\nimage: "/images/example.png"\ntags:\n  - ""\nupdated: "${date}"\n---\n\n`;
+  return `---\ntitle: ''\ndate: '${date}'\nimage: '/images/example.png'\ntags:\n  - ''\ncategory: '${category}'\nupdated: '${date}'\n---\n\n`;
 }
 
 export default function DeveloperEditor() {
@@ -25,7 +26,7 @@ export default function DeveloperEditor() {
   const [upload, setUpload] = useState<File | null>(null);
   const [isNew, setIsNew] = useState(false);
   const [newFilename, setNewFilename] = useState('');
-
+  const [newCategory, setNewCategory] = useState(categories[0].slug);
 
   useEffect(() => {
     const base = baseMap[target];
@@ -51,7 +52,7 @@ export default function DeveloperEditor() {
   const newFile = (name: string) => {
     const safe = name.endsWith('.md') ? name : `${name}.md`;
     setSelected(safe);
-    setContent(metaTemplate());
+    setContent(metaTemplate(newCategory));
     setIsNew(true);
   };
 
@@ -137,6 +138,17 @@ export default function DeveloperEditor() {
             value={newFilename}
             onChange={(e) => setNewFilename(e.target.value)}
           />
+          <select
+            className="border p-1 w-full mb-1"
+            value={newCategory}
+            onChange={(e) => setNewCategory(e.target.value)}
+          >
+            {categories.map((c) => (
+              <option key={c.slug} value={c.slug}>
+                {c.name}
+              </option>
+            ))}
+          </select>
           <button className="px-2 py-1 bg-gray-200" onClick={createFile}>
             作成
           </button>
