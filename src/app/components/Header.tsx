@@ -6,6 +6,7 @@ import { useState } from 'react';
 import DarkModeToggle from './DarkModeToggle';
 import Drawer from './Drawer';
 import SearchBar from './SearchBar';
+import CategoryMenu from './CategoryMenu';
 
 export default function Header() {
   const pathname = usePathname();
@@ -167,13 +168,17 @@ export default function Header() {
           <ul className="flex space-x-4 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="inline-flex items-center space-x-1 hover:text-primary motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out hover:scale-105"
-                >
-                  {item.icon}
-                  <span>{item.label}</span>
-                </Link>
+                {item.href === '/categories' ? (
+                  <CategoryMenu icon={item.icon} label={item.label} />
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center space-x-1 hover:text-primary motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out hover:scale-105"
+                  >
+                    {item.icon}
+                    <span>{item.label}</span>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -186,14 +191,23 @@ export default function Header() {
           <ul className="flex flex-col space-y-4 mt-8">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center space-x-2 py-1 hover:text-primary"
-                >
-                  {item.icon}
-                  <span>{item.label}</span>
-                </Link>
+                {item.href === '/categories' ? (
+                  <CategoryMenu
+                    icon={item.icon}
+                    label={item.label}
+                    mobile
+                    onNavigate={() => setOpen(false)}
+                  />
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center space-x-2 py-1 hover:text-primary"
+                  >
+                    {item.icon}
+                    <span>{item.label}</span>
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
