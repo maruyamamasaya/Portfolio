@@ -12,7 +12,7 @@ export default async function MoreTagsPage() {
         {tagCounts.map(({ tag }) => (
           <li
             key={tag}
-            className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow-md"
+            className="bg-primary/20 px-3 py-2 rounded-full text-base shadow-md"
           >
             <Link href={`/tags/${encodeURIComponent(tag)}`} className="hover:underline">
               {tag}

@@ -36,7 +36,7 @@ export default async function BlogIndex() {
                   <span className="text-gray-800 dark:text-white">
                     /developers_blog/{post.slug}
                   </span>
-                  <span className="block text-sm text-gray-500 dark:text-gray-300">
+                  <span className="block text-base text-gray-500 dark:text-gray-300">
                     {post.date}
                     {post.updated && ` (更新: ${post.updated})`}
                   </span>

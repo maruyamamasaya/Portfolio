@@ -59,7 +59,7 @@ export default function TagFilter({ tags, posts }: Props) {
               <Link
                 key={tag}
                 href={`/tags/${encodeURIComponent(tag)}`}
-                className="bg-primary/20 px-3 py-2 sm:px-2 sm:py-1 rounded-full text-base sm:text-sm shadow transition-base hover:bg-primary/30 active:shadow-inner focus-visible:ring-2 focus-visible:ring-primary"
+                className="bg-primary/20 px-3 py-2 rounded-full text-base shadow transition-base hover:bg-primary/30 active:shadow-inner focus-visible:ring-2 focus-visible:ring-primary"
               >
                 {tag}
               </Link>
@@ -89,7 +89,7 @@ export default function TagFilter({ tags, posts }: Props) {
                 >
                   {post.title}
                 </Link>
-                <span className="block text-sm text-gray-500">
+                <span className="block text-base text-gray-500">
                   {post.date}
                   {post.updated && ` (更新: ${post.updated})`}
                 </span>
