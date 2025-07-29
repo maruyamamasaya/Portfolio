@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { getCategory, getAllCategorySlugs } from '@/lib/categories';
 import { getPostsByCategory } from '@/lib/posts';
 import BlogNavButtons from '../../components/BlogNavButtons';

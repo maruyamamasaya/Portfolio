@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import Card from '../components/Card';
 
