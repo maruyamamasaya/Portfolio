@@ -1,6 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+const baseMap = {
+  blog: 'posts',
+  dev: 'dev-posts',
+} as const;
+
+const pathMap = {
+  blog: '/blog',
+  dev: '/developers_blog',
+} as const;
+
 function metaTemplate() {
   const date = new Date().toISOString().slice(0, 10);
   return `---\ntitle: ""\ndate: "${date}"\nimage: "/images/example.png"\ntags:\n  - ""\nupdated: "${date}"\n---\n\n`;
@@ -15,14 +25,6 @@ export default function DeveloperEditor() {
   const [upload, setUpload] = useState<File | null>(null);
   const [isNew, setIsNew] = useState(false);
 
-  const baseMap = {
-    blog: 'posts',
-    dev: 'dev-posts',
-  } as const;
-  const pathMap = {
-    blog: '/blog',
-    dev: '/developers_blog',
-  } as const;
 
   useEffect(() => {
     const base = baseMap[target];
