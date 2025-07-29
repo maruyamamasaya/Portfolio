@@ -11,9 +11,10 @@ interface PostMeta {
 
 interface Props {
   className?: string;
+  showHistory?: boolean;
 }
 
-export default function SearchBar({ className }: Props) {
+export default function SearchBar({ className, showHistory = true }: Props) {
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -128,9 +129,15 @@ export default function SearchBar({ className }: Props) {
                 ))}
               </select>
             )}
+            <button
+              type="submit"
+              className="px-2 py-1 bg-primary text-white rounded"
+            >
+              検索
+            </button>
           </div>
         </form>
-        {history.length > 0 && (
+        {showHistory && history.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2 text-sm">
             {history.map((h) => (
               <button
@@ -183,6 +190,12 @@ export default function SearchBar({ className }: Props) {
                   placeholder="キーワードを入力"
                   className="border rounded px-2 py-1 flex-1"
                 />
+                <button
+                  type="submit"
+                  className="px-2 py-1 bg-primary text-white rounded"
+                >
+                  検索
+                </button>
                 <button
                   type="button"
                   aria-label="Close search"

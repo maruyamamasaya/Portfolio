@@ -179,7 +179,7 @@ export default function Header() {
           </ul>
         </nav>
         <div className="hidden sm:block ml-4 w-48">
-          <SearchBar />
+          <SearchBar showHistory={false} />
         </div>
         <DarkModeToggle />
         <Drawer open={open} onClose={() => setOpen(false)}>
@@ -198,7 +198,7 @@ export default function Header() {
             ))}
           </ul>
           <div className="mt-4">
-            <SearchBar />
+            <SearchBar showHistory={false} />
           </div>
         </Drawer>
       </div>
