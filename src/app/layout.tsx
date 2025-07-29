@@ -1,7 +1,6 @@
 import './globals.css';
 import './mobile.css';
 import { ReactNode } from 'react';
-import type { Metadata } from 'next';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BottomNav from './components/BottomNav';
@@ -25,7 +24,7 @@ export const metadata = {
   openGraph: {
     images: '/images/eye-catch.png',
   },
-} satisfies Metadata;
+};
 
 export default async function RootLayout({
   children,

@@ -5,11 +5,10 @@ import BlogNavButtons from '../components/BlogNavButtons';
 import SearchBar from '../components/SearchBar';
 import TagBadge from '../components/TagBadge';
 import ScrollFadeIn from '../components/ScrollFadeIn';
-import type { Metadata } from 'next';
 
 export const metadata = {
   title: 'Search',
-} satisfies Metadata;
+};
 
 export default async function SearchPage({
   searchParams,
