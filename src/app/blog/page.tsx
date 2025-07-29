@@ -9,7 +9,6 @@ export default async function BlogIndex() {
 
   return (
     <div className="blog-container md:flex">
-      <h1 className="text-2xl font-bold mb-4">Blog</h1>
       <aside className="md:w-1/5 md:pr-4 mb-4 md:mb-0">
         <LeftSidebar />
       </aside>
