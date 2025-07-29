@@ -138,6 +138,20 @@ export default function AICoursePage() {
         </p>
       </ScrollFadeIn>
 
+      {/* 受講者の声 */}
+      <ScrollFadeIn className="max-w-2xl mx-auto p-6 space-y-4">
+        <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+          <span className="absolute -top-3 left-4 text-2xl text-primary">📣</span>
+          <h2 className="text-xl font-bold mb-4 text-center">受講者の声</h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 text-right">
+            ─ 企画職（20代・男性）
+          </p>
+          <p className="text-base leading-relaxed text-gray-700 dark:text-gray-200 whitespace-pre-line border-l-4 border-primary pl-4">
+            最初は“話題のAI”くらいの認識でしたが、今では毎日の業務に欠かせない相棒です。\n\n商品説明のドラフト作成、定例会の議事録、自動返信メールの文面など、細かく時間を取られていたタスクが、ChatGPTのおかげで数分で完了するようになりました。\n\n特に驚いたのは「Zapier × ChatGPT」を使った業務フローの自動化。ノーコードで構築できるので、プログラミング知識ゼロでも本格的な仕組みが作れました。\n\n今では、資料作成・データ整理・社内問い合わせ対応などをAIが一部代行してくれています。業務効率が上がっただけでなく、自分の時間を“考える仕事”に充てられるようになったのが、一番の成果です。
+          </p>
+        </div>
+      </ScrollFadeIn>
+
       {/* 5. コンテンツ構成（4STEP） */}
       <ScrollFadeIn className="max-w-5xl mx-auto p-4 space-y-4">
         <h2 className="text-2xl font-bold">4STEPカリキュラム</h2>
@@ -204,41 +218,6 @@ export default function AICoursePage() {
         </p>
       </ScrollFadeIn>
 
-      {/* 8. 受講者の声 */}
-      <ScrollFadeIn className="max-w-3xl mx-auto p-4 space-y-4">
-        <h2 className="text-2xl font-bold">受講者の声</h2>
-        <div className="space-y-4">
-          <figure className="bg-white dark:bg-gray-700 rounded shadow p-4">
-            <blockquote className="text-sm">
-              「1人で運営していたECが、AIのおかげで3倍の売上に」
-            </blockquote>
-            <figcaption className="text-right mt-2 text-xs text-gray-500">
-              ─ ネットショップオーナー（40代女性）
-            </figcaption>
-          </figure>
-          <figure className="bg-white dark:bg-gray-700 rounded shadow p-4">
-            <blockquote className="text-sm">
-              「ChatGPTが秘書代わり。報告書も議事録も3分で完成」
-            </blockquote>
-            <figcaption className="text-right mt-2 text-xs text-gray-500">
-              ─ 会社員（30代男性）
-            </figcaption>
-          </figure>
-          <figure className="bg-white dark:bg-gray-700 rounded shadow p-4">
-            <blockquote className="text-sm">
-              「息子の受験勉強に役立つとは…家族全員が使ってます」
-            </blockquote>
-            <figcaption className="text-right mt-2 text-xs text-gray-500">
-              ─ 主婦（50代）
-            </figcaption>
-          </figure>
-        </div>
-        <p className="text-sm">
-          ほかにも「業務が格段に効率化した」「副業の幅が広がった」な
-          ど、多数の喜びの声を頂いています。実際の成功体験から学べる
-          ことこそ、講座の大きな魅力です。
-        </p>
-      </ScrollFadeIn>
 
       {/* 9. よくある質問 */}
       <ScrollFadeIn className="max-w-3xl mx-auto p-4 space-y-4">
