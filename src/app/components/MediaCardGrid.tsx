@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 type MediaItem = {
   icon: string;
@@ -20,9 +21,11 @@ export default function MediaCardGrid({ items }: Props) {
           className="rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-5 bg-white dark:bg-gray-800 hover:shadow-lg transition"
         >
           {item.icon.startsWith('/') ? (
-            <img
+            <Image
               src={item.icon}
               alt={item.title}
+              width={32}
+              height={32}
               className="w-8 h-8 mb-2"
             />
           ) : (
