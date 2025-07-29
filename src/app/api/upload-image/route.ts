@@ -9,6 +9,14 @@ export async function POST(req: Request) {
     if (!file) {
       return NextResponse.json({ error: 'file required' }, { status: 400 });
     }
+    const ALLOWED_TYPES = ['image/png', 'image/jpeg'];
+    const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+    if (!ALLOWED_TYPES.includes(file.type) || file.size > MAX_SIZE) {
+      return NextResponse.json(
+        { error: 'Invalid file type or size' },
+        { status: 400 },
+      );
+    }
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     const filename = path.basename(file.name);
