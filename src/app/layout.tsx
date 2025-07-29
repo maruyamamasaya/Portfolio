@@ -1,6 +1,7 @@
 import './globals.css';
 import './mobile.css';
 import { ReactNode } from 'react';
+import type { Metadata } from 'next';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import BottomNav from './components/BottomNav';
@@ -13,7 +14,7 @@ import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL('https://freehackapp.com'),
   title: 'でじサポ｜パソコン相談室',
   description:
