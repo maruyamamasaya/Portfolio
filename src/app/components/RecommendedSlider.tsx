@@ -23,7 +23,7 @@ export default function RecommendedSlider({ posts }: Props) {
   }, [posts.length, reduce]);
 
   return (
-    <div className="relative w-full aspect-square overflow-hidden mb-4 lg:mb-0">
+    <div className="relative w-full aspect-square overflow-hidden mb-4 md:mb-0">
       {posts.map((post, i) => (
         <Link
           key={post.slug}
