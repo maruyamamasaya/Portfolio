@@ -179,7 +179,7 @@ export default function Header() {
           </ul>
         </nav>
         <div className="flex items-center space-x-4 ml-auto">
-          <div className="hidden sm:block w-48">
+          <div className="hidden sm:block w-36">
             <SearchBar showHistory={false} />
           </div>
           <DarkModeToggle />
