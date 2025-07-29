@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Metadata } from 'next';
 import { getSortedDevPosts } from '@/lib/devPosts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import TagBadge from '../components/TagBadge';
 
-export const metadata: Metadata = {
+export const metadata = {
   robots: { index: false, follow: false },
 };
 

@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { getPost, getSortedPosts, getBacklinks } from '@/lib/posts';
@@ -23,7 +22,7 @@ export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Promise<Metadata> {
+}) {
   try {
     const post = await getPost(params.slug);
     const description = getExcerpt(post.content);

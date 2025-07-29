@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
 import { getCategory, getAllCategorySlugs } from '@/lib/categories';
 import { getPostsByCategory } from '@/lib/posts';
 import BlogNavButtons from '../../components/BlogNavButtons';
@@ -13,7 +12,7 @@ export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Promise<Metadata> {
+}) {
   const cat = getCategory(params.slug);
   return { title: cat ? `Category: ${cat.name}` : 'Not Found' };
 }
