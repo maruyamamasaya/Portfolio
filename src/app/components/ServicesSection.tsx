@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const services = [
   {
     title: 'サイト制作',
@@ -18,7 +20,7 @@ export default function ServicesSection() {
             key={s.title}
             className="p-4 bg-white dark:bg-gray-700 rounded shadow flex flex-col items-center text-center"
           >
-            <img src={s.icon} alt={s.title} className="w-16 h-16 mb-2" />
+            <Image src={s.icon} alt={s.title} width={64} height={64} className="w-16 h-16 mb-2" />
             <h3 className="font-semibold">{s.title}</h3>
             <p className="text-sm">{s.desc}</p>
           </div>

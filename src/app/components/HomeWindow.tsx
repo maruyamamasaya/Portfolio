@@ -6,6 +6,7 @@ import TestimonialsSection from './TestimonialsSection';
 import FAQSection from './FAQSection';
 import CTASection from './CTASection';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Post } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from './ScrollFadeIn';
@@ -51,9 +52,11 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
                 className="flex items-start space-x-4"
               >
                 {post.image && (
-                  <img
+                  <Image
                     src={post.image}
                     alt={post.title}
+                    width={64}
+                    height={64}
                     className="w-16 h-16 object-cover rounded"
                   />
                 )}

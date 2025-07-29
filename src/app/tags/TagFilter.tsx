@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Post } from '@/lib/posts';
 import TagSearch from './TagSearch';
 import Loader from '../components/Loader';
@@ -73,9 +74,11 @@ export default function TagFilter({ tags, posts }: Props) {
               className="flex items-start space-x-4 p-4 bg-white dark:bg-gray-700 rounded-xl shadow-md animate-fadeInUp"
             >
               {post.image && (
-                <img
+                <Image
                   src={post.image}
                   alt={`Thumbnail for ${post.title}`}
+                  width={64}
+                  height={64}
                   className="w-16 h-16 object-cover"
                 />
               )}

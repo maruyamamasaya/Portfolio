@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -125,9 +126,11 @@ export default function Footer() {
         </div>
       </div>
       <div className="bg-gray-900 text-center py-4 text-xs flex items-center justify-center space-x-2">
-        <img
+        <Image
           src="/images/footer_icon.png"
           alt="Footer logo"
+          width={24}
+          height={24}
           className="w-6 h-6"
         />
         <span>&copy; 2025 でじサポ｜パソコン相談室</span>

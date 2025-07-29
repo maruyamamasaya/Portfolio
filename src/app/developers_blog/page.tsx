@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { getSortedDevPosts } from '@/lib/devPosts';
 import BlogNavButtons from '../components/BlogNavButtons';
@@ -23,9 +24,11 @@ export default async function BlogIndex() {
                 className="border-b pb-4 flex items-start space-x-2"
               >
                 {post.image && (
-                  <img
+                  <Image
                     src={post.image}
                     alt={`Thumbnail for ${post.title}`}
+                    width={64}
+                    height={64}
                     className="w-16 h-16 object-cover"
                   />
                 )}

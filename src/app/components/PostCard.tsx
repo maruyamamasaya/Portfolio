@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Post } from '@/lib/posts';
 import Card from './Card';
 import TagBadge from './TagBadge';
@@ -12,9 +13,11 @@ export default function PostCard({ post }: Props) {
     <Card className="p-0 overflow-hidden hover:shadow-lg">
       <Link href={`/blog/${post.slug}`} className="block">
         {post.image && (
-          <img
+          <Image
             src={post.image}
             alt={post.title}
+            width={400}
+            height={160}
             className="w-full h-40 object-cover"
           />
         )}

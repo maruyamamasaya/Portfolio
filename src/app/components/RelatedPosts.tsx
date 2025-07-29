@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Post } from '@/lib/posts';
 
 export default function RelatedPosts({ posts }: { posts: Post[] }) {
@@ -14,9 +15,11 @@ export default function RelatedPosts({ posts }: { posts: Post[] }) {
           >
             <Link href={`/blog/${post.slug}`}>
               {post.image && (
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
+                  width={256}
+                  height={128}
                   className="w-full h-32 object-cover"
                 />
               )}

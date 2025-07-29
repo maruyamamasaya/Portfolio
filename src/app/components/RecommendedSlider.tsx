@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Post } from '@/lib/posts';
 
@@ -30,7 +31,7 @@ export default function RecommendedSlider({ posts }: Props) {
           }`}
         >
           {post.image && (
-            <img
+            <Image
               src={post.image}
               alt={post.title}
               width={400}
