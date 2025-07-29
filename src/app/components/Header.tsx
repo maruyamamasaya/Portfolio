@@ -154,9 +154,6 @@ export default function Header() {
             />
           </Link>
         </h1>
-        <div className="ml-2">
-          <HeaderSearchBox />
-        </div>
         <div className="border-l border-gray-300 pl-4 flex-1">
           <nav className="hidden sm:flex justify-center">
             <ul className="flex gap-3 md:gap-4 text-sm">
@@ -175,6 +172,7 @@ export default function Header() {
           </nav>
         </div>
         <div className="flex items-center space-x-2 ml-2">
+          <HeaderSearchBox />
           <DarkModeToggle />
           <button
             className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2 rounded focus:ring-2 focus:outline-none transition-base"

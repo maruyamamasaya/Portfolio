@@ -15,14 +15,30 @@ export default function HeaderSearchBox() {
   };
 
   return (
-    <form onSubmit={onSubmit} className="">
+    <form onSubmit={onSubmit} className="flex items-center">
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="検索"
-        className="w-32 text-sm px-2 py-1 border rounded"
+        className="w-32 text-sm px-2 py-1 border rounded-l"
       />
+      <button
+        type="submit"
+        aria-label="Search"
+        className="p-2 bg-primary text-white rounded-r"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-4 h-4"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      </button>
     </form>
   );
 }
