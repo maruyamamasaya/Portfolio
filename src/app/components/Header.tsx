@@ -155,7 +155,7 @@ export default function Header() {
           <Link href="/">でじサポ｜パソコン相談室</Link>
         </h1>
         <button
-          className="sm:hidden flex flex-col items-center justify-center w-8 h-8"
+          className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
