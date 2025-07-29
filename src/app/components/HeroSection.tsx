@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 export default function HeroSection() {
   return (
     <section
-      className="relative flex items-center justify-center h-screen bg-center bg-cover bg-fixed section-spacing"
+      className="relative flex items-center justify-center sm:h-screen bg-center bg-cover sm:bg-fixed section-spacing"
       style={{ backgroundImage: 'url("/images/img3.svg")' }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/50 via-purple-500/50 to-pink-500/50" />
