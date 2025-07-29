@@ -1,13 +1,14 @@
 import Link from 'next/link';
-import { getAllTags, getSortedPosts } from '@/lib/posts';
+import { getAllTags, getSortedPosts, getTagCounts } from '@/lib/posts';
 import BlogNavButtons from '../components/BlogNavButtons';
 import TagFilter from './TagFilter';
 
 export default async function TagsPage() {
   const tags = await getAllTags();
+  const tagCounts = await getTagCounts();
   const posts = await getSortedPosts();
-  const displayTags = tags.slice(0, 30);
-  const hasMore = tags.length > 30;
+  const displayTags = tagCounts.slice(0, 30).map((t) => t.tag);
+  const hasMore = tagCounts.length > 30;
   return (
     <div>
       <BlogNavButtons />
