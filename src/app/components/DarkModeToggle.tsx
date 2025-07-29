@@ -9,6 +9,7 @@ export default function DarkModeToggle() {
     <button
       onClick={toggleTheme}
       aria-label="Toggle dark mode"
+      aria-pressed={theme === 'dark'}
       className="ml-2 p-2 rounded-full bg-white/50 dark:bg-gray-700/50 backdrop-blur-md"
     >
       <motion.span
