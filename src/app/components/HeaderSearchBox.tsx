@@ -26,7 +26,7 @@ export default function HeaderSearchBox() {
       <button
         type="submit"
         aria-label="Search"
-        className="p-2 bg-primary text-white rounded-r"
+        className="px-2 py-1 bg-primary text-white rounded-r"
       >
         <svg
           viewBox="0 0 24 24"
