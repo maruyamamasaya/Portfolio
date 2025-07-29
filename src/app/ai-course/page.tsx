@@ -67,7 +67,7 @@ export default function AICoursePage() {
       {/* 1. HERO */}
       <section
         className="relative flex items-center justify-center h-[70vh] text-center bg-center bg-cover bg-fixed"
-        style={{ backgroundImage: 'url("/images/img4.svg")' }}
+        style={{ backgroundImage: 'url("/images/aikouza-top.png")' }}
       >
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative space-y-4 text-white p-4 max-w-xl">
