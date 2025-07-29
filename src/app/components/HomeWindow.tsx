@@ -20,11 +20,6 @@ type HomeWindowProps = {
 export default function HomeWindow({ posts }: HomeWindowProps) {
   return (
     <div className="space-y-12">
-      {/* プロフィールセクション */}
-      <section className="mt-4">
-        <Profile />
-      </section>
-
       {/* Heroセクション */}
       <HeroSection />
 
@@ -33,6 +28,10 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       <WorksSection />
       <TestimonialsSection />
       <FAQSection />
+      {/* プロフィールセクション */}
+      <section className="mt-4">
+        <Profile />
+      </section>
       <CTASection />
 
       {/* おすすめ記事スライダーとブログ一覧 */}
