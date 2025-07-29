@@ -23,6 +23,16 @@ interface ToolModalProps {
 
 export default function ToolModal({ tool, onClose }: ToolModalProps) {
   useEffect(() => {
+    if (tool) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [tool]);
+  useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose();
