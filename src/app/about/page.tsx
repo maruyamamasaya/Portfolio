@@ -9,7 +9,7 @@ import Card from '../components/Card';
 
 export default function About() {
   return (
-    <ScrollFadeIn className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 space-y-10">
+    <ScrollFadeIn className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-10">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">独立系エンジニア × クリエイター</h1>
 
