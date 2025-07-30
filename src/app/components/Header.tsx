@@ -156,7 +156,7 @@ export default function Header() {
         <h1 className="text-xl font-digital font-bold flex items-center">
           <Link href="/">
             <Image
-              src="/images/header_icon.png"
+              src="/image/header_icon.png"
               alt="パソコン相談ならお任せ"
               width={48}
               height={48}
