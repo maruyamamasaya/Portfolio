@@ -1,6 +1,6 @@
 # DigiSapo | PC Support Blog
 
-![demo](public/image/demo.gif)
+![demo](public/images/demo.gif)
 
 DigiSapo is a blog and portfolio site focused on PC troubleshooting and web development tips. Articles are written in Markdown and can be posted directly from the in-browser editor.
 
@@ -23,7 +23,7 @@ DigiSapo is a blog and portfolio site focused on PC troubleshooting and web deve
 
 ## Demo
 
-See `public/image/demo.gif` for a quick look at the UI.
+See `public/images/demo.gif` for a quick look at the UI.
 
 ## Features
 
@@ -45,7 +45,7 @@ See `public/image/demo.gif` for a quick look at the UI.
 ```text
 src/              Application pages and layouts
 src/lib/          Utility modules
-public/image/    Image assets
+public/images/   Image assets
 blog/             Public blog posts
 developers_blog/  Developer-only articles
 ```
@@ -110,7 +110,7 @@ The `/developer_edit` route allows in-browser creation and editing of Markdown a
 
 ## Images
 
-Binary files such as images are not included. Image assets are not managed on GitHub; upload them separately via FTP. Please refrain from creating files through automated uploads or generative AI. Place your own icons and backgrounds under `public/image/` and reference them via `/images/filename`.
+Binary files such as images are not included. Image assets are not managed on GitHub; upload them separately via FTP. Please refrain from creating files through automated uploads or generative AI. Place your own icons and backgrounds under `public/images/` and reference them via `/images/filename`.
 
 | Purpose         | File              | Aspect Ratio | Size      |
 | --------------- | ----------------- | ------------ | --------- |
@@ -120,7 +120,7 @@ Binary files such as images are not included. Image assets are not managed on Gi
 | Favicon         | `favicon.png`     | 1:1          | 32×32     |
 | OGP image       | `eye-catch.png`   | 16:9         | 1200×630  |
 
-Both `favicon.png` and `eye-catch.png` reside in `public/image`. Access them as `/images/favicon.png` and `/images/eye-catch.png`.
+Both `favicon.png` and `eye-catch.png` reside in `public/images`. Access them as `/images/favicon.png` and `/images/eye-catch.png`.
 
 ## Todo
 
