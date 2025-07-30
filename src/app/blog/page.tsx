@@ -8,7 +8,7 @@ export default async function BlogIndex() {
   const rest = posts.slice(3);
 
   return (
-    <div className="blog-container md:flex">
+    <div className="blog-container md:flex py-8">
       <aside className="md:w-1/5 md:pr-4 mb-4 md:mb-0">
         <LeftSidebar />
       </aside>
