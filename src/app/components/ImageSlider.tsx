@@ -49,13 +49,8 @@ export default function ImageSlider({ images }: Props) {
         onPointerLeave={handlePointerUp}
       >
         {images.map((src, i) => (
-          <div key={i} className="flex-shrink-0 w-full h-full relative">
-            <Image
-              src={src}
-              alt={`Slide ${i + 1}`}
-              fill
-              className="object-cover"
-            />
+          <div key={i} className="flex-shrink-0 w-full">
+            <Image src={src} alt={`Slide ${i + 1}`} fill className="object-cover" />
           </div>
         ))}
       </div>
