@@ -120,7 +120,7 @@ Binary files such as images are not included. Image assets are not managed on Gi
 | Favicon         | `favicon.png`     | 1:1          | 32×32     |
 | OGP image       | `eye-catch.png`   | 16:9         | 1200×630  |
 
-Both `favicon.png` and `eye-catch.png` reside in `public/images`. Access them as `/images/favicon.png` and `/images/eye-catch.png`.
+Place `header_icon.png`, `footer_icon.png`, `favicon.png`, and `eye-catch.png` under `public/images/` and reference them via `/images/<filename>`.
 
 ## Todo
 

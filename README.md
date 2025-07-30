@@ -148,7 +148,7 @@ BASIC_AUTH_PASSWORD=your_password
 | ファビコン       | `favicon.png`     | 1:1              | 32×32          |
 | OGP 画像         | `eye-catch.png`   | 16:9             | 1200×630       |
 
-`favicon.png` と `eye-catch.png` は `public/images` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
+`header_icon.png`、`footer_icon.png`、`favicon.png`、`eye-catch.png` はすべて `public/images` ディレクトリに置き、利用時は `/images/ファイル名` を指定してください。
 ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.png` です。
 
 ## Todo
