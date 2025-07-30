@@ -7,7 +7,11 @@ const works = [
   },
   {
     title: '予約システム導入',
-    images: ['/images/img3.svg', '/images/img4.svg', '/images/img5.svg'],
+    images: [
+      '/images/yoyaku-intro/1.png',
+      '/images/yoyaku-intro/2.png',
+      '/images/yoyaku-intro/3.png',
+    ],
   },
   {
     title: 'デザイン制作',
