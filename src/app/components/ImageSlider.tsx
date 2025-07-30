@@ -40,7 +40,7 @@ export default function ImageSlider({ images }: Props) {
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full max-w-[700px] mx-auto overflow-hidden aspect-square">
       <div
         className="flex motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out"
         style={{ transform: `translateX(-${index * 100}%)` }}
@@ -50,13 +50,7 @@ export default function ImageSlider({ images }: Props) {
       >
         {images.map((src, i) => (
           <div key={i} className="flex-shrink-0 w-full">
-            <Image
-              src={src}
-              alt={`Slide ${i + 1}`}
-              width={600}
-              height={400}
-              className="w-full h-auto object-cover"
-            />
+            <Image src={src} alt={`Slide ${i + 1}`} fill className="object-cover" />
           </div>
         ))}
       </div>
