@@ -175,7 +175,7 @@ export default function Footer() {
       </div>
       <div className="bg-gray-900 text-center py-4 text-xs flex items-center justify-center space-x-2">
         <Image
-          src="/image/footer_icon.png"
+          src="/images/footer_icon.png"
           alt="Footer logo"
           width={24}
           height={24}
