@@ -3,19 +3,11 @@ import ImageSlider from './ImageSlider';
 const works = [
   {
     title: 'LINE公式アカウント',
-    images: [
-      '/images/line-intro/1.png',
-      '/images/line-intro/2.png',
-      '/images/line-intro/3.png',
-    ],
+    images: ['/images/line-intro/1.png', '/images/line-intro/2.png', '/images/line-intro/3.png'],
   },
   {
     title: '予約システム導入',
-    images: [
-      '/images/yoyaku-intro/1.png',
-      '/images/yoyaku-intro/2.png',
-      '/images/yoyaku-intro/3.png',
-    ],
+    images: ['/images/yoyaku-intro/1.png', '/images/yoyaku-intro/2.png', '/images/yoyaku-intro/3.png'],
   },
   {
     title: 'デザイン制作',
