@@ -6,5 +6,9 @@ export const metadata = {
 
 export default async function HomePage() {
   const posts = await getSortedPosts();
-  return <HomeWindow posts={posts} />;
+  return (
+    <div className="-mx-4 sm:-mx-6 md:-mx-8">
+      <HomeWindow posts={posts} />
+    </div>
+  );
 }
