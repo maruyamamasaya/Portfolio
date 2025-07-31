@@ -12,11 +12,11 @@ const categories: Category[] = [
     desc: 'リッチメニューやクーポン配信など店舗別にカスタマイズ。',
     slides: [
       {
-        src: '/images/img1.svg',
+        src: '/images/line-intro/1.png',
         caption: 'LINEリッチメニュー：店舗別カスタマイズ対応',
       },
-      { src: '/images/img2.svg', caption: '友だち追加クーポン' },
-      { src: '/images/img3.svg', caption: '自動応答チャット' },
+      { src: '/images/line-intro/2.png', caption: '友だち追加クーポン' },
+      { src: '/images/line-intro/3.png', caption: '自動応答チャット' },
     ],
   },
   {

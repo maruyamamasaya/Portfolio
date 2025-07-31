@@ -3,7 +3,11 @@ import ImageSlider from './ImageSlider';
 const works = [
   {
     title: 'LINE公式アカウント',
-    images: ['/images/img1.svg', '/images/img2.svg', '/images/img3.svg'],
+    images: [
+      '/images/line-intro/1.png',
+      '/images/line-intro/2.png',
+      '/images/line-intro/3.png',
+    ],
   },
   {
     title: '予約システム導入',
