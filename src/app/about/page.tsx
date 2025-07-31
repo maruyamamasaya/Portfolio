@@ -1,5 +1,4 @@
 import BlogNavButtons from '../components/BlogNavButtons';
-import ScrollFadeIn from '../components/ScrollFadeIn';
 import CTASection from '../components/CTASection';
 import ToolsGrid from '../components/ToolsGrid';
 import SkillsGrid from '../components/SkillsGrid';
@@ -13,7 +12,7 @@ export const metadata = {
 
 export default function About() {
   return (
-    <ScrollFadeIn className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-10">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-10">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">
         独立系エンジニア × クリエイター
@@ -171,6 +170,6 @@ export default function About() {
         href="mailto:contact@freehackapp.com"
         label="📩 お仕事のご相談はこちら"
       />
-    </ScrollFadeIn>
+    </div>
   );
 }
