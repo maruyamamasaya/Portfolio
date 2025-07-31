@@ -23,10 +23,19 @@ export default function SocialLinks() {
           </a>
         </li>
         <li>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-1 hover:text-primary">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-              <path d="M4 4l16 16M20 4L4 20" />
-            </svg>
+          <a
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-1 hover:text-primary"
+          >
+            <Image
+              src="/images/X.png"
+              alt="X"
+              width={20}
+              height={20}
+              className="w-4 h-4"
+            />
             <span>X</span>
           </a>
         </li>
@@ -72,7 +81,7 @@ export default function SocialLinks() {
             className="inline-flex items-center space-x-1 hover:text-primary"
           >
             <Image
-              src="/images/note-200px.png"
+              src="/images/note.png"
               alt="note"
               width={20}
               height={20}
