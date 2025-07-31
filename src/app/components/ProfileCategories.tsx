@@ -23,9 +23,9 @@ const categories: Category[] = [
     title: '予約システム導入',
     desc: '小規模から大規模まで柔軟にサポート。',
     slides: [
-      { src: '/images/img3.svg', caption: '予約画面カスタム' },
-      { src: '/images/img4.svg', caption: '多店舗管理機能' },
-      { src: '/images/img5.svg', caption: 'データ分析レポート' },
+      { src: '/images/yoyaku-intro/1.png', caption: '予約画面カスタム' },
+      { src: '/images/yoyaku-intro/2.png', caption: '多店舗管理機能' },
+      { src: '/images/yoyaku-intro/3.png', caption: 'データ分析レポート' },
     ],
   },
   {
