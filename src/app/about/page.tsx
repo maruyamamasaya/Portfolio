@@ -86,7 +86,7 @@ export default function About() {
         <MediaCardGrid
           items={[
             {
-              icon: '/images/arcana/arcana-Youtube.png',
+              icon: '/images/arcana-Youtube.png',
               title: 'Arcana - アルカナ チャンネル',
               description:
                 'エンタメ系ショート動画作成。TCGオフィシャルのルールやカード紹介をするチャンネル。',
