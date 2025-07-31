@@ -6,9 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && npm run lint:check",
     "format": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "lint:check": "node scripts/check-default-export-case.js"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
