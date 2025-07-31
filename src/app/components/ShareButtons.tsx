@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function ShareButtons({ title }: { title: string }) {
   const [url, setUrl] = useState('');
@@ -20,13 +21,7 @@ export default function ShareButtons({ title }: { title: string }) {
         className="bg-[#000000] hover:opacity-90 px-4 py-2 rounded-md text-white text-sm font-medium flex items-center gap-2 transition"
         aria-label="Xでシェア"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          className="w-4 h-4 fill-current"
-        >
-          <path d="M17.64 3H21L14.5 10.69 22.5 21h-5.99L11.47 14.5 5.8 21H2.36l6.97-8.28L1.64 3h5.98l4.65 5.84L17.64 3z" />
-        </svg>
+        <Image src="/images/X.png" alt="X" width={16} height={16} className="w-4 h-4" />
         Xでシェア
       </a>
       <a

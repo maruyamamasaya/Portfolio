@@ -69,13 +69,13 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
+                <Image
+                  src="/images/X.png"
+                  alt="X"
+                  width={20}
+                  height={20}
                   className="w-4 h-4"
-                >
-                  <path d="M4 4l16 16M20 4L4 20" />
-                </svg>
+                />
                 <span>X</span>
               </a>
             </li>
@@ -121,7 +121,7 @@ export default function Footer() {
                 className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
               >
                 <Image
-                  src="/images/note-200px.png"
+                  src="/images/note.png"
                   alt="note"
                   width={20}
                   height={20}

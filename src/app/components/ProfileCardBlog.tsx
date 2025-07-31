@@ -16,9 +16,7 @@ export default function ProfileCardBlog() {
         <p className="text-sm leading-relaxed">分からないを分かるに変える</p>
         <div className="flex justify-center sm:justify-start space-x-3 my-2">
           <Link href="https://x.com" aria-label="X" className="hover:text-primary transition-base">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-              <path d="M17.64 3H21L14.5 10.69 22.5 21h-5.99L11.47 14.5 5.8 21H2.36l6.97-8.28L1.64 3h5.98l4.65 5.84L17.64 3z" />
-            </svg>
+            <Image src="/images/X.png" alt="X" width={20} height={20} className="w-5 h-5" />
           </Link>
           <Link href="https://github.com" aria-label="GitHub" className="hover:text-primary transition-base">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5 fill-current">
@@ -26,7 +24,7 @@ export default function ProfileCardBlog() {
             </svg>
           </Link>
           <Link href="https://note.com/freelancehack" aria-label="note" className="hover:text-primary transition-base">
-            <Image src="/images/note-200px.png" alt="note" width={20} height={20} className="w-5 h-5" />
+            <Image src="/images/note.png" alt="note" width={20} height={20} className="w-5 h-5" />
           </Link>
           <Link href="https://lin.ee/21wyOGD" aria-label="LINE公式アカウント" className="hover:text-primary transition-base">
             <Image src="/images/LINEdevelop-200px.png" alt="LINE公式アカウント" width={20} height={20} className="w-5 h-5" />
