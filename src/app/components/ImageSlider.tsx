@@ -53,9 +53,9 @@ export default function ImageSlider({ images }: Props) {
             <Image
               src={src}
               alt={`Slide ${i + 1}`}
-              width={600}
-              height={400}
-              className="w-full h-auto object-cover"
+              width={700}
+              height={700}
+              className="w-full h-auto max-w-[700px] aspect-square object-cover"
             />
           </div>
         ))}
