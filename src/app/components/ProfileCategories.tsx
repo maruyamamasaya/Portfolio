@@ -12,20 +12,35 @@ const categories: Category[] = [
     desc: 'リッチメニューやクーポン配信など店舗別にカスタマイズ。',
     slides: [
       {
-        src: '/images/line-intro/1.png',
+        src: 'https://storage.googleapis.com/studio-design-asset-files/projects/BmqMl8R4OX/line-intro/1.png',
         caption: 'LINEリッチメニュー：店舗別カスタマイズ対応',
       },
-      { src: '/images/line-intro/2.png', caption: '友だち追加クーポン' },
-      { src: '/images/line-intro/3.png', caption: '自動応答チャット' },
+      {
+        src: 'https://storage.googleapis.com/studio-design-asset-files/projects/BmqMl8R4OX/line-intro/2.png',
+        caption: '友だち追加クーポン',
+      },
+      {
+        src: 'https://storage.googleapis.com/studio-design-asset-files/projects/BmqMl8R4OX/line-intro/3.png',
+        caption: '自動応答チャット',
+      },
     ],
   },
   {
     title: '予約システム導入',
     desc: '小規模から大規模まで柔軟にサポート。',
     slides: [
-      { src: '/images/yoyaku-intro/1.png', caption: '予約画面カスタム' },
-      { src: '/images/yoyaku-intro/2.png', caption: '多店舗管理機能' },
-      { src: '/images/yoyaku-intro/3.png', caption: 'データ分析レポート' },
+      {
+        src: 'https://storage.googleapis.com/studio-design-asset-files/projects/BmqMl8R4OX/yoyaku-intro/1.png',
+        caption: '予約画面カスタム',
+      },
+      {
+        src: 'https://storage.googleapis.com/studio-design-asset-files/projects/BmqMl8R4OX/yoyaku-intro/2.png',
+        caption: '多店舗管理機能',
+      },
+      {
+        src: 'https://storage.googleapis.com/studio-design-asset-files/projects/BmqMl8R4OX/yoyaku-intro/3.png',
+        caption: 'データ分析レポート',
+      },
     ],
   },
   {
