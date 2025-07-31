@@ -32,9 +32,9 @@ const categories: Category[] = [
     title: 'デザイン制作',
     desc: 'ロゴ・バナー・印刷物まで幅広く対応。',
     slides: [
-      { src: '/images/img5.svg', caption: 'ブランドロゴ提案' },
-      { src: '/images/img1.svg', caption: 'バナー広告デザイン' },
-      { src: '/images/img2.svg', caption: '名刺・チラシ制作' },
+      { src: '/images/design-intro/1.png', caption: 'ブランドロゴ提案' },
+      { src: '/images/design-intro/2.png', caption: 'バナー広告デザイン' },
+      { src: '/images/design-intro/3.png', caption: '名刺・チラシ制作' },
     ],
   },
 ];
