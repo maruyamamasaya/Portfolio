@@ -2,14 +2,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
 import DarkModeToggle from './DarkModeToggle';
-import Drawer from './Drawer';
 import HeaderSearchBox from './HeaderSearchBox';
 
 export default function Header() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
   const navItems = [
     {
       href: '/',
@@ -184,32 +181,7 @@ export default function Header() {
         <div className="flex items-center space-x-2 ml-2">
           <HeaderSearchBox />
           <DarkModeToggle />
-          <button
-            className="sm:hidden flex flex-col items-center justify-center w-10 h-10 p-2 rounded focus:ring-2 focus:outline-none transition-base"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1" />
-            <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200 mb-1" />
-            <span className="block w-6 h-0.5 bg-gray-800 dark:bg-gray-200" />
-          </button>
         </div>
-        <Drawer open={open} onClose={() => setOpen(false)}>
-          <ul className="flex flex-col space-y-4 mt-8">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center space-x-2 rounded min-h-[44px] min-w-[44px] px-3 py-2 w-full text-center hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary focus:ring-2 focus:ring-primary focus:outline-none transition-base"
-                >
-                  {item.icon}
-                  <span>{item.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Drawer>
       </div>
       {/* Category links removed */}
     </header>
