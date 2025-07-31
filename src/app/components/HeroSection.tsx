@@ -18,6 +18,7 @@ export default function HeroSection() {
           <h3 className="font-bold text-center">活動ポリシー</h3>
           <p className="text-center">
             「信頼される技術者であること」を最優先に、ユーザー視点での価値提供を心がけています。
+            <br />
             単なる知識提供や技術支援ではなく、本当に“役に立つ”体験を届けることを軸に活動しています。
           </p>
         </div>
