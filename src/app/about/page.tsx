@@ -1,3 +1,5 @@
+'use client';
+
 import BlogNavButtons from '../components/BlogNavButtons';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import ProfileCategories from '../components/ProfileCategories';
