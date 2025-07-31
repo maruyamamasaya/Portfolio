@@ -6,11 +6,15 @@ import CTASection from '../components/CTASection';
 import ToolsGrid from '../components/ToolsGrid';
 import MediaCardGrid from '../components/MediaCardGrid';
 import Card from '../components/Card';
+import dynamic from 'next/dynamic';
+
+const ClientOnly = dynamic(() => import('./ClientOnlyAbout'), { ssr: false });
 
 export default function About() {
   return (
     <ScrollFadeIn className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-10">
       <BlogNavButtons />
+      <ClientOnly />
       <h1 className="text-3xl font-extrabold mb-6">独立系エンジニア × クリエイター</h1>
 
       {/* プロフィール */}
