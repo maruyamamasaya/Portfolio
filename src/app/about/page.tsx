@@ -87,7 +87,7 @@ export default function About() {
         <MediaCardGrid
           items={[
             {
-              icon: '/images/arcana.png',
+              icon: '/images/arcana/arcanacard00001.svg',
               title: 'Arcana - アルカナ チャンネル',
               description:
                 'エンタメ系ショート動画作成。TCGオフィシャルのルールやカード紹介をするチャンネル。',
@@ -169,7 +169,7 @@ export default function About() {
 
       <CTASection
         href="mailto:contact@freehackapp.com"
-        label="\uD83D\uDCE9 お仕事のご相談はこちら"
+        label="📩 お仕事のご相談はこちら"
       />
     </ScrollFadeIn>
   );
