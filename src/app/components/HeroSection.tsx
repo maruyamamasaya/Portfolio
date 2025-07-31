@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <section className="section-spacing">
+    <section className="mb-6 sm:mb-12 mt-0 sm:mt-12">
       {/* Mobile layout: image first, text below */}
       <div className="sm:hidden space-y-2">
         <div className="-mx-4">
