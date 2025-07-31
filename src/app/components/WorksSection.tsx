@@ -19,7 +19,11 @@ const works = [
   },
   {
     title: 'デザイン制作',
-    images: ['/images/img5.svg', '/images/img1.svg', '/images/img2.svg'],
+    images: [
+      '/images/design-intro/1.png',
+      '/images/design-intro/2.png',
+      '/images/design-intro/3.png',
+    ],
   },
 ];
 
