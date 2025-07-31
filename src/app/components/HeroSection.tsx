@@ -8,9 +8,17 @@ export default function HeroSection() {
     >
       {/* 黒80%のシンプルなオーバーレイに変更 */}
       <div className="absolute inset-0 bg-black/80" />
+      {/* 活動ポリシー - デスクトップのみ表示 */}
+      <div className="hidden md:block absolute top-0 left-0 w-full text-center space-y-1 p-4 bg-black/50 backdrop-blur">
+        <h3 className="text-lg font-semibold text-white">活動ポリシー</h3>
+        <p className="text-sm text-white">
+          「信頼される技術者であること」を最優先に、ユーザー視点での価値提供を心がけています。
+          単なる知識提供や技術支援ではなく、本当に“役に立つ”体験を届けることを軸に活動しています。
+        </p>
+      </div>
       <div className="relative text-center space-y-4 bg-black/50 p-4 rounded">
         <h2 className="text-3xl font-bold text-balance text-white">
-          分からないを<span className="accent-text">分かる</span>に変える
+          日々の煩雑業務を<span className="accent-text">テクノロジー</span>でスッキリ改善！
         </h2>
         <p className="text-white">パソコンやIT活用のお悩みをサポートします。</p>
         <Link
