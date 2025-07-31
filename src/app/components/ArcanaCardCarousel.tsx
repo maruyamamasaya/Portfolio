@@ -10,7 +10,7 @@ export interface ArcanaCardCarouselProps {
 }
 
 export const defaultImages = Array.from({ length: 12 }, (_, i) =>
-  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.png`,
+  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.svg`,
 );
 
 export default function ArcanaCardCarousel({
@@ -32,7 +32,7 @@ export default function ArcanaCardCarousel({
   const next = () => setIndex((i) => (i + 1) % images.length);
 
   return (
-    <div className="relative w-[700px] h-[990px] mx-auto">
+    <div className="relative w-[300px] h-[425px] sm:w-[700px] sm:h-[990px] mx-auto">
       {images.map((src, i) => (
         <Image
           key={src}
