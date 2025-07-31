@@ -23,7 +23,7 @@ export default function RecommendedSlider({ posts }: Props) {
   }, [posts.length, reduce]);
 
   return (
-    <div className="relative w-full aspect-square overflow-hidden mb-4 md:mb-0">
+    <div className="relative w-full aspect-[128/67] overflow-hidden mb-4 md:mb-0">
       {posts.map((post, i) => (
         <Link
           key={post.slug}
@@ -36,8 +36,8 @@ export default function RecommendedSlider({ posts }: Props) {
             <Image
               src={post.image}
               alt={post.title}
-              width={400}
-              height={400}
+              width={800}
+              height={419}
               className="w-full h-full object-cover"
             />
           )}

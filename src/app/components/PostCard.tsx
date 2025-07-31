@@ -17,9 +17,9 @@ export default function PostCard({ post }: Props) {
         <Image
           src={post.image}
           alt={post.title}
-          width={96}
-          height={96}
-          className="w-24 h-24 object-cover rounded-lg border shadow-sm"
+          width={128}
+          height={67}
+          className="w-32 h-[67px] object-cover rounded-lg border shadow-sm"
         />
       )}
       <div className="flex-1">

@@ -19,8 +19,8 @@ export default function RelatedPosts({ posts }: { posts: Post[] }) {
                   src={post.image}
                   alt={post.title}
                   width={256}
-                  height={128}
-                  className="w-full h-32 object-cover"
+                  height={134}
+                  className="w-full h-[134px] object-cover"
                 />
               )}
               <div className="p-2 text-sm">{post.title}</div>

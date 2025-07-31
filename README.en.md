@@ -115,10 +115,10 @@ Binary files such as images are not included. Image assets are not managed on Gi
 | Purpose         | File              | Aspect Ratio | Size      |
 | --------------- | ----------------- | ------------ | --------- |
 | Header icon     | `header_icon.png` | 1:1          | 64×64     |
-| Hero background | `hero_bg.png`     | 16:9         | 1920×1080 |
+| Hero background | `hero_bg.png`     | 128:67       | 1280×670 |
 | Footer icon     | `footer_icon.png` | 1:1          | 48×48     |
 | Favicon         | `favicon.png`     | 1:1          | 32×32     |
-| OGP image       | `eye-catch.png`   | 16:9         | 1200×630  |
+| OGP image       | `eye-catch.png`   | 128:67       | 1280×670  |
 
 Both `favicon.png` and `eye-catch.png` reside in `public/image`. Access them as `/images/favicon.png` and `/images/eye-catch.png`.
 
