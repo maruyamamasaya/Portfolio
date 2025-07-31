@@ -6,7 +6,8 @@ export default function HeroSection() {
       className="relative flex items-center justify-center sm:h-screen bg-center bg-cover sm:bg-fixed section-spacing"
       style={{ backgroundImage: 'url("/images/top.png")' }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/50 via-purple-500/50 to-pink-500/50" />
+      {/* 黒80%のシンプルなオーバーレイに変更 */}
+      <div className="absolute inset-0 bg-black/80" />
       <div className="relative text-center space-y-4 bg-black/50 p-4 rounded">
         <h2 className="text-3xl font-bold text-balance text-white">
           分からないを<span className="accent-text">分かる</span>に変える
