@@ -4,10 +4,18 @@ const services = [
   {
     title: 'サイト制作',
     desc: 'WordPressや静的サイト制作',
-    icon: '/images/img1.svg',
+    icon: '/images/sitecreate-img.jpg',
   },
-  { title: 'デザイン', desc: 'ロゴやバナー作成', icon: '/images/img2.svg' },
-  { title: 'ITサポート', desc: '導入・運用支援', icon: '/images/img3.svg' },
+  {
+    title: 'デザイン',
+    desc: 'ロゴやバナー作成',
+    icon: '/images/desing-img.jpg',
+  },
+  {
+    title: 'ITサポート',
+    desc: '導入・運用支援',
+    icon: '/images/support-img.jpg',
+  },
 ];
 
 const serviceTable = [
@@ -44,9 +52,9 @@ export default function ServicesSection() {
             <Image
               src={s.icon}
               alt={s.title}
-              width={64}
-              height={64}
-              className="w-16 h-16 mb-2"
+              width={400}
+              height={300}
+              className="w-full h-auto max-w-[400px] mb-2 object-contain"
             />
             <h3 className="font-semibold">{s.title}</h3>
             <p className="text-sm">{s.desc}</p>
