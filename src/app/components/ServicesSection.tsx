@@ -13,7 +13,8 @@ const services = [
 const serviceTable = [
   {
     category: 'サイト制作',
-    content: 'WordPressや静的サイトなど、目的に合ったホームページを提案・構築します。',
+    content:
+      'WordPressや静的サイトなど、目的に合ったホームページを提案・構築します。',
   },
   {
     category: 'デザイン',
@@ -57,8 +58,8 @@ export default function ServicesSection() {
         <table className="w-full border-collapse shadow rounded-lg overflow-hidden text-sm">
           <thead>
             <tr className="font-bold bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-              <th className="p-4 text-left">サービスカテゴリ</th>
-              <th className="p-4 text-left">内容</th>
+              <th className="p-4 text-left w-2/5">サービスカテゴリ</th>
+              <th className="p-4 text-left w-3/5">内容</th>
             </tr>
           </thead>
           <tbody>
@@ -71,8 +72,8 @@ export default function ServicesSection() {
                     : 'bg-gray-50 dark:bg-gray-700'
                 }
               >
-                <td className="p-4">{row.category}</td>
-                <td className="p-4">{row.content}</td>
+                <td className="p-4 w-2/5">{row.category}</td>
+                <td className="p-4 w-3/5">{row.content}</td>
               </tr>
             ))}
           </tbody>
