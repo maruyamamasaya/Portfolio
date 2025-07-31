@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import ScrollFadeIn from './ScrollFadeIn';
 import RecommendedSlider from './RecommendedSlider';
-import PostCard from './PostCard';
+import HomePostCard from './HomePostCard';
 
 type HomeWindowProps = {
   posts: Post[];
@@ -40,7 +40,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
           <ul className="space-y-4 md:space-y-2">
             {posts.slice(0, 6).map((post, i) => (
               <ScrollFadeIn key={post.slug} as="li" delay={i * 100}>
-                <PostCard post={post} />
+                <HomePostCard post={post} />
               </ScrollFadeIn>
             ))}
           </ul>
