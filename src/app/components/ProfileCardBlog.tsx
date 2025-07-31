@@ -5,7 +5,7 @@ export default function ProfileCardBlog() {
   return (
     <div className="flex flex-col sm:flex-row sm:items-start items-center gap-6 sm:gap-8">
       <Image
-        src="/images/img1.svg"
+        src="/images/profile.jpg"
         alt="プロフィール画像"
         width={96}
         height={96}

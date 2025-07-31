@@ -8,7 +8,7 @@ export default function Profile() {
       <h2 className="text-2xl font-bold mb-4 border-b pb-2">プロフィール</h2>
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
         <Image
-          src="/images/img1.svg"
+          src="/images/profile.jpg"
           alt="プロフィール画像"
           width={128}
           height={128}
