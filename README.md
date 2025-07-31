@@ -143,10 +143,10 @@ BASIC_AUTH_PASSWORD=your_password
 | 用途             | ファイル名        | 推奨アスペクト比 | 推奨ピクセル数 |
 | ---------------- | ----------------- | ---------------- | -------------- |
 | ヘッダーアイコン | `header_icon.png` | 1:1              | 64×64          |
-| ヒーロー背景     | `hero_bg.png`     | 16:9             | 1920×1080      |
+| ヒーロー背景     | `hero_bg.png`     | 128:67           | 1280×670       |
 | フッターアイコン | `footer_icon.png` | 1:1              | 48×48          |
 | ファビコン       | `favicon.png`     | 1:1              | 32×32          |
-| OGP 画像         | `eye-catch.png`   | 16:9             | 1200×630       |
+| OGP 画像         | `eye-catch.png`   | 128:67           | 1280×670       |
 
 `favicon.png` と `eye-catch.png` は `public/image` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
 ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.png` です。
