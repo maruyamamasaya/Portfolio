@@ -95,7 +95,7 @@ export default function Calendar() {
             dayMap.get(selected)!.map((post) => (
               <Link
                 key={post.slug}
-                href={`/developers_blog/${post.slug}`}
+                href={`/blog/${post.slug}`}
                 className="block hover:underline transition-base"
               >
                 {post.title}

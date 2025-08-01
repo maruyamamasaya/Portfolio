@@ -47,7 +47,6 @@ src/              Application pages and layouts
 src/lib/          Utility modules
 public/image/    Image assets
 blog/             Public blog posts
-developers_blog/  Developer-only articles
 ```
 
 ## Markdown Format

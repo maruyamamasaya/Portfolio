@@ -7,16 +7,14 @@ import { categories } from '../../../data/categories';
 
 const baseMap = {
   blog: 'posts',
-  dev: 'dev-posts',
 } as const;
 
 const pathMap = {
   blog: '/blog',
-  dev: '/developers_blog',
 } as const;
 
 export default function DeveloperEditor() {
-  const [target, setTarget] = useState<'blog' | 'dev'>('dev');
+  const [target, setTarget] = useState<'blog'>('blog');
   const [files, setFiles] = useState<string[]>([]);
   const [selected, setSelected] = useState('');
   const [content, setContent] = useState('');
@@ -85,14 +83,14 @@ export default function DeveloperEditor() {
     }
   };
 
-  const newFile = (name: string) => {
+  const newFile = (name: string, category: string) => {
     const safe = name.endsWith('.md') ? name : `${name}.md`;
     setSelected(safe);
     const date = new Date().toISOString().slice(0, 10);
     setMeta({
       title: '',
       date,
-      category: '',
+      category,
       tags: '',
       image: '/images/example.png',
       updated: date,
@@ -107,7 +105,7 @@ export default function DeveloperEditor() {
       setStatus('ファイル名が不正です');
       return;
     }
-    newFile(trimmed);
+    newFile(trimmed, newCategory);
     setNewFilename('');
   };
 
@@ -198,10 +196,9 @@ export default function DeveloperEditor() {
           <select
             className="border p-1 w-full"
             value={target}
-            onChange={(e) => setTarget(e.target.value as 'blog' | 'dev')}
+            onChange={(e) => setTarget(e.target.value as 'blog')}
           >
             <option value="blog">blog</option>
-            <option value="dev">developers_blog</option>
           </select>
         </div>
         <ul className="space-y-2">
@@ -312,11 +309,17 @@ export default function DeveloperEditor() {
           </div>
           <div>
             <label className="block text-sm">category</label>
-            <input
+            <select
               className="border p-1 w-full"
               value={meta.category}
               onChange={(e) => setMeta({ ...meta, category: e.target.value })}
-            />
+            >
+              {categories.map((c) => (
+                <option key={c.slug} value={c.slug}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label className="block text-sm">tags (,)</label>
