@@ -1,8 +1,8 @@
-# DigiSapo | PC Support Blog
+# DigiGoose | PC Support Blog
 
 ![demo](public/image/demo.gif)
 
-DigiSapo is a blog and portfolio site focused on PC troubleshooting and web development tips. Articles are written in Markdown and can be posted directly from the in-browser editor.
+DigiGoose is a blog and portfolio site focused on PC troubleshooting and web development tips. Articles are written in Markdown and can be posted directly from the in-browser editor.
 
 ## Table of Contents
 

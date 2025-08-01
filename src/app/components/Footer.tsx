@@ -181,7 +181,7 @@ export default function Footer() {
           height={24}
           className="w-6 h-6"
         />
-        <span>&copy; 2025 でじサポ｜パソコン相談室</span>
+        <span>&copy; 2025 DigiGoose | パソコン・IT活用のお悩みサポート</span>
       </div>
     </footer>
   );
