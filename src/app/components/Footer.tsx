@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 via-indigo-900 to-purple-800 text-white mt-8 text-sm border-t border-gray-200 dark:border-gray-700">
+    <footer className="bg-gradient-to-r from-gray-900 via-indigo-900 to-purple-800 dark:from-gray-950 dark:via-indigo-950 dark:to-purple-900 text-white mt-8 text-sm border-t border-gray-200 dark:border-gray-700">
       <div className="container mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
           <h2 className="font-semibold mb-2 sr-only">ナビゲーション</h2>
