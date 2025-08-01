@@ -8,7 +8,7 @@ interface Props {
 
 export default function TagListHeader({ tagCounts }: Props) {
   const pathname = usePathname();
-  const show = pathname === '/' || pathname.startsWith('/blog');
+  const show = pathname === '/' || pathname === '/blog';
   if (!show) return null;
   return <TagListClient tagCounts={tagCounts} />;
 }
