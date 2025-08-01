@@ -142,7 +142,7 @@ BASIC_AUTH_PASSWORD=your_password
 
 | 用途             | ファイル名        | 推奨アスペクト比 | 推奨ピクセル数 |
 | ---------------- | ----------------- | ---------------- | -------------- |
-| ヘッダーアイコン | `header_icon.png` | 1:1              | 64×64          |
+| ヘッダーアイコン | `headericon-light.png`, `headericon-dark.png` | 3:1              | 192×64         |
 | ヒーロー背景     | `hero_bg.png`     | 128:67           | 1280×670       |
 | フッターアイコン | `footer_icon.png` | 1:1              | 48×48          |
 | ファビコン       | `favicon.png`     | 1:1              | 32×32          |
