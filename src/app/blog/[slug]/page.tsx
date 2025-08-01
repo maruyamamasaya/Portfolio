@@ -12,6 +12,7 @@ import ShareButtons from '@/app/components/ShareButtons';
 import PrevNextLinks from '@/app/components/PrevNextLinks';
 import RelatedPosts from '@/app/components/RelatedPosts';
 import CodeCopyInit from '@/app/components/CodeCopyInit';
+import TagListWrapper from '@/app/components/TagListWrapper';
 
 export async function generateStaticParams() {
   const posts = await getSortedPosts();
@@ -62,6 +63,9 @@ export default async function BlogPost({
     const { html, headings } = await markdownToHtml(post.content);
     return (
       <div className="blog-container">
+        <div className="hidden sm:block mb-4">
+          <TagListWrapper />
+        </div>
         <BlogNavButtons />
         <PostLayout
           title={post.title}
