@@ -4,10 +4,14 @@ export default function HeroSection() {
   return (
     <section className="mb-6 sm:mb-12 mt-0 sm:mt-12">
       {/* Mobile layout: image first, text below */}
-      <div className="sm:hidden space-y-2">
-        <div className="-mx-4">
-          <img src="/images/top.png" alt="" className="w-screen h-[100vw] object-cover" />
-        </div>
+        <div className="sm:hidden space-y-2">
+          <div className="mx-[5px]">
+            <img
+              src="/images/top.png"
+              alt=""
+              className="w-full aspect-square object-cover"
+            />
+          </div>
         <div className="text-center space-y-2">
           <h2 className="text-xl font-bold text-balance">
             テクノロジーで日々の煩雑業務を<span className="accent-text">スッキリ</span>解決！
