@@ -1,7 +1,10 @@
 'use client';
 import React from 'react';
 
-const levelGuide = '★★★＝実務上級 / ★★＝実務経験あり / ★＝学習中';
+const introText =
+  'AWSを基盤としたWebサイト・業務システムの構築を中心に、幅広い分野で実務経験を積んできました。予約システムやレンタル管理サイトの開発から、飲食チェーン向けサイト運用やSEO対策、LINE Messaging APIによるチャットボット開発まで対応可能です。基本情報技術者をはじめとする資格を活かし、インフラ知識を交えた柔軟な提案・構築を行います。スクレイピングやHTMLメール、LP制作など実務で使えるコーディングも多数経験しています。';
+
+const levelGuide = '★★★＝実務上級 / ★★＝実務経験あり';
 
 const categories = [
   {
@@ -58,7 +61,7 @@ const categories = [
         name: 'Supabase',
         icon: '🍋',
         level: '★',
-        desc: '個人開発で導入。Postgres連携を学習中。',
+        desc: '個人開発で導入。Postgres連携を実践中。',
       },
     ],
   },
@@ -104,7 +107,7 @@ const categories = [
         name: 'Docker',
         icon: '🐳',
         level: '★',
-        desc: '開発環境のコンテナ化を学習中。',
+        desc: '開発環境のコンテナ化を実施中。',
       },
       {
         name: 'VSCode',
@@ -120,6 +123,9 @@ export default function SkillsGrid() {
   return (
     <section className="space-y-6">
       <h2 className="text-2xl font-bold mb-4">スキルセット</h2>
+      <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line">
+        {introText}
+      </p>
       <p className="text-sm text-gray-600 dark:text-gray-400">{levelGuide}</p>
       {categories.map((category) => (
         <div key={category.title} className="space-y-2">
@@ -132,8 +138,12 @@ export default function SkillsGrid() {
               >
                 <div className="text-4xl mb-2">{skill.icon}</div>
                 <p className="font-bold text-sm mb-1">{skill.name}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">{skill.level}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400 text-center whitespace-pre-line">{skill.desc}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
+                  {skill.level}
+                </p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 text-center whitespace-pre-line">
+                  {skill.desc}
+                </p>
               </div>
             ))}
           </div>
