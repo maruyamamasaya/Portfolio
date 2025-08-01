@@ -114,7 +114,7 @@ Binary files such as images are not included. Image assets are not managed on Gi
 
 | Purpose         | File              | Aspect Ratio | Size      |
 | --------------- | ----------------- | ------------ | --------- |
-| Header icon     | `header_icon.png` | 1:1          | 64×64     |
+| Header icon     | `headericon-light.png`, `headericon-dark.png` | 3:1          | 192×64    |
 | Hero background | `hero_bg.png`     | 128:67       | 1280×670 |
 | Footer icon     | `footer_icon.png` | 1:1          | 48×48     |
 | Favicon         | `favicon.png`     | 1:1          | 32×32     |

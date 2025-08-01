@@ -153,11 +153,18 @@ export default function Header() {
         <h1 className="text-xl font-digital font-bold flex items-center">
           <Link href="/">
             <Image
-              src="/images/header_icon.png"
+              src="/images/headericon-light.png"
               alt="パソコン相談ならお任せ"
-              width={48}
+              width={144}
               height={48}
-              className="w-12 h-12"
+              className="w-36 h-12 dark:hidden"
+            />
+            <Image
+              src="/images/headericon-dark.png"
+              alt="パソコン相談ならお任せ"
+              width={144}
+              height={48}
+              className="w-36 h-12 hidden dark:block"
             />
           </Link>
         </h1>
