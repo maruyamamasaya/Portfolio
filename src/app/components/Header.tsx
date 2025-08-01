@@ -179,7 +179,9 @@ export default function Header() {
           </nav>
         </div>
         <div className="flex items-center space-x-2 ml-2">
-          <HeaderSearchBox />
+          <div className="hidden sm:block">
+            <HeaderSearchBox />
+          </div>
           <DarkModeToggle />
         </div>
       </div>

@@ -10,6 +10,7 @@ import { Post } from '@/lib/posts';
 import ScrollFadeIn from './ScrollFadeIn';
 import RecommendedSlider from './RecommendedSlider';
 import HomePostCard from './HomePostCard';
+import SearchBar from './SearchBar';
 
 type HomeWindowProps = {
   posts: Post[];
@@ -51,6 +52,9 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
           </Link>
         </div>
       </section>
+      <div className="sm:hidden px-4">
+        <SearchBar />
+      </div>
     </div>
   );
 }
