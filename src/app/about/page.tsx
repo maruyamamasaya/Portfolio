@@ -147,24 +147,18 @@ export default function About() {
 
       <section className="space-y-4 text-sm">
         <h2 className="text-xl font-bold">更新履歴</h2>
-        <ul className="ml-5 space-y-2">
-          <li className="flex space-x-2 items-start py-2 leading-relaxed">
-            <span className="w-28 font-mono text-gray-600 text-base">
-              2025/07/30
-            </span>
-            <span className="border-b border-gray-300 dark:border-gray-600 text-base font-medium">
-              サイトリニューアル
-            </span>
-          </li>
-          <li className="flex space-x-2 items-start py-2 leading-relaxed">
-            <span className="w-28 font-mono text-gray-600 text-base">
-              2025/07/30
-            </span>
-            <span className="border-b border-gray-300 dark:border-gray-600 text-base font-medium">
-              ブログ機能追加
-            </span>
-          </li>
-        </ul>
+        <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
+          <tbody>
+            <tr className="border-b border-gray-300 dark:border-gray-600">
+              <td className="w-28 px-3 py-2 font-mono text-gray-600 text-left">2025/07/30</td>
+              <td className="px-3 py-2 font-medium text-left">サイトリニューアル</td>
+            </tr>
+            <tr>
+              <td className="w-28 px-3 py-2 font-mono text-gray-600 text-left">2025/07/30</td>
+              <td className="px-3 py-2 font-medium text-left">ブログ機能追加</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <CTASection
