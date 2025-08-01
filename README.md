@@ -55,7 +55,6 @@ src/
 public/
   images/       # 画像ファイル
 blog/           # 公開ブログ記事
-developers_blog/# 開発者向け記事
 ```
 
 ## Markdown ファイル構成
