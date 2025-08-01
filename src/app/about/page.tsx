@@ -45,7 +45,7 @@ export default function About() {
 
       <section className="space-y-4">
         <h2 className="text-xl font-bold">導入事例</h2>
-        <Card className="text-sm space-y-2">
+        <Card className="text-sm space-y-2" disableHover>
           <h3 className="text-lg font-semibold">
             LINE公式アカウント × ChatGPT × AWS
           </h3>
