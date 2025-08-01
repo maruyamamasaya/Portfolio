@@ -113,7 +113,7 @@ export default function Works() {
         </div>
       )}
       <div className="mt-8">
-        <Card className="space-y-3">
+        <Card className="space-y-3" disableHover>
           <h2 className="text-xl font-bold">アルカナ公式 TCGカード</h2>
           <p>
             神秘的なアルカナの力を駆使して戦うターン制カードゲームを開発中。
