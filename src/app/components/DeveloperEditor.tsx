@@ -157,6 +157,31 @@ export default function DeveloperEditor() {
     setStatus('更新しました');
   };
 
+  const deleteFile = async () => {
+    if (!selected || isNew) return;
+    if (!window.confirm('本当に削除しますか？')) return;
+    const base = baseMap[target];
+    const res = await fetch(`/api/${base}/${encodeURIComponent(selected)}`, {
+      method: 'DELETE',
+    });
+    if (res.ok) {
+      setFiles((prev) => prev.filter((f) => f !== selected));
+      setSelected('');
+      setContent('');
+      setMeta({
+        title: '',
+        date: '',
+        category: '',
+        tags: '',
+        image: '',
+        updated: '',
+      });
+      setStatus('削除しました');
+    } else {
+      setStatus('削除に失敗しました');
+    }
+  };
+
   const togglePreview = async () => {
     if (!preview) {
       const { html } = await markdownToHtml(content);
@@ -366,6 +391,13 @@ export default function DeveloperEditor() {
             onClick={revalidate}
           >
             公開
+          </button>
+          <button
+            className="px-4 py-2 bg-red-600 text-white transition-base"
+            onClick={deleteFile}
+            disabled={!selected || isNew}
+          >
+            削除
           </button>
           <button
             className="px-4 py-2 bg-gray-400 text-white transition-base"
