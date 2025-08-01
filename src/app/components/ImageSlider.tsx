@@ -40,7 +40,7 @@ export default function ImageSlider({ images }: Props) {
   };
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden aspect-square min-h-[200px]">
       <div
         className="flex motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out"
         style={{ transform: `translateX(-${index * 100}%)` }}
