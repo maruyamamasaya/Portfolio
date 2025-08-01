@@ -15,9 +15,9 @@ const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata = {
   metadataBase: new URL('https://freehackapp.com'),
-  title: 'でじサポ｜パソコン相談室',
+  title: 'Digi Goose（デジグース）｜最新AIから業務効率まで、幅広くお任せ　テクニカル法人サポート',
   description:
-    '法人・個人向けにOA機器の整備や設定、ソフトウェアのお困りごとをサポートするポートフォリオサイト。修理記録や最新テック情報、開発日誌などを掲載。',
+    '最新AI活用から業務効率化までをトータルで支援するテクニカル法人サポートサイト。中高生向けの家庭教師型パソコンスクールも運営。',
   icons: {
     icon: '/images/favicon.png',
   },

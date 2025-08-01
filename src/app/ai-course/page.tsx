@@ -3,7 +3,7 @@ import Link from 'next/link';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import Card from '../components/Card';
 export const metadata = {
-  title: 'AI講座 | でじサポ',
+  title: 'AI講座 | デジグース',
 };
 
 export default function AICoursePage() {
