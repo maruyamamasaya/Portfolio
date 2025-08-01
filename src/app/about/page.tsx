@@ -87,6 +87,7 @@ export default function About() {
           items={[
             {
               icon: '/images/arcana-Youtube.png',
+              iconSize: 48,
               title: 'Arcana - アルカナ チャンネル',
               description:
                 'エンタメ系ショート動画作成。TCGオフィシャルのルールやカード紹介をするチャンネル。',
