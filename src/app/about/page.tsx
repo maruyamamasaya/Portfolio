@@ -93,7 +93,8 @@ export default function About() {
               href: 'https://www.youtube.com/@Arcana-%E3%82%A2%E3%83%AB%E3%82%AB%E3%83%8A',
             },
             {
-              icon: '🎥',
+              icon: '/images/kuronosanbika-icon-Youtube.png',
+              iconSize: 48,
               title: '【ざっくり紹介】楽曲紹介チャンネル〜黒の讃美歌〜',
               description:
                 'クラシック音楽の構造を丁寧に読み解く解説型チャンネル。',

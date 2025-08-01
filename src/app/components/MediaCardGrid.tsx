@@ -6,6 +6,10 @@ type MediaItem = {
   title: string;
   description: string;
   href: string;
+  /**
+   * Optional size for the icon in pixels. When not provided, defaults to 32.
+   */
+  iconSize?: number;
 };
 
 interface Props {
@@ -24,9 +28,13 @@ export default function MediaCardGrid({ items }: Props) {
             <Image
               src={item.icon}
               alt={item.title}
-              width={32}
-              height={32}
-              className="w-8 h-8 mb-2"
+              width={item.iconSize ?? 32}
+              height={item.iconSize ?? 32}
+              className="mb-2"
+              style={{
+                width: item.iconSize ?? 32,
+                height: item.iconSize ?? 32,
+              }}
             />
           ) : (
             <div className="text-2xl mb-2">{item.icon}</div>
