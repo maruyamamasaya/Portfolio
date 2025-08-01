@@ -66,7 +66,7 @@ export default function ServicesSection() {
         <table className="w-full border-collapse shadow rounded-lg overflow-hidden text-sm">
           <thead>
             <tr className="font-bold bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-              <th className="p-4 text-left w-2/5">サービスカテゴリ</th>
+              <th className="p-4 text-left w-2/5">相談項目</th>
               <th className="p-4 text-left w-3/5">内容</th>
             </tr>
           </thead>
