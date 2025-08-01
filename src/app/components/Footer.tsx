@@ -181,7 +181,11 @@ export default function Footer() {
           height={24}
           className="w-6 h-6"
         />
-        <span>&copy; 2025 でじサポ｜パソコン相談室</span>
+        <span>
+          &copy; 2025 Digi Goose（デジグース）｜最新AIから業務効率まで、幅広くお任せ　テクニカル法人サポート
+          <br />
+          デジグース｜中高生の「できた！」を育てる、家庭教師型パソコンスクール
+        </span>
       </div>
     </footer>
   );
