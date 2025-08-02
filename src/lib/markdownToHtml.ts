@@ -118,10 +118,10 @@ export default async function markdownToHtml(
   collectHeadings(tree, headings);
 
   const processor = unified()
-    .use(remarkRehype)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
-    .use(rehypeStringify);
+    .use(rehypeStringify, { allowDangerousHtml: true });
 
   const transformed = await processor.run(tree);
   const html = processor.stringify(transformed);
