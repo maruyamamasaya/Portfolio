@@ -4,26 +4,26 @@ import Image from 'next/image';
 
 export default function Profile() {
   return (
-    <section className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 md:p-10 text-gray-800 dark:text-gray-100">
+    <section className="max-w-screen-md mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 md:p-10 text-gray-800 dark:text-gray-100">
       <h2 className="text-2xl font-bold mb-4 border-b pb-2">プロフィール</h2>
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+      <div className="flex flex-col items-center sm:flex-row sm:items-start gap-6 sm:gap-8">
         <Image
           src="/images/profile.jpg"
           alt="プロフィール画像"
-          width={128}
-          height={128}
-          className="w-32 h-32 object-cover rounded-full border border-gray-300 dark:border-gray-700"
+          width={96}
+          height={96}
+          className="w-24 h-24 object-cover rounded-full mx-auto border border-gray-300 dark:border-gray-700"
         />
-        <div className="flex-1 text-center sm:text-left">
-          <div className="text-base leading-relaxed text-gray-700 dark:text-gray-300 space-y-4">
-            <p className="mb-4">山田 太郎</p>
-            <p className="mb-4">フルスタックエンジニア</p>
-            <p className="mb-4">分からないを分かるに変える</p>
+        <div className="flex-1 sm:text-left text-center space-y-2 sm:space-y-4">
+          <div className="text-base leading-relaxed text-gray-700 dark:text-gray-300 space-y-2 sm:space-y-4">
+            <p>山田 太郎</p>
+            <p>フルスタックエンジニア</p>
+            <p>分からないを分かるに変える</p>
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-2 whitespace-pre-line">
+          <p className="text-sm text-gray-500 dark:text-gray-400 whitespace-pre-line">
             導入実績は100店舗以上。独立6ヶ月以内に月商350万円を達成。登録フォロワー数 200名以上。発信記事数150記事以上。
           </p>
-          <div className="flex justify-center sm:justify-start space-x-3 my-2">
+          <div className="flex justify-center sm:justify-start space-x-3">
             <Link href="https://x.com" aria-label="X" className="hover:text-primary transition-base">
               <Image src="/images/X.png" alt="X" width={20} height={20} className="w-5 h-5" />
             </Link>
