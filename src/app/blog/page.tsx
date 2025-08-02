@@ -2,6 +2,7 @@ import { getSortedPosts } from '@/lib/posts';
 import LeftSidebar from '@/app/components/LeftSidebar';
 import PostCard from '@/app/components/PostCard';
 import SearchBar from '@/app/components/SearchBar';
+import ProfileCardBlog from '@/app/components/ProfileCardBlog';
 
 export default async function BlogIndex() {
   const posts = await getSortedPosts();
@@ -35,6 +36,9 @@ export default async function BlogIndex() {
               </div>
             </section>
           )}
+          <section className="main-content">
+            <ProfileCardBlog />
+          </section>
         </div>
       </div>
   );
