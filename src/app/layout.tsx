@@ -49,11 +49,7 @@ export default async function RootLayout({
               <Breadcrumbs />
             </main>
           </PageTransition>
-          <div className="bg-white dark:bg-gray-700 border-t border-gray-200 dark:border-gray-700">
-            <div className="container mx-auto p-2">
-              <TagListHeader tagCounts={displayCounts} />
-            </div>
-          </div>
+          <TagListHeader tagCounts={displayCounts} />
           <Footer />
           <BottomNav />
         </ThemeProvider>
