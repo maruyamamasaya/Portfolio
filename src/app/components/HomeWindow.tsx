@@ -17,6 +17,7 @@ type HomeWindowProps = {
 };
 
 export default function HomeWindow({ posts }: HomeWindowProps) {
+  const recommendedPosts = posts.slice(0, 4);
   return (
     <div className="space-y-12">
       {/* Heroセクション */}
@@ -37,9 +38,9 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       <section className="px-4 sm:px-6 md:px-10 w-full mx-auto space-y-4">
         <h2 className="text-xl font-bold text-center">おすすめ記事</h2>
         <div className="md:grid md:[grid-template-columns:2fr_1fr] md:gap-4">
-          <RecommendedSlider posts={posts} />
+          <RecommendedSlider posts={recommendedPosts} />
           <ul className="space-y-4 md:space-y-2">
-            {posts.slice(0, 6).map((post, i) => (
+            {recommendedPosts.map((post, i) => (
               <ScrollFadeIn key={post.slug} as="li" delay={i * 100}>
                 <HomePostCard post={post} />
               </ScrollFadeIn>
