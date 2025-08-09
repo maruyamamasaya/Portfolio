@@ -8,6 +8,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 export default function DeveloperInfo() {
   return (
     <div>
