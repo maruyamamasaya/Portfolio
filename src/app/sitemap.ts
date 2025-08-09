@@ -1,17 +1,30 @@
-import { MetadataRoute } from 'next';
 import { getSortedPosts } from '@/lib/posts';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+interface SitemapEntry {
+  url: string;
+  lastModified?: string | Date;
+}
+
+export default async function sitemap(): Promise<SitemapEntry[]> {
   const baseUrl = 'https://freehackapp.com';
 
-  const routes = ['', '/about', '/ai-course', '/arcana', '/blog', '/categories', '/contact', '/search', '/tags', '/works'].map(
-    (route) => ({
-      url: `${baseUrl}${route}`,
-      lastModified: new Date().toISOString().split('T')[0],
-    }),
-  );
+  const routes: SitemapEntry[] = [
+    '',
+    '/about',
+    '/ai-course',
+    '/arcana',
+    '/blog',
+    '/categories',
+    '/contact',
+    '/search',
+    '/tags',
+    '/works',
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date().toISOString().split('T')[0],
+  }));
 
-  let postEntries: MetadataRoute.Sitemap = [];
+  let postEntries: SitemapEntry[] = [];
   try {
     const posts = await getSortedPosts();
     postEntries = posts.map((post) => ({
@@ -24,3 +37,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [...routes, ...postEntries];
 }
+
