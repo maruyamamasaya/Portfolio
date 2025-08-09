@@ -5,7 +5,6 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   if (
     pathname.startsWith('/developer_edit') ||
-    pathname.startsWith('/api/dev-posts') ||
     pathname.startsWith('/api/posts') ||
     pathname.startsWith('/api/upload-image')
   ) {
