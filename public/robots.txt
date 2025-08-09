@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /developer_edit
+Disallow: /developer_info
+Sitemap: https://freehackapp.com/sitemap.xml
