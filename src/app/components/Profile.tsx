@@ -16,7 +16,7 @@ export default function Profile() {
         />
         <div className="flex-1 sm:text-left text-center space-y-2 sm:space-y-4">
           <div className="text-base leading-relaxed text-gray-700 dark:text-gray-300 space-y-2 sm:space-y-4">
-            <p>山田 太郎</p>
+            <p>神木 ユウ（通称：まるま。）</p>
             <p>フルスタックエンジニア</p>
             <p>分からないを分かるに変える</p>
           </div>
