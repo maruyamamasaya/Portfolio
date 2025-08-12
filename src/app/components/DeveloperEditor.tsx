@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import DeveloperCalendar from './DeveloperCalendar';
+import DeveloperDayList from './DeveloperDayList';
 import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { categories } from '../../../data/categories';
@@ -8,16 +9,34 @@ import { categories } from '../../../data/categories';
 const POSTS_BASE = 'posts';
 const BLOG_PATH = '/blog';
 
-const sortGroups = (groups: Record<string, string[]>) =>
+type PostItem = { name: string; title: string };
+
+const sortGroups = <T,>(groups: Record<string, T[]>) =>
   Object.fromEntries(
     Object.entries(groups).sort((a, b) => b[0].localeCompare(a[0])),
   );
 
+const pad = (n: number) => String(n).padStart(2, '0');
+const toTokyoYmd = (date: Date) => {
+  const tokyo = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+  return tokyo.toISOString().slice(0, 10);
+};
+
 export default function DeveloperEditor() {
-  const [fileGroups, setFileGroups] = useState<Record<string, string[]>>({});
+  const todayStr = useMemo(() => toTokyoYmd(new Date()), []);
+  const [currentYear, setCurrentYear] = useState<number>(
+    Number(todayStr.slice(0, 4)),
+  );
+  const [currentMonth, setCurrentMonth] = useState<number>(
+    Number(todayStr.slice(5, 7)),
+  );
+  const [selectedDate, setSelectedDate] = useState<string>(todayStr);
+
+  const [postsByDate, setPostsByDate] = useState<Record<string, PostItem[]>>({});
   const [fileDates, setFileDates] = useState<Record<string, string>>({});
+  const [fileTitles, setFileTitles] = useState<Record<string, string>>({});
+
   const [selected, setSelected] = useState('');
-  const [openDates, setOpenDates] = useState<Record<string, boolean>>({});
   const [content, setContent] = useState('');
   const [meta, setMeta] = useState({
     title: '',
@@ -40,8 +59,9 @@ export default function DeveloperEditor() {
     fetch(`/api/${POSTS_BASE}`)
       .then((res) => res.json())
       .then(async (data: string[]) => {
-        const groups: Record<string, string[]> = {};
+        const groups: Record<string, PostItem[]> = {};
         const dates: Record<string, string> = {};
+        const titles: Record<string, string> = {};
         await Promise.all(
           data.map(async (name) => {
             const res = await fetch(
@@ -51,13 +71,18 @@ export default function DeveloperEditor() {
               const fileData = await res.json();
               const parsed = matter(fileData.content);
               const date = (parsed.data.date as string) ?? '';
+              const title = (parsed.data.title as string) ?? name;
               dates[name] = date;
-              groups[date] = groups[date] ? [...groups[date], name] : [name];
+              titles[name] = title;
+              groups[date] = groups[date]
+                ? [...groups[date], { name, title }]
+                : [{ name, title }];
             }
           }),
         );
         setFileDates(dates);
-        setFileGroups(sortGroups(groups));
+        setFileTitles(titles);
+        setPostsByDate(sortGroups(groups));
       })
       .catch(() => setStatus('ファイル一覧の取得に失敗しました'));
     setSelected('');
@@ -105,7 +130,7 @@ export default function DeveloperEditor() {
   const newFile = (name: string, category: string) => {
     const safe = name.endsWith('.md') ? name : `${name}.md`;
     setSelected(safe);
-    const date = new Date().toISOString().slice(0, 10);
+    const date = toTokyoYmd(new Date());
     const imageBase = date.replace(/-/g, '');
     setMeta({
       title: '',
@@ -154,16 +179,19 @@ export default function DeveloperEditor() {
     if (res.ok) {
       setStatus('保存しました');
       const oldDate = fileDates[selected];
+      const title = meta.title || selected;
       setFileDates((prev) => ({ ...prev, [selected]: meta.date }));
-      setFileGroups((prev) => {
+      setFileTitles((prev) => ({ ...prev, [selected]: title }));
+      setPostsByDate((prev) => {
         const groups = { ...prev };
         if (oldDate && groups[oldDate]) {
-          groups[oldDate] = groups[oldDate].filter((f) => f !== selected);
+          groups[oldDate] = groups[oldDate].filter((p) => p.name !== selected);
           if (!groups[oldDate].length) delete groups[oldDate];
         }
+        const entry = { name: selected, title };
         groups[meta.date] = groups[meta.date]
-          ? [...groups[meta.date], selected]
-          : [selected];
+          ? [...groups[meta.date], entry]
+          : [entry];
         return sortGroups(groups);
       });
       if (isNew) {
@@ -194,15 +222,19 @@ export default function DeveloperEditor() {
     );
     if (res.ok) {
       const date = fileDates[selected];
-      setFileGroups((prev) => {
+      setPostsByDate((prev) => {
         const groups = { ...prev };
         if (date && groups[date]) {
-          groups[date] = groups[date].filter((f) => f !== selected);
+          groups[date] = groups[date].filter((p) => p.name !== selected);
           if (!groups[date].length) delete groups[date];
         }
         return groups;
       });
       setFileDates((prev) => {
+        const { [selected]: _, ...rest } = prev;
+        return rest;
+      });
+      setFileTitles((prev) => {
         const { [selected]: _, ...rest } = prev;
         return rest;
       });
@@ -230,50 +262,34 @@ export default function DeveloperEditor() {
     setPreview(!preview);
   };
 
+  const hasPosts = (date: string) => !!postsByDate[date]?.length;
+
+  const changeMonth = (diff: number) => {
+    const newDate = new Date(currentYear, currentMonth - 1 + diff, 1);
+    const y = newDate.getFullYear();
+    const m = newDate.getMonth() + 1;
+    setCurrentYear(y);
+    setCurrentMonth(m);
+    setSelectedDate(`${y}-${pad(m)}-01`);
+  };
+
   return (
     <div className="md:flex">
       <div className="md:w-1/5 p-4 space-y-4 border-r">
         <DeveloperCalendar
-          onSelect={(date) => {
-            setOpenDates((prev) => ({ ...prev, [date]: true }));
-            setTimeout(() => {
-              document.getElementById(`date-${date}`)?.scrollIntoView({
-                behavior: 'smooth',
-              });
-            }, 0);
-          }}
+          year={currentYear}
+          month={currentMonth}
+          selectedDate={selectedDate}
+          onSelect={setSelectedDate}
+          onPrevMonth={() => changeMonth(-1)}
+          onNextMonth={() => changeMonth(1)}
+          hasPosts={hasPosts}
         />
-        <ul className="space-y-2">
-          {Object.entries(fileGroups).map(([date, names]) => (
-            <li key={date} id={`date-${date}`}>
-              <button
-                className="font-bold w-full text-left"
-                onClick={() =>
-                  setOpenDates((prev) => ({
-                    ...prev,
-                    [date]: !prev[date],
-                  }))
-                }
-              >
-                {date}
-              </button>
-              {openDates[date] && (
-                <ul className="ml-2 space-y-1">
-                  {names.map((name) => (
-                    <li key={name}>
-                      <button
-                        className="accent-text underline transition-base"
-                        onClick={() => openFile(name)}
-                      >
-                        {name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </li>
-          ))}
-        </ul>
+        <DeveloperDayList
+          date={selectedDate}
+          posts={postsByDate[selectedDate] || []}
+          onOpen={openFile}
+        />
         <div>
           <label className="block mb-1 font-bold">新規記事</label>
           <input
@@ -438,3 +454,4 @@ export default function DeveloperEditor() {
     </div>
   );
 }
+
