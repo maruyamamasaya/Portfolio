@@ -5,17 +5,17 @@ import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { categories } from '../../../data/categories';
 
-const baseMap = {
-  blog: 'posts',
-} as const;
+const POSTS_BASE = 'posts';
+const BLOG_PATH = '/blog';
 
-const pathMap = {
-  blog: '/blog',
-} as const;
+const sortGroups = (groups: Record<string, string[]>) =>
+  Object.fromEntries(
+    Object.entries(groups).sort((a, b) => b[0].localeCompare(a[0])),
+  );
 
 export default function DeveloperEditor() {
-  const [target, setTarget] = useState<'blog'>('blog');
-  const [files, setFiles] = useState<string[]>([]);
+  const [fileGroups, setFileGroups] = useState<Record<string, string[]>>({});
+  const [fileDates, setFileDates] = useState<Record<string, string>>({});
   const [selected, setSelected] = useState('');
   const [content, setContent] = useState('');
   const [meta, setMeta] = useState({
@@ -28,7 +28,7 @@ export default function DeveloperEditor() {
   });
   const [preview, setPreview] = useState(false);
   const [html, setHtml] = useState('');
-  const [height, setHeight] = useState(400);
+  const [height, setHeight] = useState(800);
   const [status, setStatus] = useState('');
   const [upload, setUpload] = useState<File | null>(null);
   const [isNew, setIsNew] = useState(false);
@@ -37,10 +37,28 @@ export default function DeveloperEditor() {
   const [tagsList, setTagsList] = useState<string[]>([]);
 
   useEffect(() => {
-    const base = baseMap[target];
-    fetch(`/api/${base}`)
+    fetch(`/api/${POSTS_BASE}`)
       .then((res) => res.json())
-      .then((data: string[]) => setFiles(data))
+      .then(async (data: string[]) => {
+        const groups: Record<string, string[]> = {};
+        const dates: Record<string, string> = {};
+        await Promise.all(
+          data.map(async (name) => {
+            const res = await fetch(
+              `/api/${POSTS_BASE}/${encodeURIComponent(name)}`,
+            );
+            if (res.ok) {
+              const fileData = await res.json();
+              const parsed = matter(fileData.content);
+              const date = (parsed.data.date as string) ?? '';
+              dates[name] = date;
+              groups[date] = groups[date] ? [...groups[date], name] : [name];
+            }
+          }),
+        );
+        setFileDates(dates);
+        setFileGroups(sortGroups(groups));
+      })
       .catch(() => setStatus('ファイル一覧の取得に失敗しました'));
     setSelected('');
     setContent('');
@@ -52,7 +70,7 @@ export default function DeveloperEditor() {
       image: '',
       updated: '',
     });
-  }, [target]);
+  }, []);
 
   useEffect(() => {
     fetch('/api/search-data')
@@ -63,8 +81,9 @@ export default function DeveloperEditor() {
 
   const openFile = async (name: string) => {
     setSelected(name);
-    const base = baseMap[target];
-    const res = await fetch(`/api/${base}/${encodeURIComponent(name)}`);
+    const res = await fetch(
+      `/api/${POSTS_BASE}/${encodeURIComponent(name)}`,
+    );
     if (res.ok) {
       const data = await res.json();
       const parsed = matter(data.content);
@@ -87,12 +106,13 @@ export default function DeveloperEditor() {
     const safe = name.endsWith('.md') ? name : `${name}.md`;
     setSelected(safe);
     const date = new Date().toISOString().slice(0, 10);
+    const imageBase = date.replace(/-/g, '');
     setMeta({
       title: '',
       date,
       category,
       tags: '',
-      image: '/images/example.png',
+      image: `/images/blog/${imageBase}001.jpeg`,
       updated: date,
     });
     setContent('');
@@ -111,10 +131,9 @@ export default function DeveloperEditor() {
 
   const saveFile = async () => {
     if (!selected) return;
-    const base = baseMap[target];
     const url = isNew
-      ? `/api/${base}`
-      : `/api/${base}/${encodeURIComponent(selected)}`;
+      ? `/api/${POSTS_BASE}`
+      : `/api/${POSTS_BASE}/${encodeURIComponent(selected)}`;
     const method = isNew ? 'POST' : 'PUT';
     const front = {
       ...meta,
@@ -134,8 +153,20 @@ export default function DeveloperEditor() {
     });
     if (res.ok) {
       setStatus('保存しました');
+      const oldDate = fileDates[selected];
+      setFileDates((prev) => ({ ...prev, [selected]: meta.date }));
+      setFileGroups((prev) => {
+        const groups = { ...prev };
+        if (oldDate && groups[oldDate]) {
+          groups[oldDate] = groups[oldDate].filter((f) => f !== selected);
+          if (!groups[oldDate].length) delete groups[oldDate];
+        }
+        groups[meta.date] = groups[meta.date]
+          ? [...groups[meta.date], selected]
+          : [selected];
+        return sortGroups(groups);
+      });
       if (isNew) {
-        setFiles((prev) => [...prev, selected]);
         setIsNew(false);
       }
     } else {
@@ -146,11 +177,10 @@ export default function DeveloperEditor() {
   const revalidate = async () => {
     if (!selected) return;
     const slug = selected.replace(/\.md$/, '');
-    const basePath = pathMap[target];
     await fetch('/api/revalidate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ paths: [basePath, `${basePath}/${slug}`] }),
+      body: JSON.stringify({ paths: [BLOG_PATH, `${BLOG_PATH}/${slug}`] }),
     });
     setStatus('更新しました');
   };
@@ -158,12 +188,24 @@ export default function DeveloperEditor() {
   const deleteFile = async () => {
     if (!selected || isNew) return;
     if (!window.confirm('本当に削除しますか？')) return;
-    const base = baseMap[target];
-    const res = await fetch(`/api/${base}/${encodeURIComponent(selected)}`, {
-      method: 'DELETE',
-    });
+    const res = await fetch(
+      `/api/${POSTS_BASE}/${encodeURIComponent(selected)}`,
+      { method: 'DELETE' },
+    );
     if (res.ok) {
-      setFiles((prev) => prev.filter((f) => f !== selected));
+      const date = fileDates[selected];
+      setFileGroups((prev) => {
+        const groups = { ...prev };
+        if (date && groups[date]) {
+          groups[date] = groups[date].filter((f) => f !== selected);
+          if (!groups[date].length) delete groups[date];
+        }
+        return groups;
+      });
+      setFileDates((prev) => {
+        const { [selected]: _, ...rest } = prev;
+        return rest;
+      });
       setSelected('');
       setContent('');
       setMeta({
@@ -191,25 +233,22 @@ export default function DeveloperEditor() {
   return (
     <div className="md:flex">
       <div className="md:w-1/5 p-4 space-y-4 border-r">
-        <div>
-          <label className="block mb-1 font-bold">編集対象</label>
-          <select
-            className="border p-1 w-full"
-            value={target}
-            onChange={(e) => setTarget(e.target.value as 'blog')}
-          >
-            <option value="blog">blog</option>
-          </select>
-        </div>
         <ul className="space-y-2">
-          {files.map((name) => (
-            <li key={name}>
-              <button
-                className="accent-text underline transition-base"
-                onClick={() => openFile(name)}
-              >
-                {name}
-              </button>
+          {Object.entries(fileGroups).map(([date, names]) => (
+            <li key={date}>
+              <p className="font-bold">{date}</p>
+              <ul className="ml-2 space-y-1">
+                {names.map((name) => (
+                  <li key={name}>
+                    <button
+                      className="accent-text underline transition-base"
+                      onClick={() => openFile(name)}
+                    >
+                      {name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
