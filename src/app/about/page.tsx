@@ -5,6 +5,7 @@ import SkillsGrid from '../components/SkillsGrid';
 import Card from '../components/Card';
 import ProfileCategories from '../components/ProfileCategories';
 import MediaCardGrid from '../components/MediaCardGrid';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'About',
@@ -20,6 +21,13 @@ export default function About() {
 
       {/* プロフィール */}
       <section className="space-y-4">
+        <Image
+          src="/images/profile-icon.png"
+          alt="プロフィールアイコン"
+          width={96}
+          height={96}
+          className="w-24 h-24 object-cover rounded-lg mx-auto"
+        />
         <h2 className="text-xl font-bold">プロフィール</h2>
         <p className="mb-4">
           外注なしのワンストップ対応。
