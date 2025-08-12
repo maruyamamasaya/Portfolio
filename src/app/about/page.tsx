@@ -21,6 +21,11 @@ export default function About() {
       {/* プロフィール */}
       <section className="space-y-4">
         <h2 className="text-xl font-bold">プロフィール</h2>
+        <p className="mb-4">
+          外注なしのワンストップ対応。
+          <br />
+          企画から運営まで一貫してサポートしますので、安心してご相談いただけます。
+        </p>
         <p className="mb-4 text-lg">
           「分からない」を「分かる」に変える──
           <br />
