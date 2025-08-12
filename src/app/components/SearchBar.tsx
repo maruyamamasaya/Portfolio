@@ -26,16 +26,6 @@ export default function SearchBar({ className, showHistory = true }: Props) {
   const [suggestions, setSuggestions] = useState<PostMeta[]>([]);
   const [history, setHistory] = useState<string[]>([]);
 
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.classList.add('overflow-hidden');
-    } else {
-      document.body.classList.remove('overflow-hidden');
-    }
-    return () => {
-      document.body.classList.remove('overflow-hidden');
-    };
-  }, [mobileOpen]);
 
   useEffect(() => {
     fetch('/api/search-data')
@@ -163,7 +153,7 @@ export default function SearchBar({ className, showHistory = true }: Props) {
         )}
       </div>
 
-      {/* mobile trigger button */}
+      {/* mobile search toggle */}
       <div className="sm:hidden">
         {!mobileOpen ? (
           <button
@@ -184,62 +174,54 @@ export default function SearchBar({ className, showHistory = true }: Props) {
             </svg>
           </button>
         ) : (
-          <>
-            <div
-              className="fixed inset-0 bg-black/40 z-50"
-              onClick={() => setMobileOpen(false)}
-            />
-            <div className="fixed inset-x-0 top-0 bg-white dark:bg-gray-700 p-2 shadow z-60">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                runSearch();
-                setMobileOpen(false);
-              }}
-              className="space-y-2"
-            >
-              <div className="flex items-center space-x-2">
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  className="border rounded px-2 py-1 flex-1"
-                />
-                <button
-                  type="submit"
-                  className="px-2 py-1 bg-primary text-white rounded transition-base"
-                >
-                  検索
-                </button>
-                <button
-                  type="button"
-                  aria-label="Close search"
-                  onClick={() => setMobileOpen(false)}
-                  className="p-2 text-2xl transition-base"
-                >
-                  ×
-                </button>
-              </div>
-              {suggestions.length > 0 && (
-                <ul className="bg-white dark:bg-gray-700 border dark:border-gray-700 rounded shadow mt-1 z-10 max-h-60 overflow-auto">
-                  {suggestions.map((s) => (
-                    <li
-                      key={s.slug}
-                      className="px-2 py-1 cursor-pointer hover:bg-primary/20"
-                      onMouseDown={() => {
-                        setQuery(s.title);
-                        runSearch(s.title);
-                        setMobileOpen(false);
-                      }}
-                    >
-                      {s.title}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </form>
-          </div>
-        </>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              runSearch();
+              setMobileOpen(false);
+            }}
+            className="space-y-2"
+          >
+            <div className="flex items-center space-x-2">
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className="border rounded px-2 py-1 flex-1"
+              />
+              <button
+                type="submit"
+                className="px-2 py-1 bg-primary text-white rounded transition-base"
+              >
+                検索
+              </button>
+              <button
+                type="button"
+                aria-label="Close search"
+                onClick={() => setMobileOpen(false)}
+                className="p-2 text-2xl transition-base"
+              >
+                ×
+              </button>
+            </div>
+            {suggestions.length > 0 && (
+              <ul className="bg-white dark:bg-gray-700 border dark:border-gray-700 rounded shadow mt-1 z-10 max-h-60 overflow-auto">
+                {suggestions.map((s) => (
+                  <li
+                    key={s.slug}
+                    className="px-2 py-1 cursor-pointer hover:bg-primary/20"
+                    onMouseDown={() => {
+                      setQuery(s.title);
+                      runSearch(s.title);
+                      setMobileOpen(false);
+                    }}
+                  >
+                    {s.title}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </form>
         )}
       </div>
     </div>
