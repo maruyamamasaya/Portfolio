@@ -17,7 +17,7 @@ export default function FAQSection() {
       <h2 className="text-2xl font-bold mb-4">よくある質問</h2>
       <ul className="space-y-2">
         {faqs.map((f, i) => (
-          <li key={i} className="border rounded">
+          <li key={f.q} className="border rounded">
             <button
               className="w-full text-left px-4 py-2 font-semibold flex justify-between items-center transition-base"
               onClick={() => setOpen(open === i ? null : i)}

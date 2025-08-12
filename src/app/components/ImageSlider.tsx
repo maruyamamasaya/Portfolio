@@ -49,7 +49,7 @@ export default function ImageSlider({ images }: Props) {
         onPointerLeave={handlePointerUp}
       >
         {images.map((src, i) => (
-          <div key={i} className="flex-shrink-0 w-full">
+          <div key={src} className="flex-shrink-0 w-full">
             <Image
               src={src}
               alt={`Slide ${i + 1}`}

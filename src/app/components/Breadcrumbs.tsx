@@ -42,7 +42,7 @@ export default function Breadcrumbs() {
 
           return (
             <li
-              key={index}
+              key={href}
               className={`inline-flex items-center ${isHiddenMobile ? 'hidden sm:inline-flex' : ''}`}
             >
               <ArrowIcon />

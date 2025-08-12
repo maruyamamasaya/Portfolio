@@ -32,9 +32,9 @@ export default function TestimonialsSection() {
     <section className="section-spacing">
       <h2 className="text-2xl font-bold mb-4">お客様の声</h2>
       <div className="flex space-x-4 overflow-x-auto pb-4">
-        {testimonials.map((t, i) => (
+        {testimonials.map((t) => (
           <div
-            key={i}
+            key={t.name}
             className="flex-shrink-0 w-64 p-4 bg-white dark:bg-gray-700 rounded shadow"
           >
             <div className="flex items-center space-x-2 mb-2">
