@@ -8,7 +8,7 @@ export interface CategoryNode {
   children: CategoryNode[];
 }
 
-const baseDir = path.join(process.cwd(), 'src', 'data', 'posts');
+const baseDir = path.join(process.cwd(), 'blog');
 
 async function readDir(dirPath: string): Promise<CategoryNode> {
   const entries = await fs.readdir(dirPath, { withFileTypes: true });

@@ -15,7 +15,7 @@ export interface Post {
   content: string;
 }
 
-const postsDirectory = path.join(process.cwd(), 'src', 'data', 'posts');
+const postsDirectory = path.join(process.cwd(), 'blog');
 
 export async function getSortedPosts(): Promise<Post[]> {
   const fileNames: string[] = (await fs.readdir(postsDirectory)).filter(
