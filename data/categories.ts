@@ -19,6 +19,12 @@ export const categories: Category[] = [
     icon: '🤖',
   },
   {
+    slug: 'ai-course',
+    name: 'AI講座ブログ',
+    description: 'AI講座に関する最新情報や活用事例',
+    icon: '🧠',
+  },
+  {
     slug: 'network-wifi',
     name: 'ネット環境・Wi-Fi改善',
     description: '通信速度・接続設定・IPv6などの対処',

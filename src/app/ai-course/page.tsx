@@ -2,11 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import Card from '../components/Card';
+import HomePostCard from '../components/HomePostCard';
+import { getPostsByCategory } from '@/lib/posts';
 export const metadata = {
   title: 'AI講座 | デジグース',
 };
 
-export default function AICoursePage() {
+export default async function AICoursePage() {
   const steps = [
     {
       title: 'ステップ1：ChatGPTと“話す”練習',
@@ -59,6 +61,8 @@ export default function AICoursePage() {
       a: 'ChatGPTやDALL·E、Canva、Zapierなどを実践的に扱います。',
     },
   ];
+
+  const aiPosts = await getPostsByCategory('ai-course');
 
   return (
     <div className="space-y-16">
@@ -215,6 +219,19 @@ export default function AICoursePage() {
           モチベーションを維持する仕組みも豊富に用意しています。
         </p>
       </ScrollFadeIn>
+
+
+      {/* AI講座ブログ */}
+      {aiPosts.length > 0 && (
+        <ScrollFadeIn className="w-full max-w-none p-4 sm:px-6 md:px-10 space-y-4">
+          <h2 className="text-2xl font-bold">AI講座ブログ</h2>
+          <div className="grid gap-4 md:grid-cols-3">
+            {aiPosts.map((post) => (
+              <HomePostCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </ScrollFadeIn>
+      )}
 
 
       {/* 9. よくある質問 */}
