@@ -1,11 +1,10 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Post } from '@/lib/posts';
 import TagSearch from './TagSearch';
 import Loader from '../components/Loader';
-import TagBadge from '../components/TagBadge';
+import HomePostCard from '../components/HomePostCard';
 
 interface Props {
   tags: string[];
@@ -57,53 +56,21 @@ export default function TagFilter({ tags, posts }: Props) {
           <div className="flex justify-center flex-wrap gap-2 mt-2">
             {popularTags.map((tag) => (
               <Link
-              key={tag}
-              href={`/tags/${encodeURIComponent(tag)}`}
-              className="bg-primary/20 px-3 py-1 rounded-full text-sm font-medium shadow inline-flex items-center transition-base"
-            >
-              {tag}
-            </Link>
+                key={tag}
+                href={`/tags/${encodeURIComponent(tag)}`}
+                className="bg-primary/20 px-3 py-1 rounded-full text-sm font-medium shadow inline-flex items-center transition-base"
+              >
+                {tag}
+              </Link>
             ))}
           </div>
         </div>
       ) : (
-        <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filteredPosts.map((post) => (
-            <li
-              key={post.slug}
-              className="group flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              {post.image && (
-                <Image
-                  src={post.image}
-                  alt={`Thumbnail for ${post.title}`}
-                  width={80}
-                  height={80}
-                  className="w-20 h-20 object-cover rounded-lg border shadow-sm"
-                />
-              )}
-              <div className="flex-1">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="text-lg font-bold text-gray-800 dark:text-white group-hover:text-primary transition-base"
-                >
-                  {post.title}
-                </Link>
-                <p className="text-sm text-gray-500 mt-1">
-                  {post.date}
-                  {post.updated && ` (更新: ${post.updated})`}
-                </p>
-                {post.tags && (
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {post.tags.slice(0, 3).map((tag) => (
-                      <TagBadge key={tag} tag={tag} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            </li>
+            <HomePostCard key={post.slug} post={post} />
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
