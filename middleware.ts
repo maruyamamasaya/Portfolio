@@ -5,8 +5,7 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   if (
     pathname.startsWith('/developer_edit') ||
-    pathname.startsWith('/api/posts') ||
-    pathname.startsWith('/api/upload-image')
+    pathname.startsWith('/api/posts')
   ) {
     const basicAuth = req.headers.get('authorization');
     if (basicAuth) {
