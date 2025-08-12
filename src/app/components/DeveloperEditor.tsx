@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { categories } from '../../../data/categories';
@@ -30,7 +29,6 @@ export default function DeveloperEditor() {
   const [html, setHtml] = useState('');
   const [height, setHeight] = useState(800);
   const [status, setStatus] = useState('');
-  const [upload, setUpload] = useState<File | null>(null);
   const [isNew, setIsNew] = useState(false);
   const [newFilename, setNewFilename] = useState('');
   const [newCategory, setNewCategory] = useState(categories[0].slug);
@@ -276,54 +274,6 @@ export default function DeveloperEditor() {
             onClick={createFile}
           >
             作成
-          </button>
-        </div>
-        <div
-          className="mt-4 border p-2 text-center"
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => {
-            e.preventDefault();
-            const file = e.dataTransfer.files?.[0];
-            if (file) setUpload(file);
-          }}
-        >
-          <label className="block mb-1 font-bold">画像アップロード</label>
-          <input
-            type="file"
-            onChange={(e) => setUpload(e.target.files?.[0] || null)}
-            className="mb-2"
-          />
-          {upload && (
-            <Image
-              src={URL.createObjectURL(upload)}
-              alt="preview"
-              width={160}
-              height={160}
-              className="mx-auto mb-2 max-h-40"
-            />
-          )}
-          <button
-            className="px-2 py-1 bg-green-500 text-white transition-base"
-            onClick={async () => {
-              if (!upload) return;
-              const form = new FormData();
-              form.append('file', upload);
-              const res = await fetch('/api/upload-image', {
-                method: 'POST',
-                body: form,
-              });
-              if (res.ok) {
-                const data = await res.json();
-                const path = `/images/${data.filename}`;
-                setMeta((m) => ({ ...m, image: path }));
-                setContent((prev) => `${prev}\n![${data.filename}](${path})\n`);
-                setStatus('アップロードしました');
-              } else {
-                setStatus('アップロードに失敗しました');
-              }
-            }}
-          >
-            アップロード
           </button>
         </div>
       </div>
