@@ -8,11 +8,12 @@ module.exports = {
   },
   transform: {
     '^.+\\.tsx?$': ['ts-jest', { useESM: true }],
-    '^.+\\.js$': 'babel-jest',
+    '^.+\\.js$': [
+      'babel-jest',
+      { configFile: false, presets: [['@babel/preset-env', { targets: { node: 'current' } }]] },
+    ],
   },
-  transformIgnorePatterns: [
-    '/node_modules/(?!(unified|remark-parse|remark-rehype|rehype-slug|rehype-stringify)/)',
-  ],
+  transformIgnorePatterns: [],
   globals: {
     'ts-jest': {
       useESM: true,
