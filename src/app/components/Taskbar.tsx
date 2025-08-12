@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Taskbar() {
-  const [time, setTime] = useState('--:--');
 
+  const [time, setTime] = useState<string>('--:--');
   const shortcuts = [{ href: '/', label: 'Home' }];
 
   useEffect(() => {

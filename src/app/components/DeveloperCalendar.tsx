@@ -1,5 +1,5 @@
 'use client';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 const dayLabels = ['日', '月', '火', '水', '木', '金', '土'];
 
@@ -25,7 +25,10 @@ export default function DeveloperCalendar({
   onNextMonth,
   hasPosts,
 }: Props) {
-  const today = useMemo(() => toYmd(new Date()), []);
+  const [today, setToday] = useState('');
+  useEffect(() => {
+    setToday(toYmd(new Date()));
+  }, []);
 
   const cells = useMemo(() => {
     const firstDay = new Date(year, month - 1, 1).getDay();
