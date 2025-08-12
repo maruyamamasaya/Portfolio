@@ -15,7 +15,7 @@ export default function About() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-10">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">
-        独立系エンジニア × クリエイター
+        ソロエンジニア × クリエイター – 企画から運営まで一人完結
       </h1>
 
       {/* プロフィール */}
