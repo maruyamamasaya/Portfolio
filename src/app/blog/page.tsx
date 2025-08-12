@@ -1,6 +1,6 @@
 import { getSortedPosts } from '@/lib/posts';
 import LeftSidebar from '@/app/components/LeftSidebar';
-import PostCard from '@/app/components/PostCard';
+import HomePostCard from '@/app/components/HomePostCard';
 import SearchBar from '@/app/components/SearchBar';
 
 export default async function BlogIndex() {
@@ -18,7 +18,7 @@ export default async function BlogIndex() {
           <h2 className="text-xl font-bold mb-4">最新記事</h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {latest.map((post) => (
-              <PostCard key={post.slug} post={post} />
+              <HomePostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
@@ -27,7 +27,7 @@ export default async function BlogIndex() {
             <h2 className="text-xl font-bold mb-4">過去の記事</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((post) => (
-                <PostCard key={post.slug} post={post} />
+                <HomePostCard key={post.slug} post={post} />
               ))}
             </div>
           </section>
