@@ -3,7 +3,7 @@ import path from 'path';
 import { NextResponse } from 'next/server';
 import { validateFilename } from '@/lib/validateFilename';
 
-const postsDir = path.join(process.cwd(), 'blog');
+const postsDir = path.join(process.cwd(), 'src', 'data', 'posts');
 
 export async function GET(
   req: Request,
