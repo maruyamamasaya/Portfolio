@@ -6,9 +6,7 @@ import { getPostsByCategory } from '@/lib/posts';
 export const dynamic = 'force-dynamic';
 
 export default async function CategoryRecommendations() {
-  const selected = [...categories]
-    .sort(() => Math.random() - 0.5)
-    .slice(0, 3);
+  const selected = categories.slice(0, 3);
 
   const categoryPosts = await Promise.all(
     selected.map(async (cat) => ({
