@@ -3,24 +3,20 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Taskbar() {
-  const [time, setTime] = useState<string>(() =>
-    new Date().toLocaleTimeString('ja-JP', {
-      hour: '2-digit',
-      minute: '2-digit',
-    }),
-  );
+  const [time, setTime] = useState<string>('--:--');
 
   const shortcuts = [{ href: '/', label: 'Home' }];
 
   useEffect(() => {
-    const id = setInterval(() => {
+    const update = () =>
       setTime(
         new Date().toLocaleTimeString('ja-JP', {
           hour: '2-digit',
           minute: '2-digit',
         }),
       );
-    }, 60000);
+    update();
+    const id = setInterval(update, 60000);
     return () => clearInterval(id);
   }, []);
 
