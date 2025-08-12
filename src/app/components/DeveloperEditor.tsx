@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import DeveloperCalendar from './DeveloperCalendar';
 import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { categories } from '../../../data/categories';
@@ -16,6 +17,7 @@ export default function DeveloperEditor() {
   const [fileGroups, setFileGroups] = useState<Record<string, string[]>>({});
   const [fileDates, setFileDates] = useState<Record<string, string>>({});
   const [selected, setSelected] = useState('');
+  const [openDates, setOpenDates] = useState<Record<string, boolean>>({});
   const [content, setContent] = useState('');
   const [meta, setMeta] = useState({
     title: '',
@@ -231,22 +233,44 @@ export default function DeveloperEditor() {
   return (
     <div className="md:flex">
       <div className="md:w-1/5 p-4 space-y-4 border-r">
+        <DeveloperCalendar
+          onSelect={(date) => {
+            setOpenDates((prev) => ({ ...prev, [date]: true }));
+            setTimeout(() => {
+              document.getElementById(`date-${date}`)?.scrollIntoView({
+                behavior: 'smooth',
+              });
+            }, 0);
+          }}
+        />
         <ul className="space-y-2">
           {Object.entries(fileGroups).map(([date, names]) => (
-            <li key={date}>
-              <p className="font-bold">{date}</p>
-              <ul className="ml-2 space-y-1">
-                {names.map((name) => (
-                  <li key={name}>
-                    <button
-                      className="accent-text underline transition-base"
-                      onClick={() => openFile(name)}
-                    >
-                      {name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+            <li key={date} id={`date-${date}`}>
+              <button
+                className="font-bold w-full text-left"
+                onClick={() =>
+                  setOpenDates((prev) => ({
+                    ...prev,
+                    [date]: !prev[date],
+                  }))
+                }
+              >
+                {date}
+              </button>
+              {openDates[date] && (
+                <ul className="ml-2 space-y-1">
+                  {names.map((name) => (
+                    <li key={name}>
+                      <button
+                        className="accent-text underline transition-base"
+                        onClick={() => openFile(name)}
+                      >
+                        {name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
