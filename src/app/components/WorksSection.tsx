@@ -64,8 +64,8 @@ export default function WorksSection() {
         「誰に相談していいかわからない」そんな声に応える、現場に強いIT・デザイン支援をご提供しています。
       </p>
       <div className="grid w-full gap-8 md:grid-cols-3">
-        {works.map((work, i) => (
-          <div key={i} className="space-y-2">
+        {works.map((work) => (
+          <div key={work.title} className="space-y-2">
             <h3 className="font-semibold">{work.title}</h3>
             <ImageSlider images={work.images} />
             <p className="speech-bubble">{work.caption}</p>
