@@ -1,72 +1,81 @@
 'use client';
-import { useState } from 'react';
+import { useMemo } from 'react';
 
 const dayLabels = ['日', '月', '火', '水', '木', '金', '土'];
 
 type Props = {
+  year: number;
+  month: number; // 1-12
+  selectedDate: string; // YYYY-MM-DD
   onSelect: (date: string) => void;
+  onPrevMonth: () => void;
+  onNextMonth: () => void;
+  hasPosts: (date: string) => boolean;
 };
 
-export default function DeveloperCalendar({ onSelect }: Props) {
-  const today = new Date();
-  const [year, setYear] = useState(today.getFullYear());
-  const [month, setMonth] = useState(today.getMonth());
+const pad = (n: number) => String(n).padStart(2, '0');
+const toYmd = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+export default function DeveloperCalendar({
+  year,
+  month,
+  selectedDate,
+  onSelect,
+  onPrevMonth,
+  onNextMonth,
+  hasPosts,
+}: Props) {
+  const today = useMemo(() => toYmd(new Date()), []);
 
-  const prevMonth = () => {
-    if (month === 0) {
-      setYear(year - 1);
-      setMonth(11);
-    } else {
-      setMonth(month - 1);
+  const cells = useMemo(() => {
+    const firstDay = new Date(year, month - 1, 1).getDay();
+    const daysInMonth = new Date(year, month, 0).getDate();
+    const prevMonthDays = new Date(year, month - 1, 0).getDate();
+
+    const temp: { date: string; day: number; current: boolean }[] = [];
+
+    // previous month
+    for (let i = firstDay - 1; i >= 0; i--) {
+      const date = new Date(year, month - 2, prevMonthDays - i);
+      temp.push({ date: toYmd(date), day: date.getDate(), current: false });
     }
-  };
-
-  const nextMonth = () => {
-    if (month === 11) {
-      setYear(year + 1);
-      setMonth(0);
-    } else {
-      setMonth(month + 1);
+    // current month
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date = `${year}-${pad(month)}-${pad(day)}`;
+      temp.push({ date, day, current: true });
     }
-  };
-
-  const selectDate = (day: number) => {
-    const m = `${month + 1}`.padStart(2, '0');
-    const d = `${day}`.padStart(2, '0');
-    onSelect(`${year}-${m}-${d}`);
-  };
-
-  const weeks: (number | null)[][] = [];
-  let currentWeek: (number | null)[] = Array(firstDay).fill(null);
-  for (let day = 1; day <= daysInMonth; day++) {
-    currentWeek.push(day);
-    if (currentWeek.length === 7) {
-      weeks.push(currentWeek);
-      currentWeek = [];
+    // next month
+    let nextDay = 1;
+    while (temp.length % 7 !== 0) {
+      const date = new Date(year, month, nextDay);
+      temp.push({ date: toYmd(date), day: nextDay, current: false });
+      nextDay++;
     }
-  }
-  if (currentWeek.length) {
-    currentWeek = currentWeek.concat(Array(7 - currentWeek.length).fill(null));
-    weeks.push(currentWeek);
-  }
+    return temp;
+  }, [year, month]);
+
+  const weeks = useMemo(() => {
+    const w: typeof cells[] = [];
+    for (let i = 0; i < cells.length; i += 7) {
+      w.push(cells.slice(i, i + 7));
+    }
+    return w;
+  }, [cells]);
 
   return (
     <div>
       <div className="flex justify-between items-center mb-2">
-        <button className="px-2" onClick={prevMonth}>
+        <button aria-label="前の月" className="px-2" onClick={onPrevMonth}>
           &lt;
         </button>
-        <span>
-          {year}年{month + 1}月
-        </span>
-        <button className="px-2" onClick={nextMonth}>
+        <h2 className="font-bold">
+          {year}年{month}月
+        </h2>
+        <button aria-label="次の月" className="px-2" onClick={onNextMonth}>
           &gt;
         </button>
       </div>
-      <table className="w-full text-center border-collapse">
+      <table role="grid" className="w-full text-center border-collapse">
         <thead>
           <tr>
             {dayLabels.map((d) => (
@@ -79,20 +88,36 @@ export default function DeveloperCalendar({ onSelect }: Props) {
         <tbody>
           {weeks.map((week, i) => (
             <tr key={i}>
-              {week.map((day, j) => (
-                <td key={j} className="border p-1">
-                  {day ? (
+              {week.map((cell) => {
+                const isSelected = cell.date === selectedDate;
+                const has = hasPosts(cell.date);
+                const isToday = cell.date === today;
+                return (
+                  <td key={cell.date} className="p-1">
                     <button
-                      className="w-8 h-8 rounded hover:bg-gray-200 transition-base"
-                      onClick={() => selectDate(day)}
+                      role="gridcell"
+                      aria-selected={isSelected}
+                      aria-label={cell.date}
+                      onClick={() => onSelect(cell.date)}
+                      className={`relative w-8 h-8 mx-auto flex items-center justify-center rounded-full transition-base ${
+                        cell.current ? '' : 'text-gray-400'
+                      } ${
+                        isSelected
+                          ? 'bg-primary text-white'
+                          : isToday
+                          ? 'border border-primary'
+                          : ''
+                      } ${
+                        has && !isSelected
+                          ? 'after:content-[\'\'] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full'
+                          : ''
+                        }`}
                     >
-                      {day}
+                      {cell.day}
                     </button>
-                  ) : (
-                    <span>&nbsp;</span>
-                  )}
-                </td>
-              ))}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
@@ -100,4 +125,3 @@ export default function DeveloperCalendar({ onSelect }: Props) {
     </div>
   );
 }
-
