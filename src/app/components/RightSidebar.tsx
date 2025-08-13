@@ -20,12 +20,12 @@ export default function RightSidebar({ posts }: Props) {
           className="block rounded-lg shadow-md overflow-hidden transition-base"
         >
           <Image
-            src="https://storage.googleapis.com/studio-design-asset-files/projects/BmqMl8R4OX/s-1280x670_v-fms_webp_3539cdc3-8ad9-4409-b61a-d7a7649a934c_middle.webp"
+            src="/images/jimusurubaner.png"
             alt="JIMUSURU公式サイトへの広告"
-            width={640}
-            height={360}
-          className="w-full h-auto aspect-[16/9]"
-        />
+            width={600}
+            height={200}
+            className="w-full h-auto aspect-[3/1]"
+          />
       </Link>
       </div>
       <div className="bg-gray-50 border rounded p-4 text-sm leading-relaxed space-y-2">
