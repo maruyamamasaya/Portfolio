@@ -22,9 +22,9 @@ export default function RightSidebar({ posts }: Props) {
           <Image
             src="/images/jimusurubaner.png"
             alt="JIMUSURU公式サイトへの広告"
-            width={640}
-            height={360}
-            className="w-full h-auto aspect-[16/9]"
+            width={600}
+            height={200}
+            className="w-full h-auto aspect-[3/1]"
           />
       </Link>
       </div>
