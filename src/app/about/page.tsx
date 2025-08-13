@@ -22,8 +22,8 @@ export default function About() {
       {/* プロフィール */}
       <section className="space-y-4">
         <Image
-          src="/images/profile-icon.png"
-          alt="プロフィールアイコン"
+          src="/images/profile.jpg"
+          alt="Profile"
           width={96}
           height={96}
           className="w-24 h-24 object-cover rounded-lg mx-auto"

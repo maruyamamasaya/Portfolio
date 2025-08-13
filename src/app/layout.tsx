@@ -18,9 +18,6 @@ export const metadata = {
   title: 'Digi Goose（デジグース）｜最新AIから業務効率まで、幅広くお任せ　テクニカル法人サポート',
   description:
     '最新AI活用から業務効率化までをトータルで支援するテクニカル法人サポートサイト。中高生向けの家庭教師型パソコンスクールも運営。',
-  icons: {
-    icon: '/images/favicon.png',
-  },
   openGraph: {
     images: '/images/eye-catch.png',
   },
