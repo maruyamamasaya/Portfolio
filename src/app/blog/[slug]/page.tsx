@@ -7,7 +7,6 @@ import getExcerpt from '@/lib/excerpt';
 import LeftSidebar from '@/app/components/LeftSidebar';
 import RightSidebar from '@/app/components/RightSidebar';
 import BlogNavButtons from '@/app/components/BlogNavButtons';
-import TableOfContents from '@/app/components/TableOfContents';
 import ShareButtons from '@/app/components/ShareButtons';
 import PrevNextLinks from '@/app/components/PrevNextLinks';
 import RelatedPosts from '@/app/components/RelatedPosts';
@@ -62,40 +61,46 @@ export default async function BlogPost({
     const backlinks = await getBacklinks(params.slug);
     const { html, headings } = await markdownToHtml(post.content);
     return (
-      <div className="blog-container">
-        <div className="hidden sm:block mb-4">
-          <TagListWrapper />
-        </div>
-        <BlogNavButtons />
-        <PostLayout
-          title={post.title}
-          date={`著者: 管理者 / ${post.date}`}
-          updated={post.updated}
-          tags={post.tags}
-          image={post.image}
-          imageAlt={post.alt ?? post.slug}
-          headings={headings}
-        >
-          <div dangerouslySetInnerHTML={{ __html: html }} />
-          <ShareButtons title={post.title} />
-          {backlinks.length > 0 && (
-            <div className="mt-8">
-              <h2 className="text-lg font-bold mb-2">被リンク</h2>
-              <ul className="list-disc pl-5">
-                {backlinks.map((link) => (
-                  <li key={link.slug}>
-                    <Link href={`/blog/${link.slug}`}>{link.title}</Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </PostLayout>
-        <PrevNextLinks prev={prev} next={next} />
-        <RelatedPosts posts={related} />
-        <LeftSidebar />
-        <RightSidebar posts={posts} />
-        <CodeCopyInit />
+      <div className="blog-container lg:grid lg:grid-cols-12 lg:gap-6">
+        <main className="lg:col-span-6 lg:order-2">
+          <div className="hidden sm:block mb-4">
+            <TagListWrapper />
+          </div>
+          <BlogNavButtons />
+          <PostLayout
+            title={post.title}
+            date={`著者: 管理者 / ${post.date}`}
+            updated={post.updated}
+            tags={post.tags}
+            image={post.image}
+            imageAlt={post.alt ?? post.slug}
+            headings={headings}
+          >
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+            <ShareButtons title={post.title} />
+            {backlinks.length > 0 && (
+              <div className="mt-8">
+                <h2 className="text-lg font-bold mb-2">被リンク</h2>
+                <ul className="list-disc pl-5">
+                  {backlinks.map((link) => (
+                    <li key={link.slug}>
+                      <Link href={`/blog/${link.slug}`}>{link.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </PostLayout>
+          <PrevNextLinks prev={prev} next={next} />
+          <RelatedPosts posts={related} />
+          <CodeCopyInit />
+        </main>
+        <aside className="lg:col-span-3 lg:order-1 mt-8 lg:mt-0">
+          <LeftSidebar />
+        </aside>
+        <aside className="lg:col-span-3 lg:order-3 mt-8 lg:mt-0">
+          <RightSidebar posts={posts} />
+        </aside>
       </div>
     );
   } catch {

@@ -13,10 +13,11 @@ export const metadata = {
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { q?: string; category?: string; tag?: string | string[] };
+  searchParams: { q?: string; category?: string; tag?: string | string[]; date?: string };
 }) {
   const query = searchParams.q ?? '';
   const category = searchParams.category ?? '';
+  const date = searchParams.date ?? '';
   const tagParam = searchParams.tag;
   const tagString = Array.isArray(tagParam)
     ? tagParam.join(',')
@@ -36,8 +37,12 @@ export default async function SearchPage({
   if (tags.length) {
     results = results.filter((p) => p.tags?.some((t) => tags.includes(t)));
   }
+  if (date) {
+    results = results.filter((p) => p.date === date);
+  }
 
-  const hasFilter = query !== '' || category !== '' || tags.length > 0;
+  const hasFilter =
+    query !== '' || category !== '' || tags.length > 0 || date !== '';
 
   const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const highlight = (text: string) => {
