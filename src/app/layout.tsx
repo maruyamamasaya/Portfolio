@@ -34,6 +34,18 @@ export default async function RootLayout({
     <html lang="ja">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Favicon links */}
+        {/* Basic favicon */}
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+        {/* Higher resolution backups */}
+        <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48.png" />
+        <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64.png" />
+        {/* iOS / Android */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192.png" />
+        {/* PWA / large icon */}
+        <link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512.png" />
       </head>
       <body
         className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-700 text-light dark:text-dark font-normal antialiased transition-base`}
