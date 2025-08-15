@@ -61,7 +61,7 @@ export default async function BlogPost({
     const backlinks = await getBacklinks(params.slug);
     const { html, headings } = await markdownToHtml(post.content);
     return (
-      <div className="blog-container lg:grid lg:grid-cols-12 lg:gap-6">
+      <div className="blog-container mt-4 lg:grid lg:grid-cols-12 lg:gap-6">
         <main className="lg:col-span-6 lg:order-2">
           <div className="hidden sm:block mb-4">
             <TagListWrapper />
