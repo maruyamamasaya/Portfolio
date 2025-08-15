@@ -1,5 +1,6 @@
 import BlogNavButtons from '../components/BlogNavButtons';
 import CTASection from '../components/CTASection';
+import Image from 'next/image';
 
 export default function Contact() {
   return (
@@ -7,6 +8,40 @@ export default function Contact() {
       <BlogNavButtons />
       <h1 className="text-2xl font-bold">Contact</h1>
       <p>お問い合わせはメールでお願いします。</p>
+      <ul className="space-y-2">
+        <li>
+          <a
+            href="#"
+            className="inline-flex items-center space-x-2 hover:text-primary"
+          >
+            <Image
+              src="/images/LINEdevelop-200px.png"
+              alt="LINE公式アカウント"
+              width={24}
+              height={24}
+              className="w-6 h-6"
+            />
+            <span>LINE公式アカウント</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/digitalgoosesupport/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 hover:text-primary"
+          >
+            <Image
+              src="/images/instagram-200px.png"
+              alt="Instagram"
+              width={24}
+              height={24}
+              className="w-6 h-6"
+            />
+            <span>Digi Goose 公式アカウント</span>
+          </a>
+        </li>
+      </ul>
       <CTASection
         href="mailto:contact@freehackapp.com"
         label="\uD83D\uDCE9 お仕事のご相談はこちら"
