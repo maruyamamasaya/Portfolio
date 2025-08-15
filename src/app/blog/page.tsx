@@ -9,7 +9,7 @@ export default async function BlogIndex() {
   const rest = posts.slice(3);
 
   return (
-    <div className="blog-container md:flex py-8">
+    <div className="blog-container mt-4 md:flex py-8">
       <div className="md:flex-1 space-y-8 md:order-last">
         <div className="sm:hidden mb-4">
           <SearchBar />
