@@ -6,7 +6,15 @@ export default function ITSchoolSection() {
     {
       name: '💻 オンラインお手軽コース',
       price: '5,000円',
-      details: ['チャットで質問し放題', '当日中に回答', '噛み砕いた解説で何度でも質問OK'],
+      details: [
+        'チャットで質問し放題',
+        '毎日 9:00〜22:00 まで受付中！',
+        'どんな小さな疑問でもお気軽にどうぞ。',
+        '今ホットなトレンドの配信もあるよ！',
+        'YouTube動画、TikTok動画でも、配信中',
+        '当日中に回答',
+        '噛み砕いた解説で何度でも質問OK',
+      ],
     },
     {
       name: '🏠 家庭訪問プラン',
@@ -78,6 +86,15 @@ export default function ITSchoolSection() {
         </p>
       </div>
 
+      {/* 講師紹介 */}
+      <div className="space-y-4">
+        <h3 className="text-2xl font-bold text-center">👨‍🏫 講師紹介</h3>
+        <p className="text-center">
+          現役エンジニアが直接指導！<br className="hidden sm:block" />
+          実際にシステム開発の現場で活躍しているプロが、あなたのレベルに合わせて丁寧にサポートします。
+        </p>
+      </div>
+
       {/* コース紹介 */}
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-center">コース紹介</h3>
@@ -114,6 +131,49 @@ export default function ITSchoolSection() {
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* 受講までの流れ */}
+      <div className="space-y-4">
+        <h3 className="text-2xl font-bold text-center">受講までの流れ</h3>
+        <ul className="space-y-4 max-w-xl mx-auto">
+          <li className="flex items-start gap-2">
+            <span>🗣️</span>
+            <div>
+              <p className="font-medium">オンラインで簡単ヒアリング</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
+              </p>
+            </div>
+          </li>
+          <li className="flex items-start gap-2">
+            <span>📋</span>
+            <div>
+              <p className="font-medium">あなただけの学習カルテ作成</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                スキルや目的に合わせたオリジナルの学習プランをご提案します。
+              </p>
+            </div>
+          </li>
+          <li className="flex items-start gap-2">
+            <span>🎓</span>
+            <div>
+              <p className="font-medium">無料体験授業</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                実際に授業を受けて、学びやすさを体感してください。
+              </p>
+            </div>
+          </li>
+          <li className="flex items-start gap-2">
+            <span>🚀</span>
+            <div>
+              <p className="font-medium">継続受講へ</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
+              </p>
+            </div>
+          </li>
+        </ul>
       </div>
 
       {/* 特徴 */}
