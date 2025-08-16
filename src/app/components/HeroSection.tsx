@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HeroSection() {
@@ -6,9 +7,11 @@ export default function HeroSection() {
       {/* Mobile layout: image first, text below */}
         <div className="sm:hidden space-y-2">
           <div className="mx-[5px]">
-            <img
+            <Image
               src="/images/top.png"
               alt=""
+              width={1000}
+              height={1000}
               className="w-full aspect-square object-cover"
             />
           </div>
