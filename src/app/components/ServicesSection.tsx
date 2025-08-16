@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const services = [
   {
@@ -86,6 +87,11 @@ export default function ServicesSection() {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="mt-6 text-right">
+        <Link href="/pricing" className="accent-text hover:underline transition-base">
+          ご料金についてはこちら
+        </Link>
       </div>
     </section>
   );
