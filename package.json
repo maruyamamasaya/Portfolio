@@ -44,5 +44,9 @@
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-typescript": "^7.24.7",
     "babel-jest": "^29.7.0"
-  }
+  },
+  "browserslist": [
+    "defaults and supports es6-module",
+    "not IE 11"
+  ]
 }

@@ -13,6 +13,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Backup or custom Babel configuration
+babel.config.js
+
 # Temporary editor files
 *~
 *.swp
