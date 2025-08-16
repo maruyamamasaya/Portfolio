@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import CourseCard from './CourseCard';
 
 interface Props {
   className?: string;
@@ -8,27 +9,28 @@ interface Props {
 export default function ITSchoolSection({ className = '' }: Props) {
   const courses = [
     {
-      name: '💻 オンラインお手軽コース',
-      price: '月額5,000円',
-      details: [
-        'チャットで質問し放題',
-        '毎日 9:00〜22:00 まで受付中！',
-        'どんな小さな疑問でもお気軽にどうぞ。',
-        '今ホットなトレンドの配信もあるよ！',
-        'YouTube動画、TikTok動画でも、配信中',
-        '当日中に回答',
-        '噛み砕いた解説で何度でも質問OK',
-      ],
+      title: 'オンラインお手軽コース',
+      short: 'Online',
+      description:
+        'チャットで質問し放題。毎日9:00〜22:00まで受付中。',
+      href: '/contact',
+      image: '/images/img1.svg',
     },
     {
-      name: '🏠 家庭訪問プラン',
-      price: '月額25,000円',
-      details: ['月4回 × 3h、東京都内どこでも訪問', '宿題や課題も一緒に解決', 'PCや教材を直接使って理解を深める'],
+      title: '家庭訪問プラン',
+      short: 'Home',
+      description:
+        '月4回×3h、東京都内どこでも訪問。宿題や課題も一緒に解決。',
+      href: '/contact',
+      image: '/images/img2.svg',
     },
     {
-      name: '🏢 個別塾プラン',
-      price: '月額20,000円〜',
-      details: ['レンタル会議室で月2回 × 3h', '集中できる学習環境', '進度に合わせたカリキュラム'],
+      title: '個別塾プラン',
+      short: 'School',
+      description:
+        'レンタル会議室で月2回×3h。集中できる学習環境。',
+      href: '/contact',
+      image: '/images/img3.svg',
     },
   ];
 
@@ -103,43 +105,15 @@ export default function ITSchoolSection({ className = '' }: Props) {
         </p>
       </div>
 
-      {/* コース紹介 */}
-      <div className="space-y-4">
-        <h3 className="text-2xl font-bold text-center text-pink-700">コース紹介</h3>
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse shadow rounded-lg overflow-hidden text-sm">
-            <thead>
-              <tr className="font-bold bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-                <th className="p-4 text-left w-1/4">プラン</th>
-                <th className="p-4 text-left w-1/4">料金（月額）</th>
-                <th className="p-4 text-left w-2/4">内容</th>
-              </tr>
-            </thead>
-            <tbody>
-              {courses.map((course, i) => (
-                <tr
-                  key={course.name}
-                  className={
-                    i % 2 === 0
-                      ? 'bg-white dark:bg-gray-800'
-                      : 'bg-gray-50 dark:bg-gray-700'
-                  }
-                >
-                  <td className="p-4">{course.name}</td>
-                  <td className="p-4">{course.price}</td>
-                  <td className="p-4">
-                    <ul className="space-y-1">
-                      {course.details.map((d) => (
-                        <li key={d}>・{d}</li>
-                      ))}
-                    </ul>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        {/* コース紹介 */}
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-center text-pink-700">コース紹介</h3>
+          <ul className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {courses.map((course) => (
+              <CourseCard key={course.title} {...course} />
+            ))}
+          </ul>
         </div>
-      </div>
 
       {/* 受講までの流れ */}
       <div className="space-y-4">
