@@ -240,11 +240,20 @@ export default function ITSchoolSection({ className = '' }: Props) {
           </Link>
         </div>
 
-        <p className="text-sm">
-          <Link href="/contact" className="accent-text hover:underline transition">
-            コースに関するお問い合わせはこちら
+        <div className="text-sm flex flex-col items-start">
+          <Link
+            href="/contact/corporate"
+            className="accent-text hover:underline transition"
+          >
+            法人向けコースのお問い合わせはこちら
           </Link>
-        </p>
+          <Link
+            href="/contact/tutor"
+            className="accent-text hover:underline transition"
+          >
+            家庭教師向けコースのお問い合わせはこちら
+          </Link>
+        </div>
       </div>
     </section>
   );
