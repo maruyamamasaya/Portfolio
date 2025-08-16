@@ -1,5 +1,4 @@
 import './globals.css';
-import './mobile.css';
 import { ReactNode } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -10,6 +9,13 @@ import TagListHeader from './components/TagListHeader';
 import { getTagCounts } from '@/lib/posts';
 import { ThemeProvider } from './components/ThemeProvider';
 import { Poppins } from 'next/font/google';
+
+const criticalCss = `
+  body { min-height: 100vh; margin: 0; background-color: #f5f5f5; color: #1f2937; }
+  @media (prefers-color-scheme: dark) {
+    body { background-color: #374151; color: #f9fafb; }
+  }
+`;
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
@@ -34,6 +40,21 @@ export default async function RootLayout({
     <html lang="ja">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style dangerouslySetInnerHTML={{ __html: criticalCss }} />
+        {/* Preload non-critical CSS */}
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link
+          rel="preload"
+          as="style"
+          href="/css/mobile.css"
+          onLoad={(e) => {
+            (e.currentTarget as HTMLLinkElement).rel = 'stylesheet';
+          }}
+        />
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-css-tags */}
+          <link rel="stylesheet" href="/css/mobile.css" />
+        </noscript>
         {/* Favicon links */}
         {/* Basic favicon */}
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
