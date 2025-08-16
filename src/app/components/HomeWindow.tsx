@@ -5,6 +5,7 @@ import WorksSection from './WorksSection';
 import TestimonialsSection from './TestimonialsSection';
 import FAQSection from './FAQSection';
 import CTASection from './CTASection';
+import ITSchoolSection from './ITSchoolSection';
 import Link from 'next/link';
 import { Post } from '@/lib/posts';
 import ScrollFadeIn from './ScrollFadeIn';
@@ -33,6 +34,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
         <Profile />
       </section>
       <CTASection />
+      <ITSchoolSection />
 
       {/* 最新記事一覧 */}
       <section className="px-4 sm:px-6 md:px-10 w-full mx-auto space-y-4">
