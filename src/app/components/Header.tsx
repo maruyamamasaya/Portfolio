@@ -1,8 +1,9 @@
 'use client';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import DarkModeToggle from './DarkModeToggle';
+const DarkModeToggle = dynamic(() => import('./DarkModeToggle'), { ssr: false });
 import HeaderSearchBox from './HeaderSearchBox';
 
 export default function Header() {
