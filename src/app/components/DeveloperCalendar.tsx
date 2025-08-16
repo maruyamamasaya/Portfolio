@@ -14,7 +14,8 @@ type Props = {
 };
 
 const pad = (n: number) => String(n).padStart(2, '0');
-const toYmd = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const toYmd = (d: Date) =>
+  `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
 export default function DeveloperCalendar({
   year,
@@ -58,7 +59,7 @@ export default function DeveloperCalendar({
   }, [year, month]);
 
   const weeks = useMemo(() => {
-    const w: typeof cells[] = [];
+    const w: (typeof cells)[] = [];
     for (let i = 0; i < cells.length; i += 7) {
       w.push(cells.slice(i, i + 7));
     }
@@ -108,13 +109,13 @@ export default function DeveloperCalendar({
                         isSelected
                           ? 'bg-primary text-white'
                           : isToday
-                          ? 'border border-primary'
-                          : ''
+                            ? 'border border-primary'
+                            : ''
                       } ${
                         has && !isSelected
-                          ? 'after:content-[\'\'] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full'
+                          ? 'after:content-[""] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full'
                           : ''
-                        }`}
+                      }`}
                     >
                       {cell.day}
                     </button>
