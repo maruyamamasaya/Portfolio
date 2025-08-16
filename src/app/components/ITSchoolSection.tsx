@@ -221,28 +221,47 @@ export default function ITSchoolSection({ className = '' }: Props) {
         {/* アクションエリア */}
         <div className="flex flex-col items-center space-y-4">
           <Link
-            href="/contact?type=guidance"
+            href="/contact/tutor?type=guidance"
             className="px-6 py-3 bg-purple-600 text-white rounded-full shadow transition transform hover:bg-purple-700 hover:scale-105"
           >
             無料ガイダンス
           </Link>
           <Link
-            href="/contact?type=session"
+            href="/contact/tutor?type=session"
             className="px-6 py-3 bg-secondary text-black rounded-full shadow transition transform hover:bg-gray-300 hover:scale-105"
           >
             体験セッション
           </Link>
+        </div>
+        <div className="flex flex-col items-center space-y-2">
           <Link
-            href="/pricing"
+            href="/pricing/tutor"
             className="text-sm text-gray-600 hover:text-gray-800 hover:underline transition"
           >
-            受講料金一覧
+            家庭教師料金表
+          </Link>
+          <Link
+            href="/pricing/business"
+            className="text-sm text-gray-600 hover:text-gray-800 hover:underline transition"
+          >
+            法人向け料金表
           </Link>
         </div>
 
         <p className="text-sm">
-          <Link href="/contact" className="accent-text hover:underline transition">
-            コースに関するお問い合わせはこちら
+          <Link
+            href="/contact/tutor"
+            className="accent-text hover:underline transition"
+          >
+            家庭教師に関するお問い合わせはこちら
+          </Link>
+        </p>
+        <p className="text-sm">
+          <Link
+            href="/contact/business"
+            className="accent-text hover:underline transition"
+          >
+            法人向けお問い合わせはこちら
           </Link>
         </p>
       </div>

@@ -1,18 +1,21 @@
-import BlogNavButtons from '../components/BlogNavButtons';
-import CTASection from '../components/CTASection';
+import BlogNavButtons from '../../components/BlogNavButtons';
+import CTASection from '../../components/CTASection';
 import Image from 'next/image';
-import Link from 'next/link';
 
-export default function Contact() {
+export const metadata = {
+  title: '家庭教師お問い合わせ',
+};
+
+export default function TutorContactPage() {
   return (
     <div className="max-w-screen-lg mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-4">
       <BlogNavButtons />
-      <h1 className="text-2xl font-bold">Contact</h1>
-      <p>お問い合わせ内容に応じて以下よりお選びください。</p>
+      <h1 className="text-2xl font-bold">家庭教師に関するお問い合わせ</h1>
+      <p>IT家庭教師サービスについてのお問い合わせはこちらから。</p>
       <ul className="space-y-2">
         <li>
-          <Link
-            href="/contact/business"
+          <a
+            href="#"
             className="inline-flex items-center space-x-2 hover:text-primary"
           >
             <Image
@@ -22,12 +25,14 @@ export default function Contact() {
               height={24}
               className="w-6 h-6"
             />
-            <span>法人向けお問い合わせ</span>
-          </Link>
+            <span>LINE公式アカウント</span>
+          </a>
         </li>
         <li>
-          <Link
-            href="/contact/tutor"
+          <a
+            href="https://www.instagram.com/digitalgoosesupport/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 hover:text-primary"
           >
             <Image
@@ -37,15 +42,16 @@ export default function Contact() {
               height={24}
               className="w-6 h-6"
             />
-            <span>家庭教師に関するお問い合わせ</span>
-          </Link>
+            <span>Digi Goose 公式アカウント</span>
+          </a>
         </li>
       </ul>
       <CTASection
         href="mailto:contact@freehackapp.com"
-        label="\uD83D\uDCE9 メールでのお問い合わせ"
+        label="\uD83D\uDCE9 体験や料金のご相談はこちら"
         title=""
       />
     </div>
   );
 }
+
