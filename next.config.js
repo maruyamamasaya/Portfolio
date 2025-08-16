@@ -14,6 +14,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    modern: true,
+  },
 };
 
 module.exports = nextConfig;
