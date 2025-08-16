@@ -224,15 +224,53 @@ export default function ITSchoolSection({ className = '' }: Props) {
       </div>
 
       {/* 体験申し込み */}
-      <div className="text-center space-y-4">
-        <h3 className="text-2xl font-bold text-pink-700">まずは無料体験から！</h3>
-        <p>オンラインでの簡単ヒアリング → カルテ作成 → 体験授業</p>
-        <Link
-          href="/contact"
-          className="inline-block px-6 py-3 bg-pink-500 text-white rounded shadow hover:bg-pink-400 transition-base"
-        >
-          無料体験に申し込む
-        </Link>
+      <div className="text-center space-y-8">
+        {/* ヒーローヘッダー */}
+        <div className="space-y-2">
+          <h3 className="text-2xl font-bold text-pink-700">
+            無料ガイダンス｜体験セッション
+          </h3>
+          <p className="text-gray-700 dark:text-gray-300">
+            まずは情報系コースを体験する
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            無料体験プログラムに申し込みたい
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            各コースの受講料金一覧が知りたい
+          </p>
+          <p className="text-gray-700 dark:text-gray-300">
+            IT講座の講師や内容について詳しく知りたい
+          </p>
+        </div>
+
+        {/* アクションエリア */}
+        <div className="flex flex-col items-center space-y-4">
+          <Link
+            href="/contact?type=guidance"
+            className="px-6 py-3 bg-purple-600 text-white rounded-full shadow transition transform hover:bg-purple-700 hover:scale-105"
+          >
+            無料ガイダンス
+          </Link>
+          <Link
+            href="/contact?type=session"
+            className="px-6 py-3 bg-secondary text-black rounded-full shadow transition transform hover:bg-gray-300 hover:scale-105"
+          >
+            体験セッション
+          </Link>
+          <Link
+            href="/pricing"
+            className="text-sm text-gray-600 hover:text-gray-800 hover:underline transition"
+          >
+            受講料金一覧
+          </Link>
+        </div>
+
+        <p className="text-sm">
+          <Link href="/contact" className="accent-text hover:underline transition">
+            コースに関するお問い合わせはこちら
+          </Link>
+        </p>
       </div>
     </section>
   );
