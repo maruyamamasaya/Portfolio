@@ -34,7 +34,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
         <Profile />
       </section>
       <CTASection />
-      <ITSchoolSection />
+      <ITSchoolSection className="mt-24" />
 
       {/* 最新記事一覧 */}
       <section className="px-4 sm:px-6 md:px-10 w-full mx-auto space-y-4">
