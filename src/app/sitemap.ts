@@ -16,7 +16,9 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
     '/blog',
     '/categories',
     '/contact',
+    '/pricing',
     '/search',
+    '/services',
     '/tags',
     '/works',
   ].map((route) => ({
