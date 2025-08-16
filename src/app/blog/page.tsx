@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getSortedPosts } from '@/lib/posts';
 import LeftSidebar from '@/app/components/LeftSidebar';
 import HomePostCard from '@/app/components/HomePostCard';
@@ -10,7 +11,7 @@ export default async function BlogIndex() {
   const categoryPosts = categories
     .map((cat) => ({
       ...cat,
-      posts: posts.filter((p) => p.category === cat.slug),
+      posts: posts.filter((p) => p.category === cat.slug).slice(0, 9),
     }))
     .filter((cat) => cat.posts.length > 0);
 
@@ -35,6 +36,14 @@ export default async function BlogIndex() {
               {cat.posts.map((post) => (
                 <HomePostCard key={post.slug} post={post} />
               ))}
+            </div>
+            <div className="text-center mt-4">
+              <Link
+                href={`/categories/${cat.slug}`}
+                className="accent-text hover:underline transition-base"
+              >
+                続きを見る
+              </Link>
             </div>
           </section>
         ))}
