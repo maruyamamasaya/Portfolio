@@ -42,7 +42,7 @@ export default function ServicesPage() {
                 <td className="border border-gray-300 dark:border-gray-600 px-2 py-1 font-medium">
                   💻 オンラインお手軽コース
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">5,000円</td>
+                <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">月額5,000円</td>
                 <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">
                   <ul className="list-disc pl-5 space-y-1">
                     <li>💬 チャットで質問し放題</li>
@@ -59,7 +59,7 @@ export default function ServicesPage() {
                 <td className="border border-gray-300 dark:border-gray-600 px-2 py-1 font-medium">
                   🏠 家庭訪問プラン
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">25,000円</td>
+                <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">月額25,000円</td>
                 <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">
                   <ul className="list-disc pl-5 space-y-1">
                     <li>月4回 × 3h、東京都内どこでも訪問</li>
@@ -72,7 +72,7 @@ export default function ServicesPage() {
                 <td className="border border-gray-300 dark:border-gray-600 px-2 py-1 font-medium">
                   🏢 個別塾プラン
                 </td>
-                <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">20,000円〜</td>
+                <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">月額20,000円〜</td>
                 <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">
                   <ul className="list-disc pl-5 space-y-1">
                     <li>レンタル会議室で月2回 × 3h</li>
