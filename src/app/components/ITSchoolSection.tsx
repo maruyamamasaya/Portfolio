@@ -9,7 +9,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
   const courses = [
     {
       name: '💻 オンラインお手軽コース',
-      price: '5,000円',
+      price: '月額5,000円',
       details: [
         'チャットで質問し放題',
         '毎日 9:00〜22:00 まで受付中！',
@@ -22,12 +22,12 @@ export default function ITSchoolSection({ className = '' }: Props) {
     },
     {
       name: '🏠 家庭訪問プラン',
-      price: '25,000円',
+      price: '月額25,000円',
       details: ['月4回 × 3h、東京都内どこでも訪問', '宿題や課題も一緒に解決', 'PCや教材を直接使って理解を深める'],
     },
     {
       name: '🏢 個別塾プラン',
-      price: '20,000円〜',
+      price: '月額20,000円〜',
       details: ['レンタル会議室で月2回 × 3h', '集中できる学習環境', '進度に合わせたカリキュラム'],
     },
   ];
