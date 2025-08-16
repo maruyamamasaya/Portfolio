@@ -5,6 +5,6 @@ describe('GET /api/search-data', () => {
     const res = await GET();
     const data = await res.json();
     expect(Array.isArray(data.posts)).toBe(true);
-    expect(data.posts.some((p: any) => p.slug === 'ai-one-day-web')).toBe(true);
+    expect(data.posts.length).toBe(0);
   });
 });

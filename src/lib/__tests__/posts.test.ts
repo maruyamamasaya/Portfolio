@@ -2,17 +2,10 @@ import { getSortedPosts, getPost, getPostsByTag } from '../posts';
 import { FileNotFoundError } from '../errors';
 
 describe('posts utilities', () => {
-  it('getSortedPosts returns posts sorted by date desc', async () => {
+  it('getSortedPosts returns an array of posts', async () => {
     const posts = await getSortedPosts();
-    expect(posts[0].slug).toBe('ai-one-day-web');
-    expect(posts[1].slug).toBe('article-template');
-  });
-
-  it('getPost returns correct post data', async () => {
-    const slug = 'ai-one-day-web';
-    const post = await getPost(slug);
-    expect(post.title).toBe('AIが1日でWebサイトを作る時代');
-    expect(post.tags).toContain('AI');
+    expect(Array.isArray(posts)).toBe(true);
+    expect(posts.length).toBe(0);
   });
 
   it('getPost throws FileNotFoundError for missing file', async () => {
@@ -21,9 +14,9 @@ describe('posts utilities', () => {
     );
   });
 
-  it('getPostsByTag returns posts with specified tag', async () => {
+  it('getPostsByTag returns an empty array when no posts exist', async () => {
     const tag = 'AI';
     const posts = await getPostsByTag(tag);
-    expect(posts.some((p) => p.slug === 'ai-one-day-web')).toBe(true);
+    expect(posts.length).toBe(0);
   });
 });

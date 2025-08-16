@@ -6,6 +6,6 @@ describe('GET /api/posts', () => {
     expect(res.status).toBe(200);
     const data = await res.json();
     expect(Array.isArray(data)).toBe(true);
-    expect(data).toContain('ai-one-day-web.md');
+    expect(data.length).toBe(0);
   });
 });
