@@ -319,10 +319,16 @@ export default function PricingPage() {
         </ul>
       </section>
 
-      <div className="text-right">
+      <div className="text-right space-y-2">
+        <Link
+          href="/services"
+          className="accent-text hover:underline transition-base block"
+        >
+          サービス紹介はこちら
+        </Link>
         <Link
           href="/contact"
-          className="accent-text hover:underline transition-base"
+          className="accent-text hover:underline transition-base block"
         >
           お問い合わせはこちら
         </Link>
