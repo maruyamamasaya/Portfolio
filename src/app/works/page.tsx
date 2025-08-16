@@ -6,11 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
-import dynamic from 'next/dynamic';
-const ArcanaWorkCarousel = dynamic(
-  () => import('../components/ArcanaWorkCarousel'),
-  { ssr: false },
-);
+import ArcanaWorkCarousel from '../components/ArcanaWorkCarousel';
 
 const artworks: Artwork[] = [
   {
