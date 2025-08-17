@@ -68,56 +68,6 @@ export default function Header() {
       ),
     },
     {
-      href: '/ai-course',
-      label: 'AI講座',
-      icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="w-4 h-4"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <path d="M8 12h8M12 8v8" />
-        </svg>
-      ),
-    },
-    {
-      href: '/pricing/business',
-      label: '法人向け料金',
-      icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="w-4 h-4"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 3l6 7 6-7" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v11" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 14h14M5 18h14" />
-        </svg>
-      ),
-    },
-    {
-      href: '/pricing/tutor',
-      label: '家庭教師料金',
-      icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="w-4 h-4"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 3l6 7 6-7" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v11" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 14h14M5 18h14" />
-        </svg>
-      ),
-    },
-    {
       href: '/services',
       label: 'サービス紹介',
       icon: (
@@ -148,44 +98,6 @@ export default function Header() {
             strokeLinejoin="round"
             d="M4 4h7v16H4zM13 4h7v16h-7z"
           />
-        </svg>
-      ),
-    },
-    {
-      href: '/categories',
-      label: 'カテゴリ',
-      icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="w-4 h-4"
-        >
-          <rect x="3" y="3" width="7" height="7" />
-          <rect x="14" y="3" width="7" height="7" />
-          <rect x="3" y="14" width="7" height="7" />
-          <rect x="14" y="14" width="7" height="7" />
-        </svg>
-      ),
-    },
-    {
-      href: '/tags',
-      label: 'タグ検索',
-      icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="w-4 h-4"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3 12l9 9 9-9-9-9-9 9z"
-          />
-          <circle cx="12" cy="12" r="3" />
         </svg>
       ),
     },

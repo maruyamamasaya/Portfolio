@@ -36,28 +36,6 @@ export default function BottomNav() {
       ),
     },
     {
-      href: '/pricing/business',
-      label: '法人向け料金',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 3l6 7 6-7" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v11" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 14h14M5 18h14" />
-        </svg>
-      ),
-    },
-    {
-      href: '/pricing/tutor',
-      label: '家庭教師料金',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 3l6 7 6-7" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v11" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5 14h14M5 18h14" />
-        </svg>
-      ),
-    },
-    {
       href: '/services',
       label: 'サービス紹介',
       icon: (
@@ -72,16 +50,6 @@ export default function BottomNav() {
       icon: (
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 4h7v16H4zM13 4h7v16h-7z" />
-        </svg>
-      ),
-    },
-    {
-      href: '/contact',
-      label: 'お問い合わせ',
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21 8v10a2 2 0 01-2 2H5a2 2 0 01-2-2V8" />
         </svg>
       ),
     },
