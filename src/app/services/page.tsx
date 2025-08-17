@@ -129,7 +129,7 @@ export default function ServicesPage() {
       </section>
 
       <div className="text-right">
-        <Link href="/pricing" className="accent-text hover:underline transition-base">
+        <Link href="/pricing/tutor" className="accent-text hover:underline transition-base">
           ご料金についてはこちら
         </Link>
       </div>
