@@ -310,15 +310,6 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="space-y-2">
-        <h2 className="text-2xl font-semibold">個別塾向けプラン</h2>
-        <p>小中高生向けの個別指導塾様向け料金です。</p>
-        <ul className="list-disc pl-5">
-          <li>1コマ(60分): ¥X,XXX〜</li>
-          <li>入会金: ¥X,XXX</li>
-        </ul>
-      </section>
-
       <div className="text-right space-y-2">
         <Link
           href="/services"
