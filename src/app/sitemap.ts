@@ -18,7 +18,6 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
     '/contact',
     '/contact/business',
     '/contact/tutor',
-    '/pricing',
     '/pricing/business',
     '/pricing/tutor',
     '/search',

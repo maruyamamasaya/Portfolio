@@ -89,7 +89,7 @@ export default function ServicesSection() {
         </table>
       </div>
       <div className="mt-6 text-right">
-        <Link href="/pricing" className="accent-text hover:underline transition-base">
+        <Link href="/pricing/business" className="accent-text hover:underline transition-base">
           ご料金についてはこちら
         </Link>
       </div>

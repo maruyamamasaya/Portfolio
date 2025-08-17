@@ -84,8 +84,25 @@ export default function Header() {
       ),
     },
     {
-      href: '/pricing',
-      label: 'ご料金',
+      href: '/pricing/business',
+      label: '法人向け料金',
+      icon: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="w-4 h-4"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 3l6 7 6-7" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v11" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M5 14h14M5 18h14" />
+        </svg>
+      ),
+    },
+    {
+      href: '/pricing/tutor',
+      label: '家庭教師料金',
       icon: (
         <svg
           viewBox="0 0 24 24"
