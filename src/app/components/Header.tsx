@@ -200,7 +200,7 @@ export default function Header() {
         Skip to content
       </a>
       <div className="container mx-auto flex items-center relative p-1">
-        <h1 className="text-xl font-digital font-bold flex items-center">
+        <h1 className="text-xl font-display font-bold flex items-center">
           <Link href="/">
             <Image
               src="/images/headericon-light.png"
