@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useState, ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 const DarkModeToggle = dynamic(() => import('./DarkModeToggle'), {
   ssr: false,
@@ -13,7 +13,7 @@ import HeaderSearchBox from './HeaderSearchBox';
 type NavItem = {
   href: string;
   label: string;
-  icon: JSX.Element;
+  icon: ReactNode;
 };
 
 export default function Header() {
