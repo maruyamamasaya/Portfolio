@@ -35,8 +35,18 @@ function sha256(msg: string) {
   return crypto.createHash('sha256').update(msg).digest('hex');
 }
 
-function hmac(key: Buffer | string, msg: string) {
-  return crypto.createHmac('sha256', key).update(msg).digest();
+function hmac(key: Buffer | string, msg: string): Buffer;
+function hmac(
+  key: Buffer | string,
+  msg: string,
+  encoding: crypto.BinaryToTextEncoding
+): string;
+function hmac(
+  key: Buffer | string,
+  msg: string,
+  encoding?: crypto.BinaryToTextEncoding
+) {
+  return crypto.createHmac('sha256', key).update(msg).digest(encoding);
 }
 
 function getSignatureKey(key: string, dateStamp: string, region: string, service: string) {
@@ -102,7 +112,7 @@ async function sendEmailSES({
   const stringToSign =
     `${algorithm}\n${amzDate}\n${credentialScope}\n${sha256(canonicalRequest)}`;
   const signingKey = getSignatureKey(secretKey, dateStamp, region, 'ses');
-  const signature = hmac(signingKey, stringToSign).toString('hex');
+  const signature = hmac(signingKey, stringToSign, 'hex');
   const authorization =
     `${algorithm} Credential=${accessKey}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;
 
