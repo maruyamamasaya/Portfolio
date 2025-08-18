@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import crypto from 'crypto';
 
 const CONTACT_EMAIL = 'digi.goose.contact@gmail.com';
 const RATE_LIMIT_WINDOW = 60 * 1000;
@@ -29,26 +28,6 @@ function escapeHtml(str: string) {
     .replace(/'/g, '&#39;');
 }
 
-function sha256(value: string) {
-  return crypto.createHash('sha256').update(value).digest('hex');
-}
-
-function hmac(key: crypto.BinaryLike, value: string) {
-  return crypto.createHmac('sha256', key).update(value).digest();
-}
-
-function getSignatureKey(
-  key: string,
-  dateStamp: string,
-  region: string,
-  service: string
-) {
-  const kDate = hmac('AWS4' + key, dateStamp);
-  const kRegion = hmac(kDate, region);
-  const kService = hmac(kRegion, service);
-  return hmac(kService, 'aws4_request');
-}
-
 interface ContactRequest {
   subject?: string;
   name?: string;
@@ -61,15 +40,6 @@ interface ContactRequest {
 }
 
 export async function POST(req: Request) {
-  let body: ContactRequest;
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json(
-      { error: '無効なリクエストです。' },
-      { status: 400 }
-    );
-  }
   const {
     subject = 'お問い合わせ',
     name,
@@ -79,7 +49,7 @@ export async function POST(req: Request) {
     consultation = '',
     message = '',
     website = '',
-  } = body;
+  }: ContactRequest = await req.json();
 
   if (website) {
     return NextResponse.json(
@@ -140,66 +110,26 @@ export async function POST(req: Request) {
     .join('');
 
   try {
-    const region = process.env.AWS_SES_REGION;
-    const accessKeyId = process.env.AWS_SES_ACCESS_KEY_ID;
-    const secretAccessKey = process.env.AWS_SES_SECRET_ACCESS_KEY;
-    if (!region || !accessKeyId || !secretAccessKey) {
-      console.error('AWS SES environment variables are not set');
-      return NextResponse.json(
-        { error: 'サーバーの設定に問題があります。' },
-        { status: 500 }
-      );
-    }
-
-    const host = `email.${region}.amazonaws.com`;
-    const path = '/v2/email/outbound-emails';
-    const bodyJson = JSON.stringify({
-      FromEmailAddress: CONTACT_EMAIL,
-      Destination: { ToAddresses: [CONTACT_EMAIL] },
-      ReplyToAddresses: [email],
-      Content: {
-        Simple: {
-          Subject: { Data: subject },
-          Body: {
-            Text: { Data: content },
-            Html: { Data: htmlContent },
-          },
-        },
-      },
-    });
-
-    const now = new Date();
-    const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '');
-    const dateStamp = amzDate.slice(0, 8);
-    const canonicalHeaders = `content-type:application/json\nhost:${host}\nx-amz-date:${amzDate}\n`;
-    const signedHeaders = 'content-type;host;x-amz-date';
-    const payloadHash = sha256(bodyJson);
-    const canonicalRequest = `POST\n${path}\n\n${canonicalHeaders}\n${signedHeaders}\n${payloadHash}`;
-    const credentialScope = `${dateStamp}/${region}/ses/aws4_request`;
-    const stringToSign = `AWS4-HMAC-SHA256\n${amzDate}\n${credentialScope}\n${sha256(canonicalRequest)}`;
-    const signingKey = getSignatureKey(
-      secretAccessKey,
-      dateStamp,
-      region,
-      'ses'
-    );
-    const signature = hmac(signingKey, stringToSign).toString('hex');
-    const authorization =
-      `AWS4-HMAC-SHA256 Credential=${accessKeyId}/${credentialScope}, ` +
-      `SignedHeaders=${signedHeaders}, Signature=${signature}`;
-
-    const res = await fetch(`https://${host}${path}`, {
+    const res = await fetch('https://api.sendgrid.com/v3/mail/send', {
       method: 'POST',
       headers: {
+        Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
         'Content-Type': 'application/json',
-        'X-Amz-Date': amzDate,
-        Authorization: authorization,
       },
-      body: bodyJson,
+      body: JSON.stringify({
+        personalizations: [{ to: [{ email: CONTACT_EMAIL }] }],
+        from: { email: CONTACT_EMAIL },
+        reply_to: { email },
+        subject,
+        content: [
+          { type: 'text/plain', value: content },
+          { type: 'text/html', value: htmlContent },
+        ],
+      }),
     });
 
     if (!res.ok) {
-      console.error('SES error', res.status);
+      console.error('SendGrid error', res.status);
       return NextResponse.json(
         { error: 'メール送信に失敗しました。' },
         { status: 500 }
@@ -208,7 +138,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error('メール送信に失敗しました。', (err as Error).message);
+    console.error('メール送信に失敗しました。', err);
     return NextResponse.json(
       { error: 'メール送信に失敗しました。' },
       { status: 500 }
