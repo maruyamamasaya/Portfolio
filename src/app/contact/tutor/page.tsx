@@ -1,6 +1,6 @@
 import BlogNavButtons from '../../components/BlogNavButtons';
-import CTASection from '../../components/CTASection';
 import Image from 'next/image';
+import TutorContactForm from './TutorContactForm';
 
 export const metadata = {
   title: '家庭教師お問い合わせ',
@@ -46,12 +46,10 @@ export default function TutorContactPage() {
           </a>
         </li>
       </ul>
-      <CTASection
-        href="mailto:digi.goose.contact@gmail.com"
-        label="\uD83D\uDCE9 体験や料金のご相談はこちら"
-        title=""
-      />
-      <p className="text-sm line-through">contact@freehackapp.com</p>
+      <p>
+        この時点では、ご相談のタイミングでは、料金はいただいておりませんので気軽にお問い合わせください！
+      </p>
+      <TutorContactForm />
     </div>
   );
 }
