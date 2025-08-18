@@ -35,7 +35,7 @@ function sha256(msg: string) {
   return crypto.createHash('sha256').update(msg).digest('hex');
 }
 
-function hmac(key: Buffer | string, msg: string) {
+function hmac(key: Buffer | string, msg: string): Buffer {
   return crypto.createHmac('sha256', key).update(msg).digest();
 }
 
