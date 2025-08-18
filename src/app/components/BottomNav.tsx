@@ -56,7 +56,7 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="sm:hidden fixed bottom-0 inset-x-0 z-50 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <nav className="hd:hidden fixed bottom-0 inset-x-0 z-50 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
       <ul className="flex justify-around">
         {navItems.map((item) => (
           <li key={item.href}>

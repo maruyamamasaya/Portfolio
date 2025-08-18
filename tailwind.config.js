@@ -30,6 +30,9 @@ module.exports = {
       display: ['var(--font-playfair)', 'serif'],
     },
     extend: {
+      screens: {
+        hd: '1100px',
+      },
       colors: {
         primary: '#005bac',
         secondary: '#e5e7eb',

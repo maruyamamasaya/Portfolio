@@ -130,8 +130,8 @@ export default function Header() {
             />
           </Link>
         </h1>
-        <div className="border-l border-gray-300 pl-4 flex-1">
-          <nav className="hidden sm:flex justify-center">
+        <div className="hd:border-l hd:border-gray-300 hd:pl-4 hd:flex-1">
+          <nav className="hidden hd:flex justify-center">
             <ul className="flex gap-3 md:gap-4 text-sm">
               {navItems.map((item) => (
                 <li key={item.href}>
@@ -148,7 +148,7 @@ export default function Header() {
           </nav>
         </div>
         <div className="flex items-center space-x-2 ml-2">
-          <div className="hidden sm:block">
+          <div className="hidden hd:block">
             <HeaderSearchBox />
           </div>
           <DarkModeToggle />
