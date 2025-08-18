@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState, ReactNode } from 'react';
+import { useState, ReactNode, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 const DarkModeToggle = dynamic(() => import('./DarkModeToggle'), {
   ssr: false,
@@ -20,6 +20,21 @@ export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
+  const [desktopServiceOpen, setDesktopServiceOpen] = useState(false);
+  const desktopServiceRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        desktopServiceRef.current &&
+        !desktopServiceRef.current.contains(e.target as Node)
+      ) {
+        setDesktopServiceOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
   const navItems: NavItem[] = [
     {
       href: '/',
@@ -162,8 +177,12 @@ export default function Header() {
                   </li>
                 );
               })}
-              <li className="relative group">
-                <div className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-2 py-1 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary transition-colors duration-200">
+              <li className="relative" ref={desktopServiceRef}>
+                <div
+                  className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-2 py-1 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary transition-colors duration-200"
+                  onMouseEnter={() => setDesktopServiceOpen(true)}
+                  onClick={() => setDesktopServiceOpen((prev) => !prev)}
+                >
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -192,12 +211,19 @@ export default function Header() {
                     />
                   </svg>
                 </div>
-                <div className="absolute left-0 mt-2 w-40 rounded-md bg-white dark:bg-gray-800 shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-1 transition-all duration-200">
+                <div
+                  className={`absolute left-0 top-full w-40 rounded-md bg-white dark:bg-gray-800 shadow-lg transition-all duration-200 ${
+                    desktopServiceOpen
+                      ? 'opacity-100 visible translate-y-0'
+                      : 'opacity-0 invisible -translate-y-1'
+                  }`}
+                >
                   {services.map((s) => (
                     <Link
                       key={s.href}
                       href={s.href}
                       className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      onClick={() => setDesktopServiceOpen(false)}
                     >
                       {s.label}
                     </Link>
