@@ -13,7 +13,7 @@ export default async function AICoursePage() {
     {
       title: 'ステップ1：ChatGPTと“話す”練習',
       points: ['プロンプトの基本', '文章改善・要約'],
-      image: '/images/img1.svg',
+      image: '/images/tutor.jpeg',
     },
     {
       title: 'ステップ2：画像生成とデザイン',
