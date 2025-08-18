@@ -1,5 +1,4 @@
 import BlogNavButtons from '../components/BlogNavButtons';
-import CTASection from '../components/CTASection';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -41,12 +40,6 @@ export default function Contact() {
           </Link>
         </li>
       </ul>
-      <CTASection
-        href="mailto:digi.goose.contact@gmail.com"
-        label="\uD83D\uDCE9 メールでのお問い合わせ"
-        title=""
-      />
-      <p className="text-sm line-through">contact@freehackapp.com</p>
     </div>
   );
 }

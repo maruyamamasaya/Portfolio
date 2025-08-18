@@ -1,6 +1,6 @@
 import BlogNavButtons from '../../components/BlogNavButtons';
-import CTASection from '../../components/CTASection';
 import Image from 'next/image';
+import BusinessContactForm from './BusinessContactForm';
 
 export const metadata = {
   title: '法人向けお問い合わせ',
@@ -46,12 +46,10 @@ export default function BusinessContactPage() {
           </a>
         </li>
       </ul>
-      <CTASection
-        href="mailto:digi.goose.contact@gmail.com"
-        label="\uD83D\uDCE9 お仕事のご相談はこちら"
-        title=""
-      />
-      <p className="text-sm line-through">contact@freehackapp.com</p>
+      <p>
+        この時点では、ご相談のタイミングでは、料金はいただいておりませんので気軽にお問い合わせください！
+      </p>
+      <BusinessContactForm />
     </div>
   );
 }
