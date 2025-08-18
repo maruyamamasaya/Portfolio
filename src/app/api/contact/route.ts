@@ -35,9 +35,18 @@ function sha256(msg: string): string {
   return crypto.createHash('sha256').update(msg).digest('hex');
 }
 
-
-function hmac(key: Buffer | string, msg: string): Buffer {
-  return crypto.createHmac('sha256', key).update(msg).digest();
+function hmac(key: Buffer | string, msg: string): Buffer;
+function hmac(
+  key: Buffer | string,
+  msg: string,
+  encoding: BufferEncoding
+): string;
+function hmac(
+  key: Buffer | string,
+  msg: string,
+  encoding?: BufferEncoding
+): Buffer | string {
+  return crypto.createHmac('sha256', key).update(msg).digest(encoding);
 }
 
 function getSignatureKey(
