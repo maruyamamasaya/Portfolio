@@ -1,7 +1,7 @@
+export const runtime = 'nodejs'; // Edge runtime is prohibited
+
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
-
-export const runtime = 'nodejs'; // Edge runtime is prohibited
 
 const CONTACT_EMAIL = 'digi.goose.contact@gmail.com';
 const RATE_LIMIT_WINDOW = 60 * 1000;
@@ -67,20 +67,18 @@ async function sendEmailSES({
   content,
   htmlContent,
   replyTo,
+  region,
+  accessKey,
+  secretKey,
 }: {
   subject: string;
   content: string;
   htmlContent: string;
   replyTo: string;
+  region: string;
+  accessKey: string;
+  secretKey: string;
 }) {
-  const region = process.env.AWS_REGION;
-  const accessKey = process.env.AWS_ACCESS_KEY_ID;
-  const secretKey = process.env.AWS_SECRET_ACCESS_KEY;
-
-  if (!region || !accessKey || !secretKey) {
-    throw new Error('AWS SES credentials are not set');
-  }
-
   const host = `email.${region}.amazonaws.com`;
   const endpoint = `https://${host}/v2/email/outbound-emails`;
 
@@ -219,12 +217,30 @@ export async function POST(req: Request) {
     .map((line) => `<p>${escapeHtml(line)}</p>`)
     .join('');
 
+  const region = process.env.AWS_REGION;
+  const accessKey = process.env.AWS_ACCESS_KEY_ID;
+  const secretKey = process.env.AWS_SECRET_ACCESS_KEY;
+  const missing: string[] = [];
+  if (!region) missing.push('AWS_REGION');
+  if (!accessKey) missing.push('AWS_ACCESS_KEY_ID');
+  if (!secretKey) missing.push('AWS_SECRET_ACCESS_KEY');
+  if (missing.length > 0) {
+    console.error('Missing environment variables:', missing.join(', '));
+    return NextResponse.json(
+      { error: 'メール送信に失敗しました。' },
+      { status: 500 }
+    );
+  }
+
   try {
     await sendEmailSES({
       subject,
       content,
       htmlContent,
       replyTo: email,
+      region,
+      accessKey,
+      secretKey,
     });
     return NextResponse.json({ success: true });
   } catch (err) {
