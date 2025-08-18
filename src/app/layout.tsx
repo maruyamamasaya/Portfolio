@@ -9,9 +9,10 @@ import PageTransition from './components/PageTransition';
 import TagListHeader from './components/TagListHeader';
 import { getTagCounts } from '@/lib/posts';
 import { ThemeProvider } from './components/ThemeProvider';
-import { Poppins } from 'next/font/google';
+import { Poppins, Playfair_Display } from 'next/font/google';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
+const playfair = Playfair_Display({ subsets: ['latin'], weight: '700', variable: '--font-playfair' });
 
 export const metadata = {
   metadataBase: new URL('https://freehackapp.com'),
@@ -34,10 +35,6 @@ export default async function RootLayout({
     <html lang="ja">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
-          rel="stylesheet"
-        />
         {/* Favicon links */}
         {/* Basic favicon */}
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
@@ -52,7 +49,7 @@ export default async function RootLayout({
         <link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512.png" />
       </head>
       <body
-        className={`${poppins.className} min-h-screen bg-gray-100 dark:bg-gray-700 text-light dark:text-dark font-normal antialiased transition-base`}
+        className={`${poppins.className} ${playfair.variable} min-h-screen bg-gray-100 dark:bg-gray-700 text-light dark:text-dark font-normal antialiased transition-base`}
       >
         <ThemeProvider>
           <Header />
