@@ -102,7 +102,7 @@ async function sendEmailSES({
   });
 
   const now = new Date();
-  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '') + 'Z';
+  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '');
   const dateStamp = amzDate.slice(0, 8);
   const payloadHash = sha256(body);
   const canonicalHeaders =
