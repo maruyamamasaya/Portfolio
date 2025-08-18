@@ -88,7 +88,7 @@ async function sendEmailSES({
   const dateStamp = amzDate.slice(0, 8);
   const payloadHash = sha256(body);
   const canonicalHeaders =
-    `content-type:application/json\n` +
+    'content-type:application/json\n' +
     `host:${host}\n` +
     `x-amz-content-sha256:${payloadHash}\n` +
     `x-amz-date:${amzDate}\n`;
@@ -219,4 +219,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
