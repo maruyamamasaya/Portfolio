@@ -14,7 +14,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
       description:
         'チャットで質問し放題。毎日9:00〜22:00まで受付中。',
       href: '/contact',
-      image: '/images/img1.svg',
+      image: '/images/tutor.jpeg',
     },
     {
       title: '家庭訪問プラン',
@@ -72,7 +72,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
           学校の授業から最先端技術まで。わからないを“できる！”に変える
         </p>
         <Image
-          src="/images/img1.svg"
+          src="/images/tutor.jpeg"
           alt="中高生がパソコンを学ぶ様子"
           width={800}
           height={400}
