@@ -30,6 +30,9 @@ module.exports = {
       display: ['"Playfair Display"', 'serif'],
     },
     extend: {
+      screens: {
+        hd: '1100px',
+      },
       colors: {
         primary: '#005bac',
         secondary: '#e5e7eb',
