@@ -1,7 +1,8 @@
 export const runtime = 'nodejs'; // Edge runtime is prohibited
+export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
-import crypto from 'crypto';
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { loadEnvConfig } from '@next/env';
 
 // Ensure environment variables from .env are loaded when running via PM2 or other process managers
@@ -33,111 +34,6 @@ function escapeHtml(str: string) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
-}
-
-function sha256(msg: string): string {
-  return crypto.createHash('sha256').update(msg).digest('hex');
-}
-
-function hmac(key: Buffer | string, msg: string): Buffer;
-function hmac(
-  key: Buffer | string,
-  msg: string,
-  encoding: crypto.BinaryToTextEncoding
-): string;
-function hmac(
-  key: Buffer | string,
-  msg: string,
-  encoding?: crypto.BinaryToTextEncoding
-) {
-  const h = crypto.createHmac('sha256', key).update(msg);
-  return encoding ? h.digest(encoding) : h.digest();
-}
-
-function getSignatureKey(
-  key: string,
-  dateStamp: string,
-  region: string,
-  service: string
-): Buffer {
-  const kDate = hmac('AWS4' + key, dateStamp);
-  const kRegion = hmac(kDate, region);
-  const kService = hmac(kRegion, service);
-  return hmac(kService, 'aws4_request');
-}
-
-async function sendEmailSES({
-  subject,
-  content,
-  htmlContent,
-  replyTo,
-  region,
-  accessKey,
-  secretKey,
-}: {
-  subject: string;
-  content: string;
-  htmlContent: string;
-  replyTo: string;
-  region: string;
-  accessKey: string;
-  secretKey: string;
-}) {
-  const host = `email.${region}.amazonaws.com`;
-  const endpoint = `https://${host}/v2/email/outbound-emails`;
-
-  const body = JSON.stringify({
-    FromEmailAddress: CONTACT_EMAIL,
-    Destination: { ToAddresses: [CONTACT_EMAIL] },
-    ReplyToAddresses: [replyTo],
-    Content: {
-      Simple: {
-        Subject: { Data: subject },
-        Body: {
-          Text: { Data: content },
-          Html: { Data: htmlContent },
-        },
-      },
-    },
-  });
-
-  const now = new Date();
-  const amzDate = now.toISOString().replace(/[:-]|\.\d{3}/g, '');
-  const dateStamp = amzDate.slice(0, 8);
-  const payloadHash = sha256(body);
-  const canonicalHeaders =
-    'content-type:application/json\n' +
-    `host:${host}\n` +
-    `x-amz-content-sha256:${payloadHash}\n` +
-    `x-amz-date:${amzDate}\n`;
-  const signedHeaders =
-    'content-type;host;x-amz-content-sha256;x-amz-date';
-  const canonicalRequest =
-    'POST\n/v2/email/outbound-emails\n\n' +
-    `${canonicalHeaders}\n${signedHeaders}\n${payloadHash}`;
-  const algorithm = 'AWS4-HMAC-SHA256';
-  const credentialScope = `${dateStamp}/${region}/ses/aws4_request`;
-  const stringToSign =
-    `${algorithm}\n${amzDate}\n${credentialScope}\n${sha256(canonicalRequest)}`;
-  const signingKey = getSignatureKey(secretKey, dateStamp, region, 'ses');
-  const signature = hmac(signingKey, stringToSign, 'hex');
-  const authorization =
-    `${algorithm} Credential=${accessKey}/${credentialScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`;
-
-  const res = await fetch(endpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Amz-Date': amzDate,
-      'X-Amz-Content-Sha256': payloadHash,
-      Authorization: authorization,
-    },
-    body,
-  });
-
-  if (!res.ok) {
-    throw new Error(`SES responded with ${res.status}`);
-  }
 }
 
 interface ContactRequest {
@@ -225,9 +121,9 @@ export async function POST(req: Request) {
     process.env.AWS_SES_REGION ??
     process.env.AWS_REGION ??
     process.env.AWS_DEFAULT_REGION;
-  const accessKey =
+  const accessKeyId =
     process.env.AWS_SES_ACCESS_KEY_ID ?? process.env.AWS_ACCESS_KEY_ID;
-  const secretKey =
+  const secretAccessKey =
     process.env.AWS_SES_SECRET_ACCESS_KEY ?? process.env.AWS_SECRET_ACCESS_KEY;
 
   console.log('[contact API] env sources', {
@@ -250,34 +146,44 @@ export async function POST(req: Request) {
       : 'NONE',
   });
 
-  const missing: string[] = [];
-  if (!region)
-    missing.push('AWS_SES_REGION or AWS_REGION or AWS_DEFAULT_REGION');
-  if (!accessKey)
-    missing.push('AWS_SES_ACCESS_KEY_ID or AWS_ACCESS_KEY_ID');
-  if (!secretKey)
-    missing.push('AWS_SES_SECRET_ACCESS_KEY or AWS_SECRET_ACCESS_KEY');
-  if (missing.length > 0) {
-    console.error('Missing environment variables:', missing.join(', '));
+  if (!region || !accessKeyId || !secretAccessKey) {
+    console.error('[contact API] env missing', {
+      hasRegion: !!region,
+      hasId: !!accessKeyId,
+      hasSecret: !!secretAccessKey,
+    });
     return NextResponse.json(
       { error: 'メール送信に失敗しました。' },
       { status: 500 }
     );
   }
 
+  const ses = new SESClient({
+    region,
+    credentials: { accessKeyId, secretAccessKey },
+  });
+
   try {
-    await sendEmailSES({
-      subject,
-      content,
-      htmlContent,
-      replyTo: email,
-      region,
-      accessKey,
-      secretKey,
+    const cmd = new SendEmailCommand({
+      Source: CONTACT_EMAIL,
+      Destination: { ToAddresses: [CONTACT_EMAIL] },
+      ReplyToAddresses: [email],
+      Message: {
+        Subject: { Data: `【お問い合わせ】${name} さんより`, Charset: 'UTF-8' },
+        Body: {
+          Text: { Data: content, Charset: 'UTF-8' },
+          Html: { Data: htmlContent, Charset: 'UTF-8' },
+        },
+      },
     });
-    return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error('メール送信に失敗しました。', err);
+    const res = await ses.send(cmd);
+    console.log('[contact API] success', res.MessageId);
+    return NextResponse.json({ success: true, messageId: res.MessageId ?? null });
+  } catch (e: any) {
+    console.error('[contact API] send failed', {
+      name: e?.name,
+      message: e?.message,
+    });
     return NextResponse.json(
       { error: 'メール送信に失敗しました。' },
       { status: 500 }
