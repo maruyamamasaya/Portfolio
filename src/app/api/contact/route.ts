@@ -40,11 +40,13 @@ function hmac(
   key: Buffer | string,
   msg: string,
   encoding: BufferEncoding
+
 ): string;
 function hmac(
   key: Buffer | string,
   msg: string,
   encoding?: BufferEncoding
+
 ) {
   return crypto.createHmac('sha256', key).update(msg).digest(encoding);
 }
