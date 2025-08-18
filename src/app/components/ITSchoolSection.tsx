@@ -64,26 +64,60 @@ export default function ITSchoolSection({ className = '' }: Props) {
       className={`section-spacing space-y-12 bg-pink-50 dark:bg-gray-800 rounded-lg p-8 ${className}`}
     >
       {/* ファーストビュー */}
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold text-pink-700">
-          ITが“わかる”と、世界が広がる！
-        </h2>
-        <p className="text-lg">
-          学校の授業から最先端技術まで。わからないを“できる！”に変える
-        </p>
-        <Image
-          src="/images/tutor.jpeg"
-          alt="中高生がパソコンを学ぶ様子"
-          width={800}
-          height={400}
-          className="w-full h-auto max-w-3xl mx-auto rounded"
-        />
-        <Link
-          href="/contact"
-          className="inline-block px-6 py-3 bg-pink-500 text-white rounded shadow hover:bg-pink-400 transition-base"
+      <div className="mb-6 sm:mb-12 mt-0 sm:mt-12">
+        {/* Mobile layout: image first, text below */}
+        <div className="sm:hidden space-y-4">
+          <div className="mx-[5px]">
+            <Image
+              src="/images/tutor.jpeg"
+              alt="中高生がパソコンを学ぶ様子"
+              width={1000}
+              height={1000}
+              className="w-full aspect-square object-cover rounded"
+            />
+          </div>
+          <div className="text-center space-y-2">
+            <h2 className="text-xl font-bold text-pink-700">
+              ITが“わかる”と、世界が広がる！
+            </h2>
+            <p className="text-sm">
+              学校の授業から最先端技術まで。わからないを“できる！”に変える
+            </p>
+            <p className="text-sm">
+              「分からない」を「分かる」に変える──現役エンジニアによる 個別指導スタイル のIT家庭教師サービスです。
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block px-4 py-2 bg-pink-500 text-white rounded shadow motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out hover:scale-105 transition-base"
+            >
+              無料体験に申し込む
+            </Link>
+          </div>
+        </div>
+        {/* Desktop layout retains overlay on background */}
+        <div
+          className="relative hidden sm:flex items-center justify-center h-[80vh] bg-center bg-cover sm:bg-fixed"
+          style={{ backgroundImage: 'url("/images/tutor.jpeg")' }}
         >
-          無料体験に申し込む
-        </Link>
+          <div className="absolute inset-0 bg-black/80" />
+          <div className="relative text-center space-y-4 bg-black/50 p-4 rounded">
+            <h2 className="text-3xl font-bold text-white">
+              ITが“わかる”と、世界が広がる！
+            </h2>
+            <p className="text-white">
+              学校の授業から最先端技術まで。わからないを“できる！”に変える
+            </p>
+            <p className="text-white">
+              「分からない」を「分かる」に変える──現役エンジニアによる 個別指導スタイル のIT家庭教師サービスです。
+            </p>
+            <Link
+              href="/contact"
+              className="inline-block px-4 py-2 bg-pink-500 text-white rounded shadow motion-safe:transition-transform motion-reduce:transition-none duration-300 ease-in-out hover:scale-105 transition-base"
+            >
+              無料体験に申し込む
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* サービス概要 */}
