@@ -27,7 +27,7 @@ module.exports = {
         'ui-sans-serif',
         'system-ui',
       ],
-      display: ['"Playfair Display"', 'serif'],
+      display: ['var(--font-playfair)', 'serif'],
     },
     extend: {
       colors: {
