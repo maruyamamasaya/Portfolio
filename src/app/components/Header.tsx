@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState, ReactNode, useRef, useEffect } from 'react';
+import { useState, ReactNode } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 const DarkModeToggle = dynamic(() => import('./DarkModeToggle'), {
   ssr: false,
@@ -19,22 +19,6 @@ type NavItem = {
 export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [serviceOpen, setServiceOpen] = useState(false);
-  const [desktopServiceOpen, setDesktopServiceOpen] = useState(false);
-  const desktopServiceRef = useRef<HTMLLIElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        desktopServiceRef.current &&
-        !desktopServiceRef.current.contains(e.target as Node)
-      ) {
-        setDesktopServiceOpen(false);
-      }
-    };
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
   const navItems: NavItem[] = [
     {
       href: '/',
@@ -128,11 +112,6 @@ export default function Header() {
       ),
     },
   ];
-  const services = [
-    { href: '/services', label: 'サービス一覧' },
-    { href: '/pricing', label: '料金' },
-  ];
-
   return (
     <header className="backdrop-blur-sm bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 border-b border-gray-200 dark:border-gray-700 shadow text-gray-900 dark:text-gray-100">
       <a
@@ -177,63 +156,10 @@ export default function Header() {
                   </li>
                 );
               })}
-              <li className="relative" ref={desktopServiceRef}>
-                <div
-                  className="inline-flex items-center space-x-1 rounded min-h-[44px] min-w-[44px] px-2 py-1 text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-primary transition-colors duration-200"
-                  onMouseEnter={() => setDesktopServiceOpen(true)}
-                  onClick={() => setDesktopServiceOpen((prev) => !prev)}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                  <span>サービス紹介</span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="w-4 h-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
-                <div
-                  className={`absolute left-0 top-full w-40 rounded-md bg-white dark:bg-gray-800 shadow-lg transition-all duration-200 ${
-                    desktopServiceOpen
-                      ? 'opacity-100 visible translate-y-0'
-                      : 'opacity-0 invisible -translate-y-1'
-                  }`}
-                >
-                  {services.map((s) => (
-                    <Link
-                      key={s.href}
-                      href={s.href}
-                      className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
-                      onClick={() => setDesktopServiceOpen(false)}
-                    >
-                      {s.label}
-                    </Link>
-                  ))}
-                </div>
-              </li>
             </ul>
           </nav>
         </div>
-        <div className="flex items-center space-x-2 ml-2">
+        <div className="flex items-center space-x-2 ml-auto">
           <div className="hidden hd:block">
             <HeaderSearchBox />
           </div>
@@ -295,49 +221,6 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <button
-                  onClick={() => setServiceOpen((prev) => !prev)}
-                  className="flex w-full items-center justify-between rounded px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-                >
-                  <span>サービス紹介</span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className={`w-4 h-4 transform transition-transform ${serviceOpen ? 'rotate-180' : ''}`}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <AnimatePresence>
-                  {serviceOpen && (
-                    <motion.ul
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="pl-4 mt-1 space-y-1"
-                    >
-                      {services.map((s) => (
-                        <li key={s.href}>
-                          <Link
-                            href={s.href}
-                            className="block rounded px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {s.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
-              </li>
               <li className="hd:hidden">
                 <HeaderSearchBox />
               </li>
