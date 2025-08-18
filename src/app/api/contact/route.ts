@@ -39,14 +39,15 @@ function hmac(key: Buffer | string, msg: string): Buffer;
 function hmac(
   key: Buffer | string,
   msg: string,
-  encoding: BufferEncoding
+  encoding: crypto.BinaryToTextEncoding
 ): string;
 function hmac(
   key: Buffer | string,
   msg: string,
-  encoding?: BufferEncoding
-): Buffer | string {
-  return crypto.createHmac('sha256', key).update(msg).digest(encoding);
+  encoding?: crypto.BinaryToTextEncoding
+) {
+  const h = crypto.createHmac('sha256', key).update(msg);
+  return encoding ? h.digest(encoding) : h.digest();
 }
 
 function getSignatureKey(
