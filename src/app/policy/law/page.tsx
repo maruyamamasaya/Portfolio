@@ -23,11 +23,12 @@ export default function Law() {
           <dt className="font-bold">メールアドレス</dt>
           <dd>
             <a
-              href="mailto:contact@freehackapp.com"
+              href="mailto:digi.goose.contact@gmail.com"
               className="accent-text hover:underline"
             >
-              contact@freehackapp.com
+              digi.goose.contact@gmail.com
             </a>
+            <span className="ml-2 line-through">contact@freehackapp.com</span>
           </dd>
         </div>
         <div>
