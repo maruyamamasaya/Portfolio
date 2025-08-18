@@ -217,13 +217,37 @@ export async function POST(req: Request) {
     .map((line) => `<p>${escapeHtml(line)}</p>`)
     .join('');
 
-  const region = process.env.AWS_REGION;
-  const accessKey = process.env.AWS_ACCESS_KEY_ID;
-  const secretKey = process.env.AWS_SECRET_ACCESS_KEY;
+  const region =
+    process.env.AWS_SES_REGION ?? process.env.AWS_REGION;
+  const accessKey =
+    process.env.AWS_SES_ACCESS_KEY_ID ?? process.env.AWS_ACCESS_KEY_ID;
+  const secretKey =
+    process.env.AWS_SES_SECRET_ACCESS_KEY ?? process.env.AWS_SECRET_ACCESS_KEY;
+
+  console.log('[contact API] env sources', {
+    regionVar: process.env.AWS_SES_REGION
+      ? 'AWS_SES_REGION'
+      : process.env.AWS_REGION
+      ? 'AWS_REGION'
+      : 'NONE',
+    keyVar: process.env.AWS_SES_ACCESS_KEY_ID
+      ? 'AWS_SES_ACCESS_KEY_ID'
+      : process.env.AWS_ACCESS_KEY_ID
+      ? 'AWS_ACCESS_KEY_ID'
+      : 'NONE',
+    secVar: process.env.AWS_SES_SECRET_ACCESS_KEY
+      ? 'AWS_SES_SECRET_ACCESS_KEY'
+      : process.env.AWS_SECRET_ACCESS_KEY
+      ? 'AWS_SECRET_ACCESS_KEY'
+      : 'NONE',
+  });
+
   const missing: string[] = [];
-  if (!region) missing.push('AWS_REGION');
-  if (!accessKey) missing.push('AWS_ACCESS_KEY_ID');
-  if (!secretKey) missing.push('AWS_SECRET_ACCESS_KEY');
+  if (!region) missing.push('AWS_SES_REGION or AWS_REGION');
+  if (!accessKey)
+    missing.push('AWS_SES_ACCESS_KEY_ID or AWS_ACCESS_KEY_ID');
+  if (!secretKey)
+    missing.push('AWS_SES_SECRET_ACCESS_KEY or AWS_SECRET_ACCESS_KEY');
   if (missing.length > 0) {
     console.error('Missing environment variables:', missing.join(', '));
     return NextResponse.json(
