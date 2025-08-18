@@ -2,6 +2,10 @@ export const runtime = 'nodejs'; // Edge runtime is prohibited
 
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
+import { loadEnvConfig } from '@next/env';
+
+// Ensure environment variables from .env are loaded when running via PM2 or other process managers
+loadEnvConfig(process.cwd());
 
 const CONTACT_EMAIL = 'digi.goose.contact@gmail.com';
 const RATE_LIMIT_WINDOW = 60 * 1000;
