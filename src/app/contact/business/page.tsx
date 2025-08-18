@@ -47,10 +47,11 @@ export default function BusinessContactPage() {
         </li>
       </ul>
       <CTASection
-        href="mailto:contact@freehackapp.com"
+        href="mailto:digi.goose.contact@gmail.com"
         label="\uD83D\uDCE9 お仕事のご相談はこちら"
         title=""
       />
+      <p className="text-sm line-through">contact@freehackapp.com</p>
     </div>
   );
 }

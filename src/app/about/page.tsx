@@ -176,9 +176,10 @@ export default function About() {
       </section>
 
       <CTASection
-        href="mailto:contact@freehackapp.com"
+        href="mailto:digi.goose.contact@gmail.com"
         label="📩 お仕事のご相談はこちら"
       />
+      <p className="text-sm line-through">contact@freehackapp.com</p>
     </div>
   );
 }

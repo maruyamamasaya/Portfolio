@@ -42,10 +42,11 @@ export default function Contact() {
         </li>
       </ul>
       <CTASection
-        href="mailto:contact@freehackapp.com"
+        href="mailto:digi.goose.contact@gmail.com"
         label="\uD83D\uDCE9 メールでのお問い合わせ"
         title=""
       />
+      <p className="text-sm line-through">contact@freehackapp.com</p>
     </div>
   );
 }

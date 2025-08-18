@@ -91,11 +91,13 @@ export default function Privacy() {
         本ポリシーに関するお問い合わせは、以下のフォームまたはメールアドレスよりご連絡ください：
         <br />
         <a
-          href="mailto:contact@freehackapp.com"
+          href="mailto:digi.goose.contact@gmail.com"
           className="accent-text hover:underline"
         >
-          contact@freehackapp.com
+          digi.goose.contact@gmail.com
         </a>
+        <br />
+        <span className="line-through">contact@freehackapp.com</span>
       </p>
 
       <p className="text-sm text-gray-500 mt-6">制定日：2025年7月15日</p>
