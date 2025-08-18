@@ -33,7 +33,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       <section className="mt-4">
         <Profile />
       </section>
-      <CTASection />
+      <CTASection showBusinessLinks />
       <ITSchoolSection className="mt-24" />
 
       {/* 最新記事一覧 */}
@@ -47,7 +47,10 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
           ))}
         </ul>
         <div className="text-center">
-          <Link href="/blog" className="accent-text hover:underline transition-base">
+          <Link
+            href="/blog"
+            className="accent-text hover:underline transition-base"
+          >
             すべての記事を見る
           </Link>
         </div>
