@@ -31,15 +31,20 @@ function escapeHtml(str: string) {
     .replace(/'/g, '&#39;');
 }
 
-function sha256(msg: string) {
+function sha256(msg: string): string {
   return crypto.createHash('sha256').update(msg).digest('hex');
 }
 
-function hmac(key: Buffer | string, msg: string) {
+function hmac(key: Buffer | string, msg: string): Buffer {
   return crypto.createHmac('sha256', key).update(msg).digest();
 }
 
-function getSignatureKey(key: string, dateStamp: string, region: string, service: string) {
+function getSignatureKey(
+  key: string,
+  dateStamp: string,
+  region: string,
+  service: string
+): Buffer {
   const kDate = hmac('AWS4' + key, dateStamp);
   const kRegion = hmac(kDate, region);
   const kService = hmac(kRegion, service);
