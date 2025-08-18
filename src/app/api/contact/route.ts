@@ -218,7 +218,9 @@ export async function POST(req: Request) {
     .join('');
 
   const region =
-    process.env.AWS_SES_REGION ?? process.env.AWS_REGION;
+    process.env.AWS_SES_REGION ??
+    process.env.AWS_REGION ??
+    process.env.AWS_DEFAULT_REGION;
   const accessKey =
     process.env.AWS_SES_ACCESS_KEY_ID ?? process.env.AWS_ACCESS_KEY_ID;
   const secretKey =
@@ -229,6 +231,8 @@ export async function POST(req: Request) {
       ? 'AWS_SES_REGION'
       : process.env.AWS_REGION
       ? 'AWS_REGION'
+      : process.env.AWS_DEFAULT_REGION
+      ? 'AWS_DEFAULT_REGION'
       : 'NONE',
     keyVar: process.env.AWS_SES_ACCESS_KEY_ID
       ? 'AWS_SES_ACCESS_KEY_ID'
@@ -243,7 +247,8 @@ export async function POST(req: Request) {
   });
 
   const missing: string[] = [];
-  if (!region) missing.push('AWS_SES_REGION or AWS_REGION');
+  if (!region)
+    missing.push('AWS_SES_REGION or AWS_REGION or AWS_DEFAULT_REGION');
   if (!accessKey)
     missing.push('AWS_SES_ACCESS_KEY_ID or AWS_ACCESS_KEY_ID');
   if (!secretKey)
