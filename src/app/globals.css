@@ -43,6 +43,11 @@
   max-width: 100%;
 }
 
+.prose p,
+.prose li {
+  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN", serif;
+}
+
 .prose p {
   font-weight: 400;
   line-height: 1.8;
