@@ -160,7 +160,7 @@ export default function SearchBar({ className, showHistory = true }: Props) {
             type="button"
             aria-label="Search"
             onClick={() => setMobileOpen(true)}
-            className="p-2 rounded border border-gray-300 dark:border-gray-600"
+            className="p-1 rounded border border-gray-300 dark:border-gray-600"
           >
             <svg
               viewBox="0 0 24 24"
@@ -199,7 +199,7 @@ export default function SearchBar({ className, showHistory = true }: Props) {
                 type="button"
                 aria-label="Close search"
                 onClick={() => setMobileOpen(false)}
-                className="p-2 text-2xl transition-base"
+                className="p-1 text-2xl transition-base"
               >
                 ×
               </button>
