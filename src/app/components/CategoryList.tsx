@@ -6,11 +6,14 @@ export default function CategoryList() {
 
   return (
     <div>
-      <h3 className="font-bold mb-2">カテゴリー</h3>
-      <ul className="space-y-1 text-sm">
+      <h3 className="text-lg font-semibold mb-4">カテゴリー</h3>
+      <ul className="flex flex-wrap gap-2">
         {categories.map((cat) => (
           <li key={cat.href}>
-            <Link href={cat.href} className="accent-text hover:underline transition-base">
+            <Link
+              href={cat.href}
+              className="block px-3 py-1 text-sm font-medium text-white rounded-full bg-gradient-to-r from-primary to-blue-500 shadow-sm hover:shadow-md transition-base"
+            >
               {cat.name}
             </Link>
           </li>
