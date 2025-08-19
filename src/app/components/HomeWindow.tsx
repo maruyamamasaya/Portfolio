@@ -12,17 +12,26 @@ import ScrollFadeIn from './ScrollFadeIn';
 import HomePostCard from './HomePostCard';
 import SearchBar from './SearchBar';
 import CategoryRecommendations from './CategoryRecommendations';
+import { ReactNode, ComponentProps } from 'react';
 
 type HomeWindowProps = {
   posts: Post[];
+  hero?: ReactNode;
+  ctaProps?: ComponentProps<typeof CTASection>;
+  showITSchoolSection?: boolean;
 };
 
-export default function HomeWindow({ posts }: HomeWindowProps) {
+export default function HomeWindow({
+  posts,
+  hero,
+  ctaProps,
+  showITSchoolSection = true,
+}: HomeWindowProps) {
   const latestPosts = posts.slice(0, 6);
   return (
     <div className="space-y-12">
       {/* Heroセクション */}
-      <HeroSection />
+      {hero ?? <HeroSection />}
 
       {/* サービス・実績など */}
       <ServicesSection />
@@ -33,8 +42,8 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       <section className="mt-4">
         <Profile />
       </section>
-      <CTASection showBusinessLinks />
-      <ITSchoolSection className="mt-24" />
+      <CTASection showBusinessLinks {...ctaProps} />
+      {showITSchoolSection && <ITSchoolSection className="mt-24" />}
 
       {/* 最新記事一覧 */}
       <section className="px-4 sm:px-6 md:px-10 w-full mx-auto space-y-4">
