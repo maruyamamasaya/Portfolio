@@ -116,6 +116,12 @@ const categories = [
         level: '★★',
         desc: '画像加工やバナー作成を得意とする。',
       },
+      {
+        name: 'Canva',
+        icon: '/images/canva.jpeg',
+        level: '★★',
+        desc: '簡易デザインやバナー制作に活用。',
+      },
     ],
   },
   {
@@ -138,6 +144,12 @@ const categories = [
         icon: '/images/VSCode.jpeg',
         level: '★★★',
         desc: '主要IDEとして拡張機能による効率化を実践。',
+      },
+      {
+        name: 'LINE Dev',
+        icon: '/images/LINEDEV.jpeg',
+        level: '★★',
+        desc: 'LINE Messaging APIを活用したチャットボット開発の実績。',
       },
     ],
   },
