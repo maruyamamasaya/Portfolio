@@ -41,7 +41,7 @@ const categories: Category[] = [
 
 export default function ProfileCategories() {
   return (
-    <section className="space-y-12 mt-8">
+    <section className="grid gap-12 mt-8 md:grid-cols-2">
       {categories.map((cat) => (
         <div key={cat.title} className="space-y-2">
           <h2 className="text-xl font-bold">{cat.title}</h2>
