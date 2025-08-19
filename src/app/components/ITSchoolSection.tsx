@@ -52,10 +52,12 @@ export default function ITSchoolSection({ className = '' }: Props) {
     {
       text: '学校の授業がスムーズに理解できるようになりました！',
       author: '高1男子',
+      avatar: '/image/student01.jpeg',
     },
     {
       text: '将来エンジニアを目指したい気持ちが強くなりました',
       author: '中3女子',
+      avatar: '/image/student02.jpeg',
     },
   ];
 
@@ -221,14 +223,26 @@ export default function ITSchoolSection({ className = '' }: Props) {
       {/* お客様の声 */}
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-center text-pink-700">お客様の声</h3>
-        <ul className="space-y-4 max-w-2xl mx-auto">
+        <div className="flex space-x-4 overflow-x-auto pb-4 max-w-2xl mx-auto">
           {testimonials.map((t) => (
-            <li key={t.author} className="p-4 bg-white dark:bg-gray-700 rounded shadow">
-              <p className="mb-2">「{t.text}」</p>
-              <p className="text-right text-sm">（{t.author}）</p>
-            </li>
+            <div
+              key={t.author}
+              className="flex-shrink-0 w-64 p-4 bg-white dark:bg-gray-700 rounded shadow"
+            >
+              <div className="flex items-center space-x-2 mb-2">
+                <Image
+                  src={t.avatar}
+                  alt={t.author}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 rounded-full"
+                />
+                <span className="font-semibold text-sm">{t.author}</span>
+              </div>
+              <p className="text-sm">「{t.text}」</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
 
       {/* 体験申し込み */}
