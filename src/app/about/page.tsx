@@ -20,40 +20,48 @@ export default function About() {
       </h1>
 
       {/* プロフィール */}
-      <section className="space-y-4">
-        <Image
-          src="/images/profile.jpg"
-          alt="Profile"
-          width={96}
-          height={96}
-          className="w-24 h-24 object-cover rounded-lg mx-auto"
-        />
-        <h2 className="text-xl font-bold">プロフィール</h2>
-        <p className="mb-4">
-          外注なしのワンストップ対応。
-          <br />
-          企画から運営まで一貫してサポートしますので、安心してご相談いただけます。
-        </p>
-        <p className="mb-4 text-lg">
-          「分からない」を「分かる」に変える──
-          <br />
-          技術・アート・マーケを横断する“攻略型”の情報発信を行っています。
-        </p>
-        <div className="space-y-1 text-sm">
-          <p>🎓 1994年生まれ。20代中盤に大手金融系のシステム開発に3年従事。</p>
-          <p>🚀 2022年に独立し、飲食・美容業界向けにシステム/SNS支援を展開。</p>
-          <p>🏆 導入実績は100店舗以上。独立6ヶ月以内に月商350万円を達成。</p>
-        </div>
-        <p className="mb-4">
-          「脱サラ」「副業」「スキルアップ」などのテーマに寄り添いながら、実践に役立つコンテンツを発信中。ゲーム攻略のような分かりやすさを意識した、読みやすいマルチメディア構成が特徴です。
-        </p>
-        <p className="mb-4">
-          登録フォロワー数
-          200名以上、発信記事数150記事以上。ビジネススキル向上に役立つ記事を中心に発信しています。
-        </p>
-        <p className="mb-4">
-          当サイトでは、技術系ブログ・デザイン思考・アート系の視点など、多様な切り口から価値ある情報をお届けします。
-        </p>
+      <section>
+        <Card className="p-6 md:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+          <Image
+            src="/images/profile.jpg"
+            alt="Profile"
+            width={160}
+            height={160}
+            className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-4 border-primary/20 shadow-lg"
+          />
+          <div className="flex-1 space-y-4 text-center md:text-left">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-bold">プロフィール</h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                ソロエンジニア × クリエイター – 企画から運営まで一人完結
+              </p>
+            </div>
+            <p className="text-base leading-relaxed">
+              外注なしのワンストップ対応。
+              <br />
+              企画から運営まで一貫してサポートしますので、安心してご相談いただけます。
+            </p>
+            <p className="text-base leading-relaxed">
+              「分からない」を「分かる」に変える──
+              <br />
+              技術・アート・マーケを横断する“攻略型”の情報発信を行っています。
+            </p>
+            <ul className="space-y-1 text-sm">
+              <li>🎓 1994年生まれ。20代中盤に大手金融系のシステム開発に3年従事。</li>
+              <li>🚀 2022年に独立し、飲食・美容業界向けにシステム/SNS支援を展開。</li>
+              <li>🏆 導入実績は100店舗以上。独立6ヶ月以内に月商350万円を達成。</li>
+            </ul>
+            <p className="text-base leading-relaxed">
+              「脱サラ」「副業」「スキルアップ」などのテーマに寄り添いながら、実践に役立つコンテンツを発信中。ゲーム攻略のような分かりやすさを意識した、読みやすいマルチメディア構成が特徴です。
+            </p>
+            <p className="text-base leading-relaxed">
+              登録フォロワー数200名以上、発信記事数150記事以上。ビジネススキル向上に役立つ記事を中心に発信しています。
+            </p>
+            <p className="text-base leading-relaxed">
+              当サイトでは、技術系ブログ・デザイン思考・アート系の視点など、多様な切り口から価値ある情報をお届けします。
+            </p>
+          </div>
+        </Card>
       </section>
 
       <section className="space-y-4">
