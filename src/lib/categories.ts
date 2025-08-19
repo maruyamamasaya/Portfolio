@@ -10,12 +10,14 @@ export interface Category {
 export interface CategoryLink {
   name: string;
   href: string;
+  icon: string;
 }
 
 export function getCategories(): CategoryLink[] {
   return categoryData.map((cat) => ({
     name: cat.name,
     href: `/categories/${cat.slug}`,
+    icon: cat.icon,
   }));
 }
 
