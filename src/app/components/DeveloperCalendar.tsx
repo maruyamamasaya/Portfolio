@@ -67,7 +67,7 @@ export default function DeveloperCalendar({
   }, [cells]);
 
   return (
-    <div>
+    <div className="min-w-[362px] min-h-[362px]">
       <div className="flex justify-between items-center mb-2">
         <button aria-label="前の月" className="px-2" onClick={onPrevMonth}>
           &lt;
