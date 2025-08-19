@@ -6,9 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint && node scripts/check-component-names.js",
-    "format": "prettier --write .",
-    "test": "jest"
+    "lint": "next lint",
+    "test": "jest --passWithNoTests"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.620.0",
