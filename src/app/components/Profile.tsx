@@ -6,7 +6,7 @@ export default function Profile() {
   return (
     <section className="max-w-screen-md mx-auto bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 md:p-10 text-gray-800 dark:text-gray-100">
       <h2 className="text-2xl font-bold mb-4 border-b pb-2">プロフィール</h2>
-      <div className="flex flex-col items-center sm:flex-row sm:items-start gap-6 sm:gap-8">
+      <div className="flex flex-col items-center sm:flex-row sm:items-start gap-4 sm:gap-6">
         <Image
           src="/images/profile.jpg"
           alt="プロフィール画像"
@@ -14,8 +14,8 @@ export default function Profile() {
           height={96}
           className="w-24 h-24 object-cover rounded-full mx-auto border border-gray-300 dark:border-gray-700"
         />
-        <div className="flex-1 sm:text-left text-center space-y-2 sm:space-y-4">
-          <div className="text-base leading-relaxed text-gray-700 dark:text-gray-300 space-y-2 sm:space-y-4">
+        <div className="flex-1 sm:text-left text-center space-y-1 sm:space-y-2">
+          <div className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 space-y-1 sm:space-y-2">
             <p>神木 ユウ（通称：まるま。）</p>
             <p>フルスタックエンジニア</p>
             <p>分からないを分かるに変える</p>
