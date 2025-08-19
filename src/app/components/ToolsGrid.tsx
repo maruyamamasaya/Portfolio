@@ -6,31 +6,31 @@ import Image from 'next/image';
 const tools = [
   {
     name: 'React',
-    icon: '/icons/tools/react.svg',
+    icon: '/images/React.png',
     description:
       'Reactはコンポーネント志向のUIライブラリで、宣言的なコードにより複雑なユーザーインターフェースを効率よく構築できます。仮想DOMを利用した高速なレンダリングと豊富なエコシステムを備えており、ウェブはもちろんネイティブアプリ開発にも応用可能です。多くのコミュニティが支えるモダンフロントエンドの定番技術です。',
   },
   {
     name: 'Next.js',
-    icon: '/icons/tools/nextjs.svg',
+    icon: '/images/Nextjs.png',
     description:
       'Next.jsはReactをベースにしたフレームワークで、サーバーサイドレンダリングや静的サイト生成、APIルーティングなどを簡単に実装できます。高速なページ表示とSEO対策を両立し、大規模なWebサービス構築にも適しています。豊富なプラグインや設定の柔軟性があり、効率的な開発体験を提供します。',
   },
   {
     name: 'TypeScript',
-    icon: '/icons/tools/typescript.svg',
+    icon: '/images/TypeScript.png',
     description:
       'TypeScriptはMicrosoftが開発した型付け可能なJavaScriptのスーパーセットです。型定義によってコードの安全性が高まり、大規模な開発でもバグを減らせます。高度な型推論と豊富なエディタサポートにより保守性が向上し、既存のJavaScriptプロジェクトにも段階的に導入できるのが強みです。',
   },
   {
     name: 'Tailwind CSS',
-    icon: '/icons/tools/tailwindcss.svg',
+    icon: '/images/TailwindCSS.png',
     description:
       'Tailwind CSSはユーティリティファーストなCSSフレームワークで、クラス名を直接HTMLに書き込むスタイルが特徴です。複雑なスタイルシートを持たずにデザインを組み立てられ、レスポンシブ対応も簡単です。カスタマイズの自由度が高く、デザインシステムの構築や開発スピードの向上に大きく貢献します。',
   },
   {
     name: 'Figma',
-    icon: '/icons/tools/figma.svg',
+    icon: '/images/Figma.png',
     description:
       'Figmaはブラウザ上で動作するデザインツールで、複数人によるリアルタイム編集が可能です。プロトタイプの作成やコンポーネント管理がしやすく、デザイナーとエンジニアの協業をスムーズにします。コメント機能によるフィードバックも手軽で、無料プランでも多くの機能を利用できる点が魅力です。',
   },
