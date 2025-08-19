@@ -112,7 +112,7 @@ const categories = [
       },
       {
         name: 'Photoshop',
-        icon: '/images/Photoshop.png',
+        icon: '/images/PhotoShop.png',
         level: '★★',
         desc: '画像加工やバナー作成を得意とする。',
       },
