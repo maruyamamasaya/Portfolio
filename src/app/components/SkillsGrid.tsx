@@ -13,25 +13,25 @@ const categories = [
     skills: [
       {
         name: 'React',
-        icon: '/images/React.jpeg',
+        icon: '/images/React.png',
         level: '★★★',
         desc: '3年以上の実務経験。コンポーネント設計と状態管理に精通。',
       },
       {
         name: 'Next.js',
-        icon: '/images/Nextjs.jpeg',
+        icon: '/images/Nextjs.png',
         level: '★★★',
         desc: '2年以上利用。SSRと静的生成で高速サイトを構築。',
       },
       {
         name: 'TypeScript',
-        icon: '/images/TypeScript.jpeg',
+        icon: '/images/TypeScript.png',
         level: '★★★',
         desc: '3年以上使用。型安全な開発の基盤として採用。',
       },
       {
         name: 'Tailwind CSS',
-        icon: '/images/TailwindCSS.jpeg',
+        icon: '/images/TailwindCSS.png',
         level: '★★★',
         desc: '効率的なUI開発を実現。デザインシステム構築が得意。',
       },
@@ -42,25 +42,25 @@ const categories = [
     skills: [
       {
         name: 'Node.js',
-        icon: '/images/Nodejs.jpeg',
+        icon: '/images/Nodejs.png',
         level: '★★',
         desc: 'API開発で2年以上使用。非同期処理の最適化を経験。',
       },
       {
         name: 'Express',
-        icon: '/images/Express.jpeg',
+        icon: '/images/Express.png',
         level: '★★',
         desc: 'REST APIを複数構築し小規模サービスで運用。',
       },
       {
         name: 'Firebase',
-        icon: '/images/Firebase.jpeg',
+        icon: '/images/Firebase.png',
         level: '★★',
         desc: '認証とDBを活用したモバイルバックエンドを構築。',
       },
       {
         name: 'Supabase',
-        icon: '/images/Supabase.jpeg',
+        icon: '/images/Supabase.png',
         level: '★',
         desc: '個人開発で導入。Postgres連携を実践中。',
       },
@@ -71,25 +71,25 @@ const categories = [
     skills: [
       {
         name: 'AWS',
-        icon: '/images/AWS.jpeg',
+        icon: '/images/AWS.png',
         level: '★★★',
         desc: 'インフラ設計から運用までクラウド構築を担当。',
       },
       {
         name: 'Lambda',
-        icon: '/images/Lambda.jpeg',
+        icon: '/images/Lambda.png',
         level: '★★',
         desc: 'サーバーレスで小規模APIを実装。',
       },
       {
         name: 'DynamoDB',
-        icon: '/images/DynamoDB.jpeg',
+        icon: '/images/DynamoDB.png',
         level: '★',
         desc: 'キーバリューストアによる高速データ処理を経験。',
       },
       {
         name: 'EC2',
-        icon: '/images/EC2.jpeg',
+        icon: '/images/EC2.png',
         level: '★★',
         desc: '仮想サーバーの構築と運用を実施。',
       },
@@ -100,25 +100,25 @@ const categories = [
     skills: [
       {
         name: 'Figma',
-        icon: '/images/Figma.jpeg',
+        icon: '/images/Figma.png',
         level: '★★★',
         desc: 'ワイヤーフレームからUIデザインまで一貫して対応。',
       },
       {
         name: 'Illustrator',
-        icon: '/images/Illustrator.jpeg',
+        icon: '/images/Illustrator.png',
         level: '★★',
         desc: 'ロゴ制作などベクターデザインに活用。',
       },
       {
         name: 'Photoshop',
-        icon: '/images/Photoshop.jpeg',
+        icon: '/images/Photoshop.png',
         level: '★★',
         desc: '画像加工やバナー作成を得意とする。',
       },
       {
         name: 'Canva',
-        icon: '/images/canva.jpeg',
+        icon: '/images/canva.png',
         level: '★★',
         desc: '簡易デザインやバナー制作に活用。',
       },
@@ -129,25 +129,25 @@ const categories = [
     skills: [
       {
         name: 'GitHub',
-        icon: '/images/GitHub.jpeg',
+        icon: '/images/GitHub.png',
         level: '★★★',
         desc: 'Issue管理やCI/CD連携を含むフローを構築。',
       },
       {
         name: 'Docker',
-        icon: '/images/Docker.jpeg',
+        icon: '/images/Docker.png',
         level: '★',
         desc: '開発環境のコンテナ化を実施中。',
       },
       {
         name: 'VSCode',
-        icon: '/images/VSCode.jpeg',
+        icon: '/images/VSCode.png',
         level: '★★★',
         desc: '主要IDEとして拡張機能による効率化を実践。',
       },
       {
         name: 'LINE Dev',
-        icon: '/images/LINEDEV.jpeg',
+        icon: '/images/LINEDEV.png',
         level: '★★',
         desc: 'LINE Messaging APIを活用したチャットボット開発の実績。',
       },
