@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function ProfileCardBlog() {
   return (
-    <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
+    <div className="flex flex-col items-center text-center gap-4 sm:gap-6">
       <Image
         src="/images/profile.jpg"
         alt="プロフィール画像"
@@ -11,10 +11,10 @@ export default function ProfileCardBlog() {
         height={96}
         className="w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-700"
       />
-      <div className="space-y-2 sm:space-y-4">
-        <p className="text-lg font-bold">神木ユウ</p>
-        <p className="text-base leading-relaxed">フルスタックエンジニア</p>
-        <p className="text-sm leading-relaxed">分からないを分かるに変える</p>
+      <div className="space-y-1 sm:space-y-2">
+        <p className="text-base font-bold">神木ユウ</p>
+        <p className="text-sm leading-relaxed">フルスタックエンジニア</p>
+        <p className="text-xs leading-relaxed">分からないを分かるに変える</p>
         <div className="flex justify-center space-x-3 my-2">
           <Link href="https://x.com" aria-label="X" className="hover:text-primary transition-base">
             <Image src="/images/X.png" alt="X" width={20} height={20} className="w-5 h-5" />
@@ -31,7 +31,7 @@ export default function ProfileCardBlog() {
             <Image src="/images/LINEdevelop-200px.png" alt="LINE公式アカウント" width={20} height={20} className="w-5 h-5" />
           </Link>
         </div>
-        <Link href="/about" className="underline text-sm leading-relaxed transition-base">
+        <Link href="/about" className="underline text-xs leading-relaxed transition-base">
           詳しく見る
         </Link>
       </div>
