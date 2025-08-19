@@ -321,12 +321,6 @@ export default function ITSchoolSection({ className = '' }: Props) {
           >
             家庭教師料金表
           </Link>
-          <Link
-            href="/pricing/business"
-            className="text-sm text-gray-600 hover:text-gray-800 hover:underline transition"
-          >
-            法人向け料金表
-          </Link>
         </div>
 
         <p className="text-sm">
@@ -337,14 +331,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
             家庭教師に関するお問い合わせはこちら
           </Link>
         </p>
-        <p className="text-sm">
-          <Link
-            href="/contact/business"
-            className="accent-text hover:underline transition"
-          >
-            法人向けお問い合わせはこちら
-          </Link>
-        </p>
+
       </div>
     </section>
   );
