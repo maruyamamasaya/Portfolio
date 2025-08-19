@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 
 const introText =
   'AWSを基盤としたWebサイト・業務システムの構築を中心に、幅広い分野で実務経験を積んできました。予約システムやレンタル管理サイトの開発から、飲食チェーン向けサイト運用やSEO対策、LINE Messaging APIによるチャットボット開発まで対応可能です。基本情報技術者をはじめとする資格を活かし、インフラ知識を交えた柔軟な提案・構築を行います。スクレイピングやHTMLメール、LP制作など実務で使えるコーディングも多数経験しています。';
@@ -12,25 +13,25 @@ const categories = [
     skills: [
       {
         name: 'React',
-        icon: '⚛️',
+        icon: '/images/React.jpeg',
         level: '★★★',
         desc: '3年以上の実務経験。コンポーネント設計と状態管理に精通。',
       },
       {
         name: 'Next.js',
-        icon: '🧭',
+        icon: '/images/Nextjs.jpeg',
         level: '★★★',
         desc: '2年以上利用。SSRと静的生成で高速サイトを構築。',
       },
       {
         name: 'TypeScript',
-        icon: '📝',
+        icon: '/images/TypeScript.jpeg',
         level: '★★★',
         desc: '3年以上使用。型安全な開発の基盤として採用。',
       },
       {
         name: 'Tailwind CSS',
-        icon: '🌀',
+        icon: '/images/TailwindCSS.jpeg',
         level: '★★★',
         desc: '効率的なUI開発を実現。デザインシステム構築が得意。',
       },
@@ -41,27 +42,56 @@ const categories = [
     skills: [
       {
         name: 'Node.js',
-        icon: '🟢',
+        icon: '/images/Nodejs.jpeg',
         level: '★★',
         desc: 'API開発で2年以上使用。非同期処理の最適化を経験。',
       },
       {
         name: 'Express',
-        icon: '🚂',
+        icon: '/images/Express.jpeg',
         level: '★★',
         desc: 'REST APIを複数構築し小規模サービスで運用。',
       },
       {
         name: 'Firebase',
-        icon: '🔥',
+        icon: '/images/Firebase.jpeg',
         level: '★★',
         desc: '認証とDBを活用したモバイルバックエンドを構築。',
       },
       {
         name: 'Supabase',
-        icon: '🍋',
+        icon: '/images/Supabase.jpeg',
         level: '★',
         desc: '個人開発で導入。Postgres連携を実践中。',
+      },
+    ],
+  },
+  {
+    title: 'AWS',
+    skills: [
+      {
+        name: 'AWS',
+        icon: '/images/AWS.jpeg',
+        level: '★★★',
+        desc: 'インフラ設計から運用までクラウド構築を担当。',
+      },
+      {
+        name: 'Lambda',
+        icon: '/images/Lambda.jpeg',
+        level: '★★',
+        desc: 'サーバーレスで小規模APIを実装。',
+      },
+      {
+        name: 'DynamoDB',
+        icon: '/images/DynamoDB.jpeg',
+        level: '★',
+        desc: 'キーバリューストアによる高速データ処理を経験。',
+      },
+      {
+        name: 'EC2',
+        icon: '/images/EC2.jpeg',
+        level: '★★',
+        desc: '仮想サーバーの構築と運用を実施。',
       },
     ],
   },
@@ -70,19 +100,19 @@ const categories = [
     skills: [
       {
         name: 'Figma',
-        icon: '🎨',
+        icon: '/images/Figma.jpeg',
         level: '★★★',
         desc: 'ワイヤーフレームからUIデザインまで一貫して対応。',
       },
       {
         name: 'Illustrator',
-        icon: '✒️',
+        icon: '/images/Illustrator.jpeg',
         level: '★★',
         desc: 'ロゴ制作などベクターデザインに活用。',
       },
       {
         name: 'Photoshop',
-        icon: '🖌️',
+        icon: '/images/Photoshop.jpeg',
         level: '★★',
         desc: '画像加工やバナー作成を得意とする。',
       },
@@ -92,26 +122,20 @@ const categories = [
     title: 'Tools',
     skills: [
       {
-        name: 'Git',
-        icon: '🌱',
-        level: '★★★',
-        desc: '7年以上使用。チーム開発の運用整備も担当。',
-      },
-      {
         name: 'GitHub',
-        icon: '🐱',
+        icon: '/images/GitHub.jpeg',
         level: '★★★',
         desc: 'Issue管理やCI/CD連携を含むフローを構築。',
       },
       {
         name: 'Docker',
-        icon: '🐳',
+        icon: '/images/Docker.jpeg',
         level: '★',
         desc: '開発環境のコンテナ化を実施中。',
       },
       {
         name: 'VSCode',
-        icon: '🖥️',
+        icon: '/images/VSCode.jpeg',
         level: '★★★',
         desc: '主要IDEとして拡張機能による効率化を実践。',
       },
@@ -136,7 +160,13 @@ export default function SkillsGrid() {
                 key={skill.name}
                 className="flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow"
               >
-                <div className="text-4xl mb-2">{skill.icon}</div>
+                <Image
+                  src={skill.icon}
+                  alt={skill.name}
+                  width={100}
+                  height={100}
+                  className="w-[100px] h-[100px] object-contain mb-2"
+                />
                 <p className="font-bold text-sm mb-1">{skill.name}</p>
                 <p className="text-xs text-gray-600 dark:text-gray-400 mb-1">
                   {skill.level}
