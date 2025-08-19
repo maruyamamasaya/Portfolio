@@ -164,7 +164,7 @@ ArcanaCardCarousel コンポーネントで使用するアルカナカード画�
 ## 作者・連絡先
 
 - GitHub: [username](https://github.com/username)
-- Twitter: [@user](https://twitter.com/user)
+- X: [@GooseDigi](https://x.com/GooseDigi)
 
 ## 貢献方法
 

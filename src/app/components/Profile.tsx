@@ -24,7 +24,7 @@ export default function Profile() {
             導入実績は100店舗以上。独立6ヶ月以内に月商350万円を達成。登録フォロワー数 200名以上。発信記事数150記事以上。
           </p>
           <div className="flex justify-center sm:justify-start space-x-3">
-            <Link href="https://x.com" aria-label="X" className="hover:text-primary transition-base">
+            <Link href="https://x.com/GooseDigi" aria-label="X" className="hover:text-primary transition-base">
               <Image src="/images/X.png" alt="X" width={20} height={20} className="w-5 h-5" />
             </Link>
             <Link href="https://github.com" aria-label="GitHub" className="hover:text-primary transition-base">

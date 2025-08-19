@@ -133,7 +133,7 @@ Both `favicon.png` and `eye-catch.png` reside in `public/image`. Access them as 
 ## Author
 
 - GitHub: [username](https://github.com/username)
-- Twitter: [@user](https://twitter.com/user)
+- X: [@GooseDigi](https://x.com/GooseDigi)
 
 ## Contributing
 

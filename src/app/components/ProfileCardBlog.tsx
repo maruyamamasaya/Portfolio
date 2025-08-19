@@ -16,7 +16,7 @@ export default function ProfileCardBlog() {
         <p className="text-sm leading-relaxed">フルスタックエンジニア</p>
         <p className="text-xs leading-relaxed">分からないを分かるに変える</p>
         <div className="flex justify-center space-x-3 my-2">
-          <Link href="https://x.com" aria-label="X" className="hover:text-primary transition-base">
+          <Link href="https://x.com/GooseDigi" aria-label="X" className="hover:text-primary transition-base">
             <Image src="/images/X.png" alt="X" width={20} height={20} className="w-5 h-5" />
           </Link>
           <Link href="https://github.com" aria-label="GitHub" className="hover:text-primary transition-base">
