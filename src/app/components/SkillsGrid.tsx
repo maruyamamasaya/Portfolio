@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const introText =
   'AWSを基盤としたWebサイト・業務システムの構築を中心に、幅広い分野で実務経験を積んできました。予約システムやレンタル管理サイトの開発から、飲食チェーン向けサイト運用やSEO対策、LINE Messaging APIによるチャットボット開発まで対応可能です。基本情報技術者をはじめとする資格を活かし、インフラ知識を交えた柔軟な提案・構築を行います。スクレイピングやHTMLメール、LP制作など実務で使えるコーディングも多数経験しています。';
@@ -168,9 +169,10 @@ export default function SkillsGrid() {
           <h3 className="text-lg font-semibold">{category.title}</h3>
           <div className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {category.skills.map((skill) => (
-              <div
+              <Link
                 key={skill.name}
-                className="flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow"
+                href={`/tags/${encodeURIComponent(skill.name)}`}
+                className="flex flex-col items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow hover:opacity-80 transition-base"
               >
                 <Image
                   src={skill.icon}
@@ -186,7 +188,7 @@ export default function SkillsGrid() {
                 <p className="text-xs text-gray-600 dark:text-gray-400 text-center whitespace-pre-line">
                   {skill.desc}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
