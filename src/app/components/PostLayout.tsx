@@ -44,7 +44,7 @@ export default function PostLayout({
       {headings && headings.length > 0 && (
         <TableOfContents headings={headings} />
       )}
-      <h1 className="text-2xl md:text-3xl font-bold mb-2">{title}</h1>
+      <h1 className="w-fit">{title}</h1>
       <p className="text-sm text-gray-500 mb-4">
         {date}
         {updated && ` (更新: ${updated})`}
