@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface FormState {
   name: string;
@@ -20,9 +21,9 @@ export default function TutorContactForm() {
     consultation: '',
     website: '',
   });
-  const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -59,7 +60,6 @@ export default function TutorContactForm() {
         body: JSON.stringify({ subject: '家庭教師お問い合わせ', ...form }),
       });
       if (res.ok) {
-        setSent(true);
         setForm({
           name: '',
           email: '',
@@ -68,19 +68,16 @@ export default function TutorContactForm() {
           consultation: '',
           website: '',
         });
-      } else {
-        setError('送信に失敗しました。');
+        router.push('/contact/thanks');
+        return;
       }
+      setError('送信に失敗しました。');
     } catch {
       setError('送信に失敗しました。');
     } finally {
       setLoading(false);
     }
   };
-
-  if (sent) {
-    return <p>送信が完了しました。ありがとうございました。</p>;
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">

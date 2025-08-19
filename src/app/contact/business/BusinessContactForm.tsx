@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface FormState {
   name: string;
@@ -16,9 +17,9 @@ export default function BusinessContactForm() {
     message: '',
     website: '',
   });
-  const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -53,21 +54,17 @@ export default function BusinessContactForm() {
         body: JSON.stringify({ subject: '法人向けお問い合わせ', ...form }),
       });
       if (res.ok) {
-        setSent(true);
         setForm({ name: '', email: '', message: '', website: '' });
-      } else {
-        setError('送信に失敗しました。');
+        router.push('/contact/thanks');
+        return;
       }
+      setError('送信に失敗しました。');
     } catch {
       setError('送信に失敗しました。');
     } finally {
       setLoading(false);
     }
   };
-
-  if (sent) {
-    return <p>送信が完了しました。ありがとうございました。</p>;
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
