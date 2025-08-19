@@ -37,7 +37,7 @@ export default function HomeWindow({ posts }: HomeWindowProps) {
       <ITSchoolSection className="mt-24" />
 
       {/* 最新記事一覧 */}
-      <section className="px-4 sm:px-6 md:px-10 max-w-screen-lg mx-auto space-y-4">
+      <section className="px-4 sm:px-6 md:px-10 w-full mx-auto space-y-4">
         <h2 className="text-xl font-bold text-center">最新記事</h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {latestPosts.map((post, i) => (
