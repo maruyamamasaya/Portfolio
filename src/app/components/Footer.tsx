@@ -47,7 +47,7 @@ export default function Footer() {
           <ul className="space-y-1">
             <li>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/digitalgoosesupport/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
@@ -64,7 +64,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://x.com"
+                href="https://x.com/GooseDigi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"
@@ -81,7 +81,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://www.tiktok.com"
+                href="https://www.tiktok.com/@goosedigi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 hover:text-yellow-300 transition-base"

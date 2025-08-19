@@ -126,7 +126,7 @@ export default function About() {
               icon: '📷',
               title: 'Instagram',
               description: 'ショート動画と写真で分かりやすく音楽を解説。',
-              href: 'https://www.instagram.com/xsbyli/',
+              href: 'https://www.instagram.com/digitalgoosesupport/',
             },
           ]}
         />

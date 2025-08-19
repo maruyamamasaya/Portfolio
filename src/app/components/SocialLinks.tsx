@@ -7,7 +7,7 @@ export default function SocialLinks() {
       <ul className="space-y-1 text-sm">
         <li>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/digitalgoosesupport/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-1 hover:text-primary"
@@ -24,7 +24,7 @@ export default function SocialLinks() {
         </li>
         <li>
           <a
-            href="https://x.com"
+            href="https://x.com/GooseDigi"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-1 hover:text-primary"
@@ -41,7 +41,7 @@ export default function SocialLinks() {
         </li>
         <li>
           <a
-            href="https://www.tiktok.com"
+            href="https://www.tiktok.com/@goosedigi"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-1 hover:text-primary"
