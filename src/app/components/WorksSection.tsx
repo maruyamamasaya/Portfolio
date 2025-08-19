@@ -63,7 +63,7 @@ export default function WorksSection() {
         <br />
         「誰に相談していいかわからない」そんな声に応える、現場に強いIT・デザイン支援をご提供しています。
       </p>
-      <div className="grid w-full gap-8 md:grid-cols-3">
+      <div className="grid w-full gap-8 md:grid-cols-2">
         {works.map((work) => (
           <div key={work.title} className="space-y-2">
             <h3 className="font-semibold">{work.title}</h3>
