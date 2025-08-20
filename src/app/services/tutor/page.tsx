@@ -10,95 +10,193 @@ export const metadata = {
 
 export default function TutorServicePage() {
   return (
-    <div className={`${mochiy.className} max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-12`}>
+    <div className={mochiy.className}>
       <TutorHeroSection />
-      <section className="section-spacing text-center space-y-4">
-        <h2 className="text-2xl font-bold text-pink-600">サービス概要</h2>
-        <p>
-          私たちは現役エンジニアによる個別指導スタイルのIT家庭教師サービスです。学校の情報の授業対策から、プログラミングや最新AI技術まで、
-          “理解できるまで寄り添う”をモットーにしています。
-        </p>
-      </section>
-      <section className="section-spacing space-y-4 text-center">
-        <h2 className="text-2xl font-bold text-pink-600">👨‍🏫 講師紹介</h2>
-        <p>
-          現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、あなたのレベルに合わせて丁寧にサポートします。
-        </p>
-      </section>
-      <section className="section-spacing space-y-4">
-        <h2 className="text-2xl font-bold text-center text-pink-600">コース紹介</h2>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>基礎から始めるプログラミングコース</li>
-          <li>Webサイト制作コース</li>
-          <li>最新AI活用コース</li>
-        </ul>
-      </section>
-      <section className="section-spacing space-y-4">
-        <h2 className="text-2xl font-bold text-center text-pink-600">学べる内容例</h2>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Python・JavaScriptの基礎</li>
-          <li>HTML/CSSによるWeb制作</li>
-          <li>AIチャットボットの作り方</li>
-        </ul>
-      </section>
-      <section className="section-spacing space-y-4">
-        <h2 className="text-2xl font-bold text-center text-pink-600">学習の流れ</h2>
-        <ol className="list-decimal pl-5 space-y-2">
-          <li>ヒアリングで目標設定</li>
-          <li>オリジナルカリキュラム作成</li>
-          <li>マンツーマンレッスン</li>
-          <li>振り返りと次回プラン</li>
-        </ol>
-      </section>
-      <section className="section-spacing space-y-4">
-        <h2 className="text-2xl font-bold text-center text-pink-600">受講までの流れ</h2>
-        <ol className="list-decimal pl-5 space-y-2">
-          <li>お問い合わせ</li>
-          <li>無料ガイダンス</li>
-          <li>体験セッション</li>
-          <li>正式お申し込み</li>
-        </ol>
-      </section>
-      <section className="section-spacing space-y-4">
-        <h2 className="text-2xl font-bold text-center text-pink-600">特徴</h2>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>完全マンツーマン指導</li>
-          <li>オンライン・訪問どちらも対応</li>
-          <li>理解できるまで丁寧にサポート</li>
-        </ul>
-      </section>
-      <section className="section-spacing space-y-4">
-        <h2 className="text-2xl font-bold text-center text-pink-600">無料ガイダンス｜体験セッション</h2>
-        <p className="text-center">
-          まずは気軽に体験してみませんか？オンラインでの無料ガイダンスを実施しています。
-        </p>
-        <div className="text-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-12">
+        <section className="text-center space-y-4">
+          <h2 className="text-2xl font-bold text-pink-600">サービス概要</h2>
+          <p>
+            私たちは現役エンジニアによる<span className="font-bold">個別指導スタイル</span>のIT家庭教師サービスです。
+            学校の情報の授業対策から、プログラミングや最新AI技術まで、
+            <span className="font-bold">“理解できるまで寄り添う”</span>をモットーにしています。
+          </p>
+        </section>
+
+        <section className="text-center space-y-4">
+          <h2 className="text-2xl font-bold text-pink-600">👨‍🏫 講師紹介</h2>
+          <p>
+            現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、
+            あなたのレベルに合わせて丁寧にサポートします。
+          </p>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-center text-pink-600">コース紹介</h2>
+          <div className="grid gap-6 sm:grid-cols-3">
+            <div className="p-4 bg-white rounded shadow space-y-2">
+              <h3 className="font-bold text-center">オンラインお手軽コース</h3>
+              <p className="text-sm text-center">
+                チャットで質問し放題。毎日9:00〜22:00まで受付中。
+              </p>
+              <div className="text-center">
+                <Link href="/pricing/tutor" className="text-pink-600 underline">
+                  詳しく見る
+                </Link>
+              </div>
+            </div>
+            <div className="p-4 bg-white rounded shadow space-y-2">
+              <h3 className="font-bold text-center">家庭訪問プラン</h3>
+              <p className="text-sm text-center">
+                月4回×3h、東京都内どこでも訪問。宿題や課題も一緒に解決。
+              </p>
+              <div className="text-center">
+                <Link href="/pricing/tutor" className="text-pink-600 underline">
+                  詳しく見る
+                </Link>
+              </div>
+            </div>
+            <div className="p-4 bg-white rounded shadow space-y-2">
+              <h3 className="font-bold text-center">個別塾プラン</h3>
+              <p className="text-sm text-center">
+                レンタル会議室で月2回×3h。集中できる学習環境。
+              </p>
+              <div className="text-center">
+                <Link href="/pricing/tutor" className="text-pink-600 underline">
+                  詳しく見る
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-center text-pink-600">受講までの流れ</h2>
+          <ol className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
+              <span className="text-4xl">🗣️</span>
+              <p className="font-bold">オンラインで簡単ヒアリング</p>
+              <p className="text-sm">
+                学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
+              </p>
+            </li>
+            <li className="hidden sm:block text-3xl">➜</li>
+            <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
+              <span className="text-4xl">📋</span>
+              <p className="font-bold">あなただけの学習カルテ作成</p>
+              <p className="text-sm">
+                スキルや目的に合わせたオリジナルの学習プランをご提案します。
+              </p>
+            </li>
+            <li className="hidden sm:block text-3xl">➜</li>
+            <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
+              <span className="text-4xl">🎓</span>
+              <p className="font-bold">無料体験授業</p>
+              <p className="text-sm">実際に授業を受けて、学びやすさを体感してください。</p>
+            </li>
+            <li className="hidden sm:block text-3xl">➜</li>
+            <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
+              <span className="text-4xl">🚀</span>
+              <p className="font-bold">継続受講へ</p>
+              <p className="text-sm">
+                体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
+              </p>
+            </li>
+          </ol>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-center text-pink-600">特徴</h2>
+          <ul className="grid sm:grid-cols-2 gap-2">
+            <li className="flex items-center gap-2">
+              <span>✅</span>
+              <span>現役エンジニアが指導</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>✅</span>
+              <span>どんな疑問も「わかるまで」対応</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>✅</span>
+              <span>オンライン・訪問・会議室から選べる柔軟プラン</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>✅</span>
+              <span>無料体験から安心スタート</span>
+            </li>
+          </ul>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-center text-pink-600">学べる内容例</h2>
+          <ul className="space-y-2">
+            <li className="flex items-center gap-2">
+              <span>💡</span>
+              <span>学校の情報の授業（表計算・プレゼン・プログラミング基礎）</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>💡</span>
+              <span>Web制作（HTML / CSS / JavaScript）</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>💡</span>
+              <span>Python入門、AI基礎（ChatGPTや最新AI技術の仕組み）</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <span>💡</span>
+              <span>セキュリティやネットの仕組み</span>
+            </li>
+          </ul>
+        </section>
+
+        <section className="space-y-4">
+          <h2 className="text-2xl font-bold text-center text-pink-600">お客様の声</h2>
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div className="p-4 bg-white rounded shadow space-y-2 text-center">
+              <p className="font-bold">高1男子</p>
+              <p className="text-sm">「学校の授業がスムーズに理解できるようになりました！」</p>
+            </div>
+            <div className="p-4 bg-white rounded shadow space-y-2 text-center">
+              <p className="font-bold">中3女子</p>
+              <p className="text-sm">「将来エンジニアを目指したい気持ちが強くなりました」</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="space-y-4 text-center">
+          <h2 className="text-2xl font-bold text-pink-600">無料ガイダンス｜体験セッション</h2>
+          <p>まずは情報系コースを体験する</p>
+          <div className="flex flex-col items-center space-y-2">
+            <Link
+              href="/contact/tutor"
+              className="inline-block px-6 py-3 bg-pink-500 text-white rounded-full shadow transition-base hover:bg-pink-600"
+            >
+              無料体験プログラムに申し込みたい
+            </Link>
+            <Link href="/pricing/tutor" className="text-pink-600 underline">
+              各コースの受講料金一覧が知りたい
+            </Link>
+            <Link href="/contact/tutor" className="text-pink-600 underline">
+              IT講座の講師や内容について詳しく知りたい
+            </Link>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold text-center">💬 チャットで質問し放題</h3>
+          <p className="text-center">
+            毎日 9:00〜22:00 まで受付中！どんな小さな疑問でもお気軽にどうぞ。
+          </p>
+        </section>
+
+        <section className="text-center">
           <Link
             href="/contact/tutor"
-            className="inline-block px-6 py-3 bg-pink-500 text-white rounded-full shadow transition-base hover:bg-pink-600"
+            className="inline-block px-8 py-3 bg-primary text-white rounded-full shadow transition-base hover:scale-105"
           >
-            体験を申し込む
+            家庭教師に関するお問い合わせはこちら
           </Link>
-        </div>
-      </section>
-      <section className="section-spacing space-y-4">
-        <h2 className="text-2xl font-bold text-center text-pink-600">家庭教師料金表</h2>
-        <p className="text-center">
-          詳しい料金は
-          <Link href="/pricing/tutor" className="text-pink-600 underline ml-1">
-            こちら
-          </Link>
-          をご覧ください。
-        </p>
-      </section>
-      <section className="section-spacing text-center">
-        <Link
-          href="/contact/tutor"
-          className="inline-block px-8 py-3 bg-primary text-white rounded-full shadow transition-base hover:scale-105"
-        >
-          家庭教師に関するお問い合わせはこちら
-        </Link>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
