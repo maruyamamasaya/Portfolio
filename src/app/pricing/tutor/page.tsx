@@ -1,10 +1,41 @@
 import Image from 'next/image';
+import { Fragment } from 'react';
 
 export const metadata = {
   title: '家庭教師料金表',
 };
 
 export default function TutorPricingPage() {
+  const flowSteps = [
+    {
+      src: '/images/flow0tutor01.png',
+      alt: 'オンラインで簡単ヒアリング',
+      title: 'オンラインで簡単ヒアリング',
+      description:
+        '学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）',
+    },
+    {
+      src: '/images/flow0tutor02.png',
+      alt: 'あなただけの学習カルテ作成',
+      title: 'あなただけの学習カルテ作成',
+      description:
+        'スキルや目的に合わせたオリジナルの学習プランをご提案します。',
+    },
+    {
+      src: '/images/flow0tutor03.png',
+      alt: '無料体験授業',
+      title: '無料体験授業',
+      description: '実際に授業を受けて、学びやすさを体感してください。',
+    },
+    {
+      src: '/images/flow0tutor04.png',
+      alt: '継続受講へ',
+      title: '継続受講へ',
+      description:
+        '体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。',
+    },
+  ];
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-8">
       <h1 className="text-3xl font-bold mb-6">家庭教師料金表</h1>
@@ -83,64 +114,28 @@ export default function TutorPricingPage() {
 
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">受講までの流れ</h2>
-        <ul className="space-y-4">
-          <li className="flex items-start gap-2">
-            <Image
-              src="/images/flow0tutor01.png"
-              alt="オンラインで簡単ヒアリング"
-              width={32}
-              height={32}
-            />
-            <div>
-              <p className="font-medium">オンラインで簡単ヒアリング</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <Image
-              src="/images/flow0tutor02.png"
-              alt="あなただけの学習カルテ作成"
-              width={32}
-              height={32}
-            />
-            <div>
-              <p className="font-medium">あなただけの学習カルテ作成</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                スキルや目的に合わせたオリジナルの学習プランをご提案します。
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <Image
-              src="/images/flow0tutor03.png"
-              alt="無料体験授業"
-              width={32}
-              height={32}
-            />
-            <div>
-              <p className="font-medium">無料体験授業</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                実際に授業を受けて、学びやすさを体感してください。
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <Image
-              src="/images/flow0tutor04.png"
-              alt="継続受講へ"
-              width={32}
-              height={32}
-            />
-            <div>
-              <p className="font-medium">継続受講へ</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
-              </p>
-            </div>
-          </li>
-        </ul>
+        <div className="flex flex-col items-center gap-6">
+          {flowSteps.map((step, idx) => (
+            <Fragment key={idx}>
+              <div className="w-full max-w-md p-4 bg-white dark:bg-gray-700 rounded shadow">
+                <Image
+                  src={step.src}
+                  alt={step.alt}
+                  width={480}
+                  height={320}
+                  className="w-full h-auto rounded"
+                />
+                <h3 className="mt-2 font-medium">{step.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {step.description}
+                </p>
+              </div>
+              {idx < flowSteps.length - 1 && (
+                <div className="text-3xl text-gray-400">↓</div>
+              )}
+            </Fragment>
+          ))}
+        </div>
       </section>
     </div>
   );
