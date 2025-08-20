@@ -24,6 +24,10 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
     '/services',
     '/tags',
     '/works',
+    '/policy/privacy',
+    '/policy/law',
+    '/policy/copyright',
+    '/policy/terms',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
