@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import TutorHeroSection from '@/app/components/TutorHeroSection';
 import { Mochiy_Pop_One } from 'next/font/google';
 
@@ -106,24 +107,47 @@ export default function TutorServicePage() {
 
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-center text-pink-600">特徴</h2>
-          <ul className="grid sm:grid-cols-2 gap-2">
-            <li className="flex items-center gap-2">
-              <span>✅</span>
-              <span>現役エンジニアが指導</span>
+          <ol className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
+              <Image
+                src="/images/features0tutor01.png"
+                alt="現役エンジニアが指導"
+                width={128}
+                height={128}
+              />
+              <p className="font-bold">現役エンジニアが指導</p>
             </li>
-            <li className="flex items-center gap-2">
-              <span>✅</span>
-              <span>どんな疑問も「わかるまで」対応</span>
+            <li className="hidden sm:block text-3xl">➜</li>
+            <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
+              <Image
+                src="/images/features0tutor02.png"
+                alt="どんな疑問も「わかるまで」対応"
+                width={128}
+                height={128}
+              />
+              <p className="font-bold">どんな疑問も「わかるまで」対応</p>
             </li>
-            <li className="flex items-center gap-2">
-              <span>✅</span>
-              <span>オンライン・訪問・会議室から選べる柔軟プラン</span>
+            <li className="hidden sm:block text-3xl">➜</li>
+            <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
+              <Image
+                src="/images/features0tutor03.png"
+                alt="オンライン・訪問・会議室から選べる柔軟プラン"
+                width={128}
+                height={128}
+              />
+              <p className="font-bold">オンライン・訪問・会議室から選べる柔軟プラン</p>
             </li>
-            <li className="flex items-center gap-2">
-              <span>✅</span>
-              <span>無料体験から安心スタート</span>
+            <li className="hidden sm:block text-3xl">➜</li>
+            <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
+              <Image
+                src="/images/features0tutor04.png"
+                alt="無料体験から安心スタート"
+                width={128}
+                height={128}
+              />
+              <p className="font-bold">無料体験から安心スタート</p>
             </li>
-          </ul>
+          </ol>
         </section>
 
         <section className="space-y-4">
