@@ -1,4 +1,5 @@
 import React from 'react';
+import ArrowIcon from './ArrowIcon';
 
 interface Step {
   icon: React.ReactNode;
@@ -24,8 +25,16 @@ export default function FlowChart({ steps }: Props) {
           </div>
           {i < steps.length - 1 && (
             <>
-              <div className="hidden md:block text-3xl text-gray-400 flex-shrink-0">➜</div>
-              <div className="md:hidden text-2xl text-gray-400 text-center">↓</div>
+              <ArrowIcon
+                color="gray"
+                className="hidden md:block flex-shrink-0"
+                alt="arrow"
+              />
+              <ArrowIcon
+                color="gray"
+                className="md:hidden rotate-90 mx-auto"
+                alt="arrow"
+              />
             </>
           )}
         </React.Fragment>
