@@ -88,8 +88,8 @@ export default function TutorPricingPage() {
             <Image
               src="/images/flow0tutor01.png"
               alt="オンラインで簡単ヒアリング"
-              width={32}
-              height={32}
+              width={300}
+              height={200}
             />
             <div>
               <p className="font-medium">オンラインで簡単ヒアリング</p>

@@ -77,8 +77,8 @@ export default function TutorServicePage() {
               <Image
                 src="/images/flow0tutor01.png"
                 alt="オンラインで簡単ヒアリング"
-                width={128}
-                height={128}
+                width={300}
+                height={200}
               />
               <p className="font-bold">オンラインで簡単ヒアリング</p>
               <p className="text-sm">
