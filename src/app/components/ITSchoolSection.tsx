@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CourseCard from './CourseCard';
+import FlowChart from './FlowChart';
 
 interface Props {
   className?: string;
@@ -58,6 +59,32 @@ export default function ITSchoolSection({ className = '' }: Props) {
       text: '将来エンジニアを目指したい気持ちが強くなりました',
       author: '中3女子',
       avatar: '/image/student02.jpeg',
+    },
+  ];
+
+  const flowSteps = [
+    {
+      icon: '🗣️',
+      title: 'オンラインで簡単ヒアリング',
+      description:
+        '学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）',
+    },
+    {
+      icon: '📋',
+      title: 'あなただけの学習カルテ作成',
+      description:
+        'スキルや目的に合わせたオリジナルの学習プランをご提案します。',
+    },
+    {
+      icon: '🎓',
+      title: '無料体験授業',
+      description: '実際に授業を受けて、学びやすさを体感してください。',
+    },
+    {
+      icon: '🚀',
+      title: '継続受講へ',
+      description:
+        '体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。',
     },
   ];
 
@@ -154,44 +181,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
       {/* 受講までの流れ */}
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-center">受講までの流れ</h3>
-        <ul className="space-y-4 max-w-xl mx-auto">
-          <li className="flex items-start gap-2">
-            <span>🗣️</span>
-            <div>
-              <p className="font-medium">オンラインで簡単ヒアリング</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <span>📋</span>
-            <div>
-              <p className="font-medium">あなただけの学習カルテ作成</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                スキルや目的に合わせたオリジナルの学習プランをご提案します。
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <span>🎓</span>
-            <div>
-              <p className="font-medium">無料体験授業</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                実際に授業を受けて、学びやすさを体感してください。
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-2">
-            <span>🚀</span>
-            <div>
-              <p className="font-medium">継続受講へ</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
-              </p>
-            </div>
-          </li>
-        </ul>
+        <FlowChart steps={flowSteps} />
       </div>
 
       {/* 特徴 */}
