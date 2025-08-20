@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface FormState {
   name: string;
@@ -16,7 +17,7 @@ export default function BusinessContactForm() {
     message: '',
     website: '',
   });
-  const [sent, setSent] = useState(false);
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -53,8 +54,8 @@ export default function BusinessContactForm() {
         body: JSON.stringify({ subject: '法人向けお問い合わせ', ...form }),
       });
       if (res.ok) {
-        setSent(true);
         setForm({ name: '', email: '', message: '', website: '' });
+        router.push('/contact/complete');
       } else {
         setError('送信に失敗しました。');
       }
@@ -64,10 +65,6 @@ export default function BusinessContactForm() {
       setLoading(false);
     }
   };
-
-  if (sent) {
-    return <p>送信が完了しました。ありがとうございました。</p>;
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
