@@ -215,14 +215,19 @@ export default function ITSchoolSection({ className = '' }: Props) {
       {/* 特徴 */}
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-center text-pink-700">特徴</h3>
-        <ul className="space-y-2 max-w-2xl mx-auto">
-          {features.map((f) => (
-            <li key={f} className="flex items-start gap-2">
-              <span>✅</span>
-              <span>{f}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
+          <ul className="flex flex-col md:flex-row gap-4 md:gap-6 md:justify-center">
+            {features.map((f) => (
+              <li
+                key={f}
+                className="flex items-start gap-2 p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full md:w-72 md:snap-start"
+              >
+                <span>✅</span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* 学べる内容 */}
