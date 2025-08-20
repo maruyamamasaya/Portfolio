@@ -36,10 +36,22 @@ export default function ITSchoolSection({ className = '' }: Props) {
   ];
 
   const features = [
-    '現役エンジニアが指導',
-    'どんな疑問も「わかるまで」対応',
-    'オンライン・訪問・会議室から選べる柔軟プラン',
-    '無料体験から安心スタート',
+    {
+      text: '現役エンジニアが指導',
+      image: '/images/features0tutor01.png',
+    },
+    {
+      text: 'どんな疑問も「わかるまで」対応',
+      image: '/images/features0tutor02.png',
+    },
+    {
+      text: 'オンライン・訪問・会議室から選べる柔軟プラン',
+      image: '/images/features0tutor03.png',
+    },
+    {
+      text: '無料体験から安心スタート',
+      image: '/images/features0tutor04.png',
+    },
   ];
 
   const topics = [
@@ -219,11 +231,17 @@ export default function ITSchoolSection({ className = '' }: Props) {
           <ul className="flex flex-col md:flex-row gap-4 md:gap-4 md:justify-center">
             {features.map((f) => (
               <li
-                key={f}
-                className="flex items-start gap-2 p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full md:w-80 md:snap-start"
+                key={f.text}
+                className="flex flex-col items-center text-center p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full md:w-80 md:snap-start space-y-2"
               >
-                <span>✅</span>
-                <span>{f}</span>
+                <Image
+                  src={f.image}
+                  alt={f.text}
+                  width={160}
+                  height={160}
+                  className="w-32 h-32 md:w-40 md:h-40"
+                />
+                <p className="font-semibold">{f.text}</p>
               </li>
             ))}
           </ul>
