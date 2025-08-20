@@ -18,17 +18,27 @@ export default function TutorServicePage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-12">
         <section className="grid gap-6">
           <Card className="flex flex-col items-center text-center space-y-4">
-            <h2 className="text-2xl font-bold text-pink-600">サービス概要</h2>
+            <h2 className="text-2xl font-semibold text-pink-600">
+              サービス概要
+            </h2>
             <p>
-              私たちは現役エンジニアによる<span className="font-bold">個別指導スタイル</span>のIT家庭教師サービスです。<br />
-              学校の情報の授業対策から、プログラミングや最新AI技術まで、<br />
-              <span className="font-bold">“理解できるまで寄り添う”</span>をモットーにしています。
+              私たちは現役エンジニアによる
+              <span className="font-semibold">個別指導スタイル</span>
+              のIT家庭教師サービスです。
+              <br />
+              学校の情報の授業対策から、プログラミングや最新AI技術まで、
+              <br />
+              <span className="font-semibold">“理解できるまで寄り添う”</span>
+              をモットーにしています。
             </p>
           </Card>
           <Card className="flex flex-col items-center space-y-4">
-            <h2 className="text-2xl font-bold text-center text-pink-600">👨‍🏫 講師紹介</h2>
+            <h2 className="text-2xl font-semibold text-center text-pink-600">
+              👨‍🏫 講師紹介
+            </h2>
             <p className="text-center">
-              現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、<br />
+              現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、
+              <br />
               あなたのレベルに合わせて丁寧にサポートします。
             </p>
             <ProfileCardBlog />
@@ -36,10 +46,14 @@ export default function TutorServicePage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-center text-pink-600">コース紹介</h2>
+          <h2 className="text-2xl font-semibold text-center text-pink-600">
+            コース紹介
+          </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             <div className="p-4 bg-white rounded shadow space-y-2">
-              <h3 className="font-bold text-center">オンラインお手軽コース</h3>
+              <h3 className="font-semibold text-center">
+                オンラインお手軽コース
+              </h3>
               <p className="text-sm text-center">
                 チャットで質問し放題。毎日9:00〜22:00まで受付中。
               </p>
@@ -50,7 +64,7 @@ export default function TutorServicePage() {
               </div>
             </div>
             <div className="p-4 bg-white rounded shadow space-y-2">
-              <h3 className="font-bold text-center">家庭訪問プラン</h3>
+              <h3 className="font-semibold text-center">家庭訪問プラン</h3>
               <p className="text-sm text-center">
                 月4回×3h、東京都内どこでも訪問。宿題や課題も一緒に解決。
               </p>
@@ -61,7 +75,7 @@ export default function TutorServicePage() {
               </div>
             </div>
             <div className="p-4 bg-white rounded shadow space-y-2">
-              <h3 className="font-bold text-center">個別塾プラン</h3>
+              <h3 className="font-semibold text-center">個別塾プラン</h3>
               <p className="text-sm text-center">
                 レンタル会議室で月2回×3h。集中できる学習環境。
               </p>
@@ -75,7 +89,9 @@ export default function TutorServicePage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-center text-pink-600">受講までの流れ</h2>
+          <h2 className="text-2xl font-semibold text-center text-pink-600">
+            受講までの流れ
+          </h2>
           <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
@@ -84,7 +100,7 @@ export default function TutorServicePage() {
                 width={300}
                 height={200}
               />
-              <p className="font-bold">オンラインで簡単ヒアリング</p>
+              <p className="font-semibold">オンラインで簡単ヒアリング</p>
               <p className="text-sm">
                 学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
               </p>
@@ -97,7 +113,7 @@ export default function TutorServicePage() {
                 width={300}
                 height={200}
               />
-              <p className="font-bold">あなただけの学習カルテ作成</p>
+              <p className="font-semibold">あなただけの学習カルテ作成</p>
               <p className="text-sm">
                 スキルや目的に合わせたオリジナルの学習プランをご提案します。
               </p>
@@ -110,8 +126,10 @@ export default function TutorServicePage() {
                 width={300}
                 height={200}
               />
-              <p className="font-bold">無料体験授業</p>
-              <p className="text-sm">実際に授業を受けて、学びやすさを体感してください。</p>
+              <p className="font-semibold">無料体験授業</p>
+              <p className="text-sm">
+                実際に授業を受けて、学びやすさを体感してください。
+              </p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
@@ -121,7 +139,7 @@ export default function TutorServicePage() {
                 width={300}
                 height={200}
               />
-              <p className="font-bold">継続受講へ</p>
+              <p className="font-semibold">継続受講へ</p>
               <p className="text-sm">
                 体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
               </p>
@@ -130,7 +148,9 @@ export default function TutorServicePage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-center text-pink-600">特徴</h2>
+          <h2 className="text-2xl font-semibold text-center text-pink-600">
+            特徴
+          </h2>
           <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
@@ -139,7 +159,7 @@ export default function TutorServicePage() {
                 width={128}
                 height={128}
               />
-              <p className="font-bold">現役エンジニアが指導</p>
+              <p className="font-semibold">現役エンジニアが指導</p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
@@ -149,7 +169,7 @@ export default function TutorServicePage() {
                 width={128}
                 height={128}
               />
-              <p className="font-bold">どんな疑問も「わかるまで」対応</p>
+              <p className="font-semibold">どんな疑問も「わかるまで」対応</p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
@@ -159,7 +179,9 @@ export default function TutorServicePage() {
                 width={128}
                 height={128}
               />
-              <p className="font-bold">オンライン・訪問・会議室から選べる柔軟プラン</p>
+              <p className="font-semibold">
+                オンライン・訪問・会議室から選べる柔軟プラン
+              </p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
@@ -169,17 +191,21 @@ export default function TutorServicePage() {
                 width={128}
                 height={128}
               />
-              <p className="font-bold">無料体験から安心スタート</p>
+              <p className="font-semibold">無料体験から安心スタート</p>
             </li>
           </ol>
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-center text-pink-600">学べる内容例</h2>
+          <h2 className="text-2xl font-semibold text-center text-pink-600">
+            学べる内容例
+          </h2>
           <ul className="space-y-2">
             <li className="flex items-center gap-2">
               <span>💡</span>
-              <span>学校の情報の授業（表計算・プレゼン・プログラミング基礎）</span>
+              <span>
+                学校の情報の授業（表計算・プレゼン・プログラミング基礎）
+              </span>
             </li>
             <li className="flex items-center gap-2">
               <span>💡</span>
@@ -197,7 +223,9 @@ export default function TutorServicePage() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-center text-pink-600">お客様の声</h2>
+          <h2 className="text-2xl font-semibold text-center text-pink-600">
+            お客様の声
+          </h2>
           <div className="grid sm:grid-cols-2 gap-6">
             <div className="p-4 bg-white rounded shadow space-y-2 text-center">
               <Image
@@ -207,8 +235,10 @@ export default function TutorServicePage() {
                 height={180}
                 className="mx-auto rounded-full"
               />
-              <p className="font-bold">高1男子</p>
-              <p className="text-sm">「学校の授業がスムーズに理解できるようになりました！」</p>
+              <p className="font-semibold">高1男子</p>
+              <p className="text-sm">
+                「学校の授業がスムーズに理解できるようになりました！」
+              </p>
             </div>
             <div className="p-4 bg-white rounded shadow space-y-2 text-center">
               <Image
@@ -218,14 +248,18 @@ export default function TutorServicePage() {
                 height={180}
                 className="mx-auto rounded-full"
               />
-              <p className="font-bold">中3女子</p>
-              <p className="text-sm">「将来エンジニアを目指したい気持ちが強くなりました」</p>
+              <p className="font-semibold">中3女子</p>
+              <p className="text-sm">
+                「将来エンジニアを目指したい気持ちが強くなりました」
+              </p>
             </div>
           </div>
         </section>
 
         <section className="space-y-4 text-center">
-          <h2 className="text-2xl font-bold text-pink-600">無料ガイダンス｜体験セッション</h2>
+          <h2 className="text-2xl font-semibold text-pink-600">
+            無料ガイダンス｜体験セッション
+          </h2>
           <p>まずは情報系コースを体験する</p>
           <div className="flex flex-col items-center space-y-2">
             <Link
@@ -244,7 +278,9 @@ export default function TutorServicePage() {
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-bold text-center">💬 チャットで質問し放題</h3>
+          <h3 className="text-xl font-semibold text-center">
+            💬 チャットで質問し放題
+          </h3>
           <p className="text-center">
             毎日 9:00〜22:00 まで受付中！どんな小さな疑問でもお気軽にどうぞ。
           </p>
@@ -262,4 +298,3 @@ export default function TutorServicePage() {
     </div>
   );
 }
-
