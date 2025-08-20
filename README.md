@@ -74,21 +74,16 @@ npm run dev
 
 ## テストと Lint
 
-コード変更時は次のコマンドで静的解析、コード整形、テストを実行できます。
+コード変更時は次のコマンドで静的解析とテストを実行します。
 
 ```bash
 npm run lint
-npm run format
-npm test
+npm test -- --passWithNoTests
 ```
 
 `npm run lint` は `.eslintrc.json` を参照して ESLint を実行します。
-ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.png` です。
-`npm run format` は リポジトリの `.prettierrc` を参照して Prettier を実行します。
-ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.png` です。
-`npm test` は `jest.config.js` に基づいて Jest を起動します。
-テスト実行には `.env.local` に定義した環境変数が利用されるため、`\*.example` をも
-とに設定してください。
+`npm test -- --passWithNoTests` は `jest.config.js` に基づいて Jest を起動します。
+テスト実行には `.env.local` に定義した環境変数が利用されるため、`*.example` をもとに設定してください。
 
 ### 初回マウントアニメーションの無効化
 
