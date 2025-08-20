@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Fragment } from 'react';
-import ArrowIcon from '@/app/components/ArrowIcon';
+import FlowArrow from '@/app/components/FlowArrow';
 
 export const metadata = {
   title: '家庭教師料金表',
@@ -133,16 +133,11 @@ export default function TutorPricingPage() {
               </div>
               {idx < flowSteps.length - 1 && (
                 <div className="md:flex-shrink-0 flex flex-col items-center">
-                  <ArrowIcon
-                    color="gray"
-                    className="hidden md:block"
+                  <FlowArrow
+                    className="hidden md:block -rotate-90"
                     alt="arrow"
                   />
-                  <ArrowIcon
-                    color="gray"
-                    className="md:hidden rotate-90"
-                    alt="arrow"
-                  />
+                  <FlowArrow className="md:hidden" alt="arrow" />
                 </div>
               )}
             </Fragment>
