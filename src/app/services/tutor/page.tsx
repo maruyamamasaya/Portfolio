@@ -196,10 +196,24 @@ export default function TutorServicePage() {
           <h2 className="text-2xl font-bold text-center text-pink-600">お客様の声</h2>
           <div className="grid sm:grid-cols-2 gap-6">
             <div className="p-4 bg-white rounded shadow space-y-2 text-center">
+              <Image
+                src="/images/student01.jpeg"
+                alt="高1男子"
+                width={80}
+                height={80}
+                className="mx-auto rounded-full"
+              />
               <p className="font-bold">高1男子</p>
               <p className="text-sm">「学校の授業がスムーズに理解できるようになりました！」</p>
             </div>
             <div className="p-4 bg-white rounded shadow space-y-2 text-center">
+              <Image
+                src="/images/student02.jpeg"
+                alt="中3女子"
+                width={80}
+                height={80}
+                className="mx-auto rounded-full"
+              />
               <p className="font-bold">中3女子</p>
               <p className="text-sm">「将来エンジニアを目指したい気持ちが強くなりました」</p>
             </div>

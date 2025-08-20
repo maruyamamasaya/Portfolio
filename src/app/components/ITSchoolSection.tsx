@@ -53,12 +53,12 @@ export default function ITSchoolSection({ className = '' }: Props) {
     {
       text: '学校の授業がスムーズに理解できるようになりました！',
       author: '高1男子',
-      avatar: '/image/student01.jpeg',
+      avatar: '/images/student01.jpeg',
     },
     {
       text: '将来エンジニアを目指したい気持ちが強くなりました',
       author: '中3女子',
-      avatar: '/image/student02.jpeg',
+      avatar: '/images/student02.jpeg',
     },
   ];
 
