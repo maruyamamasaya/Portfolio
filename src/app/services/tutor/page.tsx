@@ -66,6 +66,13 @@ export default function TutorServicePage() {
             </div>
             <div className="p-4 bg-white rounded shadow space-y-2">
               <h3 className="font-semibold text-center">家庭訪問プラン</h3>
+              <Image
+                src="/images/course02.jpeg"
+                alt="家庭訪問プラン"
+                width={400}
+                height={300}
+                className="w-full h-auto rounded"
+              />
               <p className="text-sm text-center">
                 月4回×3h、東京都内どこでも訪問。宿題や課題も一緒に解決。
               </p>
@@ -77,6 +84,13 @@ export default function TutorServicePage() {
             </div>
             <div className="p-4 bg-white rounded shadow space-y-2">
               <h3 className="font-semibold text-center">個別塾プラン</h3>
+              <Image
+                src="/images/course03.jpeg"
+                alt="個別塾プラン"
+                width={400}
+                height={300}
+                className="w-full h-auto rounded"
+              />
               <p className="text-sm text-center">
                 レンタル会議室で月2回×3h。集中できる学習環境。
               </p>
