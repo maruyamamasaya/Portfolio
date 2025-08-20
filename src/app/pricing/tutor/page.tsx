@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export const metadata = {
   title: '家庭教師料金表',
 };
@@ -83,7 +85,12 @@ export default function TutorPricingPage() {
         <h2 className="text-2xl font-semibold">受講までの流れ</h2>
         <ul className="space-y-4">
           <li className="flex items-start gap-2">
-            <span>🗣️</span>
+            <Image
+              src="/images/flow0tutor01.png"
+              alt="オンラインで簡単ヒアリング"
+              width={32}
+              height={32}
+            />
             <div>
               <p className="font-medium">オンラインで簡単ヒアリング</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -92,7 +99,12 @@ export default function TutorPricingPage() {
             </div>
           </li>
           <li className="flex items-start gap-2">
-            <span>📋</span>
+            <Image
+              src="/images/flow0tutor02.png"
+              alt="あなただけの学習カルテ作成"
+              width={32}
+              height={32}
+            />
             <div>
               <p className="font-medium">あなただけの学習カルテ作成</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -101,7 +113,12 @@ export default function TutorPricingPage() {
             </div>
           </li>
           <li className="flex items-start gap-2">
-            <span>🎓</span>
+            <Image
+              src="/images/flow0tutor03.png"
+              alt="無料体験授業"
+              width={32}
+              height={32}
+            />
             <div>
               <p className="font-medium">無料体験授業</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -110,7 +127,12 @@ export default function TutorPricingPage() {
             </div>
           </li>
           <li className="flex items-start gap-2">
-            <span>🚀</span>
+            <Image
+              src="/images/flow0tutor04.png"
+              alt="継続受講へ"
+              width={32}
+              height={32}
+            />
             <div>
               <p className="font-medium">継続受講へ</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
