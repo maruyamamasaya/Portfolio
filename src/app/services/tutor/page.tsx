@@ -77,8 +77,8 @@ export default function TutorServicePage() {
               <Image
                 src="/images/flow0tutor01.png"
                 alt="オンラインで簡単ヒアリング"
-                width={128}
-                height={128}
+                width={300}
+                height={200}
               />
               <p className="font-bold">オンラインで簡単ヒアリング</p>
               <p className="text-sm">
@@ -90,8 +90,8 @@ export default function TutorServicePage() {
               <Image
                 src="/images/flow0tutor02.png"
                 alt="あなただけの学習カルテ作成"
-                width={128}
-                height={128}
+                width={300}
+                height={200}
               />
               <p className="font-bold">あなただけの学習カルテ作成</p>
               <p className="text-sm">
@@ -103,8 +103,8 @@ export default function TutorServicePage() {
               <Image
                 src="/images/flow0tutor03.png"
                 alt="無料体験授業"
-                width={128}
-                height={128}
+                width={300}
+                height={200}
               />
               <p className="font-bold">無料体験授業</p>
               <p className="text-sm">実際に授業を受けて、学びやすさを体感してください。</p>
@@ -114,8 +114,8 @@ export default function TutorServicePage() {
               <Image
                 src="/images/flow0tutor04.png"
                 alt="継続受講へ"
-                width={128}
-                height={128}
+                width={300}
+                height={200}
               />
               <p className="font-bold">継続受講へ</p>
               <p className="text-sm">

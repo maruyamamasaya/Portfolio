@@ -68,8 +68,8 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <Image
           src="/images/flow0tutor01.png"
           alt="オンラインで簡単ヒアリング"
-          width={128}
-          height={128}
+          width={300}
+          height={200}
         />
       ),
       title: 'オンラインで簡単ヒアリング',
@@ -81,8 +81,8 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <Image
           src="/images/flow0tutor02.png"
           alt="あなただけの学習カルテ作成"
-          width={128}
-          height={128}
+          width={300}
+          height={200}
         />
       ),
       title: 'あなただけの学習カルテ作成',
@@ -94,8 +94,8 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <Image
           src="/images/flow0tutor03.png"
           alt="無料体験授業"
-          width={128}
-          height={128}
+          width={300}
+          height={200}
         />
       ),
       title: '無料体験授業',
@@ -106,8 +106,8 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <Image
           src="/images/flow0tutor04.png"
           alt="継続受講へ"
-          width={128}
-          height={128}
+          width={300}
+          height={200}
         />
       ),
       title: '継続受講へ',
