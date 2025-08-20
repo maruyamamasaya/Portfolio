@@ -80,8 +80,9 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <Image
           src="/images/flow0tutor01.png"
           alt="オンラインで簡単ヒアリング"
-          width={300}
-          height={200}
+          width={448}
+          height={299}
+          className="w-[320px] h-auto md:w-[448px]"
         />
       ),
       title: 'オンラインで簡単ヒアリング',
@@ -93,8 +94,9 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <Image
           src="/images/flow0tutor02.png"
           alt="あなただけの学習カルテ作成"
-          width={300}
-          height={200}
+          width={448}
+          height={299}
+          className="w-[320px] h-auto md:w-[448px]"
         />
       ),
       title: 'あなただけの学習カルテ作成',
@@ -106,8 +108,9 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <Image
           src="/images/flow0tutor03.png"
           alt="無料体験授業"
-          width={300}
-          height={200}
+          width={448}
+          height={299}
+          className="w-[320px] h-auto md:w-[448px]"
         />
       ),
       title: '無料体験授業',
@@ -118,8 +121,9 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <Image
           src="/images/flow0tutor04.png"
           alt="継続受講へ"
-          width={300}
-          height={200}
+          width={448}
+          height={299}
+          className="w-[320px] h-auto md:w-[448px]"
         />
       ),
       title: '継続受講へ',
@@ -231,8 +235,8 @@ export default function ITSchoolSection({ className = '' }: Props) {
           <ul className="flex flex-col md:flex-row gap-4 md:gap-4 md:justify-center">
             {features.map((f) => (
               <li
-                key={f.text}
-                className="flex flex-col items-center text-center p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full md:w-80 md:snap-start space-y-2"
+                key={f}
+                className="flex items-start gap-2 p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full md:w-[26rem] md:snap-start"
               >
                 <Image
                   src={f.image}
