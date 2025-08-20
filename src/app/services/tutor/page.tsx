@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Card from '@/app/components/Card';
 import ProfileCardBlog from '@/app/components/ProfileCardBlog';
 import TutorHeroSection from '@/app/components/TutorHeroSection';
+import ArrowIcon from '@/app/components/ArrowIcon';
 import { Mochiy_Pop_One } from 'next/font/google';
 
 const mochiy = Mochiy_Pop_One({ weight: '400', subsets: ['latin'] });
@@ -89,7 +90,9 @@ export default function TutorServicePage() {
                 学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
               </p>
             </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+            <li className="hidden md:block flex-shrink-0">
+              <ArrowIcon color="gray" />
+            </li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/flow0tutor02.png"
@@ -102,7 +105,9 @@ export default function TutorServicePage() {
                 スキルや目的に合わせたオリジナルの学習プランをご提案します。
               </p>
             </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+            <li className="hidden md:block flex-shrink-0">
+              <ArrowIcon color="gray" />
+            </li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/flow0tutor03.png"
@@ -113,7 +118,9 @@ export default function TutorServicePage() {
               <p className="font-bold">無料体験授業</p>
               <p className="text-sm">実際に授業を受けて、学びやすさを体感してください。</p>
             </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+            <li className="hidden md:block flex-shrink-0">
+              <ArrowIcon color="gray" />
+            </li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/flow0tutor04.png"
