@@ -29,7 +29,7 @@ export default function FlowChart({ steps }: Props) {
                 className="hidden md:block flex-shrink-0"
                 alt="arrow"
               />
-              <FlowArrow className="md:hidden mx-auto" alt="arrow" />
+              <FlowArrow className="md:hidden mx-auto -rotate-90" alt="arrow" />
             </>
           )}
         </React.Fragment>

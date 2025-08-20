@@ -18,9 +18,9 @@ export default function FlowArrow({ className = '', alt = 'arrow' }: FlowArrowPr
     <Image
       src={src}
       alt={alt}
-      width={50}
-      height={300}
-      className={`rotate-90 ${className}`}
+      width={300}
+      height={50}
+      className={className}
     />
   );
 }
