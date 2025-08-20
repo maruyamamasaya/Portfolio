@@ -67,65 +67,67 @@ export default function DeveloperCalendar({
   }, [cells]);
 
   return (
-    <div className="min-w-[362px] min-h-[362px]">
-      <div className="flex justify-between items-center mb-2">
-        <button aria-label="前の月" className="px-2" onClick={onPrevMonth}>
-          &lt;
-        </button>
-        <h2 className="font-bold">
-          {year}年{month}月
-        </h2>
-        <button aria-label="次の月" className="px-2" onClick={onNextMonth}>
-          &gt;
-        </button>
-      </div>
-      <table role="grid" className="w-full text-center border-collapse table-fixed">
-        <thead>
-          <tr>
-            {dayLabels.map((d) => (
-              <th key={d} className="py-1">
-                {d}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {weeks.map((week, i) => (
-            <tr key={i}>
-              {week.map((cell) => {
-                const isSelected = cell.date === selectedDate;
-                const has = hasPosts(cell.date);
-                const isToday = cell.date === today;
-                return (
-                  <td key={cell.date} className="p-1">
-                    <button
-                      role="gridcell"
-                      aria-selected={isSelected}
-                      aria-label={cell.date}
-                      onClick={() => onSelect(cell.date)}
-                      className={`relative w-full aspect-square flex items-center justify-center rounded-full transition-base ${
-                        cell.current ? '' : 'text-gray-400'
-                      } ${
-                        isSelected
-                          ? 'bg-primary text-white'
-                          : isToday
-                            ? 'border border-primary'
-                            : ''
-                      } ${
-                        has && !isSelected
-                          ? 'after:content-[""] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full'
-                          : ''
-                      }`}
-                    >
-                      {cell.day}
-                    </button>
-                  </td>
-                );
-              })}
+    <div className="w-[272px] h-[272px] overflow-hidden">
+      <div className="min-w-[362px] min-h-[362px] origin-top-left transform scale-75">
+        <div className="flex justify-between items-center mb-2">
+          <button aria-label="前の月" className="px-2" onClick={onPrevMonth}>
+            &lt;
+          </button>
+          <h2 className="font-bold">
+            {year}年{month}月
+          </h2>
+          <button aria-label="次の月" className="px-2" onClick={onNextMonth}>
+            &gt;
+          </button>
+        </div>
+        <table role="grid" className="w-full text-center border-collapse table-fixed">
+          <thead>
+            <tr>
+              {dayLabels.map((d) => (
+                <th key={d} className="py-1">
+                  {d}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {weeks.map((week, i) => (
+              <tr key={i}>
+                {week.map((cell) => {
+                  const isSelected = cell.date === selectedDate;
+                  const has = hasPosts(cell.date);
+                  const isToday = cell.date === today;
+                  return (
+                    <td key={cell.date} className="p-1">
+                      <button
+                        role="gridcell"
+                        aria-selected={isSelected}
+                        aria-label={cell.date}
+                        onClick={() => onSelect(cell.date)}
+                        className={`relative w-full aspect-square flex items-center justify-center rounded-full transition-base ${
+                          cell.current ? '' : 'text-gray-400'
+                        } ${
+                          isSelected
+                            ? 'bg-primary text-white'
+                            : isToday
+                              ? 'border border-primary'
+                              : ''
+                        } ${
+                          has && !isSelected
+                            ? 'after:content-[""] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-primary after:rounded-full'
+                            : ''
+                        }`}
+                      >
+                        {cell.day}
+                      </button>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
