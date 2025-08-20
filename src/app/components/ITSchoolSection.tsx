@@ -14,7 +14,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
       short: 'Online',
       description:
         'チャットで質問し放題。毎日9:00〜22:00まで受付中。',
-      href: '/contact',
+      href: '/services/tutor/online',
       image: '/images/tutor.jpeg',
     },
     {
@@ -22,7 +22,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
       short: 'Home',
       description:
         '月4回×3h、東京都内どこでも訪問。宿題や課題も一緒に解決。',
-      href: '/contact',
+      href: '/services/tutor/home',
       image: '/images/course02.jpeg',
     },
     {
@@ -30,7 +30,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
       short: 'School',
       description:
         'レンタル会議室で月2回×3h。集中できる学習環境。',
-      href: '/contact',
+      href: '/services/tutor/school',
       image: '/images/course03.jpeg',
     },
   ];
