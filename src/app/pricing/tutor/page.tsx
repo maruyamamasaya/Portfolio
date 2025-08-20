@@ -114,10 +114,10 @@ export default function TutorPricingPage() {
 
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">受講までの流れ</h2>
-        <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col items-center gap-6 md:flex-row md:items-stretch md:justify-start md:overflow-x-auto md:gap-4 md:pb-4">
           {flowSteps.map((step, idx) => (
             <Fragment key={idx}>
-              <div className="w-full max-w-md p-4 bg-white dark:bg-gray-700 rounded shadow">
+              <div className="w-full md:w-80 md:flex-shrink-0 p-4 bg-white dark:bg-gray-700 rounded shadow">
                 <Image
                   src={step.src}
                   alt={step.alt}
@@ -131,7 +131,10 @@ export default function TutorPricingPage() {
                 </p>
               </div>
               {idx < flowSteps.length - 1 && (
-                <div className="text-3xl text-gray-400">↓</div>
+                <>
+                  <div className="hidden md:flex text-3xl text-gray-400 flex-shrink-0 items-center">➜</div>
+                  <div className="md:hidden text-3xl text-gray-400">↓</div>
+                </>
               )}
             </Fragment>
           ))}
