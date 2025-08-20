@@ -246,22 +246,20 @@ export default function ITSchoolSection({ className = '' }: Props) {
       {/* お客様の声 */}
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-center text-pink-700">お客様の声</h3>
-        <div className="flex space-x-4 overflow-x-auto pb-4 max-w-2xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
           {testimonials.map((t) => (
             <div
               key={t.author}
-              className="flex-shrink-0 w-64 p-4 bg-white dark:bg-gray-700 rounded shadow"
+              className="p-4 bg-white dark:bg-gray-700 rounded shadow space-y-2 text-center"
             >
-              <div className="flex items-center space-x-2 mb-2">
-                <Image
-                  src={t.avatar}
-                  alt={t.author}
-                  width={180}
-                  height={180}
-                  className="w-[180px] h-[180px] rounded-full"
-                />
-                <span className="font-semibold text-sm">{t.author}</span>
-              </div>
+              <Image
+                src={t.avatar}
+                alt={t.author}
+                width={180}
+                height={180}
+                className="mx-auto rounded-full"
+              />
+              <p className="font-bold">{t.author}</p>
               <p className="text-sm">「{t.text}」</p>
             </div>
           ))}
