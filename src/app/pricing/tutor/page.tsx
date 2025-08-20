@@ -133,10 +133,7 @@ export default function TutorPricingPage() {
               </div>
               {idx < flowSteps.length - 1 && (
                 <div className="md:flex-shrink-0 flex flex-col items-center">
-                  <FlowArrow
-                    className="hidden md:block -rotate-90"
-                    alt="arrow"
-                  />
+                  <FlowArrow className="hidden md:block" alt="arrow" />
                   <FlowArrow className="md:hidden" alt="arrow" />
                 </div>
               )}
