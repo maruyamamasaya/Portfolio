@@ -108,7 +108,7 @@ export default function TutorServicePage() {
               </p>
             </li>
             <li className="hidden md:block flex-shrink-0">
-              <FlowArrow className="-rotate-90" />
+              <FlowArrow />
             </li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-[28rem] space-y-2 flex-shrink-0 md:snap-start">
               <Image
@@ -124,7 +124,7 @@ export default function TutorServicePage() {
               </p>
             </li>
             <li className="hidden md:block flex-shrink-0">
-              <FlowArrow className="-rotate-90" />
+              <FlowArrow />
             </li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-[28rem] space-y-2 flex-shrink-0 md:snap-start">
               <Image
@@ -140,7 +140,7 @@ export default function TutorServicePage() {
               </p>
             </li>
             <li className="hidden md:block flex-shrink-0">
-              <FlowArrow className="-rotate-90" />
+              <FlowArrow />
             </li>
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-[28rem] space-y-2 flex-shrink-0 md:snap-start">
               <Image

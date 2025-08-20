@@ -14,6 +14,14 @@ export default function FlowArrow({ className = '', alt = 'arrow' }: FlowArrowPr
     theme === 'dark'
       ? '/images/arrow50x300bluedark.png'
       : '/images/arrow50x300pinklight.png';
-  return <Image src={src} alt={alt} width={50} height={300} className={className} />;
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={300}
+      height={50}
+      className={`rotate-90 ${className}`}
+    />
+  );
 }
 
