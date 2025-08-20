@@ -47,6 +47,14 @@ export default function ServicesPage() {
           </div>
         </Link>
       </div>
+      <div className="mt-8 text-center">
+        <Link
+          href="/"
+          className="inline-block px-6 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-base"
+        >
+          HOMEに戻る
+        </Link>
+      </div>
     </div>
   );
 }
