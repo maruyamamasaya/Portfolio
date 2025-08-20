@@ -59,7 +59,7 @@ export default function TutorServicePage() {
                 チャットで質問し放題。毎日9:00〜22:00まで受付中。
               </p>
               <div className="text-center">
-                <Link href="/pricing/tutor" className="text-pink-600 underline">
+                <Link href="/services/tutor/online" className="text-pink-600 underline">
                   詳しく見る
                 </Link>
               </div>
@@ -70,7 +70,7 @@ export default function TutorServicePage() {
                 月4回×3h、東京都内どこでも訪問。宿題や課題も一緒に解決。
               </p>
               <div className="text-center">
-                <Link href="/pricing/tutor" className="text-pink-600 underline">
+                <Link href="/services/tutor/home" className="text-pink-600 underline">
                   詳しく見る
                 </Link>
               </div>
@@ -81,7 +81,7 @@ export default function TutorServicePage() {
                 レンタル会議室で月2回×3h。集中できる学習環境。
               </p>
               <div className="text-center">
-                <Link href="/pricing/tutor" className="text-pink-600 underline">
+                <Link href="/services/tutor/school" className="text-pink-600 underline">
                   詳しく見る
                 </Link>
               </div>
