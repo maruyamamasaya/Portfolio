@@ -16,19 +16,19 @@ export default function TutorServicePage() {
     <div className={mochiy.className}>
       <TutorHeroSection />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-12">
-        <section className="grid gap-6 sm:grid-cols-2">
+        <section className="grid gap-6">
           <Card className="flex flex-col items-center text-center space-y-4">
             <h2 className="text-2xl font-bold text-pink-600">サービス概要</h2>
             <p>
-              私たちは現役エンジニアによる<span className="font-bold">個別指導スタイル</span>のIT家庭教師サービスです。
-              学校の情報の授業対策から、プログラミングや最新AI技術まで、
+              私たちは現役エンジニアによる<span className="font-bold">個別指導スタイル</span>のIT家庭教師サービスです。<br />
+              学校の情報の授業対策から、プログラミングや最新AI技術まで、<br />
               <span className="font-bold">“理解できるまで寄り添う”</span>をモットーにしています。
             </p>
           </Card>
           <Card className="flex flex-col items-center space-y-4">
             <h2 className="text-2xl font-bold text-center text-pink-600">👨‍🏫 講師紹介</h2>
             <p className="text-center">
-              現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、
+              現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、<br />
               あなたのレベルに合わせて丁寧にサポートします。
             </p>
             <ProfileCardBlog />
@@ -76,8 +76,8 @@ export default function TutorServicePage() {
 
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-center text-pink-600">受講までの流れ</h2>
-          <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-6 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-72 space-y-2 flex-shrink-0 md:snap-start">
+          <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/flow0tutor01.png"
                 alt="オンラインで簡単ヒアリング"
@@ -90,7 +90,7 @@ export default function TutorServicePage() {
               </p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-72 space-y-2 flex-shrink-0 md:snap-start">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/flow0tutor02.png"
                 alt="あなただけの学習カルテ作成"
@@ -103,7 +103,7 @@ export default function TutorServicePage() {
               </p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-72 space-y-2 flex-shrink-0 md:snap-start">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/flow0tutor03.png"
                 alt="無料体験授業"
@@ -114,7 +114,7 @@ export default function TutorServicePage() {
               <p className="text-sm">実際に授業を受けて、学びやすさを体感してください。</p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-72 space-y-2 flex-shrink-0 md:snap-start">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/flow0tutor04.png"
                 alt="継続受講へ"
@@ -131,8 +131,8 @@ export default function TutorServicePage() {
 
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-center text-pink-600">特徴</h2>
-          <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-6 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-72 space-y-2 flex-shrink-0 md:snap-start">
+          <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/features0tutor01.png"
                 alt="現役エンジニアが指導"
@@ -142,7 +142,7 @@ export default function TutorServicePage() {
               <p className="font-bold">現役エンジニアが指導</p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-72 space-y-2 flex-shrink-0 md:snap-start">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/features0tutor02.png"
                 alt="どんな疑問も「わかるまで」対応"
@@ -152,7 +152,7 @@ export default function TutorServicePage() {
               <p className="font-bold">どんな疑問も「わかるまで」対応</p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-72 space-y-2 flex-shrink-0 md:snap-start">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/features0tutor03.png"
                 alt="オンライン・訪問・会議室から選べる柔軟プラン"
@@ -162,7 +162,7 @@ export default function TutorServicePage() {
               <p className="font-bold">オンライン・訪問・会議室から選べる柔軟プラン</p>
             </li>
             <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-72 space-y-2 flex-shrink-0 md:snap-start">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
               <Image
                 src="/images/features0tutor04.png"
                 alt="無料体験から安心スタート"
