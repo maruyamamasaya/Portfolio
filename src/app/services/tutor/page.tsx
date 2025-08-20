@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Card from '@/app/components/Card';
+import ProfileCardBlog from '@/app/components/ProfileCardBlog';
 import TutorHeroSection from '@/app/components/TutorHeroSection';
 import { Mochiy_Pop_One } from 'next/font/google';
 
@@ -14,21 +16,23 @@ export default function TutorServicePage() {
     <div className={mochiy.className}>
       <TutorHeroSection />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-12">
-        <section className="text-center space-y-4">
-          <h2 className="text-2xl font-bold text-pink-600">サービス概要</h2>
-          <p>
-            私たちは現役エンジニアによる<span className="font-bold">個別指導スタイル</span>のIT家庭教師サービスです。
-            学校の情報の授業対策から、プログラミングや最新AI技術まで、
-            <span className="font-bold">“理解できるまで寄り添う”</span>をモットーにしています。
-          </p>
-        </section>
-
-        <section className="text-center space-y-4">
-          <h2 className="text-2xl font-bold text-pink-600">👨‍🏫 講師紹介</h2>
-          <p>
-            現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、
-            あなたのレベルに合わせて丁寧にサポートします。
-          </p>
+        <section className="grid gap-6 sm:grid-cols-2">
+          <Card className="flex flex-col items-center text-center space-y-4">
+            <h2 className="text-2xl font-bold text-pink-600">サービス概要</h2>
+            <p>
+              私たちは現役エンジニアによる<span className="font-bold">個別指導スタイル</span>のIT家庭教師サービスです。
+              学校の情報の授業対策から、プログラミングや最新AI技術まで、
+              <span className="font-bold">“理解できるまで寄り添う”</span>をモットーにしています。
+            </p>
+          </Card>
+          <Card className="flex flex-col items-center space-y-4">
+            <h2 className="text-2xl font-bold text-center text-pink-600">👨‍🏫 講師紹介</h2>
+            <p className="text-center">
+              現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、
+              あなたのレベルに合わせて丁寧にサポートします。
+            </p>
+            <ProfileCardBlog />
+          </Card>
         </section>
 
         <section className="space-y-4">
