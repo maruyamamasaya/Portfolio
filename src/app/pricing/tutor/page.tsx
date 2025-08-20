@@ -112,12 +112,12 @@ export default function TutorPricingPage() {
         </div>
       </section>
 
-      <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">受講までの流れ</h2>
-        <div className="flex flex-col md:flex-row items-center gap-6 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold">受講までの流れ</h2>
+          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
           {flowSteps.map((step, idx) => (
             <Fragment key={idx}>
-              <div className="w-full max-w-md p-6 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 md:w-72 md:snap-start">
+                <div className="w-full max-w-md p-6 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 md:w-80 md:snap-start">
                 <Image
                   src={step.src}
                   alt={step.alt}
