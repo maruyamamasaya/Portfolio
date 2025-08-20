@@ -73,107 +73,117 @@ export default function TutorServicePage() {
             </div>
           </div>
         </section>
+      </div>
 
-        <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-center text-pink-600">受講までの流れ</h2>
-          <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
-              <Image
-                src="/images/flow0tutor01.png"
-                alt="オンラインで簡単ヒアリング"
-                width={300}
-                height={200}
-              />
-              <p className="font-bold">オンラインで簡単ヒアリング</p>
-              <p className="text-sm">
-                学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
-              </p>
-            </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
-              <Image
-                src="/images/flow0tutor02.png"
-                alt="あなただけの学習カルテ作成"
-                width={300}
-                height={200}
-              />
-              <p className="font-bold">あなただけの学習カルテ作成</p>
-              <p className="text-sm">
-                スキルや目的に合わせたオリジナルの学習プランをご提案します。
-              </p>
-            </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
-              <Image
-                src="/images/flow0tutor03.png"
-                alt="無料体験授業"
-                width={300}
-                height={200}
-              />
-              <p className="font-bold">無料体験授業</p>
-              <p className="text-sm">実際に授業を受けて、学びやすさを体感してください。</p>
-            </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
-              <Image
-                src="/images/flow0tutor04.png"
-                alt="継続受講へ"
-                width={300}
-                height={200}
-              />
-              <p className="font-bold">継続受講へ</p>
-              <p className="text-sm">
-                体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
-              </p>
-            </li>
-          </ol>
-        </section>
+      <section className="space-y-4 px-4 sm:px-6 md:px-10 py-8">
+        <h2 className="text-2xl font-bold text-center text-pink-600">受講までの流れ</h2>
+        <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
+          <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
+            <Image
+              src="/images/flow0tutor01.png"
+              alt="オンラインで簡単ヒアリング"
+              width={360}
+              height={240}
+              className="w-[300px] h-[200px] md:w-[360px] md:h-[240px]"
+            />
+            <p className="font-bold">オンラインで簡単ヒアリング</p>
+            <p className="text-sm">
+              学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
+            </p>
+          </li>
+          <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+          <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
+            <Image
+              src="/images/flow0tutor02.png"
+              alt="あなただけの学習カルテ作成"
+              width={360}
+              height={240}
+              className="w-[300px] h-[200px] md:w-[360px] md:h-[240px]"
+            />
+            <p className="font-bold">あなただけの学習カルテ作成</p>
+            <p className="text-sm">
+              スキルや目的に合わせたオリジナルの学習プランをご提案します。
+            </p>
+          </li>
+          <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+          <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
+            <Image
+              src="/images/flow0tutor03.png"
+              alt="無料体験授業"
+              width={360}
+              height={240}
+              className="w-[300px] h-[200px] md:w-[360px] md:h-[240px]"
+            />
+            <p className="font-bold">無料体験授業</p>
+            <p className="text-sm">実際に授業を受けて、学びやすさを体感してください。</p>
+          </li>
+          <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+          <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
+            <Image
+              src="/images/flow0tutor04.png"
+              alt="継続受講へ"
+              width={360}
+              height={240}
+              className="w-[300px] h-[200px] md:w-[360px] md:h-[240px]"
+            />
+            <p className="font-bold">継続受講へ</p>
+            <p className="text-sm">
+              体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
+            </p>
+          </li>
+        </ol>
+      </section>
 
-        <section className="space-y-4">
-          <h2 className="text-2xl font-bold text-center text-pink-600">特徴</h2>
-          <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
-              <Image
-                src="/images/features0tutor01.png"
-                alt="現役エンジニアが指導"
-                width={128}
-                height={128}
-              />
-              <p className="font-bold">現役エンジニアが指導</p>
-            </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
-              <Image
-                src="/images/features0tutor02.png"
-                alt="どんな疑問も「わかるまで」対応"
-                width={128}
-                height={128}
-              />
-              <p className="font-bold">どんな疑問も「わかるまで」対応</p>
-            </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
-              <Image
-                src="/images/features0tutor03.png"
-                alt="オンライン・訪問・会議室から選べる柔軟プラン"
-                width={128}
-                height={128}
-              />
-              <p className="font-bold">オンライン・訪問・会議室から選べる柔軟プラン</p>
-            </li>
-            <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
-              <Image
-                src="/images/features0tutor04.png"
-                alt="無料体験から安心スタート"
-                width={128}
-                height={128}
-              />
-              <p className="font-bold">無料体験から安心スタート</p>
-            </li>
-          </ol>
-        </section>
+      <section className="space-y-4 px-4 sm:px-6 md:px-10 py-8">
+        <h2 className="text-2xl font-bold text-center text-pink-600">特徴</h2>
+        <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
+          <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
+            <Image
+              src="/images/features0tutor01.png"
+              alt="現役エンジニアが指導"
+              width={160}
+              height={160}
+              className="w-32 h-32 md:w-40 md:h-40"
+            />
+            <p className="font-bold">現役エンジニアが指導</p>
+          </li>
+          <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+          <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
+            <Image
+              src="/images/features0tutor02.png"
+              alt="どんな疑問も「わかるまで」対応"
+              width={160}
+              height={160}
+              className="w-32 h-32 md:w-40 md:h-40"
+            />
+            <p className="font-bold">どんな疑問も「わかるまで」対応</p>
+          </li>
+          <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+          <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
+            <Image
+              src="/images/features0tutor03.png"
+              alt="オンライン・訪問・会議室から選べる柔軟プラン"
+              width={160}
+              height={160}
+              className="w-32 h-32 md:w-40 md:h-40"
+            />
+            <p className="font-bold">オンライン・訪問・会議室から選べる柔軟プラン</p>
+          </li>
+          <li className="hidden md:block text-3xl flex-shrink-0">➜</li>
+          <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-80 space-y-2 flex-shrink-0 md:snap-start">
+            <Image
+              src="/images/features0tutor04.png"
+              alt="無料体験から安心スタート"
+              width={160}
+              height={160}
+              className="w-32 h-32 md:w-40 md:h-40"
+            />
+            <p className="font-bold">無料体験から安心スタート</p>
+          </li>
+        </ol>
+      </section>
 
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-12">
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-center text-pink-600">学べる内容例</h2>
           <ul className="space-y-2">
