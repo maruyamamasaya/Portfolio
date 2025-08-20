@@ -251,9 +251,9 @@ export default function ITSchoolSection({ className = '' }: Props) {
                 <Image
                   src={t.avatar}
                   alt={t.author}
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 rounded-full"
+                  width={180}
+                  height={180}
+                  className="w-[180px] h-[180px] rounded-full"
                 />
                 <span className="font-semibold text-sm">{t.author}</span>
               </div>

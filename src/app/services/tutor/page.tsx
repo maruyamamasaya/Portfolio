@@ -199,8 +199,8 @@ export default function TutorServicePage() {
               <Image
                 src="/images/student01.jpeg"
                 alt="高1男子"
-                width={80}
-                height={80}
+                width={180}
+                height={180}
                 className="mx-auto rounded-full"
               />
               <p className="font-bold">高1男子</p>
@@ -210,8 +210,8 @@ export default function TutorServicePage() {
               <Image
                 src="/images/student02.jpeg"
                 alt="中3女子"
-                width={80}
-                height={80}
+                width={180}
+                height={180}
                 className="mx-auto rounded-full"
               />
               <p className="font-bold">中3女子</p>
