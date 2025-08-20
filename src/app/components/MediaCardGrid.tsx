@@ -30,14 +30,14 @@ export default function MediaCardGrid({ items }: Props) {
               alt={item.title}
               width={item.iconSize ?? 32}
               height={item.iconSize ?? 32}
-              className="mb-2"
+              className="mb-2 rounded-full"
               style={{
                 width: item.iconSize ?? 32,
                 height: item.iconSize ?? 32,
               }}
             />
           ) : (
-            <div className="text-2xl mb-2">{item.icon}</div>
+            <div className="text-4xl mb-2">{item.icon}</div>
           )}
           <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">
