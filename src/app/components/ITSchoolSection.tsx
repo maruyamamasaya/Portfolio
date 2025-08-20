@@ -287,53 +287,6 @@ export default function ITSchoolSection({ className = '' }: Props) {
           </p>
         </div>
 
-        <div className="mt-6 space-y-4 text-gray-700 dark:text-gray-300">
-          <div className="space-y-1">
-            <p className="flex items-center justify-center gap-2">
-              <span role="img" aria-label="chat">
-                💬
-              </span>
-              チャットで質問し放題
-            </p>
-            <p>
-              毎日 9:00〜22:00 まで受付中！どんな小さな疑問でもお気軽にどうぞ。
-            </p>
-          </div>
-          <div className="space-y-1">
-            <p className="flex items-center justify-center gap-2">
-              <span role="img" aria-label="instructor">
-                👨‍🏫
-              </span>
-              講師紹介
-            </p>
-            <p>
-              現役エンジニアが直接指導！実際にシステム開発の現場で活躍しているプロが、あなたのレベルに合わせて丁寧にサポートします。
-            </p>
-          </div>
-          <div className="space-y-1">
-            <p className="flex items-center justify-center gap-2">
-              <span role="img" aria-label="flow">
-                🚀
-              </span>
-              学習の流れ
-            </p>
-            <ul className="space-y-1 text-left mx-auto max-w-md">
-              <li>
-                オンラインで簡単ヒアリング<br />学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
-              </li>
-              <li>
-                あなただけの学習カルテ作成<br />スキルや目的に合わせたオリジナルの学習プランをご提案します。
-              </li>
-              <li>
-                無料体験授業<br />実際に授業を受けて、学びやすさを体感してください。
-              </li>
-              <li>
-                継続受講へ<br />体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
-              </li>
-            </ul>
-          </div>
-        </div>
-
         {/* アクションエリア */}
         <div className="flex flex-col items-center space-y-4">
           <Link
