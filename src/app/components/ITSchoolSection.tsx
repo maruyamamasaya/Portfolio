@@ -231,25 +231,23 @@ export default function ITSchoolSection({ className = '' }: Props) {
       {/* 特徴 */}
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-center text-pink-700">特徴</h3>
-        <div className="md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
-          <ul className="flex flex-col items-center md:flex-row gap-4 md:gap-4 md:justify-center">
-            {features.map((f) => (
-              <li
-                key={f.text}
-                className="p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full max-w-[16rem] aspect-square md:snap-start flex flex-col items-center justify-center text-center"
-              >
-                <Image
-                  src={f.image}
-                  alt={f.text}
-                  width={160}
-                  height={160}
-                  className="w-24 h-24 md:w-32 md:h-32 object-contain mb-2"
-                />
-                <p className="font-semibold">{f.text}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="grid grid-cols-2 gap-4 max-w-xl mx-auto">
+          {features.map((f) => (
+            <li
+              key={f.text}
+              className="p-4 bg-white dark:bg-gray-700 rounded shadow flex flex-col items-center justify-center text-center"
+            >
+              <Image
+                src={f.image}
+                alt={f.text}
+                width={160}
+                height={160}
+                className="w-24 h-24 md:w-32 md:h-32 object-contain mb-2"
+              />
+              <p className="font-semibold">{f.text}</p>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* 学べる内容 */}
