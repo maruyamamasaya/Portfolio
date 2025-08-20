@@ -108,7 +108,7 @@ export default function About() {
           items={[
             {
               icon: '/images/arcana-Youtube.png',
-              iconSize: 48,
+              iconSize: 64,
               title: 'Arcana - アルカナ チャンネル',
               description:
                 'エンタメ系ショート動画作成。TCGオフィシャルのルールやカード紹介をするチャンネル。',
@@ -116,17 +116,25 @@ export default function About() {
             },
             {
               icon: '/images/kuronosanbika-icon-Youtube.png',
-              iconSize: 48,
+              iconSize: 64,
               title: '【ざっくり紹介】楽曲紹介チャンネル〜黒の讃美歌〜',
               description:
                 'クラシック音楽の構造を丁寧に読み解く解説型チャンネル。',
               href: 'https://www.youtube.com/@musicwordriio',
             },
             {
-              icon: '📷',
+              icon: '/images/instagram-200px.png',
+              iconSize: 64,
               title: 'Instagram',
               description: 'ショート動画と写真で分かりやすく音楽を解説。',
               href: 'https://www.instagram.com/digitalgoosesupport/',
+            },
+            {
+              icon: '/images/tiktok-200px.png',
+              iconSize: 64,
+              title: 'TikTok',
+              description: '音楽関連のショート動画を中心に発信。',
+              href: 'https://www.tiktok.com/@goosedigi',
             },
           ]}
         />
