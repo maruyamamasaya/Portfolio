@@ -8,9 +8,14 @@
   @apply motion-safe:transition-all motion-reduce:transition-none duration-300 ease-in-out;
 }
 
-/* accent text color switching with theme */
+/* corporate accent text with gradient and dark mode inversion */
 .accent-text {
-  @apply text-primary dark:text-secondary;
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-secondary dark:to-primary;
+}
+
+/* tutor accent text with playful gradient */
+.tutor-accent-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-tutor-pink via-tutor-yellow to-tutor-green;
 }
 
 /* prose text color variants */
@@ -57,7 +62,7 @@
 /* Blog heading styles */
 
 .prose h1 {
-  @apply relative mt-6 mb-2 w-fit text-xl md:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#72a1cb] to-secondary text-balance tracking-tight;
+  @apply relative mt-6 mb-2 w-fit text-xl md:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-secondary dark:to-primary text-balance tracking-tight;
 }
 
 .prose h2 {

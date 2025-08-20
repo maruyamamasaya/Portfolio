@@ -330,7 +330,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
         <p className="text-sm">
           <Link
             href="/contact/tutor"
-            className="accent-text hover:underline transition"
+            className="tutor-accent-text hover:underline transition"
           >
             家庭教師に関するお問い合わせはこちら
           </Link>

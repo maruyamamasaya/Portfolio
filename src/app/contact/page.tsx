@@ -41,7 +41,7 @@ export default function Contact() {
           <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-base flex flex-col justify-center items-center p-4">
             <p className="text-lg font-bold text-white text-center">
               Instagram
-              <span className="accent-text block">家庭教師に関するお問い合わせ</span>
+              <span className="tutor-accent-text block">家庭教師に関するお問い合わせ</span>
             </p>
           </div>
         </Link>
