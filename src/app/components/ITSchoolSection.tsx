@@ -235,7 +235,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
           <ul className="flex flex-col md:flex-row gap-4 md:gap-4 md:justify-center">
             {features.map((f) => (
               <li
-                key={f}
+                key={f.text}
                 className="flex items-start gap-2 p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full md:w-[26rem] md:snap-start"
               >
                 <Image
