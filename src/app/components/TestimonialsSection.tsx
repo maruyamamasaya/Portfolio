@@ -35,19 +35,19 @@ export default function TestimonialsSection() {
         {testimonials.map((t) => (
           <div
             key={t.name}
-            className="flex-shrink-0 w-64 p-4 bg-white dark:bg-gray-700 rounded shadow"
+            className="flex-shrink-0 w-96 p-6 bg-white dark:bg-gray-700 rounded shadow"
           >
-            <div className="flex items-center space-x-2 mb-2">
+            <div className="flex items-center space-x-4 mb-4">
               <Image
                 src={t.avatar}
                 alt={t.name}
-                width={48}
-                height={48}
-                className="w-12 h-12 rounded-full"
+                width={72}
+                height={72}
+                className="w-[72px] h-[72px] rounded-full"
               />
-              <span className="font-semibold text-sm">{t.name}</span>
+              <span className="font-semibold">{t.name}</span>
             </div>
-            <p className="text-sm">{t.comment}</p>
+            <p className="text-base">{t.comment}</p>
           </div>
         ))}
       </div>
