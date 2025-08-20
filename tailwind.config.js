@@ -34,8 +34,11 @@ module.exports = {
         hd: '1100px',
       },
       colors: {
-        primary: '#005bac',
-        secondary: '#e5e7eb',
+        primary: '#0f7074',
+        secondary: '#011939',
+        'tutor-pink': '#f09199',
+        'tutor-yellow': '#fcc800',
+        'tutor-green': '#98d98e',
         light: '#222426',
         dark: '#d1d5db',
       },

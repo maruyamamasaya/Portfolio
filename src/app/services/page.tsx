@@ -42,7 +42,7 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-base flex flex-col justify-center items-center p-4">
             <p className="text-lg font-bold text-white text-center">
               中高生の「できた！」を育てる、
-              <span className="accent-text block">家庭教師型パソコンスクール</span>
+              <span className="tutor-accent-text block">家庭教師型パソコンスクール</span>
             </p>
           </div>
         </Link>

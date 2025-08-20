@@ -165,7 +165,7 @@ export default function TutorContactForm() {
       <button
         type="submit"
         disabled={loading}
-        className="px-4 py-2 bg-primary text-white rounded"
+        className="px-4 py-2 bg-tutor-pink text-white rounded"
       >
         {loading ? '送信中...' : '送信'}
       </button>
