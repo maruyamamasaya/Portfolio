@@ -232,18 +232,18 @@ export default function ITSchoolSection({ className = '' }: Props) {
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-center text-pink-700">特徴</h3>
         <div className="md:overflow-x-auto md:pb-4 md:snap-x md:snap-mandatory">
-          <ul className="flex flex-col md:flex-row gap-4 md:gap-4 md:justify-center">
+          <ul className="flex flex-col items-center md:flex-row gap-4 md:gap-4 md:justify-center">
             {features.map((f) => (
               <li
                 key={f.text}
-                className="flex items-start gap-2 p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full md:w-[26rem] md:snap-start"
+                className="p-4 bg-white dark:bg-gray-700 rounded shadow flex-shrink-0 w-full max-w-[16rem] aspect-square md:snap-start flex flex-col items-center justify-center text-center"
               >
                 <Image
                   src={f.image}
                   alt={f.text}
                   width={160}
                   height={160}
-                  className="w-32 h-32 md:w-40 md:h-40"
+                  className="w-24 h-24 md:w-32 md:h-32 object-contain mb-2"
                 />
                 <p className="font-semibold">{f.text}</p>
               </li>
