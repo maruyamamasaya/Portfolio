@@ -64,24 +64,52 @@ export default function ITSchoolSection({ className = '' }: Props) {
 
   const flowSteps = [
     {
-      icon: '🗣️',
+      icon: (
+        <Image
+          src="/images/flow0tutor01.png"
+          alt="オンラインで簡単ヒアリング"
+          width={128}
+          height={128}
+        />
+      ),
       title: 'オンラインで簡単ヒアリング',
       description:
         '学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）',
     },
     {
-      icon: '📋',
+      icon: (
+        <Image
+          src="/images/flow0tutor02.png"
+          alt="あなただけの学習カルテ作成"
+          width={128}
+          height={128}
+        />
+      ),
       title: 'あなただけの学習カルテ作成',
       description:
         'スキルや目的に合わせたオリジナルの学習プランをご提案します。',
     },
     {
-      icon: '🎓',
+      icon: (
+        <Image
+          src="/images/flow0tutor03.png"
+          alt="無料体験授業"
+          width={128}
+          height={128}
+        />
+      ),
       title: '無料体験授業',
       description: '実際に授業を受けて、学びやすさを体感してください。',
     },
     {
-      icon: '🚀',
+      icon: (
+        <Image
+          src="/images/flow0tutor04.png"
+          alt="継続受講へ"
+          width={128}
+          height={128}
+        />
+      ),
       title: '継続受講へ',
       description:
         '体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。',

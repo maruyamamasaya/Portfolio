@@ -74,7 +74,12 @@ export default function TutorServicePage() {
           <h2 className="text-2xl font-bold text-center text-pink-600">受講までの流れ</h2>
           <ol className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
-              <span className="text-4xl">🗣️</span>
+              <Image
+                src="/images/flow0tutor01.png"
+                alt="オンラインで簡単ヒアリング"
+                width={128}
+                height={128}
+              />
               <p className="font-bold">オンラインで簡単ヒアリング</p>
               <p className="text-sm">
                 学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）
@@ -82,7 +87,12 @@ export default function TutorServicePage() {
             </li>
             <li className="hidden sm:block text-3xl">➜</li>
             <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
-              <span className="text-4xl">📋</span>
+              <Image
+                src="/images/flow0tutor02.png"
+                alt="あなただけの学習カルテ作成"
+                width={128}
+                height={128}
+              />
               <p className="font-bold">あなただけの学習カルテ作成</p>
               <p className="text-sm">
                 スキルや目的に合わせたオリジナルの学習プランをご提案します。
@@ -90,13 +100,23 @@ export default function TutorServicePage() {
             </li>
             <li className="hidden sm:block text-3xl">➜</li>
             <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
-              <span className="text-4xl">🎓</span>
+              <Image
+                src="/images/flow0tutor03.png"
+                alt="無料体験授業"
+                width={128}
+                height={128}
+              />
               <p className="font-bold">無料体験授業</p>
               <p className="text-sm">実際に授業を受けて、学びやすさを体感してください。</p>
             </li>
             <li className="hidden sm:block text-3xl">➜</li>
             <li className="flex flex-col items-center text-center bg-white p-4 rounded shadow w-full sm:w-56 space-y-2">
-              <span className="text-4xl">🚀</span>
+              <Image
+                src="/images/flow0tutor04.png"
+                alt="継続受講へ"
+                width={128}
+                height={128}
+              />
               <p className="font-bold">継続受講へ</p>
               <p className="text-sm">
                 体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
