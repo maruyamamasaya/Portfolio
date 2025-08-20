@@ -18,8 +18,8 @@ export default function FlowArrow({ className = '', alt = 'arrow' }: FlowArrowPr
     <Image
       src={src}
       alt={alt}
-      width={300}
-      height={50}
+      width={50}
+      height={300}
       className={className}
     />
   );
