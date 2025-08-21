@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import CourseCard from './CourseCard';
-import FlowChart from './FlowChart';
 
 interface Props {
   className?: string;
@@ -35,25 +34,6 @@ export default function ITSchoolSection({ className = '' }: Props) {
     },
   ];
 
-  const features = [
-    {
-      text: '現役エンジニアが指導',
-      image: '/images/features0tutor01.png',
-    },
-    {
-      text: 'どんな疑問も「わかるまで」対応',
-      image: '/images/features0tutor02.png',
-    },
-    {
-      text: 'オンライン・訪問・会議室から選べる柔軟プラン',
-      image: '/images/features0tutor03.png',
-    },
-    {
-      text: '無料体験から安心スタート',
-      image: '/images/features0tutor04.png',
-    },
-  ];
-
   const topics = [
     '学校の情報の授業（表計算・プレゼン・プログラミング基礎）',
     'Web制作（HTML / CSS / JavaScript）',
@@ -71,64 +51,6 @@ export default function ITSchoolSection({ className = '' }: Props) {
       text: '将来エンジニアを目指したい気持ちが強くなりました',
       author: '中3女子',
       avatar: '/images/student02.jpeg',
-    },
-  ];
-
-  const flowSteps = [
-    {
-      icon: (
-        <Image
-          src="/images/flow0tutor01.png"
-          alt="オンラインで簡単ヒアリング"
-          width={448}
-          height={299}
-          className="w-[320px] h-auto md:w-[448px]"
-        />
-      ),
-      title: 'オンラインで簡単ヒアリング',
-      description:
-        '学びたいことや目標を気軽にお話しください。（ビデオ通話・お電話どちらもOK）',
-    },
-    {
-      icon: (
-        <Image
-          src="/images/flow0tutor02.png"
-          alt="あなただけの学習カルテ作成"
-          width={448}
-          height={299}
-          className="w-[320px] h-auto md:w-[448px]"
-        />
-      ),
-      title: 'あなただけの学習カルテ作成',
-      description:
-        'スキルや目的に合わせたオリジナルの学習プランをご提案します。',
-    },
-    {
-      icon: (
-        <Image
-          src="/images/flow0tutor03.png"
-          alt="無料体験授業"
-          width={448}
-          height={299}
-          className="w-[320px] h-auto md:w-[448px]"
-        />
-      ),
-      title: '無料体験授業',
-      description: '実際に授業を受けて、学びやすさを体感してください。',
-    },
-    {
-      icon: (
-        <Image
-          src="/images/flow0tutor04.png"
-          alt="継続受講へ"
-          width={448}
-          height={299}
-          className="w-[320px] h-auto md:w-[448px]"
-        />
-      ),
-      title: '継続受講へ',
-      description:
-        '体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。',
     },
   ];
 
@@ -222,34 +144,6 @@ export default function ITSchoolSection({ className = '' }: Props) {
           </ul>
         </div>
 
-      {/* 受講までの流れ */}
-      <div className="space-y-4">
-        <h3 className="text-2xl font-bold text-center">受講までの流れ</h3>
-        <FlowChart steps={flowSteps} />
-      </div>
-
-      {/* 特徴 */}
-      <div className="space-y-4">
-        <h3 className="text-2xl font-bold text-center text-pink-700">特徴</h3>
-        <ul className="grid grid-cols-2 gap-4 max-w-xl mx-auto">
-          {features.map((f) => (
-            <li
-              key={f.text}
-              className="p-4 bg-white dark:bg-gray-700 rounded shadow flex flex-col items-center justify-center text-center"
-            >
-              <Image
-                src={f.image}
-                alt={f.text}
-                width={192}
-                height={192}
-                className="w-36 h-36 md:w-48 md:h-48 object-contain mb-2"
-              />
-              <p className="font-semibold">{f.text}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-
       {/* 学べる内容 */}
       <div className="space-y-4">
         <h3 className="text-2xl font-bold text-center text-pink-700">学べる内容例</h3>
@@ -286,61 +180,7 @@ export default function ITSchoolSection({ className = '' }: Props) {
         </div>
       </div>
 
-      {/* 体験申し込み */}
-      <div className="text-center space-y-8">
-        {/* ヒーローヘッダー */}
-        <div className="space-y-2">
-          <h3 className="text-2xl font-bold text-pink-700">
-            無料ガイダンス｜体験セッション
-          </h3>
-          <p className="text-gray-700 dark:text-gray-300">
-            まずは情報系コースを体験する
-          </p>
-          <p className="text-gray-700 dark:text-gray-300">
-            無料体験プログラムに申し込みたい
-          </p>
-          <p className="text-gray-700 dark:text-gray-300">
-            各コースの受講料金一覧が知りたい
-          </p>
-          <p className="text-gray-700 dark:text-gray-300">
-            IT講座の講師や内容について詳しく知りたい
-          </p>
-        </div>
-
-        {/* アクションエリア */}
-        <div className="flex flex-col items-center space-y-4">
-          <Link
-            href="/contact/tutor?type=guidance"
-            className="px-6 py-3 bg-purple-600 text-white rounded-full shadow transition transform hover:bg-purple-700 hover:scale-105"
-          >
-            無料ガイダンス
-          </Link>
-          <Link
-            href="/contact/tutor?type=session"
-            className="px-6 py-3 bg-secondary text-black rounded-full shadow transition transform hover:bg-gray-300 hover:scale-105"
-          >
-            体験セッション
-          </Link>
-        </div>
-        <div className="flex flex-col items-center space-y-2">
-          <Link
-            href="/pricing/tutor"
-            className="text-sm text-gray-600 hover:text-gray-800 hover:underline transition"
-          >
-            家庭教師料金表
-          </Link>
-        </div>
-
-        <p className="text-sm">
-          <Link
-            href="/contact/tutor"
-            className="tutor-accent-text hover:underline transition"
-          >
-            家庭教師に関するお問い合わせはこちら
-          </Link>
-        </p>
-
-      </div>
+      
     </section>
   );
 }
