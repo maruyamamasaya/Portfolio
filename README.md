@@ -68,16 +68,16 @@ API エンドポイントの詳細は `docs/api-routes.md` に記載していま
 次のような簡単な構文で会話形式の吹き出しを表現できます。
 
 ```markdown
-:::chat user01 left
+:::chat user01 Calm left
 こんにちは！Reactについて教えてください。
 :::
 
-:::chat user02 right
+:::chat user02 Happy right
 もちろんです！ReactはUIを作るためのライブラリです。
 :::
 ```
 
-`user01`〜`user10` は `/images/usericon01.png`〜`/images/usericon10.png` のアイコンに対応します。`left` と `right` は吹き出しの表示位置を示します。
+`user01`〜`user10` は `/images/user01Calm.png` などのアイコンに対応します。2 番目の引数で感情 (`Calm` / `Happy` / `Serious` / `Troubled` / `Surprised` / `Sad`) を指定し、`left` と `right` は吹き出しの表示位置を示します。
 
 ## セットアップ
 
