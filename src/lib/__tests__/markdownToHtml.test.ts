@@ -56,11 +56,11 @@ import path from 'path';
       expect(html).toContain('/images/usericon01.png');
     });
 
-    it('converts chat blocks with Windows line endings', async () => {
-      const md = [':::chat user02 right', 'hi', ':::'].join('\r\n');
+    it('converts chat blocks with CRLF', async () => {
+      const md = [':::chat user02 right', 'hello', ':::'].join('\r\n');
       const { html } = await markdownToHtml(md);
       expect(html).toContain('<div class="chat user02 right">');
-      expect(html).toContain('hi');
+      expect(html).toContain('hello');
       expect(html).toContain('/images/usericon02.png');
     });
   });
