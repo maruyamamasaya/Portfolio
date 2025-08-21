@@ -20,17 +20,42 @@ function slugify(text: string): string {
     .replace(/\s+/g, '-');
 }
 
-function replaceInternalLinks(content: string): string {
-  return content
-    .replace(
-      /\b([A-Za-z0-9_-]+)\.md\b/g,
-      (_, slug) => `[${slug}](/blog/${slug})`,
-    )
-    .replace(
-      /\[\[([A-Za-z0-9_-]+)\]\]/g,
-      (_, slug) =>
-        `<a href="/blog/${slug}" class="blog-card inline-flex items-center gap-2 no-underline"><img src="/images/img1.svg" alt="${slug}" class="w-10 h-10 rounded" /><span>${slug}</span></a>`,
-    );
+async function replaceInternalLinks(content: string): Promise<string> {
+  const replaced = content.replace(
+    /\b([A-Za-z0-9_-]+)\.md\b/g,
+    (_, slug) => `[${slug}](/blog/${slug})`,
+  );
+
+  const regex = /\[\[([A-Za-z0-9_-]+)\]\]/g;
+  const matches = Array.from(replaced.matchAll(regex));
+  let getPostFn: ((slug: string) => Promise<any>) | null = null;
+  if (typeof window === 'undefined' && matches.length) {
+    try {
+      const mod = await import('./posts');
+      getPostFn = mod.getPost;
+    } catch {
+      getPostFn = null;
+    }
+  }
+  const cards = await Promise.all(
+    matches.map(async (m) => {
+      const slug = m[1];
+      if (getPostFn) {
+        try {
+          const post = await getPostFn(slug);
+          const img = post.image ?? '/images/img1.svg';
+          const alt = post.alt ?? post.title;
+          return `<a href="/blog/${slug}" class="blog-card block no-underline" style="max-width: 400px;"><img src="${img}" alt="${alt}" style="width: 100%; height: auto;" /><span>${post.title}</span></a>`;
+        } catch {
+          /* ignore */
+        }
+      }
+      return `<a href="/blog/${slug}">${slug}</a>`;
+    }),
+  );
+
+  let i = 0;
+  return replaced.replace(regex, () => cards[i++]);
 }
 
 function convertMarkdownTables(content: string): string {
@@ -115,9 +140,8 @@ export default async function markdownToHtml(
 ): Promise<{ html: string; headings: Heading[] }> {
   const headings: Heading[] = [];
 
-  const processed = formatBold(
-    convertMarkdownTables(replaceInternalLinks(markdown)),
-  );
+  const replaced = await replaceInternalLinks(markdown);
+  const processed = formatBold(convertMarkdownTables(replaced));
 
   const parser = unified().use(parse);
   const tree = parser.parse(processed);
