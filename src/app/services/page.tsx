@@ -24,7 +24,7 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-black/50 group-hover:bg-black/70 transition-base flex flex-col justify-center items-center p-4">
             <p className="text-lg font-bold text-white text-center">
               最新AIから業務効率まで、幅広くお任せ
-              <span className="accent-text block">テクニカル法人サポート</span>
+                <span className="accent-text-bright block">テクニカル法人サポート</span>
             </p>
           </div>
         </Link>

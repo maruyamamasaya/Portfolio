@@ -18,7 +18,7 @@ export default function BusinessHeroSection() {
         <div className="text-center space-y-2">
           <h2 className="text-xl font-bold text-balance">
             最新AIから業務効率まで、幅広くお任せ
-            <span className="accent-text block">テクニカル法人サポート</span>
+              <span className="accent-text-bright block">テクニカル法人サポート</span>
           </h2>
           <p className="text-sm">現役エンジニアがIT活用を伴走支援します。</p>
           <Link
@@ -38,7 +38,7 @@ export default function BusinessHeroSection() {
         <div className="relative text-center space-y-4 bg-black/50 p-4 rounded">
           <h2 className="text-3xl font-bold text-balance text-white">
             最新AIから業務効率まで、幅広くお任せ
-            <span className="accent-text block">テクニカル法人サポート</span>
+              <span className="accent-text-bright block">テクニカル法人サポート</span>
           </h2>
           <p className="text-white">現役エンジニアがIT活用を伴走支援します。</p>
           <Link

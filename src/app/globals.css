@@ -13,6 +13,11 @@
   @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary dark:from-secondary dark:to-primary;
 }
 
+/* brighter corporate accent text */
+.accent-text-bright {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-primary-bright to-secondary-bright dark:from-secondary-bright dark:to-primary-bright;
+}
+
 /* tutor accent text with playful gradient */
 .tutor-accent-text {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-tutor-pink via-tutor-yellow to-tutor-green;
