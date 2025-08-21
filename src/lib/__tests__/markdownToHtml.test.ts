@@ -49,34 +49,34 @@ import path from 'path';
     });
 
     it('converts chat blocks', async () => {
-      const md = [':::chat user01 left', 'こんにちは', ':::'].join('\n');
+      const md = [':::chat user01 Calm left', 'こんにちは', ':::'].join('\n');
       const { html } = await markdownToHtml(md);
-      expect(html).toContain('<div class="chat user01 left">');
+      expect(html).toContain('<div class="chat user01 Calm left">');
       expect(html).toContain('こんにちは');
-      expect(html).toContain('/images/usericon01.png');
+      expect(html).toContain('/images/user01Calm.png');
     });
 
     it('converts chat blocks with CRLF', async () => {
-      const md = [':::chat user02 right', 'hello', ':::'].join('\r\n');
+      const md = [':::chat user02 Happy right', 'hello', ':::'].join('\r\n');
       const { html } = await markdownToHtml(md);
-      expect(html).toContain('<div class="chat user02 right">');
+      expect(html).toContain('<div class="chat user02 Happy right">');
       expect(html).toContain('hello');
-      expect(html).toContain('/images/usericon02.png');
+      expect(html).toContain('/images/user02Happy.png');
     });
 
     it('converts chat blocks with trailing spaces', async () => {
-      const md = [':::chat user03 left  ', 'hi', ':::'].join('\n');
+      const md = [':::chat user03 Serious left  ', 'hi', ':::'].join('\n');
       const { html } = await markdownToHtml(md);
-      expect(html).toContain('<div class="chat user03 left">');
+      expect(html).toContain('<div class="chat user03 Serious left">');
       expect(html).toContain('hi');
-      expect(html).toContain('/images/usericon03.png');
+      expect(html).toContain('/images/user03Serious.png');
     });
 
     it('does not break surrounding markdown', async () => {
-      const md = ['before', '', ':::chat user04 right', 'hey', ':::', '', 'after'].join('\n');
+      const md = ['before', '', ':::chat user04 Troubled right', 'hey', ':::', '', 'after'].join('\n');
       const { html } = await markdownToHtml(md);
       expect(html).toContain('<p>before</p>');
-      expect(html).toContain('<div class="chat user04 right">');
+      expect(html).toContain('<div class="chat user04 Troubled right">');
       expect(html).toContain('<p>after</p>');
     });
   });
