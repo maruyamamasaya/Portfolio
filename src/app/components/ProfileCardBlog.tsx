@@ -12,7 +12,7 @@ export default function ProfileCardBlog() {
         className="w-24 h-24 object-cover rounded-full border border-gray-300 dark:border-gray-700"
       />
       <div className="space-y-1 sm:space-y-2">
-        <p className="text-base font-bold">神木ユウ</p>
+        <p className="text-base font-bold">まる。</p>
         <p className="text-sm leading-relaxed">フルスタックエンジニア</p>
         <p className="text-xs leading-relaxed">分からないを分かるに変える</p>
         <div className="flex justify-center space-x-3 my-2">
