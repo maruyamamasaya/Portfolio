@@ -29,7 +29,7 @@ export default function CodeCopyInit() {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href =
-        'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css';
+        'https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets@11.11.1/styles/devibeans.min.css';
       link.dataset.hljs = 'true';
       document.head.appendChild(link);
 
