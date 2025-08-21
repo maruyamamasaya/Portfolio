@@ -71,4 +71,12 @@ import path from 'path';
       expect(html).toContain('hi');
       expect(html).toContain('/images/usericon03.png');
     });
+
+    it('does not break surrounding markdown', async () => {
+      const md = ['before', '', ':::chat user04 right', 'hey', ':::', '', 'after'].join('\n');
+      const { html } = await markdownToHtml(md);
+      expect(html).toContain('<p>before</p>');
+      expect(html).toContain('<div class="chat user04 right">');
+      expect(html).toContain('<p>after</p>');
+    });
   });
