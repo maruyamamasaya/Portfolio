@@ -53,6 +53,7 @@ export default function CodeCopyInit() {
         script.onload = init;
         document.head.appendChild(script);
       }
+
     } else {
       init();
     }
