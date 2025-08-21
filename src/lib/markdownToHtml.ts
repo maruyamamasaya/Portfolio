@@ -113,7 +113,8 @@ function formatBold(content: string): string {
 
 function convertChatBlocks(content: string): string {
   const regex =
-    /:::chat\s+(user0[1-9]|user10)\s+(left|right)\r?\n([\s\S]*?)\r?\n:::(?:\r?\n|$)/g;
+    /:::chat\s+(user0[1-9]|user10)\s+(left|right)[ \t]*\r?\n([\s\S]*?)\r?\n:::[ \t]*(?:\r?\n|$)/g;
+
   return content.replace(regex, (_, user: string, pos: string, text: string) => {
     const icon = `/images/${user.replace('user', 'usericon')}.png`;
     const body = text.trim().replace(/\n/g, '<br />');

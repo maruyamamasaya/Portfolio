@@ -63,4 +63,12 @@ import path from 'path';
       expect(html).toContain('hello');
       expect(html).toContain('/images/usericon02.png');
     });
+
+    it('converts chat blocks with trailing spaces', async () => {
+      const md = [':::chat user03 left  ', 'hi', ':::'].join('\n');
+      const { html } = await markdownToHtml(md);
+      expect(html).toContain('<div class="chat user03 left">');
+      expect(html).toContain('hi');
+      expect(html).toContain('/images/usericon03.png');
+    });
   });
