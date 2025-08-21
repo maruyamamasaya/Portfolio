@@ -111,6 +111,15 @@ function formatBold(content: string): string {
   return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 }
 
+function convertChatBlocks(content: string): string {
+  const regex = /:::chat\s+(user0[1-9]|user10)\s+(left|right)\n([\s\S]*?)\n:::/g;
+  return content.replace(regex, (_, user: string, pos: string, text: string) => {
+    const icon = `/images/${user.replace('user', 'usericon')}.png`;
+    const body = text.trim().replace(/\n/g, '<br />');
+    return `<div class="chat ${user} ${pos}"><img src="${icon}" alt="${user}" class="chat-icon"/><div class="chat-bubble">${body}</div></div>`;
+  });
+}
+
 // Collect headings from the markdown AST
 function collectHeadings(tree: Root, headings: Heading[]): void {
   const visit = (node: any) => {
@@ -141,7 +150,7 @@ export default async function markdownToHtml(
   const headings: Heading[] = [];
 
   const replaced = await replaceInternalLinks(markdown);
-  const processed = formatBold(convertMarkdownTables(replaced));
+  const processed = formatBold(convertMarkdownTables(convertChatBlocks(replaced)));
 
   const parser = unified().use(parse);
   const tree = parser.parse(processed);
