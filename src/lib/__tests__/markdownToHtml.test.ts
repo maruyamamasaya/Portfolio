@@ -47,4 +47,12 @@ import path from 'path';
         await fs.unlink(filePath);
       }
     });
+
+    it('converts chat blocks', async () => {
+      const md = [':::chat user01 left', 'こんにちは', ':::'].join('\n');
+      const { html } = await markdownToHtml(md);
+      expect(html).toContain('<div class="chat user01 left">');
+      expect(html).toContain('こんにちは');
+      expect(html).toContain('/images/usericon01.png');
+    });
   });

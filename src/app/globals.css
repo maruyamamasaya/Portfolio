@@ -237,3 +237,39 @@ header button {
   content: '';
   @apply absolute left-6 -bottom-3 border-[8px] border-x-transparent border-b-0 border-t-blue-50 dark:border-t-gray-700;
 }
+
+/* chat bubble styles */
+.chat {
+  @apply flex items-start gap-2 my-4;
+}
+.chat.right {
+  @apply flex-row-reverse text-right;
+}
+.chat-icon {
+  @apply w-10 h-10 rounded-full;
+}
+.chat-bubble {
+  @apply relative bg-blue-50 dark:bg-gray-700 text-gray-700 dark:text-gray-100 p-3 rounded-lg;
+}
+.chat-bubble::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+}
+.chat.left .chat-bubble::after {
+  left: -16px;
+  border-right-color: #eff6ff;
+}
+.dark .chat.left .chat-bubble::after {
+  border-right-color: #374151;
+}
+.chat.right .chat-bubble::after {
+  right: -16px;
+  border-left-color: #eff6ff;
+}
+.dark .chat.right .chat-bubble::after {
+  border-left-color: #374151;
+}
