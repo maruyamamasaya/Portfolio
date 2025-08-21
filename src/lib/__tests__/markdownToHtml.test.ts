@@ -47,4 +47,28 @@ import path from 'path';
         await fs.unlink(filePath);
       }
     });
+
+    it('converts chat blocks', async () => {
+      const md = [':::chat user01 left', 'こんにちは', ':::'].join('\n');
+      const { html } = await markdownToHtml(md);
+      expect(html).toContain('<div class="chat user01 left">');
+      expect(html).toContain('こんにちは');
+      expect(html).toContain('/images/usericon01.png');
+    });
+
+    it('converts chat blocks with CRLF', async () => {
+      const md = [':::chat user02 right', 'hello', ':::'].join('\r\n');
+      const { html } = await markdownToHtml(md);
+      expect(html).toContain('<div class="chat user02 right">');
+      expect(html).toContain('hello');
+      expect(html).toContain('/images/usericon02.png');
+    });
+
+    it('converts chat blocks with trailing spaces', async () => {
+      const md = [':::chat user03 left  ', 'hi', ':::'].join('\n');
+      const { html } = await markdownToHtml(md);
+      expect(html).toContain('<div class="chat user03 left">');
+      expect(html).toContain('hi');
+      expect(html).toContain('/images/usericon03.png');
+    });
   });
