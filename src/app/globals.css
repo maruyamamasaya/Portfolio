@@ -243,10 +243,13 @@ header button {
   @apply flex items-start gap-2 my-4;
 }
 .chat.right {
-  @apply flex-row-reverse text-right;
+  @apply flex-row-reverse;
+}
+.chat.right .chat-bubble {
+  @apply text-left;
 }
 .chat-icon {
-  @apply w-12 h-12 rounded-full;
+  @apply w-16 h-16 rounded-full;
 }
 .chat-bubble {
   @apply relative bg-blue-50 dark:bg-gray-700 text-gray-700 dark:text-gray-100 p-3 rounded-lg;
