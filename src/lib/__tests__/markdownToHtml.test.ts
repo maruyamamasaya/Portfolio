@@ -48,6 +48,12 @@ import path from 'path';
       }
     });
 
+    it('renders code blocks with language class', async () => {
+      const md = ['```javascript', 'console.log("hi")', '```'].join('\n');
+      const { html } = await markdownToHtml(md);
+      expect(html).toContain('<pre><code class="language-javascript">');
+    });
+
     it('converts chat blocks', async () => {
       const md = [':::chat user01 Calm left', 'こんにちは', ':::'].join('\n');
       const { html } = await markdownToHtml(md);
