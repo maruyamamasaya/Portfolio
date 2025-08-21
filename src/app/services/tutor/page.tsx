@@ -52,6 +52,13 @@ export default function TutorServicePage() {
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             <div className="p-4 bg-white rounded shadow space-y-2">
+              <Image
+                src="/images/img1.svg"
+                alt="オンラインお手軽コース"
+                width={600}
+                height={400}
+                className="w-full h-auto rounded"
+              />
               <h3 className="font-semibold text-center">
                 オンラインお手軽コース
               </h3>
@@ -65,6 +72,13 @@ export default function TutorServicePage() {
               </div>
             </div>
             <div className="p-4 bg-white rounded shadow space-y-2">
+              <Image
+                src="/images/img2.svg"
+                alt="家庭訪問プラン"
+                width={600}
+                height={400}
+                className="w-full h-auto rounded"
+              />
               <h3 className="font-semibold text-center">家庭訪問プラン</h3>
               <p className="text-sm text-center">
                 月4回×3h、東京都内どこでも訪問。宿題や課題も一緒に解決。
@@ -76,6 +90,13 @@ export default function TutorServicePage() {
               </div>
             </div>
             <div className="p-4 bg-white rounded shadow space-y-2">
+              <Image
+                src="/images/img3.svg"
+                alt="個別塾プラン"
+                width={600}
+                height={400}
+                className="w-full h-auto rounded"
+              />
               <h3 className="font-semibold text-center">個別塾プラン</h3>
               <p className="text-sm text-center">
                 レンタル会議室で月2回×3h。集中できる学習環境。
@@ -157,10 +178,10 @@ export default function TutorServicePage() {
               </p>
             </li>
             </ol>
-            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center w-8 bg-gray-200/50">
+            <div className="pointer-events-none absolute inset-y-0 left-0 hidden md:flex items-center justify-center w-8 bg-gray-200/50">
               <span className="text-2xl text-gray-500">&#9664;</span>
             </div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center w-8 bg-gray-200/50">
+            <div className="pointer-events-none absolute inset-y-0 right-0 hidden md:flex items-center justify-center w-8 bg-gray-200/50">
               <span className="text-2xl text-gray-500">&#9654;</span>
             </div>
           </div>
