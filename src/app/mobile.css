@@ -36,4 +36,8 @@
     line-height: 1.4;
     margin-bottom: 0.5rem;
   }
+  .chat-icon {
+    width: 64px;
+    height: 64px;
+  }
 }

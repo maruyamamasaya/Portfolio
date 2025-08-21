@@ -248,9 +248,6 @@ header button {
 .chat.right .chat-bubble {
   @apply text-left;
 }
-.chat-icon {
-  @apply w-16 h-16 rounded-full;
-}
 .chat-bubble {
   @apply relative bg-blue-50 dark:bg-gray-700 text-gray-700 dark:text-gray-100 p-3 rounded-lg;
 }

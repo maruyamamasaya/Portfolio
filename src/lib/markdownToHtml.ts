@@ -126,7 +126,7 @@ function convertChatBlocks(content: string): string {
     ) => {
       const icon = `/images/${user}${emotion}.png`;
       const body = text.trim().replace(/\n/g, '<br />');
-      return `<div class="chat ${user} ${emotion} ${pos}"><img src="${icon}" alt="${user} ${emotion}" class="chat-icon"/><div class="chat-bubble">${body}</div></div>`;
+      return `<div class="chat ${user} ${emotion} ${pos}"><img src="${icon}" alt="${user} ${emotion}" class="chat-icon w-20 h-20 rounded-full" width="80" height="80"/><div class="chat-bubble">${body}</div></div>`;
     },
   );
 }
