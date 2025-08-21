@@ -5,7 +5,7 @@ describe('markdownToHtml', () => {
     const md = [
       '# Title',
       '',
-      'See another.md',
+      'See another.md and [[20250821001]]',
       '',
       '| H1 | H2 |',
       '| --- | --- |',
@@ -18,6 +18,8 @@ describe('markdownToHtml', () => {
     expect(html).toContain('<table>');
     expect(html).toContain('<strong>bold</strong>');
     expect(html).toContain('<a href="/blog/another">another</a>');
+    expect(html).toContain('<a href="/blog/20250821001"');
+    expect(html).toContain('<img src="/images/img1.svg" alt="20250821001"');
     expect(headings).toEqual([{ id: 'title', text: 'Title', level: 1 }]);
   });
 });

@@ -21,10 +21,16 @@ function slugify(text: string): string {
 }
 
 function replaceInternalLinks(content: string): string {
-  return content.replace(
-    /\b([A-Za-z0-9_-]+)\.md\b/g,
-    (_, slug) => `[${slug}](/blog/${slug})`,
-  );
+  return content
+    .replace(
+      /\b([A-Za-z0-9_-]+)\.md\b/g,
+      (_, slug) => `[${slug}](/blog/${slug})`,
+    )
+    .replace(
+      /\[\[([A-Za-z0-9_-]+)\]\]/g,
+      (_, slug) =>
+        `<a href="/blog/${slug}" class="blog-card inline-flex items-center gap-2 no-underline"><img src="/images/img1.svg" alt="${slug}" class="w-10 h-10 rounded" /><span>${slug}</span></a>`,
+    );
 }
 
 function convertMarkdownTables(content: string): string {
