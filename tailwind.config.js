@@ -36,6 +36,8 @@ module.exports = {
       colors: {
         primary: '#0f7074',
         secondary: '#011939',
+        'primary-bright': '#1fb5b9',
+        'secondary-bright': '#0b4a8f',
         'tutor-pink': '#f09199',
         'tutor-yellow': '#fcc800',
         'tutor-green': '#98d98e',
