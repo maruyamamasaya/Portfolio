@@ -93,7 +93,8 @@ export default function TutorServicePage() {
           <h2 className="text-2xl font-semibold text-center text-pink-600">
             受講までの流れ
           </h2>
-          <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4">
+          <div className="relative">
+            <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4 overflow-x-auto">
             <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-[28rem] space-y-2 flex-shrink-0">
               <Image
                 src="/images/flow0tutor01.png"
@@ -155,15 +156,22 @@ export default function TutorServicePage() {
                 体験後にご興味を持っていただければ、そのまま継続して学んでいただけます。
               </p>
             </li>
-          </ol>
+            </ol>
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center w-8 bg-gray-200/50">
+              <span className="text-2xl text-gray-500">&#9664;</span>
+            </div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center w-8 bg-gray-200/50">
+              <span className="text-2xl text-gray-500">&#9654;</span>
+            </div>
+          </div>
         </section>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold text-center text-pink-600">
             特徴
           </h2>
-          <ol className="flex flex-col md:flex-row items-center gap-4 md:gap-4">
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-[26rem] space-y-2 flex-shrink-0">
+          <ol className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full space-y-2">
               <Image
                 src="/images/features0tutor01.png"
                 alt="現役エンジニアが指導"
@@ -173,7 +181,7 @@ export default function TutorServicePage() {
               />
               <p className="font-semibold">現役エンジニアが指導</p>
             </li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-[26rem] space-y-2 flex-shrink-0">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full space-y-2">
               <Image
                 src="/images/features0tutor02.png"
                 alt="どんな疑問も「わかるまで」対応"
@@ -183,7 +191,7 @@ export default function TutorServicePage() {
               />
               <p className="font-semibold">どんな疑問も「わかるまで」対応</p>
             </li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-[26rem] space-y-2 flex-shrink-0">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full space-y-2">
               <Image
                 src="/images/features0tutor03.png"
                 alt="オンライン・訪問・会議室から選べる柔軟プラン"
@@ -195,7 +203,7 @@ export default function TutorServicePage() {
                 オンライン・訪問・会議室から選べる柔軟プラン
               </p>
             </li>
-            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full md:w-[26rem] space-y-2 flex-shrink-0">
+            <li className="flex flex-col items-center text-center bg-white p-6 rounded shadow w-full space-y-2">
               <Image
                 src="/images/features0tutor04.png"
                 alt="無料体験から安心スタート"
