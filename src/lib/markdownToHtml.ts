@@ -5,6 +5,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeStringify from 'rehype-stringify';
 import { Root } from 'mdast';
+import { getPost } from './posts';
 
 export interface Heading {
   id: string;
@@ -31,6 +32,26 @@ function replaceInternalLinks(content: string): string {
       (_, slug) =>
         `<a href="/blog/${slug}" class="blog-card inline-flex items-center gap-2 no-underline"><img src="/images/img1.svg" alt="${slug}" class="w-10 h-10 rounded" /><span>${slug}</span></a>`,
     );
+}
+
+async function replaceBlogLinks(content: string): Promise<string> {
+  const regex = /\[\[([A-Za-z0-9_-]+)\]\]/g;
+  const matches = Array.from(content.matchAll(regex));
+  for (const match of matches) {
+    const slug = match[1];
+    try {
+      const post = await getPost(slug);
+      const imageHtml = post.image
+        ? `<img src="${post.image}" alt="${post.alt ?? post.title}" class="w-16 h-16 object-cover rounded-md" />`
+        : '';
+      const cardHtml = `<a href="/blog/${slug}" class="flex items-center gap-2 p-2 border rounded-md hover:bg-gray-50 dark:hover:bg-gray-700">${imageHtml}<span>${post.title}</span></a>`;
+      content = content.replace(match[0], cardHtml);
+    } catch {
+      const url = `/blog/${slug}`;
+      content = content.replace(match[0], `<a href="${url}">${url}</a>`);
+    }
+  }
+  return content;
 }
 
 function convertMarkdownTables(content: string): string {
@@ -115,9 +136,9 @@ export default async function markdownToHtml(
 ): Promise<{ html: string; headings: Heading[] }> {
   const headings: Heading[] = [];
 
-  const processed = formatBold(
-    convertMarkdownTables(replaceInternalLinks(markdown)),
-  );
+  const linked = replaceInternalLinks(markdown);
+  const withCards = await replaceBlogLinks(linked);
+  const processed = formatBold(convertMarkdownTables(withCards));
 
   const parser = unified().use(parse);
   const tree = parser.parse(processed);
