@@ -280,6 +280,6 @@ header button {
 /* Force highlight.js code blocks to use a black background */
 pre code.hljs,
 .hljs {
-  background: #000 !important;
+  background: #374151 !important;
   color: #a39e9b !important; /* default text color */
 }
