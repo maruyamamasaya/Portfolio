@@ -40,4 +40,28 @@
     width: 64px;
     height: 64px;
   }
+
+  .chat-bubble {
+    background-color: #dbeafe;
+  }
+
+  .dark .chat-bubble {
+    background-color: #1f2937;
+  }
+
+  .chat.left .chat-bubble::after {
+    border-right-color: #dbeafe;
+  }
+
+  .chat.right .chat-bubble::after {
+    border-left-color: #dbeafe;
+  }
+
+  .dark .chat.left .chat-bubble::after {
+    border-right-color: #1f2937;
+  }
+
+  .dark .chat.right .chat-bubble::after {
+    border-left-color: #1f2937;
+  }
 }
