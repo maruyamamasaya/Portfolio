@@ -15,7 +15,7 @@
   }
 
   body {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 
   .blog-container {
@@ -30,8 +30,10 @@
     box-shadow: none;
   }
 
-  .prose p {
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  .prose p,
+  .prose li {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
   }
 }
