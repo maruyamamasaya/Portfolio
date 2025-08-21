@@ -147,7 +147,7 @@
 
 /* Code blocks and images */
 .prose pre {
-  @apply bg-gray-700 text-gray-100 p-4 rounded overflow-x-auto relative;
+  @apply bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto relative;
 }
 
 .prose code {
