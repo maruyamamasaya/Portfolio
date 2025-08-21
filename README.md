@@ -63,6 +63,22 @@ blog/           # 公開ブログ記事
 API エンドポイントの詳細は `docs/api-routes.md` に記載しています。
 レイアウトに使う主な Tailwind クラスは `docs/layout.md` にまとめています。
 
+### チャット吹き出し記法
+
+次のような簡単な構文で会話形式の吹き出しを表現できます。
+
+```markdown
+:::chat user01 left
+こんにちは！Reactについて教えてください。
+:::
+
+:::chat user02 right
+もちろんです！ReactはUIを作るためのライブラリです。
+:::
+```
+
+`user01`〜`user10` は `/images/usericon01.png`〜`/images/usericon10.png` のアイコンに対応します。`left` と `right` は吹き出しの表示位置を示します。
+
 ## セットアップ
 
 依存パッケージをインストールした後、開発サーバーを起動します。
