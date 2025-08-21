@@ -240,9 +240,9 @@ export default function ITSchoolSection({ className = '' }: Props) {
               <Image
                 src={f.image}
                 alt={f.text}
-                width={160}
-                height={160}
-                className="w-24 h-24 md:w-32 md:h-32 object-contain mb-2"
+                width={192}
+                height={192}
+                className="w-36 h-36 md:w-48 md:h-48 object-contain mb-2"
               />
               <p className="font-semibold">{f.text}</p>
             </li>
