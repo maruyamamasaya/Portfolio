@@ -3,7 +3,7 @@
     font-size: 1rem;
   }
   main {
-    padding: 0.5rem;
+    padding: 0;
   }
   nav ul {
     margin-top: 0.5rem;
@@ -15,6 +15,23 @@
   }
 
   body {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+  }
+
+  .blog-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .main-content {
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .prose p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
   }
 }
