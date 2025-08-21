@@ -276,3 +276,10 @@ header button {
 .dark .chat.right .chat-bubble::after {
   border-left-color: #374151;
 }
+
+/* Force highlight.js code blocks to use a black background */
+pre code.hljs,
+.hljs {
+  background: #000 !important;
+  color: #a39e9b !important; /* default text color */
+}
