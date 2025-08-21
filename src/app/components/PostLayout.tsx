@@ -44,7 +44,7 @@ export default function PostLayout({
       {headings && headings.length > 0 && (
         <TableOfContents headings={headings} />
       )}
-      <h1 className="w-full box-border px-[5px]">{title}</h1>
+      <h1 className="w-full px-[5px]">{title}</h1>
       <p className="text-sm text-gray-500 mb-4">
         {date}
         {updated && ` (更新: ${updated})`}
