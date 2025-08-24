@@ -3,13 +3,12 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(req: NextRequest) {
   const basicAuth = req.headers.get('authorization');
+  const username = process.env.BASIC_AUTH_USERNAME ?? '';
+  const password = process.env.BASIC_AUTH_PASSWORD ?? '';
+
   if (basicAuth) {
     const authValue = basicAuth.split(' ')[1];
-    const [user, pwd] = Buffer.from(authValue, 'base64')
-      .toString()
-      .split(':');
-    const username = process.env.BASIC_AUTH_USERNAME ?? '';
-    const password = process.env.BASIC_AUTH_PASSWORD ?? '';
+    const [user, pwd] = atob(authValue).split(':');
     if (user === username && pwd === password) {
       return NextResponse.next();
     }
