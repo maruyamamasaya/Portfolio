@@ -2,31 +2,24 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
-  if (
-    pathname.startsWith('/developer_edit') ||
-    pathname.startsWith('/api/posts')
-  ) {
-    const basicAuth = req.headers.get('authorization');
-    if (basicAuth) {
-      const authValue = basicAuth.split(' ')[1];
-      const [user, pwd] = Buffer.from(authValue, 'base64')
-        .toString()
-        .split(':');
-      const username = process.env.BASIC_AUTH_USERNAME ?? '';
-      const password = process.env.BASIC_AUTH_PASSWORD ?? '';
-      if (user === username && pwd === password) {
-        return NextResponse.next();
-      }
+  const basicAuth = req.headers.get('authorization');
+  const username = process.env.BASIC_AUTH_USERNAME ?? '';
+  const password = process.env.BASIC_AUTH_PASSWORD ?? '';
+
+  if (basicAuth) {
+    const authValue = basicAuth.split(' ')[1];
+    const [user, pwd] = atob(authValue).split(':');
+    if (user === username && pwd === password) {
+      return NextResponse.next();
     }
-    return new NextResponse('Authentication required', {
-      status: 401,
-      headers: { 'WWW-Authenticate': 'Basic realm="Secure Area"' },
-    });
   }
-  return NextResponse.next();
+
+  return new NextResponse('Authentication required', {
+    status: 401,
+    headers: { 'WWW-Authenticate': 'Basic realm="Secure Area"' },
+  });
 }
 
 export const config = {
-  matcher: '/:path*',
+  matcher: ['/developer_edit/:path*'],
 };
