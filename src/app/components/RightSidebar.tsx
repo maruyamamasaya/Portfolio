@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Post } from '@/lib/posts';
 import SidebarCalendar from './SidebarCalendar';
+import TagSearchWidget from './TagSearchWidget';
 
 interface Props {
   posts: Post[];
@@ -10,6 +11,7 @@ interface Props {
 export default function RightSidebar({ posts }: Props) {
   return (
     <div className="space-y-4">
+      <TagSearchWidget />
       <div className="widget">
         <RecentPosts posts={posts} />
       </div>

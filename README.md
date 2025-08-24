@@ -37,6 +37,7 @@ Digi Goose は、PCトラブルから最新AI活用までを扱う技術サポ�
 - 📱 レスポンシブ対応
 - 🔍 記事検索
   - トップページの検索バーでは記事タイトル・本文・カテゴリ・タグを横断して検索できます。
+ - 🏷️ 右サイドバーのタグ検索ウィジェット（AWS / GitHub / React / Next.js / Docker）
 
 ## 使用技術
 
@@ -100,6 +101,11 @@ npm test -- --passWithNoTests
 `npm run lint` は `.eslintrc.json` を参照して ESLint を実行します。
 `npm test -- --passWithNoTests` は `jest.config.js` に基づいて Jest を起動します。
 テスト実行には `.env.local` に定義した環境変数が利用されるため、`*.example` をもとに設定してください。
+
+## タグ検索ウィジェットのアイコン追加
+
+右サイドバーのタグ検索ウィジェットに表示するアイコンは、`src/app/components/TagSearchWidget.tsx` の `tags` 配列に追記することで
+簡単に増やせます。アイコン画像は `public/images/` に配置し、30px 程度のサイズを推奨します。
 
 ### 初回マウントアニメーションの無効化
 
