@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 export default function ShareButtons({ title }: { title: string }) {
   const [url, setUrl] = useState('');
@@ -15,13 +14,19 @@ export default function ShareButtons({ title }: { title: string }) {
   return (
     <div className="flex gap-3 items-center mt-6">
       <a
-        href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+        href={`https://x.com/intent/post?url=${encodedUrl}&text=${encodedTitle}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-[#000000] hover:opacity-90 px-4 py-2 rounded-md text-white text-sm font-medium flex items-center gap-2 transition"
         aria-label="Xでシェア"
+        className="group inline-flex items-center gap-2 rounded-full bg-black px-4 py-2 text-sm font-medium text-white shadow transition-transform duration-200 hover:scale-105"
       >
-        <Image src="/images/X.png" alt="X" width={16} height={16} className="w-4 h-4" />
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          className="h-4 w-4 fill-current"
+        >
+          <path d="M4 4L20 20M20 4L4 20" stroke="currentColor" strokeWidth="2" />
+        </svg>
         Xでシェア
       </a>
     </div>
