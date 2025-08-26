@@ -13,7 +13,6 @@ import HomePostCard from './HomePostCard';
 import SearchBar from './SearchBar';
 import CategoryRecommendations from './CategoryRecommendations';
 import { ReactNode, ComponentProps } from 'react';
-import FunImages from './FunImages';
 
 type HomeWindowProps = {
   posts: Post[];
@@ -69,7 +68,7 @@ export default function HomeWindow({
       <div className="sm:hidden px-4">
         <SearchBar />
       </div>
-      <FunImages />
+      {/* FunImages はテスト目的で一時的に非表示 */}
     </div>
   );
 }
