@@ -113,7 +113,7 @@ export default function PricingPage() {
                     HP作成（大規模）
                   </td>
                   <td className="border border-gray-300 dark:border-gray-600 px-2 py-1">
-                    企業規模の場合（アスバランHPくらい）
+                    企業規模の場合
                     <br />
                     ＋詳細仕様
                   </td>
