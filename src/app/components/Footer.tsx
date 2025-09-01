@@ -40,6 +40,9 @@ export default function Footer() {
             <li>
               <Link href="/policy/law" className="transition-base">特定商取引法に基づく表記</Link>
             </li>
+            <li>
+              <Link href="/policy/security" className="transition-base">情報セキュリティ基本方針</Link>
+            </li>
           </ul>
         </div>
         <div>
