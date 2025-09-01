@@ -14,13 +14,15 @@ export default function HomePostCard({ post }: Props) {
       className="group block bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 transition-base overflow-hidden"
     >
       {post.image && (
-        <Image
-          src={post.image}
-          alt={post.title}
-          width={400}
-          height={200}
-          className="w-full h-40 object-cover"
-        />
+        <div className="relative w-full aspect-[1280/670]">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover"
+          />
+        </div>
       )}
       <div className="p-4">
         <h3 className="text-sm font-bold leading-snug text-gray-800 dark:text-white group-hover:text-primary transition">
