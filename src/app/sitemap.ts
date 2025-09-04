@@ -23,6 +23,7 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
     '/search',
     '/services',
     '/tags',
+    '/rss.xml',
     '/works',
     '/policy/privacy',
     '/policy/law',

@@ -35,6 +35,7 @@ export default async function RootLayout({
     <html lang="ja">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
         {/* Favicon links */}
         {/* Basic favicon */}
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
