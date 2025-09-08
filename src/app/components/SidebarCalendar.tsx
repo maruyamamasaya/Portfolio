@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import DeveloperCalendar from './DeveloperCalendar';
 import { Post } from '@/lib/posts';
@@ -51,15 +51,101 @@ export default function SidebarCalendar({ posts }: Props) {
     setSelectedDate(`${y}-${pad(m)}-01`);
   };
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [narrow, setNarrow] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new ResizeObserver((entries) => {
+      const width = entries[0].contentRect.width;
+      setNarrow(width < 298);
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const months = useMemo(() => {
+    const set = new Set<string>();
+    posts.forEach((p) => set.add(p.date.slice(0, 7)));
+    return Array.from(set)
+      .map((k) => {
+        const [y, m] = k.split('-').map(Number);
+        return { year: y, month: m };
+      })
+      .sort((a, b) =>
+        a.year === b.year ? a.month - b.month : a.year - b.year
+      );
+  }, [posts]);
+
+  const [openMonths, setOpenMonths] = useState<Record<string, boolean>>({});
+  const toggleMonth = (key: string) =>
+    setOpenMonths((prev) => ({ ...prev, [key]: !prev[key] }));
+
+  const today = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+
   return (
-    <DeveloperCalendar
-      year={year}
-      month={month}
-      selectedDate={selectedDate}
-      onSelect={handleSelect}
-      onPrevMonth={() => changeMonth(-1)}
-      onNextMonth={() => changeMonth(1)}
-      hasPosts={hasPosts}
-    />
+    <div ref={containerRef}>
+      {narrow ? (
+        <div>
+          {months.map(({ year: y, month: m }) => {
+            const key = `${y}-${m}`;
+            const open = !!openMonths[key];
+            const daysInMonth = new Date(y, m, 0).getDate();
+            return (
+              <div key={key} className="mb-2">
+                <button
+                  type="button"
+                  onClick={() => toggleMonth(key)}
+                  className="flex items-center space-x-2"
+                >
+                  <span className="w-4 text-center">{open ? '-' : '+'}</span>
+                  <span>{`${m}月`}</span>
+                </button>
+                {open && (
+                  <ul className="ml-6 mt-1 space-y-1">
+                    {Array.from({ length: daysInMonth }, (_, i) => {
+                      const day = i + 1;
+                      const date = `${y}-${pad(m)}-${pad(day)}`;
+                      const isSelected = date === selectedDate;
+                      const has = hasPosts(date);
+                      const isToday = date === today;
+                      return (
+                        <li key={date}>
+                          <button
+                            onClick={() => handleSelect(date)}
+                            className={`w-full text-left px-2 py-1 rounded transition-base ${
+                              isSelected
+                                ? 'bg-primary text-white'
+                                : isToday
+                                  ? 'border border-primary'
+                                  : ''
+                            } ${
+                              has && !isSelected ? 'text-primary' : ''
+                            }`}
+                          >
+                            {day}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <DeveloperCalendar
+          year={year}
+          month={month}
+          selectedDate={selectedDate}
+          onSelect={handleSelect}
+          onPrevMonth={() => changeMonth(-1)}
+          onNextMonth={() => changeMonth(1)}
+          hasPosts={hasPosts}
+        />
+      )}
+    </div>
   );
 }
