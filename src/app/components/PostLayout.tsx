@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import TableOfContents from './TableOfContents';
+import TagMarquee from './TagMarquee';
 import { ReactNode } from 'react';
 
 interface Heading {
@@ -49,15 +49,7 @@ export default function PostLayout({
         {date}
         {updated && ` (更新: ${updated})`}
       </p>
-      {tags && (
-        <ul className="flex space-x-2 text-xs mb-2">
-          {tags.map((tag) => (
-            <li key={tag} className="bg-gray-200 px-2 py-1 rounded">
-              <Link href={`/tags/${encodeURIComponent(tag)}`}>{tag}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {tags && tags.length > 0 && <TagMarquee tags={tags} />}
       {children}
     </article>
   );
