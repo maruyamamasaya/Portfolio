@@ -8,6 +8,13 @@ interface SitemapEntry {
 export default async function sitemap(): Promise<SitemapEntry[]> {
   const baseUrl = 'https://freehackapp.com';
 
+  const formatDate = (date: string | Date): string => {
+    const parsed = new Date(date);
+    return isNaN(parsed.getTime())
+      ? new Date().toISOString().split('T')[0]
+      : parsed.toISOString().split('T')[0];
+  };
+
   const routes: SitemapEntry[] = [
     '',
     '/about',
@@ -31,7 +38,7 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
     '/policy/terms',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
+    lastModified: formatDate(new Date()),
   }));
 
   let postEntries: SitemapEntry[] = [];
@@ -39,7 +46,7 @@ export default async function sitemap(): Promise<SitemapEntry[]> {
     const posts = await getSortedPosts();
     postEntries = posts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: post.updated ?? post.date,
+      lastModified: formatDate(post.updated ?? post.date),
     }));
   } catch {
     // If the posts directory is missing, just return the static routes
