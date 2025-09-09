@@ -3,3 +3,5 @@ Allow: /
 Disallow: /developer_edit
 Disallow: /developer_info
 Sitemap: https://freehackapp.com/sitemap.xml
+Sitemap: https://freehackapp.com/post-sitemap.xml
+Sitemap: https://freehackapp.com/category-sitemap.xml
