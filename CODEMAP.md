@@ -1,74 +1,74 @@
-# Code Map
+# コードマップ
 
-Use this as an index, then search symbols and paths with `rg` or `git grep`; it is intentionally not a complete file list.
+これは全ファイル一覧ではなく、検索を始めるための索引である。ここから `rg` または `git grep` でシンボルとパスを検索する。
 
-## Application entry and shell
+## アプリケーションの入口と共通 shell
 
-**Files:** `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/globals.css`, `src/app/mobile.css`, `src/app/components/HomeWindow.tsx`
+**主要ファイル:** `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/globals.css`, `src/app/mobile.css`, `src/app/components/HomeWindow.tsx`
 
-**Search:** `RootLayout`, `HomePage`, `HomeWindow`, `metadata`, `ThemeProvider`
+**検索語:** `RootLayout`, `HomePage`, `HomeWindow`, `metadata`, `ThemeProvider`
 
-## Blog and Markdown
+## ブログと Markdown
 
-**Files:** `src/lib/posts.ts`, `src/lib/markdownToHtml.ts`, `src/app/blog/page.tsx`, `src/app/blog/[slug]/page.tsx`, `src/app/components/PostLayout.tsx`, `blog/`
+**主要ファイル:** `src/lib/posts.ts`, `src/lib/markdownToHtml.ts`, `src/app/blog/page.tsx`, `src/app/blog/[slug]/page.tsx`, `src/app/components/PostLayout.tsx`, `blog/`
 
-**Search:** `getSortedPosts`, `getPost`, `markdownToHtml`, `getBacklinks`, `Post`, `:::chat`, `FileNotFoundError`
+**検索語:** `getSortedPosts`, `getPost`, `markdownToHtml`, `getBacklinks`, `Post`, `:::chat`, `FileNotFoundError`
 
-## Search, tags, and categories
+## 検索、タグ、カテゴリ
 
-**Files:** `src/app/search/page.tsx`, `src/app/api/search-data/route.ts`, `src/app/tags/`, `src/app/categories/`, `src/lib/categories.ts`, `src/lib/categoryTree.ts`, `data/categories.ts`
+**主要ファイル:** `src/app/search/page.tsx`, `src/app/api/search-data/route.ts`, `src/app/tags/`, `src/app/categories/`, `src/lib/categories.ts`, `src/lib/categoryTree.ts`, `data/categories.ts`
 
-**Search:** `searchPosts`, `getAllTags`, `getTagCounts`, `getPostsByCategory`, `/api/search-data`, category slugs such as `pc-support`
+**検索語:** `searchPosts`, `getAllTags`, `getTagCounts`, `getPostsByCategory`, `/api/search-data`, category slugs such as `pc-support`
 
-## Editor and post API
+## 編集画面と記事 API
 
-**Files:** `src/app/developer_edit/page.tsx`, `src/app/components/DeveloperEditor.tsx`, `src/app/components/DeveloperCalendar.tsx`, `src/app/api/posts/route.ts`, `src/app/api/posts/[filename]/route.ts`, `src/lib/validateFilename.ts`
+**主要ファイル:** `src/app/developer_edit/page.tsx`, `src/app/components/DeveloperEditor.tsx`, `src/app/components/DeveloperCalendar.tsx`, `src/app/api/posts/route.ts`, `src/app/api/posts/[filename]/route.ts`, `src/lib/validateFilename.ts`
 
-**Search:** `DeveloperEditor`, `POSTS_BASE`, `saveFile`, `deleteFile`, `validateFilename`, `Invalid filename`, `/api/posts`
+**検索語:** `DeveloperEditor`, `POSTS_BASE`, `saveFile`, `deleteFile`, `validateFilename`, `Invalid filename`, `/api/posts`
 
-## Authentication and revalidation
+## 認証と再検証
 
-**Files:** `middleware.ts`, `src/middleware.ts`, `src/app/api/revalidate/route.ts`
+**主要ファイル:** `middleware.ts`, `src/middleware.ts`, `src/app/api/revalidate/route.ts`
 
-**Search:** `BASIC_AUTH_USERNAME`, `authorization`, `matcher`, `REVALIDATE_SECRET`, `revalidatePath`, `Invalid token`
+**検索語:** `BASIC_AUTH_USERNAME`, `authorization`, `matcher`, `REVALIDATE_SECRET`, `revalidatePath`, `Invalid token`
 
-## Contact and AWS SES
+## 問い合わせと AWS SES
 
-**Files:** `src/app/contact/business/BusinessContactForm.tsx`, `src/app/contact/tutor/TutorContactForm.tsx`, `src/app/api/contact/route.ts`
+**主要ファイル:** `src/app/contact/business/BusinessContactForm.tsx`, `src/app/contact/tutor/TutorContactForm.tsx`, `src/app/api/contact/route.ts`
 
-**Search:** `/api/contact`, `ContactRequest`, `rateLimit`, `SESClient`, `SendEmailCommand`, `AWS_SES_`, `メール送信に失敗しました`
+**検索語:** `/api/contact`, `ContactRequest`, `rateLimit`, `SESClient`, `SendEmailCommand`, `AWS_SES_`, `メール送信に失敗しました`
 
-## Shared UI
+## 共通 UI
 
-**Files:** `src/app/components/` (notably `Header.tsx`, `Footer.tsx`, `BottomNav.tsx`, `Breadcrumbs.tsx`, `ThemeProvider.tsx`, `PageTransition.tsx`, `Card.tsx`)
+**主要ファイル:** `src/app/components/` (notably `Header.tsx`, `Footer.tsx`, `BottomNav.tsx`, `Breadcrumbs.tsx`, `ThemeProvider.tsx`, `PageTransition.tsx`, `Card.tsx`)
 
-**Search:** component name, `'use client'`, `useTheme`, `useReducedMotion`, Tailwind class or visible Japanese copy
+**検索語:** component name, `'use client'`, `useTheme`, `useReducedMotion`, Tailwind class or visible Japanese copy
 
-## Marketing and policy pages
+## 案内・ポリシーページ
 
-**Files:** `src/app/about/`, `src/app/services/`, `src/app/pricing/`, `src/app/works/`, `src/app/ai-course/`, `src/app/arcana/`, `src/app/policy/`
+**主要ファイル:** `src/app/about/`, `src/app/services/`, `src/app/pricing/`, `src/app/works/`, `src/app/ai-course/`, `src/app/arcana/`, `src/app/policy/`
 
-**Search:** route segment, exported page function, page heading, `metadata`
+**検索語:** route segment, exported page function, page heading, `metadata`
 
-## Feeds and SEO
+## Feed と SEO
 
-**Files:** `src/app/sitemap.ts`, `src/app/rss.xml/route.ts`, `src/app/post-sitemap.xml/route.ts`, `src/app/category-sitemap.xml/route.ts`, `src/app/layout.tsx`, `public/robots.txt`
+**主要ファイル:** `src/app/sitemap.ts`, `src/app/rss.xml/route.ts`, `src/app/post-sitemap.xml/route.ts`, `src/app/category-sitemap.xml/route.ts`, `src/app/layout.tsx`, `public/robots.txt`
 
-**Search:** `baseUrl`, `freehackapp.com`, `sitemap`, `rss`, `openGraph`, `generateMetadata`
+**検索語:** `baseUrl`, `freehackapp.com`, `sitemap`, `rss`, `openGraph`, `generateMetadata`
 
-## Configuration and environment
+## 設定と環境
 
-**Files:** `package.json`, `tsconfig.json`, `next.config.js`, `tailwind.config.js`, `postcss.config.js`, `.eslintrc.json`, `.prettierrc`, `.env.example`
+**主要ファイル:** `package.json`, `tsconfig.json`, `next.config.js`, `tailwind.config.js`, `postcss.config.js`, `.eslintrc.json`, `.prettierrc`, `.env.example`
 
-**Search:** `process.env`, `remotePatterns`, `paths`, npm script/dependency name
+**検索語:** `process.env`, `remotePatterns`, `paths`, npm script/dependency name
 
-## Tests and CI
+## テストと CI
 
-**Files:** `__tests__/`, `src/lib/__tests__/`, `src/app/api/__tests__/`, `jest.config.js`, `.github/workflows/ci.yml`, `scripts/check-component-names.js`
+**主要ファイル:** `__tests__/`, `src/lib/__tests__/`, `src/app/api/__tests__/`, `jest.config.js`, `.github/workflows/ci.yml`, `scripts/check-component-names.js`
 
-**Search:** `describe(`, `it(`, target symbol, route path, `npm run lint`, `npm test`
+**検索語:** `describe(`, `it(`, target symbol, route path, `npm run lint`, `npm test`
 
-## Recommended search sequence
+## 推奨検索順序
 
 ```bash
 rg "feature-or-visible-text" src data __tests__
@@ -78,4 +78,4 @@ rg "describe\(|it\(" __tests__ src --glob '*test.ts*'
 rg "TODO|FIXME" . --glob '!node_modules/**'
 ```
 
-From each hit, inspect imports/callers, downstream filesystem or service access, and matching tests before editing.
+各 hit から import / caller、下流の filesystem / service access、対応テストをたどってから編集する。

@@ -1,109 +1,91 @@
-# Architecture
+# アーキテクチャ
 
-## System overview
+## システム概要
 
-Digi Goose is one Next.js 14 App Router application. Server components and route handlers read Markdown from the local `blog/` directory. Client components provide navigation, filtering, animation, theme state, contact forms, and the developer editor. There is no application database.
+Digi Goose は単一の Next.js 14 App Router アプリケーションである。Server Component と Route Handler がローカルの `blog/` から Markdown を読み、Client Component がナビゲーション、絞り込み、アニメーション、テーマ、問い合わせフォーム、編集画面を担う。アプリケーション DB は存在しない。
 
 ```text
 Browser
-  |
-  v
-Next.js App Router (src/app)
-  |-- pages + React components
-  |-- route handlers (/api, RSS, sitemaps)
-  |
-  +--> local Markdown files (blog/) via fs/promises
-  +--> static category data (data/categories.ts)
-  +--> AWS SES (contact email only)
-
-/developer_edit request --> Basic Auth middleware
-Git push / PR -----------> GitHub Actions: install -> lint -> Jest
+  -> Next.js App Router (src/app)
+       |-- pages / React components / route handlers
+       |-- blog/*.md（fs/promises）
+       |-- data/categories.ts
+       `-- AWS SES（問い合わせメールのみ）
+/developer_edit -> Basic Auth middleware
+push / PR -> GitHub Actions: npm ci -> lint -> Jest
 ```
 
-## Technology stack
+## 技術構成
 
-- Next.js 14.2, React 18, TypeScript, Node.js runtime.
-- Tailwind CSS/PostCSS for styling; Framer Motion for interaction and transitions.
-- `gray-matter` for front matter; unified/remark/rehype for Markdown-to-HTML conversion.
-- AWS SDK v3 SES client for contact email.
-- Jest + ts-jest/babel-jest for tests; ESLint (`next/core-web-vitals`) and Prettier.
+- Next.js 14.2、React 18、TypeScript、Node.js runtime。
+- Tailwind CSS / PostCSS、Framer Motion。
+- front matter は `gray-matter`、Markdown 変換は unified / remark / rehype。
+- 問い合わせ送信は AWS SDK v3 の SES client。
+- Jest + ts-jest / babel-jest、ESLint (`next/core-web-vitals`)、Prettier。
 
-## Directory structure
+## 主要ディレクトリ
 
-| Path | Responsibility |
+| パス | 責務 |
 | --- | --- |
-| `src/app/` | App Router layouts, pages, route handlers, styles |
-| `src/app/components/` | Shared server/client UI and editor UI |
-| `src/lib/` | Posts, Markdown, categories, validation, and errors |
-| `data/` | Static category definitions |
-| `blog/` | Runtime Markdown content store (currently empty in Git) |
-| `public/` | Tracked static SVGs and placeholders |
-| `__tests__/`, `src/**/__tests__/` | Jest tests |
-| `.github/workflows/` | Validation CI |
+| `src/app/` | App Router の layout、page、Route Handler、style |
+| `src/app/components/` | 共通 UI、Client UI、編集 UI |
+| `src/lib/` | 記事、Markdown、カテゴリ、検証、エラー |
+| `data/` | 静的カテゴリ定義 |
+| `blog/` | 実行時 Markdown ストア（Git 上は現在空） |
+| `public/` | 静的 SVG と placeholder |
+| `__tests__/`, `src/**/__tests__/` | Jest テスト |
+| `.github/workflows/` | 検証 CI |
 
-## Main components
+## 主要な入口
 
-- `src/app/layout.tsx`: global metadata, fonts, theme, header/footer/navigation, and tag counts.
-- `src/app/page.tsx` + `HomeWindow.tsx`: home composition and recent/category post display.
-- `src/app/blog/[slug]/page.tsx` + `PostLayout.tsx`: article lookup, conversion, related navigation, and rendering.
-- `SearchBar.tsx`, search/tag/category routes: content discovery.
-- `DeveloperEditor.tsx`: browser CRUD client and preview orchestration.
-- `BusinessContactForm.tsx` / `TutorContactForm.tsx`: `/api/contact` clients.
+- `src/app/layout.tsx`: metadata、font、theme、header/footer/navigation、タグ件数。
+- `src/app/page.tsx` と `HomeWindow.tsx`: ホーム画面と新着・カテゴリ記事。
+- `src/app/blog/[slug]/page.tsx` と `PostLayout.tsx`: 記事取得、変換、前後・関連記事、描画。
+- `SearchBar.tsx` と search/tag/category route: 記事探索。
+- `DeveloperEditor.tsx`: ブラウザ CRUD と preview。
+- `BusinessContactForm.tsx` / `TutorContactForm.tsx`: `/api/contact` の client。
 
-## Data flow
+## データフロー
 
-### Read and render a post
+### 記事の読取と表示
 
-1. An App Router page calls a function in `src/lib/posts.ts`.
-2. The function reads `blog/*.md`, parses front matter, and returns `Post` objects.
-3. A post body passes through `markdownToHtml`, including internal-link, table, bold, chat-block, heading, and HTML transformations.
-4. Server and client components render the result. Article HTML uses `dangerouslySetInnerHTML`; review sanitization implications when changing accepted content sources.
+1. App Router の page が `src/lib/posts.ts` を呼ぶ。
+2. `blog/*.md` を読み、front matter を解析して `Post` を返す。
+3. 本文を `markdownToHtml` に渡し、内部リンク、表、太字、chat block、見出し、HTML を変換する。
+4. Server / Client Component が表示する。記事 HTML は `dangerouslySetInnerHTML` を使うため、入力元を変更する場合は sanitization の影響を確認する。
 
-### Edit a post
+### 記事の編集
 
-1. Basic Auth middleware gates the `/developer_edit` page request.
-2. `DeveloperEditor` calls `/api/posts` and `/api/posts/[filename]`.
-3. Route handlers validate the basename and modify local files under `blog/`.
-4. The editor can request path revalidation through `/api/revalidate` (currently missing the required client-side secret; see `CURRENT.md`).
+1. Basic 認証 middleware が `/developer_edit` のページ要求を検査する。
+2. `DeveloperEditor` が `/api/posts` と `/api/posts/[filename]` を呼ぶ。
+3. Route Handler が basename を検証し、`blog/` のローカルファイルを変更する。
+4. `/api/revalidate` で path の再検証を要求できるが、現在 client は必須 secret を送らない。詳細は `CURRENT.md`。
 
-### Contact
+### 問い合わせ
 
-1. A form POSTs JSON to `/api/contact`.
-2. The route validates fields, honeypot, length, email format, and in-memory request count.
-3. A Node.js route handler invokes AWS SES and returns JSON.
+1. form が JSON を `/api/contact` へ POST する。
+2. route が項目、honeypot、長さ、email 形式、プロセス内要求数を検証する。
+3. Node.js Route Handler が AWS SES を呼び、JSON を返す。
 
-## API structure
+## API
 
-| Method/path | Implemented behavior |
+| Method / path | 実装済みの挙動 |
 | --- | --- |
-| `GET, POST /api/posts` | List Markdown filenames; create a file |
-| `GET, PUT, DELETE /api/posts/[filename]` | Read, update, or delete a validated Markdown filename |
-| `GET /api/search-data` | Return lightweight post/category/tag search data |
-| `POST /api/contact` | Validate and send a contact email with SES |
-| `POST /api/revalidate?secret=...` | Revalidate a supplied array of paths |
-| `GET /rss.xml` | Generate RSS from posts |
-| `GET /post-sitemap.xml` | Generate post sitemap XML |
-| `GET /category-sitemap.xml` | Generate category sitemap XML |
-| Next metadata route `/sitemap.xml` | Generate the main sitemap |
+| `GET, POST /api/posts` | Markdown ファイル名一覧、ファイル作成 |
+| `GET, PUT, DELETE /api/posts/[filename]` | 検証済みファイル名の記事読取・更新・削除 |
+| `GET /api/search-data` | 記事・カテゴリ・タグの軽量検索データ |
+| `POST /api/contact` | 検証後に SES で問い合わせ送信 |
+| `POST /api/revalidate?secret=...` | 指定 path 群の再検証 |
+| `GET /rss.xml` | 記事から RSS を生成 |
+| `GET /post-sitemap.xml`, `GET /category-sitemap.xml` | XML sitemap を生成 |
+| Next metadata route `/sitemap.xml` | main sitemap を生成 |
 
-## Database
+## Persistence、認証、外部依存
 
-There is no database. Markdown files are accessed with `fs/promises`; category metadata is a TypeScript array. Consequently, write persistence and multi-instance consistency depend on the deployment filesystem.
+DB はなく、記事は `fs/promises`、カテゴリは TypeScript 配列である。書込の永続性と複数 instance の整合性はデプロイ先 filesystem に依存する。2つの middleware は `/developer_edit` 配下だけを Basic 認証し、API 認可は未実装。`/api/revalidate` は別途 `REVALIDATE_SECRET` を比較する。
 
-## Authentication
+外部依存は問い合わせ用 AWS SES、build 時の `next/font/google`、`next/image` が許可する Google Cloud Storage の asset host である。標準 AWS の region / credential 環境変数は fallback として使われる。運用条件は `OPERATIONS.md`、信頼境界と既知リスクは `SECURITY.md` を正本とする。
 
-Both tracked middleware files implement HTTP Basic Auth matching only `/developer_edit` and descendants, using `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`. API authorization is not implemented. `/api/revalidate` separately compares a query token to `REVALIDATE_SECRET`.
+## デプロイ
 
-## External services
-
-- AWS SES sends contact email. Explicit SES credentials are constructed from environment variables; standard AWS region/credential variable names are accepted as fallbacks.
-- Google-hosted font files are requested through `next/font/google` during build.
-- `next/image` permits remote images only from the configured Google Cloud Storage asset host.
-
-## Deployment
-
-The repository defines a standard `next build` / `next start` Node.js deployment and documents EC2 as an example, but contains no infrastructure or deployment automation. GitHub Actions runs dependency installation, lint, and Jest for pushes and pull requests; it does not deploy.
-
-## Important dependencies
-
-Filesystem access makes the post/editor routes Node-oriented and requires a writable, persistent `blog/` directory for production edits. SES requires network access, credentials, a configured region, and verified SES identities. See `OPERATIONS.md` for exact variables and commands.
+`next build` / `next start` の Node.js 配置だけが定義され、インフラ・デプロイ自動化はない。GitHub Actions は push / PR で install、lint、Jest を実行するが deploy はしない。編集機能には書込可能で永続的な `blog/` が必要である。

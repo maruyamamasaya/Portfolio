@@ -1,57 +1,58 @@
-# AGENTS Instructions
+# AI エージェント作業指示
 
-## Scope
+## 適用範囲
 
-These instructions apply to the entire repository. Source code, configuration, and tests are the primary evidence; distinguish implemented behavior from intended behavior, decisions, and defects.
+この指示はリポジトリ全体に適用する。ソースコード、設定、テストを一次証拠とし、実装済みの挙動、意図された仕様、設計判断、不具合を区別する。
 
-## Start of work
+## 作業開始時
 
-1. Read `CURRENT.md`, then confirm this file.
-2. Read `ARCHITECTURE.md` when behavior or dependencies matter.
-3. Use `CODEMAP.md` to locate code and `TESTING.md` to select checks.
-4. Read `OPERATIONS.md` for environment, runtime, or deployment work.
-5. Search `decisions/` when a design choice is involved and recent `sessions/` when prior work matters.
+1. 最初に `CURRENT.md`、次にこのファイルを確認する。
+2. 挙動や依存関係に関わる場合は `ARCHITECTURE.md` を読む。
+3. `CODEMAP.md` からコードを探し、`TESTING.md` から検証を選ぶ。
+4. 環境、ランタイム、デプロイに関わる場合は `OPERATIONS.md` を読む。
+5. 設計判断に関わる場合は `decisions/`、過去作業が必要な場合だけ直近の `sessions/` を検索する。
 
-## Investigation workflow
+## 調査フロー
 
-Do not read the repository indiscriminately. Start with `git grep`, `rg`, IDE symbol search, a language server, or repository search. Search function/class/component/route names, API paths, DB tables, environment variables, error messages, features, test names, `TODO`, and `FIXME`.
+リポジトリを無差別に読まない。`git grep`、`rg`、IDE のシンボル検索、言語サーバー、リポジトリ検索から始める。関数・クラス・コンポーネント・ルート名、API パス、DB テーブル、環境変数、エラーメッセージ、機能、テスト名、`TODO`、`FIXME` を検索する。
 
-Trace the relevant path before editing:
+編集前に次の関連経路を追跡する。
 
 ```text
-entry point -> main processing -> data access -> external dependency -> tests
+入口 -> 主処理 -> データアクセス -> 外部依存 -> テスト
 ```
 
-Typical commands: `rg "login"`, `rg "ComponentName" src`, `rg "/api/" src`, `rg "process\.env"`, and `rg "TODO|FIXME"`.
+代表的なコマンドは `rg "login"`、`rg "ComponentName" src`、`rg "/api/" src`、`rg "process\.env"`、`rg "TODO|FIXME"`。
 
-## While working
+## 作業中
 
-- Respect existing behavior; code alone does not prove product intent.
-- Do not turn uncertainty into fact. Record unknowns explicitly.
-- Keep changes small and limited to the request; avoid incidental refactors.
-- Find callers, callees, and relevant tests before implementation.
-- Use TypeScript/React conventions and the repository ESLint/Prettier configuration.
-- Reuse assets in `public/` or `data/`; do not generate images or commit binaries.
-- Record only significant new architectural decisions in `decisions/`.
+- 既存挙動を尊重する。コードだけではプロダクトの意図を証明できない。
+- 不確実な事項を事実にしない。判断不能な事項は明記する。
+- 差分を依頼範囲内で小さく保ち、便乗リファクタリングを避ける。
+- 実装前に呼び出し元、呼び出し先、関連テストを確認する。
+- TypeScript / React の慣例と既存の ESLint / Prettier 設定に従う。
+- `public/` または `data/` の既存素材を再利用し、画像生成やバイナリ追加をしない。
+- 重要な新規アーキテクチャ判断だけを `decisions/` に記録する。
 
-## Validation and completion
+## 検証と完了
 
-- For code changes, run `npm run lint` and `npm test` before committing. Select typecheck, integration, E2E, and build checks as documented in `TESTING.md`.
-- Documentation/comment-only changes do not require lint or tests, though targeted documentation checks are encouraged.
-- Add a concise session record under `sessions/`.
-- Update `CURRENT.md` for status changes; update architecture, code map, testing, or operations docs only when their subject changes.
-- Commit on the current branch with a clear Japanese commit message and leave the working tree clean.
-- Summarize changes plus test/lint results in the pull request.
+- コード変更時はコミット前に `npm run lint` と `npm test` を実行する。型検査、結合テスト、E2E、ビルドは `TESTING.md` に従って選ぶ。
+- 文書・コメントだけの変更に lint とテストは必須ではないが、対象を絞った文書検証を推奨する。
+- `sessions/` に簡潔なセッション記録を追加する。
+- 状態が変わった場合は `CURRENT.md` を更新し、構成、コード索引、テスト、運用の文書は対象内容が変わった場合だけ更新する。
+- 現在のブランチへ明確な日本語メッセージでコミットし、作業ツリーをクリーンにする。
+- Pull Request に変更内容とテスト・lint 結果を要約する。
 
-## Document responsibilities
+## 文書の責務
 
-| Document | Purpose |
+| 文書 | 責務 |
 | --- | --- |
-| `CURRENT.md` | Current implementation status and next work |
-| `ARCHITECTURE.md` | How the implemented system works |
-| `CODEMAP.md` | Feature-to-code and search entry points |
-| `TESTING.md` | How to validate changes |
-| `OPERATIONS.md` | How to run, configure, and deploy |
-| `decisions/` | Why important design choices were made |
-| `sessions/` | Concise history of agent work |
-| `README.md` | Human-facing project and setup guide |
+| `CURRENT.md` | 現在の実装状態と次の作業 |
+| `ARCHITECTURE.md` | 実装済みシステムの動作構成 |
+| `CODEMAP.md` | 機能からコードと検索入口への索引 |
+| `TESTING.md` | 変更内容に応じた検証方法 |
+| `SECURITY.md` | セキュリティ境界、確認事項、既知のリスク |
+| `OPERATIONS.md` | 起動、設定、デプロイ方法 |
+| `decisions/` | 重要な設計判断の理由 |
+| `sessions/` | AI 作業の簡潔な引き継ぎ |
+| `README.md` | 人間向けの概要とセットアップ |

@@ -1,8 +1,8 @@
-# Operations
+# 運用
 
-## Local development
+## ローカル開発
 
-Prerequisite: Node.js and npm compatible with the lockfile (CI currently uses Node.js 18).
+lockfile と互換性のある Node.js / npm が必要（CI は現在 Node.js 18）。
 
 ```bash
 npm ci
@@ -10,48 +10,48 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Next.js normally serves at `http://localhost:3000`. The checked-in `blog/` directory is empty, so add valid local Markdown content when testing content-driven behavior. Do not commit secrets.
+通常は `http://localhost:3000` で起動する。追跡対象の `blog/` は空なので、記事依存の挙動確認には有効な Markdown をローカルで追加する。secret は commit しない。
 
-## Environment variables
+## 環境変数
 
-| Variable | Required for | Notes |
+| 変数 | 用途 | 備考 |
 | --- | --- | --- |
-| `NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION` | Optional UI behavior | `true` skips the initial page transition |
-| `BASIC_AUTH_USERNAME` | Developer editor access | Used by middleware; use a non-empty value outside local throwaway environments |
-| `BASIC_AUTH_PASSWORD` | Developer editor access | Used by middleware; keep secret |
-| `REVALIDATE_SECRET` | Revalidation API | Sent as `/api/revalidate?secret=...`; do not expose it in browser bundles |
-| `AWS_SES_REGION` | Contact email | Falls back to `AWS_REGION`, then `AWS_DEFAULT_REGION` |
-| `AWS_SES_ACCESS_KEY_ID` | Contact email | Falls back to `AWS_ACCESS_KEY_ID` |
-| `AWS_SES_SECRET_ACCESS_KEY` | Contact email | Falls back to `AWS_SECRET_ACCESS_KEY` |
+| `NEXT_PUBLIC_DISABLE_INITIAL_ANIMATION` | 任意の UI 挙動 | `true` で初回 page transition を省略 |
+| `BASIC_AUTH_USERNAME` | 編集ページ | middleware が使用。実環境では空にしない |
+| `BASIC_AUTH_PASSWORD` | 編集ページ | secret として管理 |
+| `REVALIDATE_SECRET` | 再検証 API | `/api/revalidate?secret=...`。browser bundle に含めない |
+| `AWS_SES_REGION` | 問い合わせ | `AWS_REGION`、`AWS_DEFAULT_REGION` の順に fallback |
+| `AWS_SES_ACCESS_KEY_ID` | 問い合わせ | `AWS_ACCESS_KEY_ID` に fallback |
+| `AWS_SES_SECRET_ACCESS_KEY` | 問い合わせ | `AWS_SECRET_ACCESS_KEY` に fallback |
 
-`.env.example` documents the application-specific names. Contact handling explicitly loads Next environment files for process-manager launches.
+`.env.example` がアプリ固有名の正本である。問い合わせ処理は process manager 起動時のために Next の環境ファイルを明示的に読み込む。
 
-## Data and filesystem setup
+## データと filesystem
 
-There is no database setup. Articles are `blog/<filename>.md` files with front matter such as `title`, `date`, `category`, optional `tags`, `image`, `alt`, and `updated`, followed by Markdown content. The server process needs read access; using the editor additionally requires write/delete access and persistent storage. Ephemeral or read-only serverless filesystems are unsuitable for persistent editor writes.
+DB setup はない。記事は `blog/<filename>.md` で、`title`、`date`、`category`、任意の `tags`、`image`、`alt`、`updated` などの front matter と本文を持つ。server process は読取権限、editor 利用時は書込・削除権限と永続 storage が必要。ephemeral / read-only な serverless filesystem は編集内容の永続化に適さない。
 
-## External services
+## 外部サービス
 
-AWS SES must be configured in the selected region, with credentials authorized to send from the contact address and identities satisfying the account's SES verification/sandbox rules. Never log or commit credential values. The contact endpoint logs only which variable names were selected and SES result/error metadata.
+AWS SES には region、送信権限のある credential、account の検証 / sandbox 条件を満たす identity が必要。credential の値を記録・commit しない。contact endpoint が log に出すのは選択された変数名と SES 結果 / error metadata だけである。
 
-## Build and start
+## Build と起動
 
 ```bash
 npm run build
 npm start
 ```
 
-The repository mentions an EC2-like Node.js host but includes no PM2 file, container, infrastructure-as-code, hosting manifest, health check, backup job, or automated deployment. Establish those details in the deployment environment rather than inferring them.
+README は EC2 のような Node.js host に言及するが、PM2、container、IaC、hosting manifest、health check、backup job、自動 deploy はない。リポジトリ外の実環境を推測せず確認する。
 
 ## CI/CD
 
-GitHub Actions validates pushes and pull requests with clean install, lint, and Jest. There is no CD stage. Confirm the production Node version, environment injection, writable/persistent `blog/` storage, TLS/reverse proxy, SES access, and rollback/backup approach outside this repository.
+GitHub Actions は push / PR に対して clean install、lint、Jest を行い、deploy はしない。本番の Node version、環境変数注入、`blog/` の永続性、TLS / reverse proxy、SES access、監視、backup / rollback はリポジトリ外で確認する。
 
-## Troubleshooting
+## トラブルシュート
 
-- **Editor returns 401:** confirm Basic Auth variables and request path. API routes currently have a separate authorization gap documented in `CURRENT.md`.
-- **Revalidation returns `Invalid token`:** the request must include a token equal to `REVALIDATE_SECRET`; the current browser editor omits it.
-- **Contact returns 500:** check region and credential presence, SES permissions, verified identities, and server logs; do not print secret values.
-- **Posts are empty:** check for readable `.md` files directly under `blog/`; nested files are not discovered.
-- **Editor changes disappear:** verify `blog/` is writable and persistent across process restarts/deploys.
-- **Build cannot fetch fonts:** `next/font/google` can require outbound network access during build.
+- **Editor が 401:** Basic 認証変数と request path を確認する。API route の認可 gap は `CURRENT.md` / `SECURITY.md` を参照。
+- **再検証が `Invalid token`:** request に `REVALIDATE_SECRET` と同じ token が必要。現在の browser editor は送信しない。
+- **Contact が 500:** region、credential の存在、SES permission / identity と server log を確認し、secret 値は出力しない。
+- **記事が空:** `blog/` 直下に読取可能な `.md` があるか確認する。nested file は検出されない。
+- **編集が消える:** `blog/` が process restart / deploy をまたいで書込可能かつ永続的か確認する。
+- **Font fetch で build 失敗:** `next/font/google` は build 中に外向き network を必要とする場合がある。
