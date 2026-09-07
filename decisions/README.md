@@ -1,33 +1,24 @@
-# Decision Records
+# 設計判断記録
 
-Use this directory for significant choices whose rationale would not be recoverable from code. Do not create a record for every change.
+コードから理由を復元できない重要な選択だけを記録する。変更ごとに記録を増やさない。
 
-## Naming and lifecycle
+## 命名とライフサイクル
 
-- Name records `NNNN-short-title.md` with monotonically increasing numbers.
-- State the status and date. Preserve accepted records; supersede them with a new record rather than silently rewriting history.
-- Link affected code/docs and separate observed facts from intended behavior.
+- `NNNN-short-title.md` として連番を付ける。
+- status と date を記す。Accepted の記録は書き換えず、新しい記録で Superseded にする。
+- 関連コード / 文書へ link し、観測事実と意図を分ける。
 
-## Template
+## テンプレート
 
 ```markdown
-# NNNN: Title
+# NNNN: タイトル
 
 - Status: Proposed | Accepted | Superseded
 - Date: YYYY-MM-DD
 
-## Context
-What problem and constraints exist?
-
-## Decision
-What was decided?
-
-## Reason
-Why is this the preferred choice?
-
-## Alternatives
-What else was considered?
-
-## Consequences
-What becomes easier, harder, or required?
+## Context（背景・制約）
+## Decision（決定）
+## Reason（理由）
+## Alternatives（代案）
+## Consequences（影響）
 ```

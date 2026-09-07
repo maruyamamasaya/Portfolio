@@ -1,52 +1,53 @@
-# Current Status
+# 現在の状態
 
-## Project
+## プロジェクト
 
-Digi Goose is a Japanese portfolio, service-information, and Markdown blog site built with the Next.js App Router. The source of truth for this status is the tracked code and configuration as inspected on 2026-09-07.
+Digi Goose は、Next.js App Router で構築された日本語のポートフォリオ、サービス案内、Markdown ブログサイトである。この文書は履歴ではなく、2026-09-07 時点で追跡対象のコードと設定から確認できた現在地を示す。
 
-## Current phase
+## Current Phase（現在のフェーズ）
 
-The public site, content discovery, contact flow, and local article editor are implemented. The repository currently contains no published Markdown posts (`blog/` contains only `.gitkeep`), so blog-driven pages render an empty content state until posts are supplied.
+公開サイト、記事探索、問い合わせ、ローカル記事編集は実装済み。`blog/` には `.gitkeep` しかなく、追跡対象の公開記事が追加されるまで記事依存ページは空状態になる。
 
-## Implemented
+## Implemented（実装済み）
 
-- Public portfolio/service/pricing/policy pages and responsive shared navigation.
-- Filesystem-backed Markdown posts, parsing, article pages, backlinks, tags, categories, search, RSS, and sitemaps.
-- Browser editor for creating, reading, updating, deleting, previewing, and revalidating Markdown posts.
-- Basic authentication middleware for `/developer_edit` page paths.
-- Contact forms delivered through AWS SES, with validation, honeypot, and per-process in-memory rate limiting.
-- Jest unit/API-route tests, ESLint, TypeScript configuration, production build scripts, and GitHub Actions lint/test CI.
+- ポートフォリオ、サービス、料金、ポリシーの公開ページとレスポンシブな共通ナビゲーション。
+- ファイルシステム上の Markdown 記事、解析、記事ページ、被リンク、タグ、カテゴリ、検索、RSS、サイトマップ。
+- Markdown 記事の作成、読取、更新、削除、プレビュー、再検証を行うブラウザ編集画面。
+- `/developer_edit` ページ配下を対象とする Basic 認証ミドルウェア。
+- 入力検証、ハニーポット、プロセス内レート制限を備え、AWS SES で送信する問い合わせフォーム。
+- Jest の単体・API ルートテスト、ESLint、TypeScript、プロダクションビルド用スクリプト、GitHub Actions の lint/test CI。
 
-## In progress
+## In Progress（進行中）
 
-- No feature work is explicitly marked in progress in source, tests, or repository documentation.
+- ソース、テスト、既存文書に、進行中と明記された機能開発はない。
 
-## Not implemented / not evidenced
+## Known Issues（既知の問題）
 
-- No database, ORM, schema, migration, or persistent application datastore is present. Posts use local files.
-- No comment feature exists.
-- No integration-test or browser E2E suite is configured.
-- No deployment-as-code, container definition, or automated deployment job is tracked; CI only validates.
-- No standalone `typecheck` npm script exists (use `npx tsc --noEmit`).
+- 記事の書込・削除 API は Basic 認証ミドルウェアの matcher 外にある。編集ページだけの保護では API の認可にならない。
+- `DeveloperEditor` は必須の `secret` クエリなしで `/api/revalidate` を呼ぶため、`REVALIDATE_SECRET` 設定時は 401 になる。
+- 問い合わせのレート制限はプロセス内だけで、再起動時に消え、複数インスタンスで共有されない。
+- ルートの `middleware.ts` と `src/middleware.ts` が同じ実装を重複保持し、有効な保守場所が不明瞭。
+- UI と metadata が参照する画像の一部は追跡対象の `public/` にない。表示の完全性は外部からの配置に依存する。
 
-## Known issues
+## Technical Debt（技術的負債）
 
-- The post write/delete API paths are outside the Basic Auth middleware matcher; protecting the editor page alone does not establish API authorization.
-- `DeveloperEditor` calls `/api/revalidate` without the required `secret` query parameter, so revalidation returns 401 when `REVALIDATE_SECRET` is configured.
-- Contact rate limiting is process-local and resets on restart; it is not shared across instances.
-- Root `middleware.ts` and `src/middleware.ts` duplicate the same implementation, making the effective maintenance location ambiguous.
-- Several image paths referenced by UI/metadata are absent from the tracked `public/` files; visual completeness depends on externally provisioned assets.
+- テスト対象は記事ユーティリティ、Markdown 変換、カテゴリ、アイコン補助処理、2つの GET ルートに限られ、問い合わせ、変更系 API、認可、再検証、ページ描画、ブラウザ操作は未網羅。
+- `README.en.md` は日本語 README と別管理で、内容がずれる可能性がある。
+- CI は Node.js 18 と GitHub Actions v3 を使用する。ランタイムや依存との互換性は変更前に意図的な確認が必要。
 
-## Technical debt
+## Immediate Next（直近の候補）
 
-- Tests cover post utilities, Markdown conversion, categories, one icon helper, and two GET routes, but not contact, mutations, authorization, revalidation, page rendering, or browser journeys.
-- `README.en.md` is maintained separately and may drift from the Japanese README.
-- The CI uses Node.js 18 and v3 GitHub Actions; runtime/dependency compatibility should be deliberately reviewed before changing them.
+1. 編集画面と記事変更 API 全体の認可境界を決定・記録し、認可テストを追加する。
+2. secret をクライアントへ露出しない安全なサーバー側再検証フローを定義する。
+3. 問い合わせと変更系 API のテストを追加し、その後に最小のブラウザ・スモークテストを追加する。
+4. 本番記事をリポジトリと一緒に配布するか、外部から mount/provision するか決定する。
+5. 対象デプロイ環境で Next.js の解決規則を確認してから、重複ミドルウェアを統合する。
 
-## Next actions
+## Unknowns（判断不能）
 
-1. Decide and document an authorization boundary for all editor and post-mutation APIs, then add authorization tests.
-2. Define a safe server-side revalidation flow rather than exposing a secret to client code.
-3. Add contact and mutation route tests, followed by a minimal browser smoke test.
-4. Decide whether production content is deployed with the repository or mounted/provisioned externally.
-5. Remove or consolidate duplicate middleware only after verifying Next.js resolution in the target deployment.
+- 本番のホスティング、Node.js バージョン、プロセス管理、TLS、監視、バックアップ、ロールバック方法はリポジトリから確認できない。
+- 本番記事と不足画像をどこから供給し、永続化するかは確認できない。
+- ファイルシステムを記事ストアに選んだ当初の理由と、将来の CMS / DB 移行意図は記録されていない。
+- 2つのミドルウェアのうち本番でどちらが有効かを示すデプロイ時の検証結果はない。
+
+未実装と判断した項目として、DB / ORM / migration、コメント機能、結合・E2E テスト、デプロイ自動化、単独の `typecheck` npm script は存在しない。

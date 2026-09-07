@@ -192,6 +192,7 @@ BASIC_AUTH_PASSWORD=your_password
 - [`ARCHITECTURE.md`](ARCHITECTURE.md): 現在のシステム構成とデータフロー
 - [`CODEMAP.md`](CODEMAP.md): 機能から主要コードと検索語へ進む索引
 - [`TESTING.md`](TESTING.md): 変更内容に応じた検証方法
+- [`SECURITY.md`](SECURITY.md): セキュリティ境界、既知のリスク、未確認事項
 - [`OPERATIONS.md`](OPERATIONS.md): ローカル起動、環境変数、ビルド、デプロイ上の制約
 - [`AGENTS.md`](AGENTS.md): AI エージェントの共通作業ルール
 - [`decisions/`](decisions/README.md): 重要な設計判断の理由

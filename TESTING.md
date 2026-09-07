@@ -1,61 +1,59 @@
-# Testing and Validation
+# テストと検証
 
-## Test strategy
+## 方針
 
-Use the smallest relevant check while iterating, then the required repository checks before committing code. Current automated coverage is Jest unit-level testing of library behavior and direct invocation of selected route handlers. There is no configured integration environment or browser E2E framework.
+作業中は変更に最も近い検証を使い、コード変更のコミット前には必須のリポジトリ検証を行う。現在の自動テストは、ライブラリの Jest 単体テストと一部 Route Handler の直接呼出しである。結合環境と browser E2E framework はない。
 
-## Lint
+## 利用可能なコマンド
+
+### Lint
 
 ```bash
 npm run lint
 ```
 
-Runs Next.js ESLint with `.eslintrc.json`. Required before committing code changes.
+`.eslintrc.json` を使う Next.js ESLint。コード変更時は必須。
 
-## Typecheck
+### 型検査
 
 ```bash
 npx tsc --noEmit
 ```
 
-There is no `typecheck` npm script. TypeScript is strict in `tsconfig.json`, although selected strict sub-options are relaxed.
+`typecheck` npm script はない。`tsconfig.json` は strict だが、一部 strict option は緩和されている。
 
-## Unit and route tests
+### 単体・Route Handler テスト
 
 ```bash
 npm test
 npm test -- --runInBand src/lib/__tests__/posts.test.ts
 ```
 
-Jest discovers `*.test.ts` files. Existing tests cover post helpers, categories, Markdown conversion, arrow asset selection, and GET handlers for posts/search data. The tests use the real local `blog/` directory, which is empty by default; one Markdown test creates and removes a temporary post.
+Jest は `*.test.ts` を検出する。既存テストは記事 helper、カテゴリ、Markdown 変換、矢印 asset 選択、posts / search-data の GET handler を対象とする。実際の `blog/` を使い、Markdown テストの1つは一時記事を作成後に削除する。
 
-## Integration tests
-
-No distinct integration-test command or external-service test environment is configured. Direct route-handler tests are not a substitute for testing middleware, a running server, filesystem deployment semantics, or AWS SES.
-
-## E2E
-
-No E2E runner or browser suite is configured. For user-visible changes, manually run `npm run dev` and verify relevant routes; add a screenshot when the task requires or produces a perceptible UI change.
-
-## Build
+### Build
 
 ```bash
 npm run build
 ```
 
-Creates the production Next.js build and performs framework compilation/type validation. It may require network access because the layout uses Google fonts. Run for routing, configuration, dependency, rendering, or release-wide changes.
+production build と framework の compile / 型検証を行う。layout が Google Fonts を使うためネットワークを必要とする場合がある。
 
-## Change-to-check matrix
+## 未整備の検証
 
-| Change | Minimum checks |
+個別の integration test command、外部 service test environment、E2E runner はない。Route Handler の直接テストだけでは middleware、稼働 server、デプロイ先 filesystem、AWS SES を検証できない。見た目を変更した場合は `npm run dev` で対象 route を確認し、依頼または知覚可能な UI 変更がある場合は screenshot を残す。
+
+## 変更別の最小検証
+
+| 変更 | 最小検証 |
 | --- | --- |
-| Documentation/comments only | Link/path review; tests and lint optional |
-| UI/component | Relevant Jest test if present + `npm run lint` + `npx tsc --noEmit`; manual route check |
-| Post/Markdown library | Targeted library test + `npm test` + `npm run lint` + typecheck |
-| API/auth/contact | Relevant route tests (add if absent) + `npm test` + lint + typecheck |
-| Routing/config/dependency/global layout | Full lint + typecheck + tests + build |
-| Static content or assets | Validate referenced paths + affected page/build |
+| 文書・コメントのみ | link / path の確認。lint と test は任意 |
+| UI / component | 関連 Jest + lint + typecheck + 手動 route 確認 |
+| 記事 / Markdown library | 対象 test + 全 Jest + lint + typecheck |
+| API / auth / contact | 関連 route test（なければ追加）+ 全 Jest + lint + typecheck |
+| routing / config / dependency / global layout | lint + typecheck + 全 Jest + build |
+| 静的 content / asset | 参照 path + 対象 page または build |
 
 ## CI
 
-`.github/workflows/ci.yml` runs on every push and pull request using Node.js 18: `npm ci`, `npm run lint`, then `npm test`. Typecheck is partly exercised by tooling/build but is not a separate CI step, and CI does not run `npm run build`.
+`.github/workflows/ci.yml` は push / pull request ごとに Node.js 18 で `npm ci`、`npm run lint`、`npm test` を実行する。独立した typecheck と build は CI に含まれず、CD stage もない。

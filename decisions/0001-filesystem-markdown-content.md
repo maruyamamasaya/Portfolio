@@ -1,26 +1,26 @@
-# 0001: Record the current filesystem Markdown architecture
+# 0001: 現在の filesystem Markdown 構成を記録する
 
-- Status: Accepted (existing implementation, rationale partly unknown)
+- Status: Accepted（既存実装。当初の理由は一部不明）
 - Date: 2026-09-07
 
-## Context
+## Context（背景）
 
-The implemented application reads and mutates `blog/*.md` through Node.js filesystem APIs. No database, object-storage adapter, or CMS implementation is present. Future agents need to recognize the operational constraint without treating undocumented original intent as known.
+実装は Node.js filesystem API で `blog/*.md` を読み書きする。DB、object storage adapter、CMS は存在しない。将来の作業者がこの運用制約を認識しつつ、文書化されていない当初の意図まで事実と扱わないようにする必要がある。
 
-## Decision
+## Decision（決定）
 
-Document the local filesystem as the current content system and preserve it unless a separately approved change replaces it. Treat Markdown/front matter as content records and `data/categories.ts` as category metadata.
+ローカル filesystem を現在の記事システムとして文書化し、別途承認された変更で置き換えるまでは維持する。Markdown / front matter を記事 record、`data/categories.ts` をカテゴリ metadata として扱う。
 
-## Reason
+## Reason（理由）
 
-This accurately describes the deployed code path and avoids accidental introduction of a second source of truth. The original reason for selecting filesystem storage is not recorded.
+現在のコード経路を正確に表し、第二の正本を不用意に導入しないため。filesystem を最初に選んだ理由は記録されていない。
 
-## Alternatives
+## Alternatives（代案）
 
-- Database/ORM-backed posts.
-- External headless CMS.
-- Object storage or a Git-backed publishing flow.
+- DB / ORM ベースの記事。
+- 外部 headless CMS。
+- object storage または Git ベースの公開フロー。
 
-## Consequences
+## Consequences（影響）
 
-Runtime editing requires a writable, persistent, shared filesystem; multi-instance or ephemeral deployments can lose or diverge content. Backups and deployment content provisioning are operational responsibilities until another architecture is deliberately selected.
+実行時編集には書込可能で永続的な共有 filesystem が必要。複数 instance や ephemeral deployment では記事が消失・不整合になる可能性がある。別方式を意図的に選ぶまで、backup と記事 provision は運用側の責務となる。
