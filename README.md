@@ -2,8 +2,6 @@
 
 デジグース｜中高生の「できた！」を育てる、家庭教師型パソコンスクール
 
-![demo](public/image/demo.gif)
-
 Digi Goose は、PCトラブルから最新AI活用までを扱う技術サポートブログ兼ポートフォリオサイトです。Markdownで記事を管理し、編集ページから手軽に投稿できます。
 
 > **一時的なお知らせ**
@@ -26,12 +24,11 @@ Digi Goose は、PCトラブルから最新AI活用までを扱う技術サポ�
 - [ライセンス](#ライセンス)
 - [作者・連絡先](#作者連絡先)
 - [貢献方法](#貢献方法)
+- [開発ドキュメント](#開発ドキュメント)
 
 ## デモ
 
-アプリの動作イメージは以下の GIF を参考にしてください。
-
-![デモ GIF](public/image/demo.gif)
+デモ用 GIF は現在リポジトリに含まれていません。ローカルで `npm run dev` を実行し、実際の画面を確認してください。
 
 ## 主な機能
 
@@ -47,7 +44,6 @@ Digi Goose は、PCトラブルから最新AI活用までを扱う技術サポ�
 - React / Next.js
 - TypeScript
 - Tailwind CSS
-- Prisma
 - Framer Motion
 
 ## ディレクトリ構成
@@ -63,9 +59,7 @@ blog/           # 公開ブログ記事
 
 ## Markdown ファイル構成
 
-ブログ記事の Markdown ファイルのフォーマットは `docs/markdown-structure.md` にまとめています。`tags` や `updated` などのメタ情報もここで確認できます。
-API エンドポイントの詳細は `docs/api-routes.md` に記載しています。
-レイアウトに使う主な Tailwind クラスは `docs/layout.md` にまとめています。
+ブログ記事は `blog/` 直下の Markdown ファイルとして管理され、`title`、`date`、`category`、`tags`、`image`、`alt`、`updated` などの front matter を利用できます。実装上の読み書きの流れは [`ARCHITECTURE.md`](ARCHITECTURE.md) と [`CODEMAP.md`](CODEMAP.md) を参照してください。
 
 ### チャット吹き出し記法
 
@@ -149,15 +143,15 @@ BASIC_AUTH_PASSWORD=your_password
 ## 開発者向け編集ページ
 
 `/developer_edit` ではブラウザ上で Markdown 記事の作成や編集が行えます。公開ページの改ざんを防ぐため、このページには Basic 認証を適用済みです。`.env.local` に `BASIC_AUTH_USERNAME` と `BASIC_AUTH_PASSWORD` を設定して利用してください。
-詳細な使い方は [`docs/editor.md`](docs/editor.md) を参照してください。
+実装上の制約と環境設定は [`OPERATIONS.md`](OPERATIONS.md) を参照してください。
 
 ## 画像ファイルについて
 
-このリポジトリではバイナリファイル（画像など）をサポートしていません。画像は GitHub で管理せず、FTP で別途アップロードしてください。アップロードや生成 AI などで新規ファイルを作成しないようご注意ください。ヘッダーアイコンやヒーロー画像、フッターアイコンは `/images` に配置してお使いください。
+新しいバイナリ画像はリポジトリへ追加せず、既存の `public/` または `data/` の素材を利用してください。実運用で外部配置する画像の管理方法は、このリポジトリでは定義されていません。
 
 ### 画像の配置先と推奨サイズ
 
-アプリで利用するアイコンや背景画像は `public/image/` ディレクトリに配置します。配置後は URL として `/images/ファイル名` を指定してください。
+現在追跡されている画像は主に `public/images/` と `public/icons/` にあります。`public/images/example.svg` は URL `/images/example.svg` として参照されます。
 
 **注意**: Next.js の仕様上、`public` フォルダ以外に置いた画像はブラウザから読み込めません。`app/images` や `src/images` などに配置しないようにしてください。
 
@@ -169,8 +163,8 @@ BASIC_AUTH_PASSWORD=your_password
 | ファビコン       | `favicon.png`     | 1:1              | 32×32          |
 | OGP 画像         | `eye-catch.png`   | 128:67           | 1280×670       |
 
-`favicon.png` と `eye-catch.png` は `public/image` ディレクトリに配置しています。利用する際はそれぞれ `/images/favicon.png` と `/images/eye-catch.png` を参照してください。
-ArcanaCardCarousel コンポーネントで使用するアルカナカード画像は `public/images/arcana` に配置しており、拡張子は `.png` です。
+表中のファイル名は推奨名ですが、現在の Git 管理対象には含まれていないものがあります。デプロイ先で別途供給する場合も、コードが参照する URL と一致することを確認してください。
+`ArcanaCardCarousel` が使用するアルカナカード画像は `public/images/arcana/` にあり、現在追跡されている拡張子は `.svg` です。
 
 ## Todo
 
@@ -189,3 +183,18 @@ ArcanaCardCarousel コンポーネントで使用するアルカナカード画�
 ## 貢献方法
 
 不具合報告や機能提案は Issues から受け付けています。プルリクエストも大歓迎です。
+
+## 開発ドキュメント
+
+人間向けの概要とセットアップはこの README に残し、調査・設計・検証の詳細は目的別に分けています。
+
+- [`CURRENT.md`](CURRENT.md): 実装済み・未実装・既知の問題・次の作業
+- [`ARCHITECTURE.md`](ARCHITECTURE.md): 現在のシステム構成とデータフロー
+- [`CODEMAP.md`](CODEMAP.md): 機能から主要コードと検索語へ進む索引
+- [`TESTING.md`](TESTING.md): 変更内容に応じた検証方法
+- [`OPERATIONS.md`](OPERATIONS.md): ローカル起動、環境変数、ビルド、デプロイ上の制約
+- [`AGENTS.md`](AGENTS.md): AI エージェントの共通作業ルール
+- [`decisions/`](decisions/README.md): 重要な設計判断の理由
+- [`sessions/`](sessions/README.md): 短い作業引き継ぎ記録
+
+AI エージェントは `CURRENT.md` から読み始め、必要な文書だけを開き、`CODEMAP.md` の検索語を使って対象コードへ進んでください。
