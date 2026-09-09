@@ -4,9 +4,9 @@
 
 ## アプリケーションの入口と共通 shell
 
-**主要ファイル:** `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/globals.css`, `src/app/mobile.css`, `src/app/components/HomeWindow.tsx`, `src/app/components/Header.tsx`, `src/app/components/Footer.tsx`, `src/config/site.ts`
+**主要ファイル:** `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/globals.css`, `src/app/mobile.css`, `src/app/components/HomeWindow.tsx`, `src/app/components/Header.tsx`, `src/app/components/Footer.tsx`, `src/config/site.ts`, `data/image-assets.json`, `IMAGE_ASSETS.md`
 
-**検索語:** `RootLayout`, `HomePage`, `HomeWindow`, `siteConfig`, `siteAssets`, `metadata`, `ThemeProvider`
+**検索語:** `RootLayout`, `HomePage`, `HomeWindow`, `siteConfig`, `image-assets`, `replacementUrl`, `metadata`, `ThemeProvider`
 
 ## ブログと Markdown
 

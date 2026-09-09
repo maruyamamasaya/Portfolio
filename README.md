@@ -164,6 +164,8 @@ BASIC_AUTH_PASSWORD=your_password
 | OGP 画像         | `eye-catch.png`   | 128:67           | 1280×670       |
 
 表中のファイル名は推奨名ですが、現在の Git 管理対象には含まれていないものがあります。デプロイ先で別途供給する場合も、コードが参照する URL と一致することを確認してください。
+
+未配置画像は現在、仮画像へ転送されます。本画像のURL設定と対象一覧は [`IMAGE_ASSETS.md`](IMAGE_ASSETS.md) および `data/image-assets.json` を参照してください。
 `ArcanaCardCarousel` が使用するアルカナカード画像は `public/images/arcana/` にあり、現在追跡されている拡張子は `.svg` です。
 
 ## Todo

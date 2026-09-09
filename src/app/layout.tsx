@@ -28,7 +28,7 @@ export default async function RootLayout({
     <html lang="ja">
       <head><link rel="alternate" type="application/rss+xml" href="/rss.xml" /></head>
       <body
-        className="min-h-screen bg-gray-100 dark:bg-gray-700 text-light dark:text-dark font-sans font-normal antialiased transition-base"
+        className="min-h-screen bg-[var(--site-paper)] text-[var(--site-ink)] font-sans font-normal antialiased transition-base"
       >
         <ThemeProvider>
           <Header />

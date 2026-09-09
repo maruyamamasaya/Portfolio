@@ -33,6 +33,7 @@ push / PR -> GitHub Actions: npm ci -> lint -> Jest
 | `data/` | 静的カテゴリ定義 |
 | `blog/` | 実行時 Markdown ストア（Git 上は現在空） |
 | `public/` | 静的 SVG と placeholder |
+| `data/image-assets.json` | 欠落画像の仮画像・本番URLマッピング |
 | `__tests__/`, `src/**/__tests__/` | Jest テスト |
 | `.github/workflows/` | 検証 CI |
 
@@ -84,7 +85,9 @@ push / PR -> GitHub Actions: npm ci -> lint -> Jest
 
 DB はなく、記事は `fs/promises`、カテゴリは TypeScript 配列である。書込の永続性と複数 instance の整合性はデプロイ先 filesystem に依存する。2つの middleware は `/developer_edit` 配下だけを Basic 認証し、API 認可は未実装。`/api/revalidate` は別途 `REVALIDATE_SECRET` を比較する。
 
-外部依存は問い合わせ用 AWS SES、build 時の `next/font/google`、`next/image` が許可する Google Cloud Storage の asset host である。標準 AWS の region / credential 環境変数は fallback として使われる。運用条件は `OPERATIONS.md`、信頼境界と既知リスクは `SECURITY.md` を正本とする。
+外部依存は問い合わせ用 AWS SES と、`next/image` が許可する Google Cloud Storage の asset host である。標準 AWS の region / credential 環境変数は fallback として使われる。運用条件は `OPERATIONS.md`、信頼境界と既知リスクは `SECURITY.md` を正本とする。
+
+未配置のローカル画像URLは `next.config.js` の rewrite が `data/image-assets.json` を読み、`replacementUrl` または既存SVGの `temporary` へ転送する。差し替え手順は `IMAGE_ASSETS.md` を正本とする。
 
 ## デプロイ
 

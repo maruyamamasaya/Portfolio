@@ -30,6 +30,8 @@ npm run dev
 
 DB setup はない。記事は `blog/<filename>.md` で、`title`、`date`、`category`、任意の `tags`、`image`、`alt`、`updated` などの front matter と本文を持つ。server process は読取権限、editor 利用時は書込・削除権限と永続 storage が必要。ephemeral / read-only な serverless filesystem は編集内容の永続化に適さない。
 
+未配置画像は `data/image-assets.json` の `temporary` へ転送される。本画像へ切り替える場合は `IMAGE_ASSETS.md` に従い、対象項目の `replacementUrl` を更新して再ビルドする。
+
 ## 外部サービス
 
 AWS SES には region、送信権限のある credential、account の検証 / sandbox 条件を満たす identity が必要。credential の値を記録・commit しない。contact endpoint が log に出すのは選択された変数名と SES 結果 / error metadata だけである。

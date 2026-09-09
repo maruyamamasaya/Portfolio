@@ -124,6 +124,25 @@
 .portfolio-contact > div > span { @apply text-blue-100; }
 .portfolio-contact a { @apply inline-flex min-h-14 items-center gap-5 rounded-full bg-white px-7 font-bold text-slate-950; }
 
+/* Shared visual language for the remaining portfolio pages. */
+#main-content > div:not(.home-shell) { color: var(--site-ink); }
+#main-content > div:not(.home-shell) > h1 {
+  @apply mb-10 border-b pb-6 text-3xl font-bold tracking-tight sm:text-5xl;
+  border-color: var(--site-line);
+}
+#main-content > div:not(.home-shell) > h1::before {
+  content: 'PORTFOLIO / ';
+  @apply mb-3 block text-xs font-bold tracking-[0.18em];
+  color: var(--site-accent);
+}
+#main-content > div:not(.home-shell) h2 { @apply tracking-tight; }
+#main-content > div:not(.home-shell) p { @apply leading-7; }
+#main-content > div:not(.home-shell) table { @apply overflow-hidden rounded-2xl border; border-color: var(--site-line); }
+#main-content > div:not(.home-shell) th { background: color-mix(in srgb, var(--site-accent) 8%, var(--site-paper)); }
+.main-content, .widget { @apply rounded-2xl shadow-sm; border-color: var(--site-line); background: var(--site-paper); }
+.dark .main-content, .dark .widget { background: var(--site-paper); color: var(--site-ink); }
+.section-spacing > h2 { @apply border-b pb-4 text-3xl; border-color: var(--site-line); }
+
 /* unified transition class respecting user motion preference */
 .transition-base {
   @apply motion-safe:transition-all motion-reduce:transition-none duration-300 ease-in-out;
