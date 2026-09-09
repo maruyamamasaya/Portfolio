@@ -14,6 +14,16 @@
 
 **検索語:** `getSortedPosts`, `getPost`, `markdownToHtml`, `getBacklinks`, `Post`, `:::chat`, `FileNotFoundError`
 
+## CMS 基盤（記事 + Works への拡張）
+
+**主要ファイル:** `src/app/developer_edit/page.tsx`, `src/app/components/DeveloperEditor.tsx`, `src/app/api/posts/route.ts`, `src/app/api/posts/[filename]/route.ts`, `src/app/api/works/route.ts`, `src/app/api/works/[filename]/route.ts`, `src/app/works/page.tsx`, `src/app/works/[slug]/page.tsx`, `src/app/works/preview/[slug]/page.tsx`, `src/lib/works.ts`, `src/lib/validateFilename.ts`, `content/works/`, `data/image-assets.json`
+
+**検索語:** `POST /api/posts`, `PUT /api/posts`, `DELETE /api/posts`, `POST /api/works`, `PUT /api/works`, `DELETE /api/works`, `getSortedWorks`, `getWork`, `draft`, `publishedAt`, `includeScheduled`, `works preview`, `slug`
+
+### 追加検討
+
+再設計時は、この入口群を共通化し、作品データを `Post` と同じインデックス・編集・再検証の導線に寄せる。作品詳細ページは `src/app/works/page.tsx` と `src/app/works/[slug]/page.tsx`、管理者確認は `src/app/works/preview/[slug]/page.tsx` が現実装入口になる。将来予約公開運用は `src/lib/works.ts` の `WorkVisibilityOptions` から拡張する。
+
 ## 検索、タグ、カテゴリ
 
 **主要ファイル:** `src/app/search/page.tsx`, `src/app/api/search-data/route.ts`, `src/app/tags/`, `src/app/categories/`, `src/lib/categories.ts`, `src/lib/categoryTree.ts`, `data/categories.ts`
@@ -30,7 +40,7 @@
 
 **主要ファイル:** `middleware.ts`, `src/middleware.ts`, `src/app/api/revalidate/route.ts`
 
-**検索語:** `BASIC_AUTH_USERNAME`, `authorization`, `matcher`, `REVALIDATE_SECRET`, `revalidatePath`, `Invalid token`
+**検索語:** `BASIC_AUTH_USERNAME`, `authorization`, `matcher`, `REVALIDATE_SECRET`, `WORKS_PREVIEW_SECRET`, `revalidatePath`, `Invalid token`, `/works/preview`
 
 ## 問い合わせと AWS SES
 

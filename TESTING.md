@@ -54,6 +54,19 @@ production build と framework の compile / 型検証を行う。layout が Goo
 | routing / config / dependency / global layout | lint + typecheck + 全 Jest + build |
 | 静的 content / asset | 参照 path + 対象 page または build |
 
+## リデザイン / CMS再設計向け追加検証（次フェーズ）
+
+- 作品（Works）と記事を同一編集 API で扱うなら、ルートハンドラの CRUD と認可テストを必須化する。
+- API テスト追加:
+  - `POST /api/posts` と `GET /api/posts`（新規投稿・一覧）
+  - `GET /api/posts/[filename]`（存在時/不存在時）
+  - `PUT /api/posts/[filename]`（更新）
+  - `DELETE /api/posts/[filename]`（削除）
+  - revalidate 呼び出し時の secret 分岐
+- Works 追加時は `works` 対応の `GET /api/works` / `GET/PUT/DELETE /api/works/[slug]` の同型テストを先に書き、既存ブログ API と一致した仕様を確認する。
+- デザイン再設計は、主要4ルート（`/` `/about` `/works` `/blog`）の手動視認確認を毎回行う。  
+  可能なら `npm run dev` を使ってスクリーンショット差分を残し、before/after を比較する。
+
 ## CI
 
 `.github/workflows/ci.yml` は push / pull request ごとに Node.js 18 で `npm ci`、`npm run lint`、`npm test` を実行する。独立した typecheck と build は CI に含まれず、CD stage もない。

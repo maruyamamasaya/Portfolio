@@ -1,133 +1,83 @@
-'use client';
-
-import BlogNavButtons from '../components/BlogNavButtons';
-import Card from '../components/Card';
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
+import { getSortedWorks } from '@/lib/works';
+import Card from '../components/Card';
 
-import ArtworkSlideshow, { Artwork } from '../components/ArtworkSlideshow';
-import ArcanaWorkCarousel from '../components/ArcanaWorkCarousel';
+export default async function Works() {
+  const works = await getSortedWorks();
 
-const artworks: Artwork[] = [
-  {
-    id: 1,
-    title: 'デジタルアート 001',
-    year: 2023,
-    medium: 'Digital',
-    description: '抽象的な形状をモチーフにした実験的作品。',
-    image: '/images/img1.png',
-  },
-  {
-    id: 2,
-    title: '風景スケッチ',
-    year: 2022,
-    medium: 'Watercolor',
-    description: '旅行先で描いた水彩スケッチ。',
-    image: '/images/img2.png',
-  },
-  {
-    id: 3,
-    title: 'モノクロ写真集',
-    year: 2021,
-    medium: 'Photography',
-    description: '街並みをテーマにしたシリーズ。',
-    image: '/images/img3.png',
-  },
-  {
-    id: 4,
-    title: '立体コラージュ',
-    year: 2020,
-    medium: 'Mixed Media',
-    description: '紙と布を組み合わせた立体作品。',
-    image: '/images/img4.png',
-  },
-  {
-    id: 5,
-    title: 'デジタルイラスト',
-    year: 2019,
-    medium: 'Digital',
-    description: 'キャラクターデザインの習作。',
-    image: '/images/img5.png',
-  },
-  {
-    id: 6,
-    title: '日本の森とデジタル',
-    year: 2024,
-    medium: 'Digital',
-    description:
-      '自然の森が複雑な生態系を通じて無数の生命を育むように、AIは膨大なデータを吸収し、深層学習という「見えない森」を形成していく。一本一本の樹木が森を成すように、一つひとつのパラメータが知性を形づくる──自然とデジタル、その生成の原理は驚くほど似ている。',
-    image: '/images/artwork01-mori.png',
-  },
-  {
-    id: 7,
-    title: '日本の森とデジタル II',
-    year: 2024,
-    medium: 'Digital',
-    description:
-      '自然の森が複雑な生態系を通じて無数の生命を育むように、AIは膨大なデータを吸収し、深層学習という「見えない森」を形成していく。一本一本の樹木が森を成すように、一つひとつのパラメータが知性を形づくる──自然とデジタル、その生成の原理は驚くほど似ている。',
-    image: '/images/artwork02-mori.png',
-  },
-];
-
-const arcanaImages = Array.from({ length: 12 }, (_, i) =>
-  `/images/arcana/arcanacard${String(i + 1).padStart(5, '0')}.svg`,
-);
-
-export default function Works() {
-  const regularArtworks = artworks.filter((a) => a.id <= 5);
-  const slideshowArtworks = artworks.filter((a) => a.id > 5);
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8">
-      <BlogNavButtons />
-      <h1 className="text-3xl font-extrabold mb-6">Works</h1>
-      <div className="mb-6 space-y-4">
-        <h2 className="text-xl font-bold">かたちにした思考の軌跡</h2>
-        <p>
-          このセクションでは、これまでに制作してきたビジュアル作品やプロジェクトを紹介しています。アイデアの芽から完成に至るまでのプロセスも含めて、思考と表現の融合を記録しています。
+    <div className="portfolio-work-page max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-10">
+      <header className="mb-8">
+        <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Portfolio Works</p>
+        <h1 className="text-3xl font-semibold tracking-tight mt-2">制作実績</h1>
+        <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-500">
+          依頼の背景と解決の経路を、作品として見える化しました。  
+          まずはこの一覧で方向性をご確認ください。
         </p>
-        <p>
-          日々の創作活動の中で生まれた作品をまとめています。ジャンルや形式を問わず、試行錯誤や発見の過程を大切にしながら、表現のかたちを追求しています。
-        </p>
-      </div>
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-        {regularArtworks.map((art) => (
-          <Card key={art.id} className="space-y-2">
-            <Image
-              src={art.image}
-              alt={art.title}
-              width={600}
-              height={400}
-              className="w-full h-auto object-cover rounded"
-            />
-            <h3 className="font-semibold">{art.title}</h3>
-            <p className="text-sm text-gray-500">
-              {art.year} / {art.medium}
+      </header>
+
+      <section className="grid gap-5 sm:grid-cols-2">
+        {works.map((work) => (
+          <Card key={work.slug} className="space-y-3">
+            <Link href={`/works/${work.slug}`} className="block">
+            {(() => {
+              const image = work.image ?? '/images/img1.svg';
+              const alt = work.alt ?? `${work.title}のバナー`;
+              return (
+                <Image
+                  src={image}
+                  alt={alt}
+                  width={720}
+                  height={450}
+                  className="w-full h-auto rounded-lg object-cover"
+                />
+              );
+            })()}
+            </Link>
+            <div className="text-xs uppercase tracking-[0.15em] text-slate-500">
+              {work.publishedAt || work.date || '—'}
+            </div>
+            <Link href={`/works/${work.slug}`} className="text-xl font-semibold leading-tight">
+              {work.title}
+            </Link>
+            <p className="text-sm leading-7 text-slate-600 dark:text-slate-300">
+              {work.summary}
             </p>
-            {art.description && <p className="text-sm">{art.description}</p>}
+            <div className="flex flex-wrap gap-2 pt-1">
+              {work.tags?.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs rounded-full border border-slate-300 dark:border-slate-700 px-3 py-1 text-slate-600 dark:text-slate-300"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </Card>
         ))}
-      </div>
-      {slideshowArtworks.length > 0 && (
-        <div className="mt-8">
-          <ArtworkSlideshow artworks={slideshowArtworks} />
-        </div>
-      )}
-      <div className="mt-8">
-        <Card className="space-y-3" disableHover>
-          <h2 className="text-xl font-bold">アルカナ公式 TCGカード</h2>
-          <p>
-            神秘的なアルカナの力を駆使して戦うターン制カードゲームを開発中。
-            美麗なイラストと戦略性が魅力です。
+      </section>
+
+      <section className="mt-12">
+        <Card className="space-y-4">
+          <p className="text-sm uppercase tracking-[0.2em] text-slate-500">More</p>
+          <h2 className="text-2xl font-semibold">過去の制作と、これから進める作品</h2>
+          <p className="text-sm text-slate-600 dark:text-slate-300">
+            実制作だけでなく、Journal と連動して更新内容を蓄積できる構成を次のフェーズで整えます。
           </p>
-          <ArcanaWorkCarousel images={arcanaImages} autoSlideInterval={3000} />
-          <Link
-            href="/arcana"
-            className="inline-block px-4 py-2 bg-primary text-white rounded shadow"
-          >
-            特設ページを見る
-          </Link>
+          <div className="flex gap-4">
+            <Link href="/blog" className="text-sm border-b border-current">
+              Journalを見る
+            </Link>
+            <Link href="/about" className="text-sm border-b border-current">
+              プロフィールを見る
+            </Link>
+            <Link href="/contact" className="text-sm border-b border-current">
+              お問い合わせ
+            </Link>
+          </div>
         </Card>
-      </div>
+      </section>
     </div>
   );
 }

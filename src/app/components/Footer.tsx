@@ -10,7 +10,17 @@ export default function Footer() {
           <p>{siteConfig.description}</p>
         </div>
         <div className="site-footer-links">
-          <div><p>MENU</p>{siteConfig.navigation.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</div>
+          <div>
+            <p>PORTFOLIO</p>
+            <Link href="/works">制作実績</Link>
+            <Link href="/about">プロフィール</Link>
+            <Link href="/blog">Journal</Link>
+          </div>
+          <div>
+            <p>CONTACT</p>
+            <Link href="/contact">コンタクト</Link>
+            <Link href="/contact/business">ビジネス窓口</Link>
+          </div>
           <div><p>SOCIAL</p>{siteConfig.social.map((item) => <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">{item.label}<span aria-hidden="true">↗</span></a>)}</div>
         </div>
       </div>

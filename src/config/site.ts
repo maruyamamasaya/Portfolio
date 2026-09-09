@@ -2,13 +2,13 @@ export const siteConfig = {
   name: 'Digi Goose',
   shortName: 'DG',
   description:
-    '小さな事業のWeb制作、業務改善、AI活用を、相談から運用まで一貫して支援します。',
+    'Web体験、デザイン、AI活用を軸に、実案件を通じて価値が伝わる形へ変えるポートフォリオです。',
   navigation: [
     { href: '/', label: 'ホーム' },
-    { href: '/services', label: 'サービス' },
     { href: '/works', label: '制作実績' },
-    { href: '/about', label: 'プロフィール' },
     { href: '/blog', label: 'ブログ' },
+    { href: '/about', label: 'プロフィール' },
+    { href: '/contact', label: 'コンタクト' },
   ],
   contact: { general: '/contact', business: '/contact/business' },
   social: [

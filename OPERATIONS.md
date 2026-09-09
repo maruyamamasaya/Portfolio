@@ -32,6 +32,13 @@ DB setup はない。記事は `blog/<filename>.md` で、`title`、`date`、`ca
 
 未配置画像は `data/image-assets.json` の `temporary` へ転送される。本画像へ切り替える場合は `IMAGE_ASSETS.md` に従い、対象項目の `replacementUrl` を更新して再ビルドする。
 
+CMS 再設計の前提として、まず `blog/<filename>.md` と同じ方式で `works/<slug>.md` を採用し、作品も front matter で運用する。  
+初期は以下を想定する。
+
+- 共通必須: `title`, `slug`, `date`, `description`, `cover`, `category`, `tags`
+- Works 固有: `client`, `scope`, `stack`, `result`, `published`
+- 記事と Works の編集フローは API / middleware / revalidate の観点で統一し、将来の DB 移行を見据える。
+
 ## 外部サービス
 
 AWS SES には region、送信権限のある credential、account の検証 / sandbox 条件を満たす identity が必要。credential の値を記録・commit しない。contact endpoint が log に出すのは選択された変数名と SES 結果 / error metadata だけである。
@@ -56,4 +63,5 @@ GitHub Actions は push / PR に対して clean install、lint、Jest を行い�
 - **Contact が 500:** region、credential の存在、SES permission / identity と server log を確認し、secret 値は出力しない。
 - **記事が空:** `blog/` 直下に読取可能な `.md` があるか確認する。nested file は検出されない。
 - **編集が消える:** `blog/` が process restart / deploy をまたいで書込可能かつ永続的か確認する。
+- **CMS移行初期:** `works/` 追加時は `blog/` と同じ権限制御・再検証ルートを流用できるか先に確認する。
 - **フォント:** 主要画面はシステムフォントを使用し、build 時の Google Fonts 接続には依存しない。

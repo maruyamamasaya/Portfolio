@@ -6,8 +6,38 @@ import matter from 'gray-matter';
 import markdownToHtml from '@/lib/markdownToHtml';
 import { categories } from '../../../data/categories';
 
-const POSTS_BASE = 'posts';
-const BLOG_PATH = '/blog';
+type ContentTarget = 'posts' | 'works';
+
+type TargetConfig = {
+  label: string;
+  apiBase: ContentTarget;
+  listLabel: string;
+  revalidatePaths: string[];
+  defaultCategory: string;
+  placeholderImage: string;
+  showCategoryList: boolean;
+};
+
+const TARGETS: Record<ContentTarget, TargetConfig> = {
+  posts: {
+    label: '記事（Journal）',
+    apiBase: 'posts',
+    listLabel: '記事一覧',
+    revalidatePaths: ['/blog'],
+    defaultCategory: 'ai-course',
+    placeholderImage: '/images/blog/',
+    showCategoryList: true,
+  },
+  works: {
+    label: '制作実績（Works）',
+    apiBase: 'works',
+    listLabel: '作品一覧',
+    revalidatePaths: ['/works'],
+    defaultCategory: 'Web',
+    placeholderImage: '/images/img1.svg',
+    showCategoryList: false,
+  },
+};
 
 type PostItem = { name: string; title: string };
 
@@ -22,14 +52,15 @@ const toTokyoYmd = (date: Date) => {
   return tokyo.toISOString().slice(0, 10);
 };
 
+const getDateParts = (dateStr: string) => ({
+  year: Number(dateStr.slice(0, 4)),
+  month: Number(dateStr.slice(5, 7)),
+});
+
 export default function DeveloperEditor() {
   const todayStr = useMemo(() => toTokyoYmd(new Date()), []);
-  const [currentYear, setCurrentYear] = useState<number>(
-    Number(todayStr.slice(0, 4)),
-  );
-  const [currentMonth, setCurrentMonth] = useState<number>(
-    Number(todayStr.slice(5, 7)),
-  );
+  const [currentYear, setCurrentYear] = useState<number>(getDateParts(todayStr).year);
+  const [currentMonth, setCurrentMonth] = useState<number>(getDateParts(todayStr).month);
   const [selectedDate, setSelectedDate] = useState<string>(todayStr);
 
   const [postsByDate, setPostsByDate] = useState<Record<string, PostItem[]>>({});
@@ -41,10 +72,12 @@ export default function DeveloperEditor() {
   const [meta, setMeta] = useState({
     title: '',
     date: '',
+    publishedAt: '',
     category: '',
     tags: '',
     image: '',
     updated: '',
+    draft: false,
   });
   const [preview, setPreview] = useState(false);
   const [html, setHtml] = useState('');
@@ -52,11 +85,37 @@ export default function DeveloperEditor() {
   const [status, setStatus] = useState('');
   const [isNew, setIsNew] = useState(false);
   const [newFilename, setNewFilename] = useState('');
-  const [newCategory, setNewCategory] = useState(categories[0].slug);
+  const [newCategory, setNewCategory] = useState('ai-course');
   const [tagsList, setTagsList] = useState<string[]>([]);
+  const [target, setTarget] = useState<ContentTarget>('posts');
+
+  const targetConfig = TARGETS[target];
 
   useEffect(() => {
-    fetch(`/api/${POSTS_BASE}`)
+    fetch('/api/search-data')
+      .then((res) => res.json())
+      .then((data) => setTagsList(data.tags ?? []))
+      .catch(() => setTagsList([]));
+  }, []);
+
+  useEffect(() => {
+    setNewCategory(targetConfig.defaultCategory);
+    setSelected('');
+    setContent('');
+    setMeta({
+      title: '',
+      date: '',
+      publishedAt: '',
+      category: '',
+      tags: '',
+      image: '',
+      updated: '',
+      draft: false,
+    });
+    setIsNew(false);
+    setStatus('');
+
+    fetch(`/api/${targetConfig.apiBase}`)
       .then((res) => res.json())
       .then(async (data: string[]) => {
         const groups: Record<string, PostItem[]> = {};
@@ -65,7 +124,7 @@ export default function DeveloperEditor() {
         await Promise.all(
           data.map(async (name) => {
             const res = await fetch(
-              `/api/${POSTS_BASE}/${encodeURIComponent(name)}`,
+              `/api/${targetConfig.apiBase}/${encodeURIComponent(name)}`,
             );
             if (res.ok) {
               const fileData = await res.json();
@@ -85,30 +144,11 @@ export default function DeveloperEditor() {
         setPostsByDate(sortGroups(groups));
       })
       .catch(() => setStatus('ファイル一覧の取得に失敗しました'));
-    setSelected('');
-    setContent('');
-    setMeta({
-      title: '',
-      date: '',
-      category: '',
-      tags: '',
-      image: '',
-      updated: '',
-    });
-  }, []);
-
-  useEffect(() => {
-    fetch('/api/search-data')
-      .then((res) => res.json())
-      .then((data) => setTagsList(data.tags ?? []))
-      .catch(() => setTagsList([]));
-  }, []);
+  }, [targetConfig.apiBase, targetConfig.defaultCategory, target]);
 
   const openFile = async (name: string) => {
     setSelected(name);
-    const res = await fetch(
-      `/api/${POSTS_BASE}/${encodeURIComponent(name)}`,
-    );
+    const res = await fetch(`/api/${targetConfig.apiBase}/${encodeURIComponent(name)}`);
     if (res.ok) {
       const data = await res.json();
       const parsed = matter(data.content);
@@ -116,12 +156,14 @@ export default function DeveloperEditor() {
       setMeta({
         title: (parsed.data.title as string) ?? '',
         date: (parsed.data.date as string) ?? '',
+        publishedAt: (parsed.data.publishedAt as string) ?? '',
         category: (parsed.data.category as string) ?? '',
         tags: Array.isArray(parsed.data.tags)
           ? parsed.data.tags.join(', ')
           : '',
         image: (parsed.data.image as string) ?? '',
         updated: (parsed.data.updated as string) ?? '',
+        draft: Boolean(parsed.data.draft),
       });
       setIsNew(false);
     }
@@ -135,10 +177,15 @@ export default function DeveloperEditor() {
     setMeta({
       title: '',
       date,
+      publishedAt: date,
       category,
       tags: '',
-      image: `/images/blog/${imageBase}001.jpeg`,
+      image:
+        target === 'posts'
+          ? `/images/blog/${imageBase}001.jpeg`
+          : targetConfig.placeholderImage,
       updated: date,
+      draft: false,
     });
     setContent('');
     setIsNew(true);
@@ -157,15 +204,17 @@ export default function DeveloperEditor() {
   const saveFile = async () => {
     if (!selected) return;
     const url = isNew
-      ? `/api/${POSTS_BASE}`
-      : `/api/${POSTS_BASE}/${encodeURIComponent(selected)}`;
+      ? `/api/${targetConfig.apiBase}`
+      : `/api/${targetConfig.apiBase}/${encodeURIComponent(selected)}`;
     const method = isNew ? 'POST' : 'PUT';
     const front = {
       ...meta,
+      publishedAt: meta.publishedAt || meta.date,
       tags: meta.tags
         .split(',')
         .map((t) => t.trim())
         .filter((t) => t),
+      draft: meta.draft,
     };
     const markdown = matter.stringify(content, front);
     const body = isNew
@@ -208,7 +257,9 @@ export default function DeveloperEditor() {
     await fetch('/api/revalidate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ paths: [BLOG_PATH, `${BLOG_PATH}/${slug}`] }),
+      body: JSON.stringify({
+        paths: [...targetConfig.revalidatePaths, `/${targetConfig.apiBase}/${slug}`],
+      }),
     });
     setStatus('更新しました');
   };
@@ -217,7 +268,7 @@ export default function DeveloperEditor() {
     if (!selected || isNew) return;
     if (!window.confirm('本当に削除しますか？')) return;
     const res = await fetch(
-      `/api/${POSTS_BASE}/${encodeURIComponent(selected)}`,
+      `/api/${targetConfig.apiBase}/${encodeURIComponent(selected)}`,
       { method: 'DELETE' },
     );
     if (res.ok) {
@@ -243,10 +294,12 @@ export default function DeveloperEditor() {
       setMeta({
         title: '',
         date: '',
+        publishedAt: '',
         category: '',
         tags: '',
         image: '',
         updated: '',
+        draft: false,
       });
       setStatus('削除しました');
     } else {
@@ -276,6 +329,18 @@ export default function DeveloperEditor() {
   return (
     <div className="md:flex">
       <div className="md:w-1/5 p-4 space-y-4 border-r">
+        <label className="block text-sm font-bold">編集対象</label>
+        <select
+          className="border p-1 w-full mb-2"
+          value={target}
+          onChange={(e) => setTarget(e.target.value as ContentTarget)}
+        >
+          {Object.entries(TARGETS).map(([key, config]) => (
+            <option key={key} value={key}>
+              {config.label}
+            </option>
+          ))}
+        </select>
         <DeveloperCalendar
           year={currentYear}
           month={currentMonth}
@@ -291,7 +356,10 @@ export default function DeveloperEditor() {
           onOpen={openFile}
         />
         <div>
-          <label className="block mb-1 font-bold">新規記事</label>
+          <label className="block mb-1 font-bold">
+            {targetConfig.listLabel}（新規）
+          </label>
+          <p className="text-xs text-gray-600 mb-1">slug 形式で入力（拡張子省略可）</p>
           <input
             className="border p-1 w-full mb-1"
             placeholder="filename"
@@ -303,11 +371,20 @@ export default function DeveloperEditor() {
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
           >
-            {categories.map((c) => (
-              <option key={c.slug} value={c.slug}>
-                {c.name}
-              </option>
-            ))}
+            {targetConfig.showCategoryList &&
+              categories.map((c) => (
+                <option key={c.slug} value={c.slug}>
+                  {c.name}
+                </option>
+              ))}
+            {!targetConfig.showCategoryList && (
+              <>
+                <option value="Web">Web</option>
+                <option value="UI/UX">UI/UX</option>
+                <option value="AI">AI</option>
+                <option value="提案">提案</option>
+              </>
+            )}
           </select>
           <button
             className="px-2 py-1 bg-gray-200 transition-base"
@@ -329,26 +406,29 @@ export default function DeveloperEditor() {
             />
           </div>
           <div>
-            <label className="block text-sm">date</label>
+              <label className="block text-sm">date</label>
+              <input
+                className="border p-1 w-full"
+                value={meta.date}
+                onChange={(e) => setMeta({ ...meta, date: e.target.value })}
+              />
+            </div>
+          <div>
+            <label className="block text-sm">publishedAt</label>
             <input
               className="border p-1 w-full"
-              value={meta.date}
-              onChange={(e) => setMeta({ ...meta, date: e.target.value })}
+              value={meta.publishedAt}
+              onChange={(e) => setMeta({ ...meta, publishedAt: e.target.value })}
+              placeholder="YYYY-MM-DD"
             />
           </div>
           <div>
             <label className="block text-sm">category</label>
-            <select
+            <input
               className="border p-1 w-full"
               value={meta.category}
               onChange={(e) => setMeta({ ...meta, category: e.target.value })}
-            >
-              {categories.map((c) => (
-                <option key={c.slug} value={c.slug}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+            />
           </div>
           <div>
             <label className="block text-sm">tags (,)</label>
@@ -379,6 +459,19 @@ export default function DeveloperEditor() {
               value={meta.updated}
               onChange={(e) => setMeta({ ...meta, updated: e.target.value })}
             />
+          </div>
+          <div>
+            <label className="block text-sm">draft</label>
+            <label className="inline-flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={meta.draft}
+                onChange={(e) =>
+                  setMeta({ ...meta, draft: e.target.checked })
+                }
+              />
+              下書きとして公開抑止
+            </label>
           </div>
         </div>
         <div className="mb-2">
@@ -439,10 +532,12 @@ export default function DeveloperEditor() {
               setMeta({
                 title: '',
                 date: '',
+                publishedAt: '',
                 category: '',
                 tags: '',
                 image: '',
                 updated: '',
+                draft: false,
               });
             }}
           >
@@ -454,4 +549,3 @@ export default function DeveloperEditor() {
     </div>
   );
 }
-
