@@ -18,8 +18,21 @@ export default async function Works() {
       </header>
 
       <section className="grid gap-5 sm:grid-cols-2">
-        {works.map((work) => (
-          <Card key={work.slug} className="space-y-3">
+        {works.map((work) => {
+          const state = getWorkPublicationState(work);
+          const stateLabel =
+            state === 'draft'
+              ? '非公開（下書き）'
+              : state === 'scheduled'
+                ? '公開予定'
+                : '公開中';
+          const stateClass =
+            state === 'published'
+              ? 'bg-emerald-100 text-emerald-700 border-emerald-200'
+              : 'bg-amber-100 text-amber-700 border-amber-200';
+
+          return (
+            <Card key={work.slug} className="space-y-3">
             <Link href={`/works/${work.slug}`} className="block">
             {(() => {
               const image = work.image ?? '/images/img1.svg';
@@ -37,21 +50,12 @@ export default async function Works() {
             </Link>
             <div className="flex items-center flex-wrap gap-2">
               <span className="text-xs uppercase tracking-[0.15em] text-slate-500">
-                {getWorkPublicationDate(work) || '—'}
+                公開日：{getWorkPublicationDate(work) || '—'}
               </span>
               <span
-                className={`text-xs rounded-full px-2 py-0.5 ${
-                  getWorkPublicationState(work) === 'published'
-                    ? 'bg-emerald-100 text-emerald-700'
-                    : 'bg-amber-100 text-amber-700'
-                }`}
+                className={`text-xs rounded-full px-2 py-0.5 border ${stateClass}`}
               >
-                {(() => {
-                  const state = getWorkPublicationState(work);
-                  if (state === 'draft') return '下書き';
-                  if (state === 'scheduled') return '予約';
-                  return '公開';
-                })()}
+                {stateLabel}
               </span>
             </div>
             <Link href={`/works/${work.slug}`} className="text-xl font-semibold leading-tight">
@@ -71,7 +75,8 @@ export default async function Works() {
               ))}
             </div>
           </Card>
-        ))}
+          );
+        })}
       </section>
 
       <section className="mt-12">

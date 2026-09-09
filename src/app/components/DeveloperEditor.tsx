@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import DeveloperCalendar from './DeveloperCalendar';
 import DeveloperDayList from './DeveloperDayList';
 import matter from 'gray-matter';
@@ -84,13 +85,21 @@ export default function DeveloperEditor() {
   const [height, setHeight] = useState(800);
   const [status, setStatus] = useState('');
   const [copyStatus, setCopyStatus] = useState('');
+  const [pendingOpenFile, setPendingOpenFile] = useState('');
   const [isNew, setIsNew] = useState(false);
   const [newFilename, setNewFilename] = useState('');
   const [newCategory, setNewCategory] = useState('ai-course');
   const [tagsList, setTagsList] = useState<string[]>([]);
   const [target, setTarget] = useState<ContentTarget>('posts');
+  const searchParams = useSearchParams();
 
   const targetConfig = TARGETS[target];
+
+  const normalizeFilename = (raw: string) => {
+    const trimmed = raw.trim();
+    if (!trimmed) return '';
+    return trimmed.endsWith('.md') ? trimmed : `${trimmed}.md`;
+  };
 
   useEffect(() => {
     fetch('/api/search-data')
@@ -146,6 +155,51 @@ export default function DeveloperEditor() {
       })
       .catch(() => setStatus('ファイル一覧の取得に失敗しました'));
   }, [targetConfig.apiBase, targetConfig.defaultCategory, target]);
+
+  useEffect(() => {
+    const nextTarget = searchParams?.get('target') as ContentTarget | null;
+    const nextFileRaw = searchParams?.get('file') ?? '';
+    const normalizedTarget = nextTarget === 'posts' || nextTarget === 'works' ? nextTarget : null;
+    const normalizedFile = normalizeFilename(nextFileRaw);
+    if (!normalizedTarget || !normalizedFile) {
+      return;
+    }
+    setTarget(normalizedTarget);
+    setPendingOpenFile(normalizedFile);
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (!pendingOpenFile) return;
+    const nextTarget = searchParams?.get('target') as ContentTarget | null;
+    if (nextTarget !== target) return;
+    const openFromQuery = async () => {
+      setSelected(pendingOpenFile);
+      const res = await fetch(
+        `/api/${targetConfig.apiBase}/${encodeURIComponent(pendingOpenFile)}`,
+      );
+      if (res.ok) {
+        const data = await res.json();
+        const parsed = matter(data.content);
+        setContent(parsed.content);
+        setMeta({
+          title: (parsed.data.title as string) ?? '',
+          date: (parsed.data.date as string) ?? '',
+          publishedAt: (parsed.data.publishedAt as string) ?? '',
+          category: (parsed.data.category as string) ?? '',
+          tags: Array.isArray(parsed.data.tags)
+            ? parsed.data.tags.join(', ')
+            : '',
+          image: (parsed.data.image as string) ?? '',
+          updated: (parsed.data.updated as string) ?? '',
+          draft: Boolean(parsed.data.draft),
+        });
+        setIsNew(false);
+        setCopyStatus('');
+      }
+    };
+    openFromQuery();
+    setPendingOpenFile('');
+  }, [pendingOpenFile, target, targetConfig.apiBase, searchParams]);
 
   const openFile = async (name: string) => {
     setSelected(name);

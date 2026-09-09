@@ -1,7 +1,12 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import markdownToHtml from '@/lib/markdownToHtml';
-import { getWork, getSortedWorks } from '@/lib/works';
+import {
+  getWork,
+  getWorkPublicationDate,
+  getWorkPublicationState,
+  getSortedWorks,
+} from '@/lib/works';
 
 export async function generateStaticParams() {
   const works = await getSortedWorks();
@@ -56,8 +61,23 @@ export default async function WorkPage({
         </p>
         <h1 className="text-3xl font-semibold mt-2">{work.title}</h1>
         <p className="mt-2 text-sm text-slate-500">
-          {work.publishedAt || work.date ? `${work.publishedAt || work.date}` : ''} {work.category ? ` / ${work.category}` : ''}
+          {`公開日: ${getWorkPublicationDate(work) || '—'}`}
+          {work.category ? ` / ${work.category}` : ''}
+          {(() => {
+            const state = getWorkPublicationState(work);
+            if (state === 'scheduled') return ' / 公開予定';
+            if (state === 'draft') return ' / 下書き';
+            return '';
+          })()}
         </p>
+        <div className="mt-2">
+          <Link
+            href={`/developer_edit?target=works&file=${encodeURIComponent(`${work.slug}.md`)}`}
+            className="text-sm border-b border-current"
+          >
+            管理画面で編集
+          </Link>
+        </div>
 
         {work.tags?.length ? (
           <ul className="mt-3 flex flex-wrap gap-2">
@@ -86,10 +106,30 @@ export default async function WorkPage({
               .filter((item) => item.slug !== work.slug)
               .slice(0, 6)
               .map((item) => (
-                <li key={item.slug}>
-                  <Link href={`/works/${item.slug}`} className="border-b border-current">
-                    {item.title}
-                  </Link>
+                <li key={item.slug} className="space-y-1">
+                  <div className="flex items-center justify-between gap-3">
+                    <Link href={`/works/${item.slug}`} className="border-b border-current">
+                      {item.title}
+                    </Link>
+                    <Link
+                      href={`/developer_edit?target=works&file=${encodeURIComponent(
+                        `${item.slug}.md`,
+                      )}`}
+                      className="text-xs border-b border-current shrink-0"
+                    >
+                      編集
+                    </Link>
+                  </div>
+                  <p className="text-xs text-slate-500">
+                    {(() => {
+                      const state = getWorkPublicationState(item);
+                      if (state === 'scheduled') return '公開予定';
+                      if (state === 'draft') return '下書き';
+                      return '公開中';
+                    })()}
+                    {` / ${item.category ?? ''}`}
+                    {item.publishedAt || item.date ? ` / ${item.publishedAt || item.date}` : ''}
+                  </p>
                 </li>
               ))}
           </ul>
