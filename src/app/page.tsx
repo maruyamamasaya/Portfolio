@@ -1,8 +1,8 @@
 import HomeWindow from './components/HomeWindow';
 import { getSortedPosts } from '@/lib/posts';
 export const metadata = {
-  title: 'Web制作・業務改善・AI活用支援',
-  description: '小さな事業のWeb制作、業務改善、AI活用を、相談から運用まで一貫して支援します。',
+  title: '丸山雅也｜デジタルクリエイター ポートフォリオ',
+  description: 'Web、デザイン、AI活用を横断し、事業のアイデアを運用できる仕組みまで形にするデジタルクリエイターのポートフォリオ。',
 };
 
 export default async function HomePage() {

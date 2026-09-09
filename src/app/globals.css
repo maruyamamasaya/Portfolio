@@ -78,6 +78,52 @@
 .site-footer-bottom > div { @apply flex flex-wrap gap-5; }
 .site-footer-bottom a { @apply hover:text-white; }
 
+.portfolio-home { @apply max-w-none; }
+.portfolio-hero { @apply mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col justify-between px-2 py-10 sm:px-4 lg:px-6 lg:py-14; }
+.portfolio-hero-topline { @apply flex items-center justify-between border-b pb-4 text-xs font-bold tracking-[0.16em]; border-color: var(--site-line); color: var(--site-muted); }
+.portfolio-hero-topline p:last-child { @apply hidden sm:block; }
+.portfolio-hero-main { @apply grid flex-1 items-center gap-10 py-14 lg:grid-cols-[0.28fr_1fr]; }
+.portfolio-hero-index { @apply self-start pt-4 text-xs font-bold leading-6 tracking-[0.2em]; color: var(--site-accent); }
+.portfolio-hero-main h1 { @apply text-[clamp(3.5rem,9.4vw,9.5rem)] font-bold leading-[0.89] tracking-[-0.075em]; }
+.portfolio-hero-main h1 span { @apply bg-clip-text text-transparent; background-image: linear-gradient(90deg, var(--site-accent), var(--site-accent-2)); }
+.portfolio-hero-main .home-lead { @apply ml-auto mr-0 max-w-2xl lg:text-xl; }
+.portfolio-hero-main .home-actions { @apply ml-auto mr-0 max-w-2xl; }
+.portfolio-hero-note { @apply flex flex-wrap gap-x-8 gap-y-2 border-t pt-4 text-sm font-medium; border-color: var(--site-line); color: var(--site-muted); }
+.portfolio-section { @apply mx-auto max-w-7xl px-2 py-20 sm:px-4 lg:px-6 lg:py-28; }
+.portfolio-section-label { @apply mb-16 flex items-center justify-between border-b pb-4 text-xs font-bold tracking-[0.18em]; border-color: var(--site-line); color: var(--site-muted); }
+.portfolio-section-label p { color: var(--site-accent); }
+.portfolio-section-label a { @apply hover:underline; }
+.portfolio-section-title { @apply mb-14 grid gap-6 lg:grid-cols-[1fr_0.55fr] lg:items-end; }
+.portfolio-section-title h2, .portfolio-about h2, .portfolio-contact h2 { @apply text-4xl font-bold leading-[1.05] tracking-[-0.045em] sm:text-6xl; }
+.portfolio-section-title > p { @apply max-w-lg text-base leading-7; color: var(--site-muted); }
+.portfolio-work-list { @apply border-t; border-color: var(--site-line); }
+.portfolio-work { @apply grid grid-cols-[2.5rem_1fr_auto] gap-4 border-b py-8 sm:grid-cols-[5rem_1fr_auto] sm:gap-8 sm:py-10; border-color: var(--site-line); }
+.portfolio-work-number { @apply pt-1 text-xs font-bold; color: var(--site-accent); }
+.portfolio-work-body > p { @apply text-xs font-bold tracking-[0.14em]; color: var(--site-muted); }
+.portfolio-work-body h3 { @apply mt-4 text-2xl font-bold tracking-tight sm:text-3xl; }
+.portfolio-work-body > span { @apply mt-4 block max-w-3xl text-base leading-7; color: var(--site-muted); }
+.portfolio-work-body ul { @apply mt-6 flex flex-wrap gap-2; }
+.portfolio-work-body li { @apply rounded-full border px-3 py-1 text-xs font-medium; border-color: var(--site-line); }
+.portfolio-work-arrow { @apply text-2xl; color: var(--site-accent); }
+.portfolio-about { @apply mx-2 rounded-[2rem] px-7 py-16 text-white sm:mx-4 sm:px-12 lg:mx-6 lg:px-16 lg:py-20; background: #11182b; }
+.portfolio-about .portfolio-section-label { @apply border-slate-700 text-slate-400; }
+.portfolio-about .portfolio-section-label p { color: #9ab0ff; }
+.portfolio-about-grid { @apply grid gap-12 lg:grid-cols-[1fr_0.7fr]; }
+.portfolio-about-grid > div { @apply space-y-6 text-base leading-8 text-slate-300 lg:text-lg; }
+.portfolio-about-grid a { @apply inline-flex pt-2 font-semibold text-white underline underline-offset-8; }
+.portfolio-capabilities { @apply grid gap-10 lg:grid-cols-[0.4fr_1fr]; }
+.portfolio-capabilities > h2 { @apply text-4xl font-bold sm:text-5xl; }
+.portfolio-capabilities ol { @apply border-t; border-color: var(--site-line); }
+.portfolio-capabilities li { @apply grid grid-cols-[2.5rem_1fr] gap-x-4 gap-y-3 border-b py-7 sm:grid-cols-[3rem_0.45fr_1fr] sm:items-start; border-color: var(--site-line); }
+.portfolio-capabilities li > span { @apply text-xs font-bold; color: var(--site-accent); }
+.portfolio-capabilities h3 { @apply text-xl font-bold; }
+.portfolio-capabilities li > p { @apply col-start-2 leading-7 sm:col-start-3; color: var(--site-muted); }
+.portfolio-contact { @apply mx-2 mb-10 rounded-[2rem] px-7 py-16 text-white sm:mx-4 sm:px-12 lg:mx-6 lg:px-16 lg:py-20; background: linear-gradient(135deg, #1f3ba8, #693aac); }
+.portfolio-contact > p { @apply mb-10 text-xs font-bold tracking-[0.2em] text-blue-100; }
+.portfolio-contact > div { @apply mt-10 flex flex-col items-start justify-between gap-6 border-t border-white/30 pt-7 sm:flex-row sm:items-center; }
+.portfolio-contact > div > span { @apply text-blue-100; }
+.portfolio-contact a { @apply inline-flex min-h-14 items-center gap-5 rounded-full bg-white px-7 font-bold text-slate-950; }
+
 /* unified transition class respecting user motion preference */
 .transition-base {
   @apply motion-safe:transition-all motion-reduce:transition-none duration-300 ease-in-out;

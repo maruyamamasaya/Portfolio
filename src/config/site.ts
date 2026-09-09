@@ -6,7 +6,7 @@ export const siteConfig = {
   navigation: [
     { href: '/', label: 'ホーム' },
     { href: '/services', label: 'サービス' },
-    { href: '/works', label: '実績' },
+    { href: '/works', label: '制作実績' },
     { href: '/about', label: 'プロフィール' },
     { href: '/blog', label: 'ブログ' },
   ],
