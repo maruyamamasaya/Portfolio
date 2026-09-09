@@ -83,6 +83,7 @@ export default function DeveloperEditor() {
   const [html, setHtml] = useState('');
   const [height, setHeight] = useState(800);
   const [status, setStatus] = useState('');
+  const [copyStatus, setCopyStatus] = useState('');
   const [isNew, setIsNew] = useState(false);
   const [newFilename, setNewFilename] = useState('');
   const [newCategory, setNewCategory] = useState('ai-course');
@@ -166,6 +167,7 @@ export default function DeveloperEditor() {
         draft: Boolean(parsed.data.draft),
       });
       setIsNew(false);
+      setCopyStatus('');
     }
   };
 
@@ -189,6 +191,7 @@ export default function DeveloperEditor() {
     });
     setContent('');
     setIsNew(true);
+    setCopyStatus('');
   };
 
   const createFile = () => {
@@ -246,6 +249,7 @@ export default function DeveloperEditor() {
       if (isNew) {
         setIsNew(false);
       }
+      setCopyStatus('');
     } else {
       setStatus('保存に失敗しました');
     }
@@ -302,6 +306,7 @@ export default function DeveloperEditor() {
         draft: false,
       });
       setStatus('削除しました');
+      setCopyStatus('');
     } else {
       setStatus('削除に失敗しました');
     }
@@ -313,6 +318,34 @@ export default function DeveloperEditor() {
       setHtml(html);
     }
     setPreview(!preview);
+  };
+
+  const getWorkPreviewUrl = (filename: string) => {
+    if (!window || !filename) return '';
+    const slug = filename.replace(/\.md$/, '');
+    const base = window.location.origin;
+    const secret =
+      process.env.NEXT_PUBLIC_WORKS_PREVIEW_SECRET ??
+      process.env.NEXT_PUBLIC_REVALIDATE_SECRET ??
+      '';
+    return secret ? `${base}/works/preview/${encodeURIComponent(slug)}?secret=${encodeURIComponent(secret)}` : `${base}/works/preview/${encodeURIComponent(slug)}`;
+  };
+
+  const copyWorkPreviewUrl = async () => {
+    if (!selected) {
+      setCopyStatus('ファイルを選択してください');
+      return;
+    }
+    const url = getWorkPreviewUrl(selected);
+    try {
+      if (!url) throw new Error('url-empty');
+      await navigator.clipboard.writeText(url);
+      setCopyStatus('プレビューURLをコピーしました');
+      setTimeout(() => setCopyStatus(''), 3000);
+    } catch {
+      setCopyStatus('コピーに失敗しました');
+      setTimeout(() => setCopyStatus(''), 3000);
+    }
   };
 
   const hasPosts = (date: string) => !!postsByDate[date]?.length;
@@ -512,6 +545,13 @@ export default function DeveloperEditor() {
             {preview ? '編集' : 'プレビュー'}
           </button>
           <button
+            className="px-4 py-2 bg-green-700 text-white transition-base"
+            onClick={copyWorkPreviewUrl}
+            disabled={!selected || target !== 'works'}
+          >
+            公開予約プレビューURLコピー
+          </button>
+          <button
             className="px-4 py-2 bg-green-600 text-white transition-base"
             onClick={revalidate}
           >
@@ -545,6 +585,21 @@ export default function DeveloperEditor() {
           </button>
         </div>
         {status && <p className="mt-2 text-sm">{status}</p>}
+        {copyStatus && (
+          <p className="mt-2 text-sm text-slate-600">
+            {copyStatus}
+            {(
+              !process.env.NEXT_PUBLIC_WORKS_PREVIEW_SECRET &&
+              !process.env.NEXT_PUBLIC_REVALIDATE_SECRET &&
+              selected &&
+              target === 'works'
+            ) && (
+              <span className="ml-1 block text-xs">
+                ※現在の環境変数にプレビュー用シークレットが未設定のため、URL末尾は未付与です
+              </span>
+            )}
+          </p>
+        )}
       </div>
     </div>
   );

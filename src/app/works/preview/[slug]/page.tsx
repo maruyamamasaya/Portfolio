@@ -2,7 +2,12 @@ import Link from 'next/link';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import markdownToHtml from '@/lib/markdownToHtml';
-import { getWork, WorkVisibilityOptions } from '@/lib/works';
+import {
+  getWork,
+  getWorkPublicationDate,
+  getWorkPublicationState,
+  WorkVisibilityOptions,
+} from '@/lib/works';
 
 export default async function WorkPreviewPage({
   params,
@@ -38,6 +43,8 @@ export default async function WorkPreviewPage({
       includeScheduled: true,
     };
     const work = await getWork(params.slug, options);
+    const state = getWorkPublicationState(work);
+    const dateLabel = getWorkPublicationDate(work) || '—';
     const { html } = await markdownToHtml(work.content);
 
     return (
@@ -47,13 +54,13 @@ export default async function WorkPreviewPage({
         </p>
         <h1 className="text-3xl font-semibold mt-2">{work.title}</h1>
         <p className="mt-2 text-sm text-slate-500">
-          {work.publishedAt || work.date ? `${work.publishedAt || work.date}` : ''}
+          {dateLabel}
           {work.category ? ` / ${work.category}` : ''}
-          {work.draft ? ' / 下書き' : ''}
         </p>
 
         <p className="mt-2 text-sm text-amber-700">
-          現在の状態: {work.draft ? '下書き' : '公開候補'}
+          現在の状態:{' '}
+          {state === 'draft' ? '下書き' : state === 'scheduled' ? '予約' : '公開'}
         </p>
 
         <div

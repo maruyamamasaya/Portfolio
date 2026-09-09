@@ -18,6 +18,8 @@ export interface Work {
   content: string;
 }
 
+export type WorkPublicationState = 'published' | 'draft' | 'scheduled';
+
 export type WorkVisibilityOptions = {
   includeDraft?: boolean;
   includeScheduled?: boolean;
@@ -135,6 +137,18 @@ export async function getSortedWorks(): Promise<Work[]> {
       return a.slug.localeCompare(b.slug);
     });
 }
+
+export const getWorkPublicationDate = (work: Work): string =>
+  work.publishedAt || work.date;
+
+export const getWorkPublicationState = (
+  work: Work,
+  now: Date = new Date(),
+): WorkPublicationState => {
+  if (work.draft) return 'draft';
+  if (isScheduledFutureWork(work, now)) return 'scheduled';
+  return 'published';
+};
 
 function workSortValue(work: Work): string {
   return work.publishedAt || work.date;

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getSortedWorks } from '@/lib/works';
+import { getSortedWorks, getWorkPublicationState, getWorkPublicationDate } from '@/lib/works';
 import Card from '../components/Card';
 
 export default async function Works() {
@@ -35,8 +35,24 @@ export default async function Works() {
               );
             })()}
             </Link>
-            <div className="text-xs uppercase tracking-[0.15em] text-slate-500">
-              {work.publishedAt || work.date || '—'}
+            <div className="flex items-center flex-wrap gap-2">
+              <span className="text-xs uppercase tracking-[0.15em] text-slate-500">
+                {getWorkPublicationDate(work) || '—'}
+              </span>
+              <span
+                className={`text-xs rounded-full px-2 py-0.5 ${
+                  getWorkPublicationState(work) === 'published'
+                    ? 'bg-emerald-100 text-emerald-700'
+                    : 'bg-amber-100 text-amber-700'
+                }`}
+              >
+                {(() => {
+                  const state = getWorkPublicationState(work);
+                  if (state === 'draft') return '下書き';
+                  if (state === 'scheduled') return '予約';
+                  return '公開';
+                })()}
+              </span>
             </div>
             <Link href={`/works/${work.slug}`} className="text-xl font-semibold leading-tight">
               {work.title}
