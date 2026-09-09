@@ -9,19 +9,12 @@ import PageTransition from './components/PageTransition';
 import TagListHeader from './components/TagListHeader';
 import { getTagCounts } from '@/lib/posts';
 import { ThemeProvider } from './components/ThemeProvider';
-import { Poppins, Playfair_Display } from 'next/font/google';
-
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
-const playfair = Playfair_Display({ subsets: ['latin'], weight: '700', variable: '--font-playfair' });
+import { siteConfig } from '@/config/site';
 
 export const metadata = {
   metadataBase: new URL('https://freehackapp.com'),
-  title: 'Digi Goose（デジグース）｜最新AIから業務効率まで、幅広くお任せ　テクニカル法人サポート',
-  description:
-    '最新AI活用から業務効率化までをトータルで支援するテクニカル法人サポートサイト。中高生向けの家庭教師型パソコンスクールも運営。',
-  openGraph: {
-    images: '/images/eye-catch.png',
-  },
+  title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
+  description: siteConfig.description,
 };
 
 export default async function RootLayout({
@@ -33,24 +26,9 @@ export default async function RootLayout({
   const displayCounts = tagCounts.slice(0, 30);
   return (
     <html lang="ja">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
-        {/* Favicon links */}
-        {/* Basic favicon */}
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
-        {/* Higher resolution backups */}
-        <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48.png" />
-        <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64.png" />
-        {/* iOS / Android */}
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/images/android-chrome-192.png" />
-        {/* PWA / large icon */}
-        <link rel="icon" type="image/png" sizes="512x512" href="/images/android-chrome-512.png" />
-      </head>
+      <head><link rel="alternate" type="application/rss+xml" href="/rss.xml" /></head>
       <body
-        className={`${poppins.className} ${playfair.variable} min-h-screen bg-gray-100 dark:bg-gray-700 text-light dark:text-dark font-normal antialiased transition-base`}
+        className="min-h-screen bg-gray-100 dark:bg-gray-700 text-light dark:text-dark font-sans font-normal antialiased transition-base"
       >
         <ThemeProvider>
           <Header />

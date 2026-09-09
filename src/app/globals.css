@@ -5,6 +5,79 @@
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css');
 
+:root { --site-ink: #101828; --site-muted: #596579; --site-line: #d9e0ea; --site-paper: #f7f9fc; --site-accent: #3157d5; --site-accent-2: #7546c9; }
+.dark { --site-ink: #f4f7fb; --site-muted: #b4c0d1; --site-line: #334155; --site-paper: #111827; --site-accent: #8ba4ff; --site-accent-2: #c3a6ff; }
+.site-header { @apply sticky top-0 z-40 border-b backdrop-blur-xl; color: var(--site-ink); border-color: var(--site-line); background: color-mix(in srgb, var(--site-paper) 90%, transparent); }
+.site-header-inner { @apply mx-auto flex min-h-20 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-10; }
+.site-brand { @apply inline-flex items-center gap-3 no-underline; }
+.site-brand > span { @apply grid h-10 w-10 place-items-center rounded-full text-sm font-bold text-white; background: linear-gradient(135deg, var(--site-accent), var(--site-accent-2)); }
+.site-brand > strong { @apply text-base font-bold tracking-tight; }
+.site-desktop-nav { @apply ml-auto hidden items-center gap-7 lg:flex; }
+.site-desktop-nav a { @apply relative py-2 text-sm font-medium; color: var(--site-muted); }
+.site-desktop-nav a:hover, .site-desktop-nav a[aria-current='page'] { color: var(--site-ink); }
+.site-desktop-nav a[aria-current='page']::after { content: ''; @apply absolute inset-x-0 -bottom-1 h-0.5 rounded-full; background: var(--site-accent); }
+.site-header-actions { @apply ml-auto flex items-center gap-2 lg:ml-2; }
+.site-contact-link { @apply hidden rounded-full px-5 py-2 text-sm font-semibold text-white sm:inline-flex; background: var(--site-ink); }
+.site-menu-button { @apply flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-full border lg:hidden; border-color: var(--site-line); }
+.site-menu-button span { @apply block h-px w-5; background: var(--site-ink); }
+.site-mobile-nav { @apply grid border-t px-4 py-3 lg:hidden; border-color: var(--site-line); background: var(--site-paper); }
+.site-mobile-nav a { @apply flex min-h-12 items-center justify-between border-b px-2 text-base font-medium; border-color: var(--site-line); }
+.skip-link { @apply sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded focus:bg-white focus:p-3 focus:text-blue-700; }
+.home-shell { @apply mx-auto max-w-7xl pb-20; color: var(--site-ink); }
+.home-hero { @apply grid min-h-[calc(100vh-5rem)] items-center gap-10 px-2 py-16 sm:px-4 lg:grid-cols-[1.2fr_0.8fr] lg:px-6 lg:py-24; }
+.home-hero-copy { @apply max-w-3xl; }
+.home-eyebrow, .home-section-heading > p, .home-section-heading > div > p, .home-cta > p { @apply mb-5 text-xs font-bold tracking-[0.24em]; color: var(--site-accent); }
+.home-hero h1 { @apply text-[clamp(2.6rem,7vw,6rem)] font-bold leading-[1.05] tracking-[-0.055em]; }
+.home-hero h1 span { @apply bg-clip-text text-transparent; background-image: linear-gradient(90deg, var(--site-accent), var(--site-accent-2)); }
+.home-lead { @apply mt-8 max-w-2xl text-lg leading-8 sm:text-xl; color: var(--site-muted); }
+.home-actions { @apply mt-10 flex flex-wrap items-center gap-5; }
+.home-primary-button { @apply inline-flex min-h-14 items-center gap-6 rounded-full px-7 font-semibold text-white shadow-lg transition-transform hover:-translate-y-0.5; background: var(--site-ink); }
+.home-text-link, .home-inline-link { @apply inline-flex min-h-12 items-center gap-3 font-semibold underline-offset-4 hover:underline; }
+.home-hero-panel { @apply relative overflow-hidden rounded-[2rem] border p-7 shadow-2xl sm:p-10; border-color: var(--site-line); background: linear-gradient(155deg, color-mix(in srgb, var(--site-accent) 12%, var(--site-paper)), var(--site-paper)); }
+.home-hero-panel::before { content: ''; @apply absolute -right-20 -top-20 h-56 w-56 rounded-full blur-3xl; background: color-mix(in srgb, var(--site-accent-2) 28%, transparent); }
+.home-panel-label { @apply relative mb-10 text-xs font-bold tracking-[0.2em]; color: var(--site-muted); }
+.home-hero-panel ol { @apply relative space-y-1; }
+.home-hero-panel li { @apply grid grid-cols-[2rem_1fr] items-center gap-x-4 border-b py-5; border-color: var(--site-line); }
+.home-hero-panel li > span { @apply row-span-2 text-xs font-bold; color: var(--site-accent); }
+.home-hero-panel strong { @apply text-xl; }
+.home-hero-panel small { @apply mt-1 text-sm; color: var(--site-muted); }
+.home-section { @apply px-2 py-20 sm:px-4 lg:px-6 lg:py-28; }
+.home-section-heading { @apply mb-12 max-w-2xl; }
+.home-section-heading h2, .home-proof h2, .home-cta h2 { @apply text-3xl font-bold leading-tight tracking-tight sm:text-5xl; }
+.home-section-heading > span { @apply mt-5 block text-base leading-7; color: var(--site-muted); }
+.home-service-grid { @apply grid gap-px overflow-hidden rounded-3xl border md:grid-cols-3; border-color: var(--site-line); background: var(--site-line); }
+.home-service-card { @apply p-6 sm:p-8; background: var(--site-paper); }
+.home-service-image { @apply mb-8 flex h-40 items-center justify-center overflow-hidden rounded-2xl; background: color-mix(in srgb, var(--site-accent) 8%, transparent); }
+.home-service-image img { @apply h-full w-full object-contain p-5; }
+.home-service-card > p { @apply text-xs font-bold; color: var(--site-accent); }
+.home-service-card h3 { @apply mt-4 text-xl font-bold; }
+.home-service-card > span { @apply mt-3 block text-base leading-7; color: var(--site-muted); }
+.home-inline-link { @apply mt-8; }
+.home-proof { @apply mx-2 grid gap-10 rounded-[2rem] px-7 py-16 text-white sm:mx-4 sm:px-12 lg:mx-6 lg:grid-cols-2 lg:px-16 lg:py-20; background: #11182b; }
+.home-proof .home-eyebrow { color: #9ab0ff; }
+.home-proof-copy { @apply flex flex-col justify-end gap-7 text-base leading-8 text-slate-300 lg:text-lg; }
+.home-proof-copy a { @apply w-fit font-semibold text-white underline underline-offset-8; }
+.home-section-heading-row { @apply flex max-w-none items-end justify-between gap-5; }
+.home-section-heading-row a { @apply hidden font-semibold sm:inline-flex; }
+.home-post-grid { @apply grid gap-5 sm:grid-cols-2 lg:grid-cols-3; }
+.home-empty-posts { @apply flex min-h-44 flex-col items-center justify-center gap-3 rounded-3xl border border-dashed text-center; border-color: var(--site-line); color: var(--site-muted); }
+.home-empty-posts span { @apply rounded-full px-3 py-1 text-xs font-bold tracking-widest; background: color-mix(in srgb, var(--site-accent) 10%, transparent); color: var(--site-accent); }
+.home-cta { @apply mx-2 rounded-[2rem] px-7 py-16 text-center sm:mx-4 sm:px-12 lg:mx-6 lg:py-24; background: linear-gradient(135deg, color-mix(in srgb, var(--site-accent) 12%, var(--site-paper)), color-mix(in srgb, var(--site-accent-2) 13%, var(--site-paper))); }
+.home-cta h2 { @apply mx-auto max-w-3xl; }
+.home-cta > span { @apply mx-auto mt-5 block max-w-2xl leading-7; color: var(--site-muted); }
+.home-cta a { @apply mt-8 inline-flex min-h-14 items-center gap-5 rounded-full px-8 font-semibold text-white; background: var(--site-ink); }
+.site-footer { @apply mt-10 px-4 pb-24 pt-16 sm:px-6 lg:px-10 lg:pb-8; color: #e7edf7; background: #0b1020; }
+.site-footer-main { @apply mx-auto grid max-w-7xl gap-14 border-b border-slate-700 pb-14 md:grid-cols-2; }
+.site-brand-footer > span { background: linear-gradient(135deg, #607ef0, #9b6ce2); }
+.site-footer-intro > p { @apply mt-6 max-w-md leading-7 text-slate-400; }
+.site-footer-links { @apply grid grid-cols-2 gap-8; }
+.site-footer-links > div { @apply flex flex-col gap-3; }
+.site-footer-links p { @apply mb-2 text-xs font-bold tracking-[0.2em] text-slate-500; }
+.site-footer-links a { @apply flex w-fit items-center gap-2 text-sm text-slate-300 hover:text-white; }
+.site-footer-bottom { @apply mx-auto flex max-w-7xl flex-col gap-4 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between; }
+.site-footer-bottom > div { @apply flex flex-wrap gap-5; }
+.site-footer-bottom a { @apply hover:text-white; }
+
 /* unified transition class respecting user motion preference */
 .transition-base {
   @apply motion-safe:transition-all motion-reduce:transition-none duration-300 ease-in-out;

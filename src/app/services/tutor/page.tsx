@@ -4,9 +4,6 @@ import Card from '@/app/components/Card';
 import ProfileCardBlog from '@/app/components/ProfileCardBlog';
 import TutorHeroSection from '@/app/components/TutorHeroSection';
 import FlowArrow from '@/app/components/FlowArrow';
-import { Mochiy_Pop_One } from 'next/font/google';
-
-const mochiy = Mochiy_Pop_One({ weight: '400', subsets: ['latin'] });
 
 export const metadata = {
   title: '家庭教師型パソコンスクール',
@@ -14,7 +11,7 @@ export const metadata = {
 
 export default function TutorServicePage() {
   return (
-    <div className={mochiy.className}>
+    <div className="font-sans">
       <TutorHeroSection />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-12">
         <section className="grid gap-6">

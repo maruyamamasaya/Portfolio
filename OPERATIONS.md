@@ -54,4 +54,4 @@ GitHub Actions は push / PR に対して clean install、lint、Jest を行い�
 - **Contact が 500:** region、credential の存在、SES permission / identity と server log を確認し、secret 値は出力しない。
 - **記事が空:** `blog/` 直下に読取可能な `.md` があるか確認する。nested file は検出されない。
 - **編集が消える:** `blog/` が process restart / deploy をまたいで書込可能かつ永続的か確認する。
-- **Font fetch で build 失敗:** `next/font/google` は build 中に外向き network を必要とする場合がある。
+- **フォント:** 主要画面はシステムフォントを使用し、build 時の Google Fonts 接続には依存しない。
