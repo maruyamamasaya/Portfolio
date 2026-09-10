@@ -9,12 +9,27 @@
 - `/api/contact` は入力形式・長さ・honeypot と、送信元 IP ごとのプロセス内 rate limit を検査してから AWS SES を呼ぶ。
 - `/api/posts`/`/api/posts/[filename]` と `/api/works`/`/api/works/[filename]` は filename を検証し、Basic 認証を満たした編集リクエストのみ書き込みを許可する。公開取得 API は公開対象。
 - Markdown の表示は生成 HTML を `dangerouslySetInnerHTML` へ渡す。記事入力元の信頼条件を変更する場合は sanitization を再評価する。
+- 変更系 API と問い合わせは `src/lib/audit.ts` の `recordAuditEvent` で監査ログを出力する（JSON 文字列を console.info へ出力）。
+
+## 監査ログ要件（最低）
+
+- 監査対象:
+  - `contact.submit`
+  - `posts.create` / `posts.update` / `posts.delete`
+  - `works.create` / `works.update` / `works.delete`
+  - `cache.revalidate`
+- 最低記録フィールド:
+  - `at`, `action`, `outcome`, `status`, `ip`, `requestId`, `filename`（該当時）, `paths`（revalidate時）, `reason`
+- 運用条件（推奨）:
+  - 1回目の連続失敗（401/400/429）が続く場合は監視対象化
+  - `error`（500）発生時はアラート
+  - `deny` か `error` を 1 時間で継続集計し、想定外件数の急増を検知
 
 ## 既知のリスク
 
 1. Basic 認証は TLS 自体を提供しない。本番 transport の構成はリポジトリ外で判断不能。
-3. 問い合わせの rate limit は再起動で消え、複数 instance で共有されない。
-4. 編集ページと API 保護の認可ログの出力・監査性（誰がいつどのAPIを通過したか）は未整備。
+2. 問い合わせの rate limit は再起動で消え、複数 instance で共有されない（現状の改善対象）。
+3. 複数運用先（本番）が異なる場合、監査ログ保管先の権限設計とローテーションを別途確定する必要がある。
 
 ## Secret と設定
 

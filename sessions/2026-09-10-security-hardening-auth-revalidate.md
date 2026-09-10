@@ -21,5 +21,17 @@
 ## 検証
 
 - `npm run lint`
-- `npm test`（既存9件）
+- `npm test`（既存10件）
 
+## 追記（2026-09-10 追加）
+
+- `POST /api/posts`, `PUT/DELETE /api/posts/[filename]`, `POST /api/works`, `PUT/DELETE /api/works/[filename]`, `/api/revalidate` の
+  401/200 分岐をまとめて検証する `src/app/api/__tests__/auth-guards-route.test.ts` を追加。
+- `/api/revalidate` の単体テストでは `next/cache` の `revalidatePath` を jest.mock して本体実行に依存しない検証に切替。
+- `NextRequest` をテスト生成に使用し、`nextUrl` 前提による `TypeError` を解消。
+
+## 追記（同日 追加）
+
+- `src/lib/audit.ts` を追加し、`contact`, `posts`, `works`, `revalidate` の変更系 API で監査ログイベントを記録するように変更。
+- `contact` の rate limit / 検証エラー / 送信成功時の分岐を `src/app/api/__tests__/contact-route.test.ts` で追加。
+- 問い合わせ API は AWS SDK をモックしてテスト可能化し、`RATE_LIMIT_MAX=5` 前提の 429 連続送信挙動を確認。

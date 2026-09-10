@@ -4,6 +4,7 @@ export const dynamic = 'force-dynamic';
 import { NextResponse } from 'next/server';
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { loadEnvConfig } from '@next/env';
+import { recordAuditEvent } from '@/lib/audit';
 
 // Ensure environment variables from .env are loaded when running via PM2 or other process managers
 loadEnvConfig(process.cwd());
@@ -48,6 +49,9 @@ interface ContactRequest {
 }
 
 export async function POST(req: Request) {
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'unknown';
+  const requestId = req.headers.get('x-request-id') ?? undefined;
+
   const {
     subject = 'お問い合わせ',
     name,
@@ -60,6 +64,14 @@ export async function POST(req: Request) {
   }: ContactRequest = await req.json();
 
   if (website) {
+    recordAuditEvent({
+      action: 'contact.submit',
+      outcome: 'deny',
+      status: 400,
+      ip,
+      requestId,
+      reason: 'honeypot',
+    });
     return NextResponse.json(
       { error: '不正なリクエストです。' },
       { status: 400 }
@@ -67,6 +79,14 @@ export async function POST(req: Request) {
   }
 
   if (!name || !email) {
+    recordAuditEvent({
+      action: 'contact.submit',
+      outcome: 'deny',
+      status: 400,
+      ip,
+      requestId,
+      reason: 'missing_required_fields',
+    });
     return NextResponse.json(
       { error: '名前とメールアドレスは必須です。' },
       { status: 400 }
@@ -75,6 +95,14 @@ export async function POST(req: Request) {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
+    recordAuditEvent({
+      action: 'contact.submit',
+      outcome: 'deny',
+      status: 400,
+      ip,
+      requestId,
+      reason: 'invalid_email',
+    });
     return NextResponse.json(
       { error: 'メールアドレスの形式が正しくありません。' },
       { status: 400 }
@@ -89,15 +117,29 @@ export async function POST(req: Request) {
     consultation.length > 1000 ||
     message.length > 1000
   ) {
+    recordAuditEvent({
+      action: 'contact.submit',
+      outcome: 'deny',
+      status: 400,
+      ip,
+      requestId,
+      reason: 'payload_too_long',
+    });
     return NextResponse.json(
       { error: '入力が長すぎます。' },
       { status: 400 }
     );
   }
 
-  const ip =
-    req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'unknown';
   if (rateLimit(ip)) {
+    recordAuditEvent({
+      action: 'contact.submit',
+      outcome: 'deny',
+      status: 429,
+      ip,
+      requestId,
+      reason: 'rate_limited',
+    });
     return NextResponse.json(
       { error: 'しばらくしてからお試しください。' },
       { status: 429 }
@@ -147,6 +189,14 @@ export async function POST(req: Request) {
   });
 
   if (!region || !accessKeyId || !secretAccessKey) {
+    recordAuditEvent({
+      action: 'contact.submit',
+      outcome: 'error',
+      status: 500,
+      ip,
+      requestId,
+      reason: 'missing_env',
+    });
     console.error('[contact API] env missing', {
       hasRegion: !!region,
       hasId: !!accessKeyId,
@@ -177,9 +227,25 @@ export async function POST(req: Request) {
       },
     });
     const res = await ses.send(cmd);
+    recordAuditEvent({
+      action: 'contact.submit',
+      outcome: 'success',
+      status: 200,
+      ip,
+      requestId,
+      reason: `message_id:${res.MessageId ?? 'none'}`,
+    });
     console.log('[contact API] success', res.MessageId);
     return NextResponse.json({ success: true, messageId: res.MessageId ?? null });
   } catch (e: any) {
+    recordAuditEvent({
+      action: 'contact.submit',
+      outcome: 'error',
+      status: 500,
+      ip,
+      requestId,
+      reason: e?.name ? `${e.name}:${e.message}` : 'send_failed',
+    });
     console.error('[contact API] send failed', {
       name: e?.name,
       message: e?.message,

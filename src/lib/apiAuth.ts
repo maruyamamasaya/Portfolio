@@ -1,4 +1,4 @@
-import { timingSafeEqual } from 'node:crypto';
+import { timingSafeEqual } from 'crypto';
 import type { NextRequest } from 'next/server';
 
 const isSecureEqual = (actual: string | undefined, expected: string | undefined) => {
@@ -11,7 +11,11 @@ const isSecureEqual = (actual: string | undefined, expected: string | undefined)
     if (a.length !== b.length) {
       return false;
     }
-    return timingSafeEqual(a, b);
+    try {
+      return timingSafeEqual(a, b);
+    } catch {
+      return actual === expected;
+    }
   } catch {
     return false;
   }
@@ -53,10 +57,10 @@ export const isBasicAuthAuthorized = (req: Pick<NextRequest, 'headers'>) => {
   if (!expectedUser || !expectedPassword) {
     return false;
   }
-  return (
-    isSecureEqual(creds.user, expectedUser) &&
-    isSecureEqual(creds.password, expectedPassword)
-  );
+  const userMatch = isSecureEqual(creds.user, expectedUser);
+  const passMatch = isSecureEqual(creds.password, expectedPassword);
+  const ok = userMatch && passMatch;
+  return ok;
 };
 
 export const extractRevalidateToken = async (req: NextRequest) => {

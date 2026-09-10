@@ -54,6 +54,26 @@ production build と framework の compile / 型検証を行う。layout が Goo
 | routing / config / dependency / global layout | lint + typecheck + 全 Jest + build |
 | 静的 content / asset | 参照 path + 対象 page または build |
 
+### API ブラウザスモーク（追加）
+
+`npm run dev` でアプリを起動した別ターミナル上で次を実行する。  
+（保存 API が Basic 認証依存・環境変数依存のため、事前に必要値を確認）
+
+```bash
+SMOKE_BASIC_USER=admin \
+SMOKE_BASIC_PASSWORD=admin \
+SMOKE_REVALIDATE_SECRET=your-revalidate-secret \
+AWS_SES_REGION=us-east-1 \
+AWS_SES_ACCESS_KEY_ID=... \
+AWS_SES_SECRET_ACCESS_KEY=... \
+npm run smoke:api
+```
+
+補足:
+- revalidate は secret が未設定だと対象ケースをスキップし、`401/400/404/429` など他ケースは検証継続。
+- `contact` の正常送信は AWS 環境変数が未設定なら「確認不能扱い（スキップ）」として集計せず扱う。
+- 連続実行時も副作用を残さないよう、作成した `posts/works` は事後削除する。
+
 ## リデザイン / CMS再設計向け追加検証（次フェーズ）
 
 - 作品（Works）と記事を同一編集 API で扱うなら、ルートハンドラの CRUD と認可テストを必須化する。
