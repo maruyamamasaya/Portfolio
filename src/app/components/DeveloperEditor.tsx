@@ -102,7 +102,7 @@ export default function DeveloperEditor() {
   };
 
   useEffect(() => {
-    fetch('/api/search-data')
+    fetch('/api/search-data', { credentials: 'include' })
       .then((res) => res.json())
       .then((data) => setTagsList(data.tags ?? []))
       .catch(() => setTagsList([]));
@@ -125,7 +125,7 @@ export default function DeveloperEditor() {
     setIsNew(false);
     setStatus('');
 
-    fetch(`/api/${targetConfig.apiBase}`)
+    fetch(`/api/${targetConfig.apiBase}`, { credentials: 'include' })
       .then((res) => res.json())
       .then(async (data: string[]) => {
         const groups: Record<string, PostItem[]> = {};
@@ -135,6 +135,7 @@ export default function DeveloperEditor() {
           data.map(async (name) => {
             const res = await fetch(
               `/api/${targetConfig.apiBase}/${encodeURIComponent(name)}`,
+              { credentials: 'include' },
             );
             if (res.ok) {
               const fileData = await res.json();
@@ -176,6 +177,7 @@ export default function DeveloperEditor() {
       setSelected(pendingOpenFile);
       const res = await fetch(
         `/api/${targetConfig.apiBase}/${encodeURIComponent(pendingOpenFile)}`,
+        { credentials: 'include' },
       );
       if (res.ok) {
         const data = await res.json();
@@ -203,7 +205,10 @@ export default function DeveloperEditor() {
 
   const openFile = async (name: string) => {
     setSelected(name);
-    const res = await fetch(`/api/${targetConfig.apiBase}/${encodeURIComponent(name)}`);
+    const res = await fetch(
+      `/api/${targetConfig.apiBase}/${encodeURIComponent(name)}`,
+      { credentials: 'include' },
+    );
     if (res.ok) {
       const data = await res.json();
       const parsed = matter(data.content);
@@ -279,6 +284,7 @@ export default function DeveloperEditor() {
       : JSON.stringify({ content: markdown });
     const res = await fetch(url, {
       method,
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body,
     });
@@ -314,6 +320,7 @@ export default function DeveloperEditor() {
     const slug = selected.replace(/\.md$/, '');
     await fetch('/api/revalidate', {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         paths: [...targetConfig.revalidatePaths, `/${targetConfig.apiBase}/${slug}`],
@@ -327,7 +334,7 @@ export default function DeveloperEditor() {
     if (!window.confirm('本当に削除しますか？')) return;
     const res = await fetch(
       `/api/${targetConfig.apiBase}/${encodeURIComponent(selected)}`,
-      { method: 'DELETE' },
+      { method: 'DELETE', credentials: 'include' },
     );
     if (res.ok) {
       const date = fileDates[selected];
@@ -374,15 +381,20 @@ export default function DeveloperEditor() {
     setPreview(!preview);
   };
 
-  const getWorkPreviewUrl = (filename: string) => {
+  const getWorkPreviewUrl = async (filename: string) => {
     if (!window || !filename) return '';
     const slug = filename.replace(/\.md$/, '');
-    const base = window.location.origin;
-    const secret =
-      process.env.NEXT_PUBLIC_WORKS_PREVIEW_SECRET ??
-      process.env.NEXT_PUBLIC_REVALIDATE_SECRET ??
-      '';
-    return secret ? `${base}/works/preview/${encodeURIComponent(slug)}?secret=${encodeURIComponent(secret)}` : `${base}/works/preview/${encodeURIComponent(slug)}`;
+    const res = await fetch(
+      `/api/works/preview-url?slug=${encodeURIComponent(slug)}`,
+      {
+        credentials: 'include',
+      },
+    );
+    if (!res.ok) {
+      return '';
+    }
+    const data = await res.json();
+    return data.url || '';
   };
 
   const copyWorkPreviewUrl = async () => {
@@ -390,7 +402,7 @@ export default function DeveloperEditor() {
       setCopyStatus('ファイルを選択してください');
       return;
     }
-    const url = getWorkPreviewUrl(selected);
+    const url = await getWorkPreviewUrl(selected);
     try {
       if (!url) throw new Error('url-empty');
       await navigator.clipboard.writeText(url);
@@ -642,14 +654,9 @@ export default function DeveloperEditor() {
         {copyStatus && (
           <p className="mt-2 text-sm text-slate-600">
             {copyStatus}
-            {(
-              !process.env.NEXT_PUBLIC_WORKS_PREVIEW_SECRET &&
-              !process.env.NEXT_PUBLIC_REVALIDATE_SECRET &&
-              selected &&
-              target === 'works'
-            ) && (
+            {selected && target === 'works' && (
               <span className="ml-1 block text-xs">
-                ※現在の環境変数にプレビュー用シークレットが未設定のため、URL末尾は未付与です
+                ※URLは認証情報（保存用トークン）を含めて発行されます。
               </span>
             )}
           </p>

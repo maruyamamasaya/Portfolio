@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { isBasicAuthAuthorized, isValidRevalidateToken } from '@/lib/apiAuth';
 
 export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
@@ -14,17 +15,17 @@ export function middleware(req: NextRequest) {
     }
   }
 
-  const basicAuth = req.headers.get('authorization');
-  const username = process.env.BASIC_AUTH_USERNAME ?? '';
-  const password = process.env.BASIC_AUTH_PASSWORD ?? '';
+  const hasValidBasicAuth = isBasicAuthAuthorized(req);
+  const secret = req.nextUrl.searchParams.get('secret');
+  const hasValidToken =
+    Boolean(secret) &&
+    Boolean(process.env.REVALIDATE_SECRET) &&
+    isValidRevalidateToken(secret ?? '');
 
-  if (basicAuth) {
-    const authValue = basicAuth.split(' ')[1];
-    const [user, pwd] = atob(authValue).split(':');
-    if (user === username && pwd === password) {
-      return NextResponse.next();
-    }
+  if (hasValidBasicAuth || hasValidToken) {
+    return NextResponse.next();
   }
+
   return new NextResponse('Authentication required', {
     status: 401,
     headers: { 'WWW-Authenticate': 'Basic realm="Secure Area"' },
@@ -32,5 +33,16 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/developer_edit', '/developer_edit/:path*', '/works/preview/:path*'],
+  matcher: [
+    '/developer_edit',
+    '/developer_edit/:path*',
+    '/works/preview/:path*',
+    '/api/posts',
+    '/api/posts/:path*',
+    '/api/works',
+    '/api/works/:path*',
+    '/api/revalidate',
+    '/api/revalidate/:path*',
+    '/api/works/preview-url',
+  ],
 };

@@ -1,7 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { validateFilename } from '@/lib/validateFilename';
+import { isBasicAuthAuthorized } from '@/lib/apiAuth';
 
 const postsDir = path.join(process.cwd(), 'blog');
 
@@ -26,9 +27,12 @@ export async function GET(
 }
 
 export async function PUT(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { filename: string } },
 ) {
+  if (!isBasicAuthAuthorized(req)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   try {
     const { content } = await req.json();
     const safeName = validateFilename(params.filename);
@@ -47,9 +51,12 @@ export async function PUT(
 }
 
 export async function DELETE(
-  req: Request,
+  req: NextRequest,
   { params }: { params: { filename: string } },
 ) {
+  if (!isBasicAuthAuthorized(req)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   const safeName = validateFilename(params.filename);
   if (!safeName) {
     return NextResponse.json({ error: 'Invalid filename' }, { status: 400 });

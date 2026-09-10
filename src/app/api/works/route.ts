@@ -1,7 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { validateFilename } from '@/lib/validateFilename';
+import { isBasicAuthAuthorized } from '@/lib/apiAuth';
 
 const worksDir = path.join(process.cwd(), 'content', 'works');
 
@@ -18,7 +19,10 @@ export async function GET() {
   }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
+  if (!isBasicAuthAuthorized(req)) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
   try {
     const { filename, content } = await req.json();
     const safeName = validateFilename(filename);
