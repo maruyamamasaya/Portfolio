@@ -24,6 +24,13 @@ Digi Goose は、Next.js App Router で構築されたポートフォリオ主�
 - `Works` の公開基盤を本番寄りに強化（公開日順の厳密ソート、`draft` 非表示、`publishedAt` 優先表示、`DeveloperEditor` で公開情報の編集）
 - 予約公開ルールを適用（`publishedAt` が未来日は公開一覧/詳細の既定ルートから除外）。
 - `/works/preview/[slug]?secret=...` を追加し、管理者向けに下書き・予約公開を含む事前確認が可能に。
+- `IMAGE_ASSETS` 用の運用準備として、`data/image-assets-replacements.template.csv` を追加し、`replacementUrl` を CSV ベースで `data/image-assets.json` に反映する `scripts/sync-image-assets.js` を追加。`npm run image-assets:sync` を実行する流れを確立。
+- サイト体験の高級感を高めるUI整備を追加。`lux-card / lux-chip / portfolio-grid-tight / portfolio-list-spacious` を globals で整備し、`Card`・記事カード・Works セクション・Works 一覧に反映。  
+  モーション速度を穏やかにし、カード密度とモバイル可読性の見え方を調整。
+- ポートフォリオ全体で没入型ビジュアルテーマを統合。
+  - グローバルで Aurora / Fog / Mesh / Spot 系レイヤーを実装し、マウス・スクロール連動の反応を追加。
+  - Hero/Works/Contact/About の導線を統一デザインへ再編。
+  - Works 一覧のカードと公開状態ラベルを統一化し、読みやすさを優先したグラス＋グロー表現を採用。
 
 ## In Progress（進行中）
 
@@ -31,6 +38,9 @@ Digi Goose は、Next.js App Router で構築されたポートフォリオ主�
 - 開発着手前の文書整備（ROADMAP、実装優先順位、認可方針、公開フロー）を完了。
 - 認可境界の本線化は完了。問い合わせの rate limit / 監査ログ要件を明文化し、最小限の監査ログ実装を完了。  
 - 問い合わせ・変更系 API の最小ブラウザスモーク確認を完了（401/200 分岐を含む）。
+- 沈静した没入型テーマの導入（背景演出、Glass/Glow、Hero強化、Works/記事カードの反応演出）を完了。
+  導線（About / Works / Contact）も同一言語感で揃える対応を完了。
+- `prefers-reduced-motion` を前提にした背景演出の簡略化、カード表示ラベル・公開情報の統一化を含めて完了。  
 
 ## Known Issues（既知の問題）
 
@@ -45,11 +55,11 @@ Digi Goose は、Next.js App Router で構築されたポートフォリオ主�
 
 ## Immediate Next（直近の候補）
 
-1. `IMAGE_ASSETS.md` を見ながら本画像URLを設定し、About、Works、Journal、Contact の内容を順次棚卸しする。
-2. 記事（`blog/`）と制作実績（新規コンテンツ層）を同一編集フローで扱う計画にし、公開/下書き、サムネイル、並び順を確定する。
-3. 本番記事と画像資産の供給方式（リポジトリ同梱 / 外部ストレージ）を決め、再現可能な運用を作る。
-4. サイト体験を「高級寄り」へ寄せるためにレイアウト密度、配色、タイポ、余白、アニメーションを段階的に調整する。
-6. 対象デプロイ環境で Next.js の解決規則を確認してから、重複ミドルウェアを統合する。
+1. About / Works / Contact の情報密度を調整し、最終的な世界観トーン（テキスト比率・情報の優先順）を固定する。
+2. 実環境での light/dark / Reduced-motion 動作と主要ブラウザ確認（可読性、コントラスト、読み込み速度）。
+3. 実環境での light/dark / Reduced-motion 動作と主要ブラウザ確認（可読性、コントラスト、読み込み速度）。
+4. `IMAGE_ASSETS.md` を見ながら本画像URLを本運用値へ差し替え、`data/image-assets.json` を更新する。
+5. 対象デプロイ環境で Next.js の解決規則を確認してから、重複ミドルウェアを統合する。
 
 ## Unknowns（判断不能）
 

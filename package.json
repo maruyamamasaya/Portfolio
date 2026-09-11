@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "smoke:api": "node scripts/smoke-api.mjs",
+    "image-assets:sync": "node scripts/sync-image-assets.js data/image-assets-replacements.template.csv data/image-assets.json",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {

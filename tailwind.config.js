@@ -46,12 +46,12 @@ module.exports = {
       },
       keyframes: {
         fadeInUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '0%': { opacity: '0', transform: 'translateY(14px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       animation: {
-        fadeInUp: 'fadeInUp 0.3s ease-in-out forwards',
+        fadeInUp: 'fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       typography: ({ theme }) => ({
         DEFAULT: {

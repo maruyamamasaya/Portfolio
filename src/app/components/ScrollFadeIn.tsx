@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState, ReactNode, ElementType } from 'react';
+import { useEffect, useRef, useState, ReactNode, ElementType, CSSProperties } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -40,8 +40,12 @@ export default function ScrollFadeIn({
   return (
     <Component
       ref={ref as any}
-      className={`${className} ${visible ? 'animate-fadeInUp' : 'opacity-0'}`}
-      style={{ animationDelay: `${delay}ms` }}
+      className={`${className} ${visible ? 'portfolio-reveal' : 'opacity-0'}`}
+      style={
+        visible
+          ? ({ '--reveal-delay': `${delay}ms` } as CSSProperties)
+          : ({ animationDelay: `${delay}ms` } as CSSProperties)
+      }
     >
       {children}
     </Component>

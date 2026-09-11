@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentProps, CSSProperties, ReactNode } from 'react';
 import { Post } from '@/lib/posts';
 import { siteConfig } from '@/config/site';
 import CTASection from './CTASection';
 import HomePostCard from './HomePostCard';
+import ScrollFadeIn from './ScrollFadeIn';
 
 const selectedWorks = [
   {
@@ -49,7 +50,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
   return (
     <div className="home-shell portfolio-home">
       {hero ?? (
-        <section className="portfolio-hero" aria-labelledby="home-heading">
+        <section className="portfolio-hero portfolio-glass relative overflow-hidden px-4 py-14" aria-labelledby="home-heading">
           <div className="portfolio-hero-topline">
             <p>MASAYA MARUYAMA / DIGITAL CREATOR</p>
             <p>TOKYO · JAPAN</p>
@@ -66,10 +67,10 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
                 作品と知見が積み上がる場として、制作実績と Journal を同じ文脈で見える化しています。
               </p>
               <div className="home-actions">
-                <Link href="#selected-works" className="home-primary-button">
+                <Link href="#selected-works" className="home-primary-button focus-ring">
                   制作実績を見る <span aria-hidden="true">↓</span>
                 </Link>
-                <Link href="/blog" className="home-text-link">
+                <Link href="/blog" className="home-text-link ambient-text-link">
                   Journalを読む <span aria-hidden="true">↗</span>
                 </Link>
               </div>
@@ -84,21 +85,27 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
         </section>
       )}
 
-      <section id="selected-works" className="portfolio-section" aria-labelledby="works-heading">
-        <div className="portfolio-section-label">
-          <p>SELECTED WORK</p>
-          <span>01 — 03</span>
-        </div>
-        <div className="portfolio-section-title">
-          <h2 id="works-heading">
-            役割を寄せるのではなく、<br />
-            意図を揃えて制作します。
-          </h2>
-          <p>制作実績を読み解く順番を、見る人が自然に追える導線で設計しています。</p>
-        </div>
+      <section id="selected-works" className="portfolio-section portfolio-glass mt-20">
+        <ScrollFadeIn as="div">
+          <div className="portfolio-section-label">
+            <p>SELECTED WORK</p>
+            <span>01 — 03</span>
+          </div>
+          <div className="portfolio-section-title">
+            <h2 id="works-heading">
+              役割を寄せるのではなく、<br />
+              意図を揃えて制作します。
+            </h2>
+            <p>制作実績を読み解く順番を、見る人が自然に追える導線で設計しています。</p>
+          </div>
+        </ScrollFadeIn>
         <div className="portfolio-work-list">
-          {selectedWorks.map((work) => (
-            <article key={work.number} className="portfolio-work">
+          {selectedWorks.map((work, index) => (
+            <article
+              key={work.number}
+              className="portfolio-work portfolio-reveal"
+              style={{ '--reveal-delay': `${index * 120}ms` } as CSSProperties}
+            >
               <div className="portfolio-work-number">{work.number}</div>
               <div className="portfolio-work-body">
                 <p>{work.field}</p>
@@ -110,71 +117,85 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
             </article>
           ))}
         </div>
-        <Link href="/works" className="home-inline-link">
-          制作実績の詳細ページへ <span aria-hidden="true">→</span>
-        </Link>
+        <div className="mt-8">
+          <Link href="/works" className="home-inline-link ambient-text-link">
+            制作実績の詳細ページへ <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </section>
 
-      <section className="portfolio-about" aria-labelledby="about-heading">
-        <div className="portfolio-section-label">
-          <p>ABOUT</p>
-          <span>PORTFOLIO CURATOR</span>
-        </div>
-        <div className="portfolio-about-grid">
-          <h2 id="about-heading">
-            作品の意図を明確にし、<br />
-            伝わるかたちへ接続します。
-          </h2>
-          <div>
-            <p>Web、デザイン、AI活用を横断し、実案件の中で価値が増える導線を作ることを重視しています。</p>
-            <p>「必要な人に、必要なタイミングで、必要な情報が届く」状態を目標に運用設計まで見据えています。</p>
-            <Link href="/about">
-              プロフィールを見る <span aria-hidden="true">→</span>
+      <section className="portfolio-about portfolio-glass mt-16" aria-labelledby="about-heading">
+        <ScrollFadeIn as="div" delay={80}>
+          <div className="portfolio-section-label">
+            <p>ABOUT</p>
+            <span>PORTFOLIO CURATOR</span>
+          </div>
+          <div className="portfolio-about-grid">
+            <h2 id="about-heading">
+              作品の意図を明確にし、<br />
+              伝わるかたちへ接続します。
+            </h2>
+            <div>
+              <p>Web、デザイン、AI活用を横断し、実案件の中で価値が増える導線を作ることを重視しています。</p>
+              <p>「必要な人に、必要なタイミングで、必要な情報が届く」状態を目標に運用設計まで見据えています。</p>
+              <Link href="/about" className="ambient-text-link">
+                プロフィールを見る <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
+        </ScrollFadeIn>
+      </section>
+
+      <section className="portfolio-section portfolio-glass mt-16" aria-labelledby="capabilities-heading">
+        <ScrollFadeIn as="div" delay={120}>
+          <div className="portfolio-section-label">
+            <p>WORKFLOW</p>
+            <span>01 — 04</span>
+          </div>
+          <div className="portfolio-capabilities">
+            <h2 id="capabilities-heading">やること</h2>
+            <ol>
+              {capabilities.map(([number, title, description]) => (
+                <li key={number}>
+                  <span>{number}</span>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </ScrollFadeIn>
+      </section>
+
+      <section className="portfolio-section portfolio-glass mt-16" aria-labelledby="posts-heading">
+        <ScrollFadeIn as="div">
+          <div className="portfolio-section-label">
+            <p>JOURNAL</p>
+            <Link href="/blog" className="ambient-text-link">
+              ALL POSTS <span aria-hidden="true">→</span>
             </Link>
           </div>
-        </div>
-      </section>
-
-      <section className="portfolio-section" aria-labelledby="capabilities-heading">
-        <div className="portfolio-section-label">
-          <p>WORKFLOW</p>
-          <span>01 — 04</span>
-        </div>
-        <div className="portfolio-capabilities">
-          <h2 id="capabilities-heading">やること</h2>
-          <ol>
-            {capabilities.map(([number, title, description]) => (
-              <li key={number}>
-                <span>{number}</span>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="portfolio-section" aria-labelledby="posts-heading">
-        <div className="portfolio-section-label">
-          <p>JOURNAL</p>
-          <Link href="/blog">ALL POSTS →</Link>
-        </div>
-        <div className="portfolio-section-title">
-          <h2 id="posts-heading">
-            思考の断片を、<br />
-            実務の言葉に変える。
-          </h2>
-        </div>
+          <div className="portfolio-section-title">
+            <h2 id="posts-heading">
+              思考の断片を、<br />
+              実務の言葉に変える。
+            </h2>
+          </div>
+        </ScrollFadeIn>
         {latestPosts.length > 0 ? (
           <ul className="home-post-grid">
-            {latestPosts.map((post) => (
-              <li key={post.slug}>
+            {latestPosts.map((post, index) => (
+              <li
+                key={post.slug}
+                className="portfolio-reveal"
+                style={{ '--reveal-delay': `${220 + index * 90}ms` } as CSSProperties}
+              >
                 <HomePostCard post={post} />
               </li>
             ))}
           </ul>
         ) : (
-          <div className="home-empty-posts">
+          <div className="home-empty-posts interactive-panel">
             <span>準備中</span>
             <p>記事は編集と見せ方を整え中です。</p>
           </div>
@@ -184,7 +205,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
       {ctaProps ? (
         <CTASection {...ctaProps} />
       ) : (
-        <section className="portfolio-contact" aria-labelledby="cta-heading">
+        <section className="portfolio-contact portfolio-glass mt-16" aria-labelledby="cta-heading">
           <p>LET&apos;S WORK TOGETHER</p>
           <h2 id="cta-heading">
             見ることで、<br />
@@ -192,10 +213,13 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
           </h2>
           <div>
             <span>作品ページの見せ方や構成の整理について、まずは小さく相談してください。</span>
-            <Link href={siteConfig.contact.general}>コンタクトを取る <span aria-hidden="true">↗</span></Link>
+            <Link href={siteConfig.contact.general} className="focus-ring">
+              コンタクトを取る <span aria-hidden="true">↗</span>
+            </Link>
           </div>
         </section>
       )}
     </div>
   );
 }
+

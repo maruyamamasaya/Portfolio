@@ -18,7 +18,7 @@ export default function CTASection({
       <h2 className="text-2xl font-bold">{title}</h2>
       <Link
         href={href}
-        className="inline-block px-6 py-3 bg-primary text-white rounded shadow hover:bg-primary/80 transition-base"
+        className="inline-block px-8 py-3 rounded-full text-white font-semibold bg-gradient-to-r from-[#708cff] to-[#45c5ff] hover:from-[#5d7af7] hover:to-[#3db4e8] transition-base"
       >
         {label}
       </Link>

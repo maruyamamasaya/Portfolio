@@ -57,19 +57,19 @@ const works = [
 export default function WorksSection() {
   return (
     <section className="section-spacing">
-      <h2 className="text-2xl font-bold mb-4">実績・導入事例</h2>
-      <p className="mb-4">
+      <h2 className="text-2xl font-bold">実績・導入事例</h2>
+      <p className="mb-5 text-base leading-7">
         小さなお店や個人で頑張る皆さまに寄り添うサポートを
         <br />
         「誰に相談していいかわからない」そんな声に応える、現場に強いIT・デザイン支援をご提供しています。
       </p>
-      <div className="grid w-full gap-8 md:grid-cols-3 max-w-5xl mx-auto">
+      <div className="portfolio-grid-tight w-full md:grid-cols-3 max-w-5xl mx-auto">
         {works.map((work) => (
-          <div key={work.title} className="space-y-2">
-            <h3 className="font-semibold">{work.title}</h3>
+          <article key={work.title} className="lux-card p-6 space-y-4">
+            <h3 className="font-semibold text-lg">{work.title}</h3>
             <ImageSlider images={work.images} />
             <p className="speech-bubble">{work.caption}</p>
-          </div>
+          </article>
         ))}
       </div>
     </section>

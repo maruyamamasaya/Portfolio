@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function About() {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-8 space-y-10">
+    <div className="portfolio-work-page portfolio-glass px-4 sm:px-6 md:px-10 py-10 space-y-10">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">
         ソロエンジニア × クリエイター – 企画から運営まで一人完結
@@ -21,13 +21,13 @@ export default function About() {
 
       {/* プロフィール */}
       <section>
-        <Card className="p-6 md:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+        <Card className="portfolio-glass p-6 md:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
           <Image
-            src="/images/profile.jpg"
+            src="/images/img1.svg"
             alt="Profile"
             width={160}
             height={160}
-            className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-4 border-primary/20 shadow-lg"
+            className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-full border-4 border-[rgba(155,190,255,0.45)] shadow-lg"
           />
           <div className="flex-1 space-y-4 text-center md:text-left">
             <div className="space-y-2">
@@ -64,9 +64,9 @@ export default function About() {
         </Card>
       </section>
 
-      <section className="space-y-4">
+      <section className="space-y-4 interactive-panel">
         <h2 className="text-xl font-bold">導入事例</h2>
-        <Card className="text-sm space-y-2" disableHover>
+        <Card className="text-sm space-y-2 portfolio-glass">
           <h3 className="text-lg font-semibold">
             LINE公式アカウント × ChatGPT × AWS
           </h3>
@@ -92,7 +92,7 @@ export default function About() {
 
       <ProfileCategories />
 
-      <section className="space-y-4">
+      <section className="space-y-4 portfolio-glass">
         <h2 className="text-xl font-bold">Media / SNS活動</h2>
         <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
           🎬
@@ -140,34 +140,34 @@ export default function About() {
         />
       </section>
 
-      <section className="space-y-4 text-sm">
+      <section className="space-y-4 text-sm portfolio-glass p-6">
         <h2 className="text-xl font-bold">活動ポリシー</h2>
         <p className="mb-4">
           <strong>「信頼される技術者であること」</strong>
           を最優先に、ユーザー視点での価値提供を心がけています。
           単なる知識提供や技術支援ではなく、本当に“役に立つ”体験を届けることを軸に活動しています。
         </p>
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-            <p className="font-semibold">ユーザーファースト</p>
-            <p>
-              誰にでもわかりやすく、丁寧なサポートを心がけ、相談しやすい空気感を大切にしています。
-            </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            <div className="portfolio-glass p-4">
+              <p className="font-semibold">ユーザーファースト</p>
+              <p>
+                誰にでもわかりやすく、丁寧なサポートを心がけ、相談しやすい空気感を大切にしています。
+              </p>
+            </div>
+            <div className="portfolio-glass p-4">
+              <p className="font-semibold">信頼性の担保</p>
+              <p>
+                不確かな情報は扱わず、検証・確認を通じた正確なアドバイスを提供します。
+              </p>
+            </div>
+            <div className="portfolio-glass p-4">
+              <p className="font-semibold">継続学習の姿勢</p>
+              <p>
+                テクノロジーの進化に対応し続けるため、自ら学び、検証し、常に最新の知識で向き合います。
+              </p>
+            </div>
           </div>
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-            <p className="font-semibold">信頼性の担保</p>
-            <p>
-              不確かな情報は扱わず、検証・確認を通じた正確なアドバイスを提供します。
-            </p>
-          </div>
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-            <p className="font-semibold">継続学習の姿勢</p>
-            <p>
-              テクノロジーの進化に対応し続けるため、自ら学び、検証し、常に最新の知識で向き合います。
-            </p>
-          </div>
-        </div>
-      </section>
+        </section>
 
       <section className="space-y-6">
         <h2 className="text-xl font-bold">開発技術</h2>
@@ -175,7 +175,7 @@ export default function About() {
         <SkillsGrid />
       </section>
 
-      <section className="space-y-4 text-sm">
+      <section className="space-y-4 text-sm portfolio-glass p-6">
         <h2 className="text-xl font-bold">更新履歴</h2>
         <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
           <tbody>

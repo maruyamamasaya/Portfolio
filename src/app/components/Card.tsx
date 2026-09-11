@@ -13,7 +13,7 @@ interface Props {
 const Card = forwardRef<HTMLDivElement, Props>(
   ({ children, className = '', onClick, disableHover = false }, ref) => {
     const reduce = useReducedMotion();
-    const hover = reduce || disableHover ? undefined : { scale: 1.05 };
+    const hover = reduce || disableHover ? undefined : { scale: 1.01, y: -3 };
     const tap = reduce || disableHover ? undefined : { scale: 0.95 };
     return (
       <LazyMotion features={domAnimation}>
@@ -21,7 +21,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
           ref={ref}
           whileHover={hover}
           whileTap={tap}
-          className={`rounded-lg shadow-md p-4 bg-white dark:bg-gray-700 transition-base ${className}`}
+          className={`lux-card p-5 ${className}`}
           onClick={onClick}
         >
           {children}

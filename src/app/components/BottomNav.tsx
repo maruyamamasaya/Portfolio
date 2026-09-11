@@ -56,13 +56,18 @@ export default function BottomNav() {
   ];
 
   return (
-    <nav className="hd:hidden fixed bottom-0 inset-x-0 z-50 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+    <nav
+      className="hd:hidden fixed bottom-0 inset-x-0 z-50 border-t bg-[#081028]/80 backdrop-blur-xl"
+      style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}
+    >
       <ul className="flex justify-around">
         {navItems.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className={`flex flex-col items-center py-2 text-xs transition-base ${pathname === item.href ? 'text-primary' : 'text-gray-500'}`}
+              className={`flex flex-col items-center py-2 text-xs transition-base ${
+                pathname === item.href ? 'text-[#8ea9ff]' : 'text-slate-400'
+              }`}
             >
               {item.icon}
               <span>{item.label}</span>

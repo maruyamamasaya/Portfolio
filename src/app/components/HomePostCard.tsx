@@ -11,7 +11,7 @@ export default function HomePostCard({ post }: Props) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 transition-base overflow-hidden"
+      className="lux-card portfolio-glass group block overflow-hidden"
     >
       {post.image && (
         <div className="relative w-full aspect-[1280/670]">
@@ -24,11 +24,11 @@ export default function HomePostCard({ post }: Props) {
           />
         </div>
       )}
-      <div className="p-4">
-        <h3 className="text-sm font-bold leading-snug text-gray-800 dark:text-white group-hover:text-primary transition">
-          {post.title}
-        </h3>
-        <p className="text-xs text-gray-500 mt-1">{post.date}</p>
+        <div className="p-4 sm:p-5">
+          <h3 className="text-sm font-bold leading-snug text-slate-100 group-hover:text-[#9cb7ff] transition">
+            {post.title}
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">{post.date}</p>
         {post.tags && (
           <div className="mt-2 flex flex-wrap gap-2">
             {post.tags.slice(0, 3).map((tag) => (
