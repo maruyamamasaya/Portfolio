@@ -61,6 +61,10 @@ body {
   min-height: 100%;
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   color: var(--site-ink);
@@ -118,11 +122,11 @@ body {
   opacity: 0.24;
   transform:
     translate3d(
-      calc(var(--scroll-phase, 0) * 6px + var(--space-shift, 0px)),
-      calc(var(--scroll-phase, 0) * 12% + var(--depth-parallax-y)),
+      var(--space-shift, 0px),
+      var(--depth-parallax-y),
       0
     )
-    scale(calc(1 + (0.02 * var(--scroll-phase, 0)) * var(--motion-scale));
+    scale(1.01);
   animation: ambient-mesh calc(24s * var(--motion-scale)) linear infinite;
 }
 
@@ -133,7 +137,7 @@ body {
     linear-gradient(180deg, rgba(8, 12, 24, 0), rgba(6, 8, 18, 0.4) 85%);
   opacity: 0.45;
   filter: blur(24px);
-  transform: translate3d(0, calc(var(--scroll-phase, 0) * -18px), 0) scale(calc(1 + var(--scroll-phase, 0) * 0.02 * var(--motion-scale));
+  transform: translate3d(0, calc(var(--space-shift, 0px) * -0.65), 0) scale(1.01);
   animation: ambient-fog calc(30s * var(--motion-scale)) ease-in-out infinite alternate;
 }
 
@@ -229,6 +233,54 @@ body {
 .vfx-project-card,
 .vfx-ripple-target {
   position: relative;
+}
+
+.vfx-project-field {
+  position: relative;
+  isolation: isolate;
+}
+
+.vfx-project-field::before {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  z-index: -1;
+  border-radius: 2.5rem;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 45%, var(--project-glow), transparent 66%);
+  filter: blur(24px);
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 280ms ease, transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vfx-project-field:is(:hover, :focus-within)::before {
+  opacity: 0.72;
+  transform: scale(1.02);
+}
+
+.page-space-transition {
+  min-height: 40vh;
+}
+
+.portfolio-loading {
+  min-height: 52vh;
+  display: grid;
+  place-items: center;
+}
+
+.portfolio-loading-light {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(218, 231, 255, 0.88) 0 3%, rgba(111, 202, 255, 0.28) 18%, rgba(137, 111, 255, 0.12) 42%, transparent 70%);
+  box-shadow: 0 0 3rem rgba(111, 178, 255, 0.28);
+  animation: portfolio-loading-form 900ms cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+}
+
+@keyframes portfolio-loading-form {
+  from { opacity: 0.38; transform: scale(0.72); filter: blur(3px); }
+  to { opacity: 0.9; transform: scale(1.08); filter: blur(0); }
 }
 
 .immersive-surface {
@@ -1250,6 +1302,7 @@ pre code.hljs,
   .immersive-orb,
   .reveal-fade,
   .portfolio-work::after,
+  .portfolio-loading-light,
   .ambient-orb {
     animation: none !important;
   }

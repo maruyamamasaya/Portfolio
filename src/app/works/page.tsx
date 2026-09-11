@@ -5,6 +5,7 @@ import { getSortedWorks, getWorkPublicationState, getWorkPublicationDate } from 
 import Card from '../components/Card';
 import ScrollFadeIn from '../components/ScrollFadeIn';
 import SectionEnvironment from '../components/visual/SectionEnvironment';
+import ProjectVisualSurface from '../components/visual/ProjectVisualSurface';
 
 export default async function Works() {
   const works = await getSortedWorks();
@@ -51,9 +52,17 @@ export default async function Works() {
 
           return (
             <ScrollFadeIn key={work.slug} as="article" delay={80} className="vfx-ripple-target">
+              <ProjectVisualSurface
+                className="vfx-project-field"
+                style={projectStyle}
+                color={{
+                  accentColor: work.accentColor ?? '#88b0ff',
+                  secondaryColor: work.secondaryColor,
+                  glowColor: work.glowColor,
+                }}
+              >
               <Card
                 className="portfolio-glass group p-0 overflow-hidden space-y-4 vfx-project-card"
-                style={projectStyle}
                 data-ripple="true"
               >
                 <Link href={`/works/${work.slug}`} className="block">
@@ -101,6 +110,7 @@ export default async function Works() {
                   </div>
                 </div>
               </Card>
+              </ProjectVisualSurface>
             </ScrollFadeIn>
           );
         })}

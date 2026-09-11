@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState, ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, ReactNode } from 'react';
 
 export type VisualSpace = 'default' | 'hero' | 'works' | 'about' | 'skills' | 'contact';
 export type VisualQuality = 'high' | 'medium' | 'low';
@@ -78,7 +78,8 @@ const detectInitialQuality = (): VisualQuality => {
   }
   const isMobile = window.innerWidth <= 768;
   if (isMobile) return 'medium';
-  if (!window.navigator.deviceMemory || window.navigator.deviceMemory <= 4) return 'medium';
+  const deviceMemory = (window.navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+  if (!deviceMemory || deviceMemory <= 4) return 'medium';
   if (window.innerWidth >= 1600 && window.innerHeight >= 900) return 'high';
   return 'medium';
 };
@@ -118,7 +119,7 @@ export function VisualEnvironmentProvider({ children }: ProviderProps) {
     };
     mq.addEventListener('change', onChange);
     const onResize = () => {
-      setQuality((prev) => (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'low' : prev));
+      setQuality(detectInitialQuality());
     };
     window.addEventListener('resize', onResize);
     return () => {
@@ -147,7 +148,7 @@ export function VisualEnvironmentProvider({ children }: ProviderProps) {
     root.style.setProperty('--vfx-motion-scale', reducedMotion ? '0' : '1');
   }, [currentSpace, currentProjectColor, quality, reducedMotion, scrollProgress]);
 
-  const setCurrentProjectColor = (color?: ProjectVisualColor | null) => {
+  const setCurrentProjectColor = useCallback((color?: ProjectVisualColor | null) => {
     setCurrentProjectColorState(
       color
         ? {
@@ -157,7 +158,9 @@ export function VisualEnvironmentProvider({ children }: ProviderProps) {
           }
         : undefined,
     );
-  };
+  }, []);
+
+  const resetProjectColor = useCallback(() => setCurrentProjectColorState(undefined), []);
 
   const value = useMemo(
     () => ({
@@ -173,7 +176,7 @@ export function VisualEnvironmentProvider({ children }: ProviderProps) {
       setScrollProgress,
       setPointer: setPointerState,
       setQuality,
-      resetProjectColor: () => setCurrentProjectColorState(undefined),
+      resetProjectColor,
     }),
     [
       quality,
@@ -183,7 +186,7 @@ export function VisualEnvironmentProvider({ children }: ProviderProps) {
       scrollProgress,
       pointer,
       setCurrentProjectColor,
-      setCurrentProjectColorState,
+      resetProjectColor,
     ],
   );
 

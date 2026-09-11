@@ -6,6 +6,7 @@ import CTASection from './CTASection';
 import HomePostCard from './HomePostCard';
 import ScrollFadeIn from './ScrollFadeIn';
 import SectionEnvironment from './visual/SectionEnvironment';
+import ProjectVisualSurface from './visual/ProjectVisualSurface';
 
 const selectedWorks = [
   {
@@ -14,6 +15,7 @@ const selectedWorks = [
     title: '目的に即した導線設計。',
     summary: '相談から公開まで続く、実務の流れを壊さない形で体験を設計しました。',
     contribution: ['企画', '情報設計', 'デザイン', '開発'],
+    color: { accentColor: '#6fdcff', secondaryColor: '#718dff', glowColor: 'rgba(111, 220, 255, 0.24)' },
   },
   {
     number: '02',
@@ -21,6 +23,7 @@ const selectedWorks = [
     title: '価値を、ひと目で伝える構成。',
     summary: '情報の優先順位を整え、見た人が次の行動に進みやすい掲載順を設計します。',
     contribution: ['要件整理', '編集方針', 'コンテンツ設計', '改善提案'],
+    color: { accentColor: '#a88cff', secondaryColor: '#72b8ff', glowColor: 'rgba(168, 140, 255, 0.24)' },
   },
   {
     number: '03',
@@ -28,6 +31,7 @@ const selectedWorks = [
     title: '作業の反復を、再利用可能な仕組みに。',
     summary: '個別対応を残しつつ、運用・更新の再現性を高める接続部を組み込みます。',
     contribution: ['要件整理', '技術選定', '試験実装', '運用設計'],
+    color: { accentColor: '#dc83d8', secondaryColor: '#846fff', glowColor: 'rgba(220, 131, 216, 0.22)' },
   },
 ];
 
@@ -56,6 +60,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
           space="hero"
           className="portfolio-hero portfolio-glass relative overflow-hidden px-4 py-14 vfx-ripple-target"
           id="home-hero"
+          ariaLabelledby="home-heading"
         >
           <div className="portfolio-hero-topline">
             <p>MASAYA MARUYAMA / DIGITAL CREATOR</p>
@@ -96,6 +101,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
         space="works"
         id="selected-works"
         className="portfolio-section portfolio-glass mt-20 vfx-ripple-target"
+        ariaLabelledby="works-heading"
       >
         <ScrollFadeIn as="div">
           <div className="portfolio-section-label">
@@ -112,10 +118,19 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
         </ScrollFadeIn>
         <div className="portfolio-work-list">
           {selectedWorks.map((work, index) => (
-            <article
+            <ProjectVisualSurface
               key={work.number}
+              color={work.color}
+              className="vfx-project-field"
+              style={{
+                '--project-accent': work.color.accentColor,
+                '--project-accent-2': work.color.secondaryColor,
+                '--project-glow': work.color.glowColor,
+                '--reveal-delay': `${index * 120}ms`,
+              } as CSSProperties}
+            >
+            <article
               className="portfolio-work portfolio-reveal vfx-project-card vfx-ripple-target"
-              style={{ '--reveal-delay': `${index * 120}ms` } as CSSProperties}
             >
               <div className="portfolio-work-number">{work.number}</div>
               <div className="portfolio-work-body">
@@ -126,6 +141,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
               </div>
               <span className="portfolio-work-arrow" aria-hidden="true">↗</span>
             </article>
+            </ProjectVisualSurface>
           ))}
         </div>
         <div className="mt-8">
@@ -140,6 +156,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
         space="about"
         className="portfolio-about portfolio-glass mt-16"
         id="about-anchor"
+        ariaLabelledby="about-heading"
       >
         <ScrollFadeIn as="div" delay={80}>
           <div className="portfolio-section-label">
@@ -166,6 +183,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
         as="section"
         space="skills"
         className="portfolio-section portfolio-glass mt-16"
+        ariaLabelledby="capabilities-heading"
       >
         <ScrollFadeIn as="div" delay={120}>
           <div className="portfolio-section-label">

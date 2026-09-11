@@ -26,11 +26,11 @@ export default function PageTransition({ children }: { children: ReactNode }) {
       <AnimatePresence mode="wait" initial={false}>
         <m.div
           key={pathname}
-          className="gpu-optimize"
-          initial={reduce ? false : initial}
-          animate={reduce ? undefined : { opacity: 1 }}
-          exit={reduce ? undefined : { opacity: 0 }}
-          transition={reduce ? undefined : { duration: 0.3, ease: 'easeInOut' }}
+          className="gpu-optimize page-space-transition"
+          initial={reduce ? false : initial || { opacity: 0, filter: 'blur(10px)', y: 8 }}
+          animate={reduce ? undefined : { opacity: 1, filter: 'blur(0px)', y: 0 }}
+          exit={reduce ? undefined : { opacity: 0, filter: 'blur(12px)', y: -5 }}
+          transition={reduce ? undefined : { duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
         >
           {children}
         </m.div>

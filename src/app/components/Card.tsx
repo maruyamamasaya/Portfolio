@@ -1,17 +1,14 @@
 'use client';
-import { forwardRef, ReactNode } from 'react';
-import { LazyMotion, domAnimation, m, useReducedMotion } from 'framer-motion';
+import { forwardRef } from 'react';
+import { HTMLMotionProps, LazyMotion, domAnimation, m, useReducedMotion } from 'framer-motion';
 
 
-interface Props {
-  children: ReactNode;
-  className?: string;
-  onClick?: () => void;
+type Props = Omit<HTMLMotionProps<'div'>, 'ref'> & {
   disableHover?: boolean;
-}
+};
 
 const Card = forwardRef<HTMLDivElement, Props>(
-  ({ children, className = '', onClick, disableHover = false }, ref) => {
+  ({ children, className = '', disableHover = false, ...props }, ref) => {
     const reduce = useReducedMotion();
     const hover = reduce || disableHover ? undefined : { scale: 1.01, y: -3 };
     const tap = reduce || disableHover ? undefined : { scale: 0.95 };
@@ -22,7 +19,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
           whileHover={hover}
           whileTap={tap}
           className={`lux-card p-5 ${className}`}
-          onClick={onClick}
+          {...props}
         >
           {children}
         </m.div>

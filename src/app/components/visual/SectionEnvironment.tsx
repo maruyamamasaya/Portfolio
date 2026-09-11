@@ -10,6 +10,7 @@ type Props = {
   id?: string;
   as?: 'section' | 'div' | 'article';
   style?: CSSProperties;
+  ariaLabelledby?: string;
 };
 
 export default function SectionEnvironment({
@@ -19,6 +20,7 @@ export default function SectionEnvironment({
   id,
   as: Component = 'section',
   style,
+  ariaLabelledby,
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
   const { setCurrentSpace } = useVisualEnvironment();
@@ -46,7 +48,14 @@ export default function SectionEnvironment({
   const Element = Component as unknown as 'section';
 
   return (
-    <Element ref={ref} id={id} className={className} data-visual-space={space} style={style}>
+    <Element
+      ref={ref}
+      id={id}
+      className={className}
+      data-visual-space={space}
+      style={style}
+      aria-labelledby={ariaLabelledby}
+    >
       {children}
     </Element>
   );

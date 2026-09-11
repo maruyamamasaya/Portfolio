@@ -11,6 +11,9 @@ tags:
   - "UI/UX"
 image: "/images/img1.svg"
 alt: "LINE導線デザインのイメージ"
+accentColor: "#67e8c8"
+secondaryColor: "#60a5fa"
+glowColor: "rgba(103, 232, 200, 0.22)"
 ---
 
 ## 課題

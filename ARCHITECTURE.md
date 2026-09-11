@@ -48,6 +48,8 @@ push / PR -> GitHub Actions: npm ci -> lint -> Jest
 - `DeveloperEditor.tsx`: ブラウザ CRUD と preview。記事/制作実績を同一編集フローへ接続。
 - `src/app/works/preview/[slug]/page.tsx`: 下書き・予約公開を確認する管理者プレビュー。
 - `BusinessContactForm.tsx` / `TutorContactForm.tsx`: `/api/contact` の client。
+- `VisualEnvironmentContext.tsx` / `SectionEnvironment.tsx`: 現在セクション、作品固有色、品質、pointer、scroll を背景表現へ渡すイベント駆動の Visual Layer。
+- `ImmersiveAtmosphere.tsx`: Aurora / Fog / Mesh / Particle / Ripple / Pointer Light を1つの固定背景として描画し、Reduced Motion と Quality Level に応じて負荷を抑える。
 
 ## データフロー
 

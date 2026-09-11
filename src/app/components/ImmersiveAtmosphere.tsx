@@ -9,6 +9,7 @@ import {
 
 type Ripple = {
   id: number;
+  createdAt: number;
   x: number;
   y: number;
   size: number;
@@ -49,7 +50,6 @@ export default function ImmersiveAtmosphere() {
   const particleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const particleState = useRef<ParticleState[]>([]);
   const animationRef = useRef<number>(0);
-  const rafRef = useRef(0);
   const pointerRef = useRef({ x: -9999, y: -9999 });
 
   const projectColor = useMemo<ProjectVisualColor>(
@@ -126,6 +126,7 @@ export default function ImmersiveAtmosphere() {
       const now = performance.now();
       setRipples((prev) => [...prev.filter((item) => now - item.id < 2200), {
         id: now,
+        createdAt: Date.now(),
         x,
         y,
         size,
@@ -150,9 +151,6 @@ export default function ImmersiveAtmosphere() {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
     };
   }, [reducedMotion, setPointer, setScrollProgress, quality]);
 
@@ -160,7 +158,7 @@ export default function ImmersiveAtmosphere() {
     if (reducedMotion || quality === 'low') return;
 
     const total = qualityParticleCount[quality];
-    if (!particleState.current.length) {
+    if (particleState.current.length !== total) {
       particleState.current = Array.from({ length: total }, () => ({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
@@ -236,9 +234,11 @@ export default function ImmersiveAtmosphere() {
   }, [quality, reducedMotion, scrollProgress]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setRipples((current) => current.filter((item) => Date.now() - item.id < 1000));
-    }, 1100);
+    if (!ripples.length) return;
+    const timeout = window.setTimeout(() => {
+      setRipples((current) => current.filter((item) => Date.now() - item.createdAt < 1800));
+    }, 1850);
+    return () => window.clearTimeout(timeout);
   }, [ripples]);
 
   const particleCount = qualityParticleCount[quality];
@@ -252,13 +252,10 @@ export default function ImmersiveAtmosphere() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      const root = document.documentElement;
-      if (!root || !scrollProgress) return;
-      const nextDepth = Math.min(1, Math.max(0, scrollProgress * 1.2));
-      root.style.setProperty('--vfx-depth', `${nextDepth}`);
-      root.style.setProperty('--vfx-space-hue', currentSpace === 'contact' ? '18' : '258');
-    }, 0);
+    const root = document.documentElement;
+    const nextDepth = Math.min(1, Math.max(0, scrollProgress * 1.2));
+    root.style.setProperty('--vfx-depth', `${nextDepth}`);
+    root.style.setProperty('--vfx-space-hue', currentSpace === 'contact' ? '18' : '258');
   }, [scrollProgress, currentSpace]);
 
   return (
@@ -294,7 +291,7 @@ export default function ImmersiveAtmosphere() {
         ))}
       </div>
       <div className="immersive-layer immersive-particles" aria-hidden="true">
-        {Array.from({ length: quality === 'low' ? 6 : quality === 'medium' ? 14 : 20 }, (_, i) => (
+        {Array.from({ length: particleCount }, (_, i) => (
           <span
             key={`p-${i}`}
             className="visual-particle"

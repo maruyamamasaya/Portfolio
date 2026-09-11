@@ -41,6 +41,7 @@ Digi Goose は、Next.js App Router で構築されたポートフォリオ主�
 - 沈静した没入型テーマの導入（背景演出、Glass/Glow、Hero強化、Works/記事カードの反応演出）を完了。
   導線（About / Works / Contact）も同一言語感で揃える対応を完了。
 - `prefers-reduced-motion` を前提にした背景演出の簡略化、カード表示ラベル・公開情報の統一化を含めて完了。  
+- 没入型テーマ V2 を実装。セクションごとの環境色、端末別 Quality Level、少量の反応粒子、操作点の波紋、奥行き差、Works 固有色から背景への弱い色伝播、実ルート読み込み時のみ表示するローディング、短いページ遷移を共通 Visual Layer として統合した。
 
 ## Known Issues（既知の問題）
 
@@ -57,9 +58,8 @@ Digi Goose は、Next.js App Router で構築されたポートフォリオ主�
 
 1. About / Works / Contact の情報密度を調整し、最終的な世界観トーン（テキスト比率・情報の優先順）を固定する。
 2. 実環境での light/dark / Reduced-motion 動作と主要ブラウザ確認（可読性、コントラスト、読み込み速度）。
-3. 実環境での light/dark / Reduced-motion 動作と主要ブラウザ確認（可読性、コントラスト、読み込み速度）。
-4. `IMAGE_ASSETS.md` を見ながら本画像URLを本運用値へ差し替え、`data/image-assets.json` を更新する。
-5. 対象デプロイ環境で Next.js の解決規則を確認してから、重複ミドルウェアを統合する。
+3. `IMAGE_ASSETS.md` を見ながら本画像URLを本運用値へ差し替え、`data/image-assets.json` を更新する。
+4. 対象デプロイ環境で Next.js の解決規則を確認してから、重複ミドルウェアを統合する。
 
 ## Unknowns（判断不能）
 

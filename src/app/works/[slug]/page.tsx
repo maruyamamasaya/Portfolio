@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { CSSProperties } from 'react';
 import markdownToHtml from '@/lib/markdownToHtml';
 import {
   getWork,
@@ -7,6 +8,8 @@ import {
   getWorkPublicationState,
   getSortedWorks,
 } from '@/lib/works';
+import SectionEnvironment from '@/app/components/visual/SectionEnvironment';
+import ProjectVisualSurface from '@/app/components/visual/ProjectVisualSurface';
 
 export async function generateStaticParams() {
   const works = await getSortedWorks();
@@ -51,7 +54,21 @@ export default async function WorkPage({
     const { html } = await markdownToHtml(work.content);
 
     return (
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 md:px-10 py-10">
+      <SectionEnvironment as="div" space="works" className="portfolio-work-page">
+        <ProjectVisualSurface
+          className="vfx-project-field"
+          color={{
+            accentColor: work.accentColor ?? '#88b0ff',
+            secondaryColor: work.secondaryColor,
+            glowColor: work.glowColor,
+          }}
+          style={{
+            '--project-accent': work.accentColor ?? 'var(--vfx-project-accent)',
+            '--project-accent-2': work.secondaryColor ?? 'var(--vfx-project-secondary)',
+            '--project-glow': work.glowColor ?? 'var(--vfx-project-glow)',
+          } as CSSProperties}
+        >
+      <article className="portfolio-glass max-w-3xl mx-auto px-4 sm:px-6 md:px-10 py-10 vfx-project-card">
         <Link href="/works" className="text-sm text-slate-500 border-b border-current">
           ← 制作実績へ戻る
         </Link>
@@ -135,6 +152,8 @@ export default async function WorkPage({
           </ul>
         </div>
       </article>
+        </ProjectVisualSurface>
+      </SectionEnvironment>
     );
   } catch {
     notFound();

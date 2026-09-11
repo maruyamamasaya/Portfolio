@@ -11,6 +11,9 @@ tags:
   - "ブランディング"
 image: "/images/img2.svg"
 alt: "Web刷新のイメージ"
+accentColor: "#79d8ff"
+secondaryColor: "#8f7bff"
+glowColor: "rgba(121, 216, 255, 0.24)"
 ---
 
 ## コンセプト
