@@ -15,6 +15,9 @@ export interface Work {
   tags?: string[];
   summary?: string;
   updated?: string;
+  accentColor?: string;
+  secondaryColor?: string;
+  glowColor?: string;
   content: string;
 }
 
@@ -69,6 +72,9 @@ async function getWorkBySlug(
     category: ((data.category as string | undefined) ?? 'プロジェクト') as string,
     tags: data.tags as string[] | undefined,
     summary: (data.summary as string | undefined) ?? '',
+    accentColor: data.accentColor as string | undefined,
+    secondaryColor: data.secondaryColor as string | undefined,
+    glowColor: data.glowColor as string | undefined,
     updated: data.updated as string | undefined,
     content,
   };
@@ -112,6 +118,9 @@ export async function getSortedWorks(): Promise<Work[]> {
         category: ((data.category as string | undefined) ?? 'プロジェクト') as string,
         tags: data.tags as string[] | undefined,
         summary: (data.summary as string | undefined) ?? '',
+        accentColor: data.accentColor as string | undefined,
+        secondaryColor: data.secondaryColor as string | undefined,
+        glowColor: data.glowColor as string | undefined,
         updated: data.updated as string | undefined,
         content,
       };

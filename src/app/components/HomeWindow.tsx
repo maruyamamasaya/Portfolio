@@ -5,6 +5,7 @@ import { siteConfig } from '@/config/site';
 import CTASection from './CTASection';
 import HomePostCard from './HomePostCard';
 import ScrollFadeIn from './ScrollFadeIn';
+import SectionEnvironment from './visual/SectionEnvironment';
 
 const selectedWorks = [
   {
@@ -50,7 +51,12 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
   return (
     <div className="home-shell portfolio-home">
       {hero ?? (
-        <section className="portfolio-hero portfolio-glass relative overflow-hidden px-4 py-14" aria-labelledby="home-heading">
+        <SectionEnvironment
+          as="section"
+          space="hero"
+          className="portfolio-hero portfolio-glass relative overflow-hidden px-4 py-14 vfx-ripple-target"
+          id="home-hero"
+        >
           <div className="portfolio-hero-topline">
             <p>MASAYA MARUYAMA / DIGITAL CREATOR</p>
             <p>TOKYO · JAPAN</p>
@@ -67,10 +73,10 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
                 作品と知見が積み上がる場として、制作実績と Journal を同じ文脈で見える化しています。
               </p>
               <div className="home-actions">
-                <Link href="#selected-works" className="home-primary-button focus-ring">
+                <Link href="#selected-works" className="home-primary-button focus-ring vfx-trigger">
                   制作実績を見る <span aria-hidden="true">↓</span>
                 </Link>
-                <Link href="/blog" className="home-text-link ambient-text-link">
+                <Link href="/blog" className="home-text-link ambient-text-link vfx-trigger">
                   Journalを読む <span aria-hidden="true">↗</span>
                 </Link>
               </div>
@@ -82,10 +88,15 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
             <span>Editorial Thinking</span>
             <span>Long-term Care</span>
           </div>
-        </section>
+        </SectionEnvironment>
       )}
 
-      <section id="selected-works" className="portfolio-section portfolio-glass mt-20">
+      <SectionEnvironment
+        as="section"
+        space="works"
+        id="selected-works"
+        className="portfolio-section portfolio-glass mt-20 vfx-ripple-target"
+      >
         <ScrollFadeIn as="div">
           <div className="portfolio-section-label">
             <p>SELECTED WORK</p>
@@ -103,7 +114,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
           {selectedWorks.map((work, index) => (
             <article
               key={work.number}
-              className="portfolio-work portfolio-reveal"
+              className="portfolio-work portfolio-reveal vfx-project-card vfx-ripple-target"
               style={{ '--reveal-delay': `${index * 120}ms` } as CSSProperties}
             >
               <div className="portfolio-work-number">{work.number}</div>
@@ -118,13 +129,18 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
           ))}
         </div>
         <div className="mt-8">
-          <Link href="/works" className="home-inline-link ambient-text-link">
+          <Link href="/works" className="home-inline-link ambient-text-link vfx-trigger">
             制作実績の詳細ページへ <span aria-hidden="true">→</span>
           </Link>
         </div>
-      </section>
+      </SectionEnvironment>
 
-      <section className="portfolio-about portfolio-glass mt-16" aria-labelledby="about-heading">
+      <SectionEnvironment
+        as="section"
+        space="about"
+        className="portfolio-about portfolio-glass mt-16"
+        id="about-anchor"
+      >
         <ScrollFadeIn as="div" delay={80}>
           <div className="portfolio-section-label">
             <p>ABOUT</p>
@@ -138,15 +154,19 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
             <div>
               <p>Web、デザイン、AI活用を横断し、実案件の中で価値が増える導線を作ることを重視しています。</p>
               <p>「必要な人に、必要なタイミングで、必要な情報が届く」状態を目標に運用設計まで見据えています。</p>
-              <Link href="/about" className="ambient-text-link">
+              <Link href="/about" className="ambient-text-link vfx-trigger">
                 プロフィールを見る <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
         </ScrollFadeIn>
-      </section>
+      </SectionEnvironment>
 
-      <section className="portfolio-section portfolio-glass mt-16" aria-labelledby="capabilities-heading">
+      <SectionEnvironment
+        as="section"
+        space="skills"
+        className="portfolio-section portfolio-glass mt-16"
+      >
         <ScrollFadeIn as="div" delay={120}>
           <div className="portfolio-section-label">
             <p>WORKFLOW</p>
@@ -165,15 +185,15 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
             </ol>
           </div>
         </ScrollFadeIn>
-      </section>
+      </SectionEnvironment>
 
-      <section className="portfolio-section portfolio-glass mt-16" aria-labelledby="posts-heading">
+      <section className="portfolio-section portfolio-glass mt-16 vfx-ripple-target" aria-labelledby="posts-heading">
         <ScrollFadeIn as="div">
           <div className="portfolio-section-label">
             <p>JOURNAL</p>
-            <Link href="/blog" className="ambient-text-link">
-              ALL POSTS <span aria-hidden="true">→</span>
-            </Link>
+              <Link href="/blog" className="ambient-text-link vfx-trigger">
+                ALL POSTS <span aria-hidden="true">→</span>
+              </Link>
           </div>
           <div className="portfolio-section-title">
             <h2 id="posts-heading">
@@ -187,7 +207,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
             {latestPosts.map((post, index) => (
               <li
                 key={post.slug}
-                className="portfolio-reveal"
+                className="portfolio-reveal vfx-project-card vfx-ripple-target"
                 style={{ '--reveal-delay': `${220 + index * 90}ms` } as CSSProperties}
               >
                 <HomePostCard post={post} />
@@ -205,7 +225,7 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
       {ctaProps ? (
         <CTASection {...ctaProps} />
       ) : (
-        <section className="portfolio-contact portfolio-glass mt-16" aria-labelledby="cta-heading">
+          <section className="portfolio-contact portfolio-glass mt-16" aria-labelledby="cta-heading">
           <p>LET&apos;S WORK TOGETHER</p>
           <h2 id="cta-heading">
             見ることで、<br />
@@ -213,13 +233,12 @@ export default function HomeWindow({ posts, hero, ctaProps }: HomeWindowProps) {
           </h2>
           <div>
             <span>作品ページの見せ方や構成の整理について、まずは小さく相談してください。</span>
-            <Link href={siteConfig.contact.general} className="focus-ring">
-              コンタクトを取る <span aria-hidden="true">↗</span>
-            </Link>
+              <Link href={siteConfig.contact.general} className="focus-ring vfx-trigger">
+                コンタクトを取る <span aria-hidden="true">↗</span>
+              </Link>
           </div>
         </section>
       )}
     </div>
   );
 }
-

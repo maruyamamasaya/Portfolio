@@ -4,12 +4,13 @@ import { CSSProperties } from 'react';
 import { getSortedWorks, getWorkPublicationState, getWorkPublicationDate } from '@/lib/works';
 import Card from '../components/Card';
 import ScrollFadeIn from '../components/ScrollFadeIn';
+import SectionEnvironment from '../components/visual/SectionEnvironment';
 
 export default async function Works() {
   const works = await getSortedWorks();
 
   return (
-    <div className="portfolio-work-page">
+    <SectionEnvironment as="div" space="works" className="portfolio-work-page">
       <header className="mb-8">
         <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Portfolio Works</p>
         <h1 className="mt-2 text-4xl sm:text-5xl">制作実績</h1>
@@ -42,9 +43,19 @@ export default async function Works() {
                   backgroundColor: 'rgba(120, 53, 15, 0.2)',
                 } as CSSProperties);
 
+          const projectStyle = {
+            '--project-accent': work.accentColor ?? 'var(--vfx-project-accent)',
+            '--project-accent-2': work.secondaryColor ?? 'var(--vfx-project-secondary)',
+            '--project-glow': work.glowColor ?? 'var(--vfx-project-glow)',
+          } satisfies Partial<Record<string, string>> as CSSProperties;
+
           return (
-            <ScrollFadeIn key={work.slug} as="article" delay={80}>
-              <Card className="portfolio-glass group p-0 overflow-hidden space-y-4">
+            <ScrollFadeIn key={work.slug} as="article" delay={80} className="vfx-ripple-target">
+              <Card
+                className="portfolio-glass group p-0 overflow-hidden space-y-4 vfx-project-card"
+                style={projectStyle}
+                data-ripple="true"
+              >
                 <Link href={`/works/${work.slug}`} className="block">
                   {(() => {
                     const image = work.image ?? '/images/img1.svg';
@@ -65,16 +76,13 @@ export default async function Works() {
                     <span className="text-xs uppercase tracking-[0.15em] text-slate-200/90">
                       公開日：{getWorkPublicationDate(work) || '—'}
                     </span>
-                    <span
-                      className={stateClass}
-                      style={badgeStyle}
-                    >
+                    <span className={stateClass} style={badgeStyle}>
                       {stateLabel}
                     </span>
                   </div>
                   <Link
                     href={`/works/${work.slug}`}
-                    className="text-xl sm:text-2xl font-semibold leading-tight text-white"
+                    className="text-xl sm:text-2xl font-semibold leading-tight text-white vfx-trigger"
                   >
                     {work.title}
                   </Link>
@@ -118,6 +126,6 @@ export default async function Works() {
           </div>
         </Card>
       </section>
-    </div>
+    </SectionEnvironment>
   );
 }

@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import ProfileCategories from '../components/ProfileCategories';
 import MediaCardGrid from '../components/MediaCardGrid';
 import Image from 'next/image';
+import SectionEnvironment from '../components/visual/SectionEnvironment';
 
 export const metadata = {
   title: 'About',
@@ -13,14 +14,14 @@ export const metadata = {
 
 export default function About() {
   return (
-    <div className="portfolio-work-page portfolio-glass px-4 sm:px-6 md:px-10 py-10 space-y-10">
+    <SectionEnvironment as="div" space="about" className="portfolio-work-page portfolio-glass px-4 sm:px-6 md:px-10 py-10 space-y-10">
       <BlogNavButtons />
       <h1 className="text-3xl font-extrabold mb-6">
         ソロエンジニア × クリエイター – 企画から運営まで一人完結
       </h1>
 
       {/* プロフィール */}
-      <section>
+      <section className="vfx-ripple-target">
         <Card className="portfolio-glass p-6 md:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
           <Image
             src="/images/img1.svg"
@@ -92,7 +93,7 @@ export default function About() {
 
       <ProfileCategories />
 
-      <section className="space-y-4 portfolio-glass">
+      <section className="space-y-4 portfolio-glass vfx-ripple-target">
         <h2 className="text-xl font-bold">Media / SNS活動</h2>
         <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
           🎬
@@ -140,7 +141,7 @@ export default function About() {
         />
       </section>
 
-      <section className="space-y-4 text-sm portfolio-glass p-6">
+      <section className="space-y-4 text-sm portfolio-glass p-6 vfx-ripple-target">
         <h2 className="text-xl font-bold">活動ポリシー</h2>
         <p className="mb-4">
           <strong>「信頼される技術者であること」</strong>
@@ -169,13 +170,13 @@ export default function About() {
           </div>
         </section>
 
-      <section className="space-y-6">
+      <SectionEnvironment as="section" space="skills" className="space-y-6 vfx-ripple-target">
         <h2 className="text-xl font-bold">開発技術</h2>
         <ToolsGrid />
         <SkillsGrid />
-      </section>
+      </SectionEnvironment>
 
-      <section className="space-y-4 text-sm portfolio-glass p-6">
+      <section className="space-y-4 text-sm portfolio-glass p-6 vfx-ripple-target">
         <h2 className="text-xl font-bold">更新履歴</h2>
         <table className="w-full border-collapse border border-gray-300 dark:border-gray-600">
           <tbody>
@@ -196,6 +197,6 @@ export default function About() {
         label="📩 お仕事のご相談はこちら"
       />
       <p className="text-sm line-through">contact@freehackapp.com</p>
-    </div>
+    </SectionEnvironment>
   );
 }

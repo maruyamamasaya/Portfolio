@@ -1,17 +1,19 @@
 import BlogNavButtons from '../components/BlogNavButtons';
 import Image from 'next/image';
 import Link from 'next/link';
+import SectionEnvironment from '../components/visual/SectionEnvironment';
 
 export default function Contact() {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-10 space-y-8">
+    <SectionEnvironment as="div" space="contact" className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-10 space-y-8">
       <BlogNavButtons />
       <h1 className="text-3xl font-bold">Contact</h1>
       <p className="text-slate-300">お問い合わせ内容に応じて以下よりお選びください。</p>
       <div className="flex flex-col sm:flex-row flex-wrap gap-4">
         <Link
           href="/contact/business"
-          className="relative block h-64 sm:w-[48%] group rounded-2xl overflow-hidden portfolio-glass focus-ring"
+          className="relative block h-64 sm:w-[48%] group rounded-2xl overflow-hidden portfolio-glass focus-ring vfx-trigger"
+          data-ripple="true"
         >
           <Image
             src="/images/LINEdevelop-200px.png"
@@ -29,7 +31,8 @@ export default function Contact() {
         </Link>
         <Link
           href="/contact/tutor"
-          className="relative block h-64 sm:w-[48%] group rounded-2xl overflow-hidden portfolio-glass focus-ring"
+          className="relative block h-64 sm:w-[48%] group rounded-2xl overflow-hidden portfolio-glass focus-ring vfx-trigger"
+          data-ripple="true"
         >
           <Image
             src="/images/instagram-200px.png"
@@ -46,6 +49,6 @@ export default function Contact() {
           </div>
         </Link>
       </div>
-    </div>
+    </SectionEnvironment>
   );
 }
